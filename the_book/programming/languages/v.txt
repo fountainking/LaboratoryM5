@@ -1,0 +1,33 @@
+**V**
+
+Category: Programming › Languages
+---------------------------------------
+
+V (programming language)
+
+V, also known as vlang, is an
+in-development statically typed,
+compiled programming language created
+by Alexander Medvednikov in early 2019.
+It was inspired by Go, and other
+programming languages including Oberon,
+Swift, and Rust. It is free and
+open-source software released under the
+MIT License, and currently in beta.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~52
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

@@ -1,0 +1,36 @@
+**PYRAMID GEOMETRY**
+
+Category: Wikipedia
+---------------------------------------
+
+Pyramid (geometry)
+
+A pyramid is a polyhedron formed by
+connecting a polygonal base and a
+point, called the apex. Each base edge
+and apex form a triangle, called a
+lateral face. A pyramid is a conic
+solid with a polygonal base. Many types
+of pyramids can be found by determining
+the shape of bases, either by based on
+a regular polygon or by cutting off the
+apex. It can be generalized into higher
+dimensions, known as hyperpyramid. All
+pyramids are self-dual.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~81
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

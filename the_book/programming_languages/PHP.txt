@@ -1,0 +1,261 @@
+**PHP**
+
+Category: Programming_Languages
+---------------------------------------
+
+**PHP PROGRAMMING GUIDE**
+
+**COMPREHENSIVE PHP REFERENCE**
+
+**OVERVIEW:**
+PHP is a server-side scripting language
+designed for web development. Powers
+millions of websites including
+WordPress, Facebook, and Wikipedia.
+
+**BASIC SYNTAX:**
+
+**HELLO WORLD:**
+```php
+<?php
+echo "Hello World!";
+?>
+```
+
+**VARIABLES:**
+```php
+<?php
+$name = "John";
+$age = 25;
+$price = 19.99;
+$isActive = true;
+?>
+```
+
+**FUNCTIONS:**
+```php
+<?php
+function greet($name) {
+return "Hello, $name!";
+}
+
+function add($a, $b) {
+return $a + $b;
+}
+
+echo greet("World");
+?>
+```
+
+**ARRAYS:**
+```php
+<?php
+// Indexed array
+$numbers = [1, 2, 3, 4, 5];
+$numbers[] = 6; // Add element
+
+// Associative array
+$person = [
+"name" => "John",
+"age" => 30,
+"city" => "NYC"
+];
+
+// Accessing
+echo $person["name"];
+
+// Looping
+foreach ($numbers as $num) {
+echo $num;
+}
+
+foreach ($person as $key => $value) {
+echo "$key: $value";
+}
+?>
+```
+
+**CONTROL STRUCTURES:**
+```php
+<?php
+// If statement
+if ($x > 10) {
+echo "Greater";
+} elseif ($x > 5) {
+echo "Medium";
+} else {
+echo "Small";
+}
+
+// Switch
+switch ($value) {
+case 1:
+echo "One";
+break;
+case 2:
+echo "Two";
+break;
+default:
+echo "Other";
+}
+
+// For loop
+for ($i = 0; $i < 10; $i++) {
+echo $i;
+}
+
+// While
+while ($condition) {
+// code
+}
+?>
+```
+
+**CLASSES:**
+```php
+<?php
+class Person {
+private $name;
+private $age;
+
+public function __construct($name,
+$age) {
+$this->name = $name;
+$this->age = $age;
+}
+
+public function display() {
+echo $this->name . ": " .
+$this->age;
+}
+}
+
+$person = new Person("John", 30);
+$person->display();
+?>
+```
+
+**STRING MANIPULATION:**
+```php
+<?php
+$str = "Hello";
+$str .= " World"; // Concatenation
+$length = strlen($str);
+$upper = strtoupper($str);
+$lower = strtolower($str);
+$parts = explode(" ", $str);
+$joined = implode("-", $parts);
+?>
+```
+
+**FORM HANDLING:**
+```php
+<?php
+// GET request
+$name = $_GET['name'] ?? 'Guest';
+
+// POST request
+$email = $_POST['email'] ?? '';
+
+// Sanitization
+$clean = htmlspecialchars($input);
+$clean = filter_var($email,
+**FILTER_SANITIZE_EMAIL);**
+?>
+```
+
+DATABASE (MySQL):
+```php
+<?php
+// PDO (recommended)
+$pdo = new
+PDO('mysql:host=localhost;dbname=test',
+'user', 'pass');
+
+// Query
+$stmt = $pdo->query('SELECT * FROM
+users');
+while ($row = $stmt->fetch()) {
+echo $row['name'];
+}
+
+// Prepared statement
+$stmt = $pdo->prepare('SELECT * FROM
+users WHERE id = ?');
+$stmt->execute([$userId]);
+$user = $stmt->fetch();
+?>
+```
+
+**FILE HANDLING:**
+```php
+<?php
+// Read
+$content =
+file_get_contents('file.txt');
+
+// Write
+file_put_contents('file.txt', 'Hello');
+
+// Line by line
+$lines = file('file.txt');
+foreach ($lines as $line) {
+echo $line;
+}
+?>
+```
+
+**SESSIONS:**
+```php
+<?php
+session_start();
+$_SESSION['user'] = 'John';
+$user = $_SESSION['user'];
+session_destroy();
+?>
+```
+
+**ERROR HANDLING:**
+```php
+<?php
+try {
+// code that might throw
+} catch (Exception $e) {
+echo $e->getMessage();
+} finally {
+// always runs
+}
+?>
+```
+
+**COMMON USE CASES:**
+- Web applications
+- Content Management Systems
+- REST APIs
+- E-commerce platforms
+- Server-side scripting
+
+**BEST PRACTICES:**
+- Use prepared statements
+- Sanitize user input
+- Use password_hash() for passwords
+- Enable error reporting in dev
+- Use composer for dependencies
+- Follow PSR standards
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~485
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

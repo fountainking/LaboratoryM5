@@ -1,0 +1,30 @@
+**GIT**
+
+Category: Wikipedia › Programming
+---------------------------------------
+
+Git
+
+Git is a distributed version control
+software system that is capable of
+managing versions of source code or
+data. It is often used to control
+source code by programmers who are
+developing software collaboratively.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Database
+• Operating System
+• Cryptocurrency
+• Python Programming Language
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~35
+Category: Wikipedia › Programming
+
+<!-- FORMATTED: 85b3ca62 -->

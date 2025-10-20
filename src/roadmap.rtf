@@ -1,0 +1,160 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red249\green248\blue242;\red36\green36\blue35;}
+{\*\expandedcolortbl;;\cssrgb\c98039\c97647\c96078;\cssrgb\c18824\c18824\c18039;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+**M5CARDPUTER FEATURE ROADMAP**\
+\
+**CORE SYSTEM**\
+\
+- Boot animation (100-frame GIF)\
+- Sprite system (eliminate flashing)\
+- Brightness control in Settings\
+- Battery icon (4-state display)\
+- Theme system (JSON from SD)\
+- Smooth transitions & modular navigation\
+- Fork M5GFX and add custom font with emojis and symbols (star, etc.)\
+\
+Screensaver system:\
+  - Cycle through GIFs in /gifs/screensavers/ folder\
+  - Star matrix rain (accelerometer-controlled direction)\
+S\
+**KNOWN ISSUES**\
+\
+- Rick Roll GIF doesn't trigger sometimes\
+\
+**PORTAL SYSTEM**\
+\
+- Background AP broadcast (FreeRTOS task, use other apps while broadcasting)\
+- Multi-SSID rotation (cycle through multiple names)\
+- Multi-beacon spoof (broadcast 10-20 fake SSIDs simultaneously)\
+- Status indicator when broadcasting\
+- GIF playback on device during portal operation (show stats, animations, etc.)\
+\
+Portal web server:\
+  - HTML presentation deck (slide-based)\
+  - Contact form to CSV (collects emails)\
+  - Downloadable PDF + vCard\
+  - Visitor counter & analytics\
+  - Different content per visit\
+  - Collaborative pixel art canvas\
+  - Multiple portal profiles (switch between different decks/products/companies)\
+\
+**BLE FEATURES**\
+\
+- Custom popup messages on nearby phones (iOS/Android/Samsung)\
+- Beacon scanner (find AirTags, Tiles, etc.)\
+- Name badge broadcast mode (display name + info on screen, broadcast via BLE)\
+\
+**NETWORKING & SECURITY**\
+\
+- MAC address randomization\
+- ESP-NOW mesh chat (device-to-device, no router, 250m range)\
+- Web file upload interface (drag-drop via WiFi)\
+- Network speed test (visual graphs)\
+- Handshake packet capture\
+- WiFi probe request sniffer\
+- Crowd counter (count nearby devices via WiFi/BLE)\
+\
+Network tools via terminal:\
+  - Ping/traceroute\
+  - Port scanner\
+  - DNS lookup\
+  - DHCP discovery\
+  - MAC vendor lookup\
+  - Packet sniffer\
+\
+**FILE MANAGER**\
+\
+- Enhanced browser with folder/file icons\
+- Text viewer\
+- Image/GIF viewer\
+- Search across files\
+- Bookmarks\
+\
+**AUDIO**\
+\
+- Guitar/instrument tuner (FFT frequency detection, visual needle/bars, reference tones)\
+- Beatbox sample recorder (record mouth sounds, trigger with keys, save kits)\
+- Looper pedal (layer recordings, mix levels, solo/mute, undo)\
+- Voice notes (WAV to SD)\
+- BPM/tempo detector (tap or listen, accelerometer-based)\
+- Music visualizer (mic input, real-time display)\
+- Sound level meter (decibels)\
+- Frequency analyzer (pitch detection)\
+\
+Step sequencer:\
+  - 16 steps, 4-8 tracks\
+  - Swing/nudge + per-track delay\
+  - Tempo 40-240 BPM\
+  - Sample browser (organize downloaded samples on SD)\
+  - Pattern save/load\
+  - Tap tempo integration\
+\
+**TERMINAL & SYSTEM ACCESS**\
+\
+COMPLETED:\
+- Terminal emulator (yellow text, asterisk root prompt)\
+- File system commands (ls, cd, pwd, cat, rm, mkdir, rmdir)\
+- System commands (help, clear, free, uptime, reboot, echo)\
+- WiFi commands (wifi-scan, wifi-connect, wifi-status, wifi-disconnect)\
+- Command history and scrolling\
+\
+TODO:\
+- Terminal screensaver (star matrix rain with accelerometer)\
+- SSH client (connect to remote servers)\
+- Command history navigation (up/down arrows)\
+- Tab completion for files and commands\
+- Pipe support and output redirection\
+- Built-in text editor (nano-like)\
+- Markdown editor with live preview\
+\
+UART monitor/interface:\
+  - TX/RX on GPIO pins\
+  - Sniff UART traffic\
+  - Send commands to devices\
+  - Configure baud rate/settings\
+  - Access embedded systems\
+\
+**CREATIVE TOOLS**\
+\
+- ASCII art generator\
+- Collaborative pixel art (via portal)\
+- Pixel art editor (save as BMP)\
+\
+**KNOWLEDGE BASE**\
+\
+- Offline reference guides (organized text files)\
+- Ham radio reference (frequencies, Q-codes, phonetic alphabet)\
+- Morse code reference & trainer\
+- Emergency protocols\
+- Simple Wikipedia subset (~1GB)\
+- Search functionality across all content\
+\
+**GAMES & PARTY**\
+\
+- Tetris (custom colors)\
+- Portal party games (trivia, polls, pictionary, scavenger hunt, etc.)\
+\
+**EMERGENCY/SURVIVAL**\
+\
+- Complete survival guide and tools (full app)\
+\
+**FUTURE HARDWARE ADD-ONS**\
+\
+- LoRa Module: Off-grid messaging (10km+), Meshtastic\
+- IR LED: Universal TV remote, learn codes\
+- GPS Module: Location logging, geocaching, crowd density mapping\
+\
+**TECHNICAL NOTES**\
+\
+Star Matrix Rain: Real-time particle system, tilting device changes fall direction, customizable density/speed/colors, works as screensaver or standalone app.\
+\
+Crowd Counter Analytics: Real-time device count, historical data logging, peak time detection, dwell time averages, return visitor tracking, device type breakdown.\
+\
+UART Use Cases: Access control systems, industrial equipment, IoT devices, embedded systems debugging, firmware extraction, command injection.\
+}

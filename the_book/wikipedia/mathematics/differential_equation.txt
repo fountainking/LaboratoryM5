@@ -1,0 +1,39 @@
+**DIFFERENTIAL EQUATION**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Differential equation
+
+In mathematics, a differential equation
+is an equation that relates one or more
+unknown functions and their
+derivatives. In applications, the
+functions generally represent physical
+quantities, the derivatives represent
+their rates of change, and the
+differential equation defines a
+relationship between the two. Such
+relations are common in mathematical
+models and scientific laws; therefore,
+differential equations play a prominent
+role in many disciplines including
+engineering, physics, economics, and
+biology.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~71
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

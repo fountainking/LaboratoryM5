@@ -1,0 +1,31 @@
+**CSS**
+
+Category: Programming › Languages
+---------------------------------------
+
+CSS
+
+Cascading Style Sheets (CSS) is a style
+sheet language used for specifying the
+presentation and styling of a document
+written in a markup language such as
+HTML or XML. CSS is a cornerstone
+technology of the World Wide Web,
+alongside HTML and JavaScript.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~44
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

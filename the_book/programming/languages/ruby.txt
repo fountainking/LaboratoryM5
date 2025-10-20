@@ -1,0 +1,32 @@
+**RUBY**
+
+Category: Programming › Languages
+---------------------------------------
+
+Ruby (programming language)
+
+Ruby is a general-purpose programming
+language. It was designed with an
+emphasis on programming productivity
+and simplicity. In Ruby, everything is
+an object, including primitive data
+types. It was developed in the
+mid-1990s by Yukihiro "Matz" Matsumoto
+in Japan.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~42
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

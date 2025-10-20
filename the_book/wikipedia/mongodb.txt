@@ -1,0 +1,39 @@
+**MONGODB**
+
+Category: Wikipedia
+---------------------------------------
+
+MongoDB
+
+MongoDB is a source-available,
+cross-platform, document-oriented
+database program. Classified as a NoSQL
+database product, MongoDB uses
+JSON-like documents with optional
+schemas. Released in February 2009 by
+10gen, it supports features like
+sharding, replication, and ACID
+transactions. MongoDB Atlas, its
+managed cloud service, operates on AWS,
+Google Cloud Platform, and Microsoft
+Azure. Current versions are licensed
+under the Server Side Public License
+(SSPL). MongoDB is a member of the MACH
+Alliance.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~71
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

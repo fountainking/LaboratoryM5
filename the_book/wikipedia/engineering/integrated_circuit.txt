@@ -1,0 +1,43 @@
+**INTEGRATED CIRCUIT**
+
+Category: Wikipedia › Engineering
+---------------------------------------
+
+Integrated circuit
+
+An integrated circuit (IC), also known
+as a microchip or simply chip, is a
+compact assembly of electronic circuits
+formed from various electronic
+components — such as transistors,
+resistors, and capacitors — and their
+interconnections. These components are
+fabricated onto a thin, flat piece
+("chip") of semiconductor material,
+most commonly silicon. Integrated
+circuits are integral to a wide variety
+of electronic devices — including
+computers, smartphones, and televisions
+— performing functions such as data
+processing, control, and storage. They
+have transformed the field of
+electronics by enabling device
+miniaturization, improving performance,
+and reducing cost.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Bridge
+• Wheel
+• Road
+• Structural Engineering
+• Circuit
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~96
+Category: Wikipedia › Engineering
+
+<!-- FORMATTED: 85b3ca62 -->

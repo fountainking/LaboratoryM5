@@ -1,0 +1,41 @@
+**PANDAS (SOFTWARE)**
+
+Category: Programming › Python
+---------------------------------------
+
+Pandas (software)
+
+Pandas is a software library written
+for the Python programming language for
+data manipulation and analysis. In
+particular, it offers data structures
+and operations for manipulating
+numerical tables and time series. It is
+free software released under the
+three-clause BSD license. The name is
+derived from the term "panel data", an
+econometrics term for data sets that
+include observations over multiple time
+periods for the same individuals, as
+well as a play on the phrase "Python
+data analysis". Wes McKinney started
+building what would become Pandas at
+AQR Capital while he was a researcher
+there from 2007 to 2010.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Django (Web Framework)
+• Matplotlib
+• Tensorflow
+• Flask (Web Framework)
+• Numpy
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~101
+Category: Programming › Python
+
+<!-- FORMATTED: 85b3ca62 -->

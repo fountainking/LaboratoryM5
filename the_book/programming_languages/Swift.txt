@@ -1,0 +1,241 @@
+**SWIFT**
+
+Category: Programming_Languages
+---------------------------------------
+
+**SWIFT PROGRAMMING GUIDE**
+
+**COMPREHENSIVE SWIFT REFERENCE**
+
+**OVERVIEW:**
+Swift is a powerful programming
+language developed by Apple for iOS,
+macOS, watchOS, and tvOS development.
+Known for safety, performance, and
+modern syntax.
+
+**BASIC SYNTAX:**
+
+**HELLO WORLD:**
+```swift
+print("Hello World!")
+```
+
+**VARIABLES AND CONSTANTS:**
+```swift
+var age = 25 // Variable
+let name = "John" // Constant
+var price: Double = 19.99
+var isActive: Bool = true
+```
+
+**TYPE INFERENCE:**
+Swift automatically infers types, but
+you can specify them:
+```swift
+var message = "Hello" // Inferred as
+String
+var count: Int = 0 // Explicit type
+```
+
+**FUNCTIONS:**
+```swift
+func greet(name: String) -> String {
+return "Hello, \(name)!"
+}
+
+func add(a: Int, b: Int) -> Int {
+return a + b
+}
+
+// Calling
+let result = greet(name: "World")
+```
+
+**CLOSURES:**
+```swift
+let numbers = [1, 2, 3, 4, 5]
+let doubled = numbers.map { $0 * 2 }
+let evens = numbers.filter { $0 % 2 ==
+0 }
+```
+
+**CLASSES AND STRUCTS:**
+```swift
+// Class (reference type)
+class Person {
+var name: String
+var age: Int
+
+init(name: String, age: Int) {
+self.name = name
+self.age = age
+}
+
+func display() {
+print("\(name): \(age)")
+}
+}
+
+// Struct (value type)
+struct Point {
+var x: Double
+var y: Double
+}
+
+// Usage
+let person = Person(name: "John", age:
+30)
+person.display()
+```
+
+**OPTIONALS:**
+```swift
+var optionalName: String? = "John"
+var optionalAge: String? = nil
+
+// Unwrapping
+if let name = optionalName {
+print(name)
+}
+
+// Nil coalescing
+let greeting = optionalName ?? "Guest"
+```
+
+**ARRAYS:**
+```swift
+var numbers = [1, 2, 3, 4, 5]
+numbers.append(6)
+numbers.remove(at: 0)
+
+for num in numbers {
+print(num)
+}
+
+// Map, filter, reduce
+let doubled = numbers.map { $0 * 2 }
+let evens = numbers.filter { $0 % 2 ==
+0 }
+let sum = numbers.reduce(0, +)
+```
+
+**DICTIONARIES:**
+```swift
+var ages = ["Alice": 25, "Bob": 30]
+ages["Charlie"] = 35
+
+for (name, age) in ages {
+print("\(name): \(age)")
+}
+```
+
+**CONTROL FLOW:**
+```swift
+// If statement
+if x > 10 {
+print("Greater")
+} else if x > 5 {
+print("Medium")
+} else {
+print("Small")
+}
+
+// Switch
+switch value {
+case 1:
+print("One")
+case 2:
+print("Two")
+default:
+print("Other")
+}
+
+// For loop
+for i in 0..<10 {
+print(i)
+}
+
+// While
+while condition {
+// code
+}
+```
+
+**ENUMERATIONS:**
+```swift
+enum Direction {
+case north
+case south
+case east
+case west
+}
+
+let heading = Direction.north
+```
+
+**PROTOCOLS:**
+```swift
+protocol Drawable {
+func draw()
+}
+
+class Circle: Drawable {
+func draw() {
+print("Drawing circle")
+}
+}
+```
+
+**ERROR HANDLING:**
+```swift
+enum FileError: Error {
+case notFound
+case permissionDenied
+}
+
+func readFile() throws -> String {
+throw FileError.notFound
+}
+
+do {
+let content = try readFile()
+} catch FileError.notFound {
+print("File not found")
+} catch {
+print("Error: \(error)")
+}
+```
+
+**COMMON USE CASES:**
+- iOS app development
+- macOS applications
+- watchOS apps
+- tvOS applications
+- Server-side Swift
+
+**BEST PRACTICES:**
+- Use let for constants
+- Prefer value types (structs)
+- Use optionals safely
+- Follow Swift naming conventions
+- Use guard for early exits
+- Leverage protocol-oriented
+programming
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~512
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

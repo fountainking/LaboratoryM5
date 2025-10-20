@@ -1,0 +1,36 @@
+**TURBINE**
+
+Category: Wikipedia › Engineering
+---------------------------------------
+
+Turbine
+
+A turbine is a rotary mechanical device
+that extracts energy from a fluid flow
+and converts it into useful work. The
+work produced can be used for
+generating electrical power when
+combined with a generator. A turbine is
+a turbomachine with at least one moving
+part called a rotor assembly, which is
+a shaft or drum with blades attached.
+Moving fluid acts on the blades so that
+they move and impart rotational energy
+to the rotor.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Bridge
+• Wheel
+• Road
+• Structural Engineering
+• Circuit
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~77
+Category: Wikipedia › Engineering
+
+<!-- FORMATTED: 85b3ca62 -->

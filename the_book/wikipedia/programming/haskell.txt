@@ -1,0 +1,35 @@
+**HASKELL**
+
+Category: Wikipedia › Programming
+---------------------------------------
+
+Haskell
+
+Haskell is a general-purpose,
+statically typed, purely functional
+programming language with type
+inference and lazy evaluation. Haskell
+pioneered several programming language
+features such as type classes, which
+enable type-safe operator overloading,
+and monadic input/output (IO). It is
+named after logician Haskell Curry.
+Haskell's main implementation is the
+Glasgow Haskell Compiler (GHC).
+
+=======================================
+**RELATED ARTICLES:**
+
+• Database
+• Operating System
+• Cryptocurrency
+• Python Programming Language
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~52
+Category: Wikipedia › Programming
+
+<!-- FORMATTED: 85b3ca62 -->

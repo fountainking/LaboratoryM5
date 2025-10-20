@@ -1,0 +1,67 @@
+**PYTHON REFERENCE**
+
+Category: Tech
+---------------------------------------
+
+Python Quick Reference
+
+Python is a high-level programming
+language known for easy syntax.
+
+**BASIC SYNTAX:**
+# Variables
+x = 10
+name = "Hello"
+
+# Conditionals
+if x > 5:
+print("Greater")
+elif x == 5:
+print("Equal")
+else:
+print("Less")
+
+# Loops
+for i in range(5):
+print(i)
+
+while x > 0:
+x -= 1
+
+# Functions
+def greet(name):
+return f"Hello {name}"
+
+# Lists
+my_list = [1, 2, 3, 4]
+my_list.append(5)
+
+# Dictionaries
+person = {"name": "John", "age": 30}
+
+# File handling
+with open("file.txt", "r") as f:
+content = f.read()
+
+**COMMON LIBRARIES:**
+- requests: HTTP requests
+- numpy: Numerical computing
+- pandas: Data analysis
+- flask: Web framework
+- matplotlib: Plotting
+
+=======================================
+**RELATED ARTICLES:**
+
+• Index
+• Javascript Reference
+• Linux Commands
+• Git Commands
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~107
+Category: Tech
+
+<!-- FORMATTED: 85b3ca62 -->

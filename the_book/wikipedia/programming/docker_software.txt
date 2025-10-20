@@ -1,0 +1,33 @@
+**DOCKER SOFTWARE**
+
+Category: Wikipedia › Programming
+---------------------------------------
+
+Docker (software)
+
+Docker is a set of platform as a
+service (PaaS) products that use
+OS-level virtualization to deliver
+software in packages called containers.
+The service has both free and premium
+tiers. The software that hosts the
+containers is called Docker Engine. It
+was first released in 2013 and is
+developed by Docker, Inc.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Database
+• Operating System
+• Cryptocurrency
+• Python Programming Language
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~54
+Category: Wikipedia › Programming
+
+<!-- FORMATTED: 85b3ca62 -->

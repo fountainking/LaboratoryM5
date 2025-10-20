@@ -1,0 +1,45 @@
+**COMPLEX NUMBER**
+
+Category: Wikipedia
+---------------------------------------
+
+Complex number
+
+In mathematics, a complex number is an
+element of a number system that extends
+the real numbers with a specific
+element denoted i, called the imaginary
+unit and satisfying the equation ;
+every complex number can be expressed
+in the form , where a and b are real
+numbers. Because no real number
+satisfies the above equation, i was
+called an imaginary number by Ren
+Descartes. For the complex number , a
+is called the real part, and b is
+called the imaginary part. The set of
+complex numbers is denoted by either of
+the symbols or C. Despite the
+historical nomenclature, "imaginary"
+complex numbers have a mathematical
+existence as firm as that of the real
+numbers, and they are fundamental tools
+in the scientific description of the
+natural world.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~132
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

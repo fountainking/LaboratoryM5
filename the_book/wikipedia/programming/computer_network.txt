@@ -1,0 +1,31 @@
+**COMPUTER NETWORK**
+
+Category: Wikipedia › Programming
+---------------------------------------
+
+Computer network
+
+In computer science, computer
+engineering, and telecommunications, a
+network is a group of communicating
+computers and peripherals known as
+hosts, which communicate data to other
+hosts via communication protocols, as
+facilitated by networking hardware.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Database
+• Operating System
+• Cryptocurrency
+• Python Programming Language
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~36
+Category: Wikipedia › Programming
+
+<!-- FORMATTED: 85b3ca62 -->

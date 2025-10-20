@@ -1,0 +1,39 @@
+**WAVE**
+
+Category: Wikipedia › Physics
+---------------------------------------
+
+Wave
+
+In physics, mathematics, engineering,
+and related fields, a wave is a
+propagating dynamic disturbance of one
+or more quantities. Periodic waves
+oscillate repeatedly about an
+equilibrium (resting) value at some
+frequency. When the entire waveform
+moves in one direction, it is said to
+be a travelling wave; by contrast, a
+pair of superimposed periodic waves
+traveling in opposite directions makes
+a standing wave. In a standing wave,
+the amplitude of vibration has nulls at
+some positions where the wave amplitude
+appears smaller or even zero.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Special Relativity
+• Absolute Zero
+• Strong Interaction
+• Relativity
+• Energy
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~86
+Category: Wikipedia › Physics
+
+<!-- FORMATTED: 85b3ca62 -->

@@ -1,0 +1,35 @@
+**SWIFT PROGRAMMING LANGUAGE**
+
+Category: Wikipedia › Programming
+---------------------------------------
+
+Swift (programming language)
+
+Swift is a high-level general-purpose,
+multi-paradigm, compiled programming
+language created by Chris Lattner in
+2010 for Apple Inc. and maintained by
+the open-source community. Swift
+compiles to machine code and uses an
+LLVM-based compiler. Swift was first
+released in June 2014 and the Swift
+toolchain has shipped in Xcode since
+Xcode version 6, released in September
+2014.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Database
+• Operating System
+• Cryptocurrency
+• Python Programming Language
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~60
+Category: Wikipedia › Programming
+
+<!-- FORMATTED: 85b3ca62 -->

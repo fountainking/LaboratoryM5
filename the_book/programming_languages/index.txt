@@ -1,0 +1,33 @@
+**INDEX**
+
+Category: Programming_Languages
+---------------------------------------
+
+Python
+Reference|python_reference.txt|0|Python
+programming language guide
+JavaScript
+Reference|javascript_reference.txt|0|JavaScript
+programming language guide
+Java
+Reference|java_reference.txt|0|Java
+programming language guide
+C Reference|c_reference.txt|0|C
+programming language guide
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Javascript Reference
+• R Programming
+• Ruby
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~20
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

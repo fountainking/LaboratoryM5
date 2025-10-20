@@ -1,0 +1,45 @@
+**INDEX**
+
+Category: Medical
+---------------------------------------
+
+Diarrhea
+Treatment|Diarrhea_Treatment.txt|0|Medical
+survival guide
+Constipation
+Relief|Constipation_Relief.txt|0|Medical
+survival guide
+Wound Care
+Infection|Wound_Care_Infection.txt|0|Medical
+survival guide
+Fever
+Management|Fever_Management.txt|0|Medical
+survival guide
+Dehydration|Dehydration.txt|0|Medical
+survival guide
+Food
+Poisoning|Food_Poisoning.txt|0|Medical
+survival guide
+Burns
+Treatment|Burns_Treatment.txt|0|Medical
+survival guide
+Hypothermia
+Treatment|Hypothermia_Treatment.txt|0|Medical
+survival guide
+
+=======================================
+**RELATED ARTICLES:**
+
+• Dehydration
+• Wound Care Infection
+• Diarrhea Treatment
+• Constipation Relief
+• Fever Management
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~32
+Category: Medical
+
+<!-- FORMATTED: 85b3ca62 -->

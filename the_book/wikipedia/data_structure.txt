@@ -1,0 +1,34 @@
+**DATA STRUCTURE**
+
+Category: Wikipedia
+---------------------------------------
+
+Data structure
+
+In computer science, a data structure
+is a data organization and storage
+format that is usually chosen for
+efficient access to data. More
+precisely, a data structure is a
+collection of data values, the
+relationships among them, and the
+functions or operations that can be
+applied to the data, i.e., it is an
+algebraic structure about data.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~59
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

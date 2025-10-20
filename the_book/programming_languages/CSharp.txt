@@ -1,0 +1,233 @@
+**CSHARP**
+
+Category: Programming_Languages
+---------------------------------------
+
+**C# PROGRAMMING GUIDE**
+
+**COMPREHENSIVE C# REFERENCE**
+
+**OVERVIEW:**
+C# is a modern, object-oriented
+language developed by Microsoft,
+primarily used for Windows
+applications, games (Unity), and web
+services.
+
+**BASIC SYNTAX:**
+
+**HELLO WORLD:**
+```csharp
+using System;
+
+class Program {
+static void Main() {
+Console.WriteLine("Hello
+World!");
+}
+}
+```
+
+**VARIABLES:**
+```csharp
+int age = 25;
+double price = 19.99;
+string name = "John";
+bool isActive = true;
+var auto = "Auto-typed";
+```
+
+**FUNCTIONS/METHODS:**
+```csharp
+int Add(int a, int b) {
+return a + b;
+}
+
+void PrintMessage(string msg) {
+Console.WriteLine(msg);
+}
+```
+
+**CLASSES:**
+```csharp
+class Person {
+public string Name { get; set; }
+public int Age { get; set; }
+
+public Person(string name, int age)
+{
+Name = name;
+Age = age;
+}
+
+public void Display() {
+Console.WriteLine($"{Name}:
+{Age}");
+}
+}
+
+// Usage
+Person p = new Person("John", 30);
+p.Display();
+```
+
+**LISTS:**
+```csharp
+using System.Collections.Generic;
+
+List<int> numbers = new List<int>();
+numbers.Add(1);
+numbers.Add(2);
+numbers.Add(3);
+
+foreach(int n in numbers) {
+Console.WriteLine(n);
+}
+```
+
+**DICTIONARIES:**
+```csharp
+Dictionary<string, int> ages = new
+Dictionary<string, int>();
+ages["Alice"] = 25;
+ages["Bob"] = 30;
+```
+
+**LOOPS:**
+```csharp
+// For loop
+for(int i = 0; i < 10; i++) {
+Console.WriteLine(i);
+}
+
+// Foreach
+foreach(var item in collection) {
+Console.WriteLine(item);
+}
+
+// While
+while(condition) {
+// code
+}
+```
+
+**CONDITIONALS:**
+```csharp
+if(x > 10) {
+// code
+} else if(x > 5) {
+// code
+} else {
+// code
+}
+
+// Switch
+switch(value) {
+case 1:
+// code
+break;
+case 2:
+// code
+break;
+default:
+// code
+break;
+}
+```
+
+**STRING MANIPULATION:**
+```csharp
+string str = "Hello";
+str += " World";
+int length = str.Length;
+string upper = str.ToUpper();
+string lower = str.ToLower();
+bool contains = str.Contains("llo");
+string[] parts = str.Split(' ');
+```
+
+**FILE I/O:**
+```csharp
+using System.IO;
+
+// Writing
+File.WriteAllText("file.txt", "Hello
+World");
+
+// Reading
+string content =
+File.ReadAllText("file.txt");
+
+// Line by line
+string[] lines =
+File.ReadAllLines("file.txt");
+foreach(string line in lines) {
+Console.WriteLine(line);
+}
+```
+
+LINQ (Language Integrated Query):
+```csharp
+using System.Linq;
+
+int[] numbers = {1, 2, 3, 4, 5};
+var even = numbers.Where(n => n % 2 ==
+0);
+var doubled = numbers.Select(n => n *
+2);
+```
+
+**EXCEPTION HANDLING:**
+```csharp
+try {
+// code that might throw
+} catch(Exception ex) {
+Console.WriteLine(ex.Message);
+} finally {
+// always runs
+}
+```
+
+**COMMON USE CASES:**
+- Windows desktop applications
+- Web applications (ASP.NET)
+- Game development (Unity)
+- Mobile apps (Xamarin)
+- Cloud services
+
+**COMPILATION:**
+```
+csc program.cs
+program.exe
+```
+
+Or with .NET Core:
+```
+dotnet run
+```
+
+**BEST PRACTICES:**
+- Use PascalCase for classes/methods
+- Use camelCase for variables
+- Implement IDisposable for resources
+- Use async/await for async operations
+- Follow SOLID principles
+- Use properties over public fields
+- Comment complex logic
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~444
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

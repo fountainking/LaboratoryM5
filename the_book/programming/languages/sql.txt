@@ -1,0 +1,32 @@
+**SQL**
+
+Category: Programming › Languages
+---------------------------------------
+
+SQL
+
+Structured Query Language (SQL)
+is a domain-specific language used to
+manage data, especially in a relational
+database management system (RDBMS). It
+is particularly useful in handling
+structured data, i.e., data
+incorporating relations among entities
+and variables.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~37
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

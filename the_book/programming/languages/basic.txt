@@ -1,0 +1,35 @@
+**BASIC**
+
+Category: Programming › Languages
+---------------------------------------
+
+**BASIC**
+
+BASIC is a family of general-purpose,
+high-level programming languages
+designed for ease of use. The original
+version was created by John G. Kemeny
+and Thomas E. Kurtz at Dartmouth
+College in 1964. They wanted to enable
+students in non-scientific fields to
+use computers. At the time, nearly all
+computers required writing custom
+software, which only scientists and
+mathematicians tended to learn.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~62
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

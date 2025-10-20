@@ -1,0 +1,45 @@
+**ACCELERATION**
+
+Category: Wikipedia › Physics
+---------------------------------------
+
+Acceleration
+
+In mechanics, acceleration is the rate
+of change of the velocity of an object
+with respect to time. Acceleration is
+one of several components of
+kinematics, the study of motion.
+Accelerations are vector quantities.
+The orientation of an object's
+acceleration is given by the
+orientation of the net force acting on
+that object. The magnitude of an
+object's acceleration, as described by
+Newton's second law, is the combined
+effect of two causes:the net balance of
+all external forces acting onto that
+object — magnitude is directly
+proportional to this net resulting
+force;
+that object's mass, depending on the
+materials out of which it is made —
+magnitude is inversely proportional to
+the object's mass.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Special Relativity
+• Absolute Zero
+• Strong Interaction
+• Relativity
+• Energy
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~115
+Category: Wikipedia › Physics
+
+<!-- FORMATTED: 85b3ca62 -->

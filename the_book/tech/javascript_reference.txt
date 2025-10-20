@@ -1,0 +1,84 @@
+**JAVASCRIPT REFERENCE**
+
+Category: Tech
+---------------------------------------
+
+JavaScript Quick Reference
+
+JavaScript is the language of the web,
+used for interactive websites.
+
+**BASICS:**
+// Variables
+let x = 10;
+const name = "John";
+var old = true; // old style
+
+// Conditionals
+if (x > 5) {
+console.log("Greater");
+} else if (x === 5) {
+console.log("Equal");
+} else {
+console.log("Less");
+}
+
+// Loops
+for (let i = 0; i < 5; i++) {
+console.log(i);
+}
+
+while (x > 0) {
+x--;
+}
+
+// Functions
+function greet(name) {
+return `Hello ${name}`;
+}
+
+const add = (a, b) => a + b;
+
+// Arrays
+const arr = [1, 2, 3];
+arr.push(4);
+arr.map(x => x * 2);
+arr.filter(x => x > 2);
+
+// Objects
+const person = {
+name: "John",
+age: 30,
+greet() {
+return `Hi ${this.name}`;
+}
+};
+
+// DOM Manipulation
+document.getElementById('id');
+document.querySelector('.class');
+element.innerHTML = 'text';
+element.addEventListener('click', fn);
+
+// Async/Await
+async function fetchData() {
+const response = await fetch(url);
+const data = await response.json();
+return data;
+}
+
+=======================================
+**RELATED ARTICLES:**
+
+• Index
+• Linux Commands
+• Git Commands
+• Python Reference
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~157
+Category: Tech
+
+<!-- FORMATTED: 85b3ca62 -->

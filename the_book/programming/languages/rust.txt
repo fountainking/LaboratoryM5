@@ -1,0 +1,28 @@
+**RUST**
+
+Category: Programming › Languages
+---------------------------------------
+
+Rust (programming language)
+
+Rust is a general-purpose programming
+language. It is noted for its emphasis
+on performance, type safety,
+concurrency, and memory safety.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~23
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

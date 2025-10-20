@@ -1,0 +1,32 @@
+**EXPONENTIATION**
+
+Category: Wikipedia
+---------------------------------------
+
+Exponentiation
+
+In mathematics, exponentiation, denoted
+bn, is an operation involving two
+numbers: the base, b, and the exponent
+or power, n. When n is a positive
+integer, exponentiation corresponds to
+repeated multiplication of the base:
+that is, bn is the product of
+multiplying n bases: In particular, .
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~48
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

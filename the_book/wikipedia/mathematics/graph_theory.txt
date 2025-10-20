@@ -1,0 +1,37 @@
+**GRAPH THEORY**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Graph theory
+
+In mathematics and computer science,
+graph theory is the study of graphs,
+which are mathematical structures used
+to model pairwise relations between
+objects. A graph in this context is
+made up of vertices which are connected
+by edges. A distinction is made between
+undirected graphs, where edges link two
+vertices symmetrically, and directed
+graphs, where edges link two vertices
+asymmetrically. Graphs are one of the
+principal objects of study in discrete
+mathematics.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~74
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

@@ -1,0 +1,42 @@
+**NIM**
+
+Category: Programming › Languages
+---------------------------------------
+
+Nim (programming language)
+
+Nim is a general-purpose,
+multi-paradigm, statically typed,
+compiled high-level system programming
+language, designed and developed by a
+team around Andreas Rumpf. Nim is
+designed to be "efficient, expressive,
+and elegant", supporting
+metaprogramming, functional, message
+passing, procedural, and
+object-oriented programming styles by
+providing several features such as
+compile time code generation, algebraic
+data types, a foreign function
+interface (FFI) with C, C++,
+Objective-C, and JavaScript, and
+supporting compiling to those same
+languages as intermediate
+representations.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Rust
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~77
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

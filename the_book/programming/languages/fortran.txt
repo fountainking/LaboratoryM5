@@ -1,0 +1,29 @@
+**FORTRAN**
+
+Category: Programming › Languages
+---------------------------------------
+
+Fortran
+
+Fortran is a third-generation,
+compiled, imperative programming
+language that is especially suited to
+numeric computation and scientific
+computing.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~19
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

@@ -1,0 +1,35 @@
+**ERLANG**
+
+Category: Programming › Languages
+---------------------------------------
+
+Erlang (programming language)
+
+Erlang is a general-purpose,
+concurrent, functional high-level
+programming language, and a
+garbage-collected runtime system. The
+term Erlang is used interchangeably
+with Erlang/OTP, or Open Telecom
+Platform (OTP), which consists of the
+Erlang runtime system, several
+ready-to-use components (OTP) mainly
+written in Erlang, and a set of design
+principles for Erlang programs.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~54
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

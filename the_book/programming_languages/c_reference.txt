@@ -1,0 +1,385 @@
+**C REFERENCE**
+
+Category: Programming_Languages
+---------------------------------------
+
+C Programming Guide
+
+C is a powerful low-level systems
+programming language that provides
+close-to-hardware control.
+
+**BASICS:**
+// Comments
+/* Multi-line comment */
+
+#include <stdio.h>
+
+int main() {
+printf("Hello, World!\n");
+return 0;
+}
+
+// Compile: gcc program.c -o program
+// Run: ./program
+
+**DATA TYPES:**
+// Integer types
+char c = 'A'; // 1 byte
+short s = 32767; // 2 bytes
+int i = 2147483647; // 4 bytes
+long l = 1234567890L;// 4-8 bytes
+
+// Unsigned
+unsigned int u = 4294967295U;
+unsigned char uc = 255;
+
+// Floating point
+float f = 3.14f; // 4 bytes
+double d = 3.14159; // 8 bytes
+
+// Boolean (C99+)
+#include <stdbool.h>
+bool flag = true;
+
+**VARIABLES:**
+// Declaration
+int x;
+x = 10;
+
+// Initialize
+int y = 20;
+
+// Multiple
+int a = 1, b = 2, c = 3;
+
+// Constants
+const int MAX = 100;
+#define PI 3.14159
+
+**OPERATORS:**
+// Arithmetic
++ - * / %
+
+// Increment/decrement
+x++ x-- ++x --x
+
+// Comparison
+== != < > <= >=
+
+// Logical
+&& || !
+
+// Bitwise
+& | ^ ~ << >>
+
+// Assignment
+= += -= *= /= %=
+
+**PRINTF/SCANF:**
+// Print
+printf("Integer: %d\n", 42);
+printf("Float: %.2f\n", 3.14);
+printf("String: %s\n", "text");
+printf("Char: %c\n", 'A');
+printf("Hex: %x\n", 255);
+
+// Read input
+int num;
+scanf("%d", &num);
+
+char str[50];
+scanf("%s", str);
+
+**ARRAYS:**
+// Declaration
+int arr[5];
+int arr2[5] = {1, 2, 3, 4, 5};
+int arr3[] = {1, 2, 3};
+
+// Access
+arr[0] = 10;
+int val = arr[2];
+
+// Size
+int size = sizeof(arr) /
+sizeof(arr[0]);
+
+// Multi-dimensional
+int matrix[3][3];
+int m2[2][2] = {{1,2}, {3,4}};
+
+**STRINGS:**
+// C strings are char arrays
+char str[] = "Hello";
+char str2[50] = "World";
+
+// String functions
+#include <string.h>
+strlen(str) // length
+strcpy(dest, src) // copy
+strcat(dest, src) // concatenate
+strcmp(str1, str2) // compare
+strchr(str, 'c') // find char
+strstr(str, "sub") // find substring
+
+**POINTERS:**
+// Declaration
+int* ptr;
+int *p1, *p2;
+
+// Address-of operator &
+int x = 10;
+int* ptr = &x;
+
+// Dereference operator *
+int value = *ptr;
+*ptr = 20; // modifies x
+
+// NULL pointer
+int* p = NULL;
+
+// Pointer arithmetic
+int arr[] = {1, 2, 3};
+int* p = arr; // points to arr[0]
+p++; // points to arr[1]
+*p = 5; // arr[1] = 5
+
+**FUNCTIONS:**
+// Declaration
+int add(int a, int b);
+
+// Definition
+int add(int a, int b) {
+return a + b;
+}
+
+// Void function
+void printHello() {
+printf("Hello\n");
+}
+
+// Pass by reference (pointer)
+void increment(int* x) {
+(*x)++;
+}
+
+int main() {
+int num = 5;
+increment(&num); // num is now 6
+}
+
+**CONTROL FLOW:**
+// If statement
+if (x > 10) {
+printf("Greater\n");
+} else if (x == 10) {
+printf("Equal\n");
+} else {
+printf("Less\n");
+}
+
+// Ternary
+int result = (x > 5) ? 1 : 0;
+
+// Switch
+switch(x) {
+case 1:
+printf("One\n");
+break;
+case 2:
+printf("Two\n");
+break;
+default:
+printf("Other\n");
+}
+
+**LOOPS:**
+// For loop
+for (int i = 0; i < 10; i++) {
+printf("%d ", i);
+}
+
+// While
+while (x > 0) {
+x--;
+}
+
+// Do-while
+do {
+x++;
+} while (x < 10);
+
+// Break and continue
+for (int i = 0; i < 10; i++) {
+if (i == 3) continue;
+if (i == 7) break;
+printf("%d ", i);
+}
+
+**STRUCTS:**
+// Definition
+struct Person {
+char name[50];
+int age;
+float height;
+};
+
+// Create struct
+struct Person p1;
+strcpy(p1.name, "Alice");
+p1.age = 30;
+
+// Initialize
+struct Person p2 = {"Bob", 25, 5.9};
+
+// Pointer to struct
+struct Person* ptr = &p1;
+ptr->age = 31; // same as (*ptr).age
+
+// Typedef
+typedef struct {
+int x;
+int y;
+} Point;
+
+Point pt = {10, 20};
+
+**DYNAMIC MEMORY:**
+#include <stdlib.h>
+
+// Allocate
+int* arr = (int*)malloc(10 *
+sizeof(int));
+if (arr == NULL) {
+printf("Memory allocation failed\n");
+return 1;
+}
+
+// Use
+arr[0] = 42;
+
+// Free
+free(arr);
+arr = NULL;
+
+// Calloc (initialized to zero)
+int* arr2 = (int*)calloc(10,
+sizeof(int));
+
+// Realloc (resize)
+arr = (int*)realloc(arr, 20 *
+sizeof(int));
+
+**FILE I/O:**
+#include <stdio.h>
+
+// Open file
+FILE* fp = fopen("file.txt", "r");
+if (fp == NULL) {
+printf("Cannot open file\n");
+return 1;
+}
+
+// Read
+char ch;
+while ((ch = fgetc(fp)) != EOF) {
+putchar(ch);
+}
+
+// Read line
+char line[100];
+while (fgets(line, 100, fp) != NULL) {
+printf("%s", line);
+}
+
+// Write
+FILE* fp2 = fopen("output.txt", "w");
+fprintf(fp2, "Hello, file!\n");
+fputs("Another line\n", fp2);
+
+// Close
+fclose(fp);
+fclose(fp2);
+
+// File modes:
+// "r" - read
+// "w" - write (overwrite)
+// "a" - append
+// "r+" - read/write
+// "w+" - read/write (overwrite)
+// "a+" - read/append
+
+**PREPROCESSOR:**
+// Include files
+#include <stdio.h> // standard library
+#include "myfile.h" // local file
+
+// Define constants
+#define MAX 100
+#define PI 3.14159
+
+// Macros
+#define SQUARE(x) ((x) * (x))
+#define MAX(a,b) ((a) > (b) ? (a) :
+(b))
+
+// Conditional compilation
+#ifdef DEBUG
+printf("Debug mode\n");
+#endif
+
+#ifndef HEADER_H
+#define HEADER_H
+// header content
+#endif
+
+**COMMON FUNCTIONS:**
+// String
+strlen, strcpy, strcat, strcmp,
+strchr, strstr, strtok
+
+// Memory
+memcpy, memmove, memset, memcmp
+
+// Math (#include <math.h>)
+sqrt, pow, sin, cos, tan,
+abs, fabs, ceil, floor, round
+
+// Character (#include <ctype.h>)
+isalpha, isdigit, isalnum,
+toupper, tolower
+
+// stdlib
+atoi, atof, rand, srand, exit
+
+**BEST PRACTICES:**
+- Always initialize variables
+- Check malloc return value
+- Free all allocated memory
+- Initialize pointers to NULL
+- Check array bounds
+- Use const for read-only data
+- Avoid magic numbers (use #define)
+- Close all opened files
+- Check file operations success
+- Use meaningful names
+- Comment complex code
+- Compile with warnings: -Wall -Wextra
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~927
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

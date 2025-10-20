@@ -1,0 +1,32 @@
+**FACTORIAL**
+
+Category: Wikipedia
+---------------------------------------
+
+Factorial
+
+In mathematics, the factorial of a
+non-negative integer , denoted by , is
+the product of all positive integers
+less than or equal to . The factorial
+of also equals the product of with the
+next smaller factorial: For example,
+The value of 0! is 1, according to the
+convention for an empty product.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~55
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

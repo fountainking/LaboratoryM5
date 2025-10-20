@@ -1,0 +1,37 @@
+**LIGHT EMITTING DIODE**
+
+Category: Wikipedia
+---------------------------------------
+
+Light-emitting diode
+
+A light-emitting diode (LED) is a
+semiconductor device that emits light
+when current flows through it.
+Electrons in the semiconductor
+recombine with electron holes,
+releasing energy in the form of
+photons. The color of the light is
+determined by the energy required for
+electrons to cross the band gap of the
+semiconductor. White light is obtained
+by using multiple semiconductors or a
+layer of light-emitting phosphor on the
+semiconductor device.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~72
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

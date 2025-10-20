@@ -1,0 +1,34 @@
+**POLYNOMIAL**
+
+Category: Wikipedia
+---------------------------------------
+
+Polynomial
+
+In mathematics, a polynomial is a
+mathematical expression consisting of
+indeterminates and coefficients, that
+involves only the operations of
+addition, subtraction, multiplication
+and exponentiation to nonnegative
+integer powers, and has a finite number
+of terms. An example of a polynomial of
+a single indeterminate is . An example
+with three indeterminates is .
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~54
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

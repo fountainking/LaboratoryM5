@@ -1,0 +1,40 @@
+**INTERPRETER COMPUTING**
+
+Category: Wikipedia
+---------------------------------------
+
+Interpreter (computing)
+
+In computing, an interpreter is
+software that executes source code
+without first compiling it to machine
+code. Interpreted languages differ from
+compiled languages, which involve the
+translation of source code into
+CPU-native executable code. Depending
+on the runtime environment,
+interpreters may first translate the
+source code to an intermediate format,
+such as bytecode. Hybrid runtime
+environments may also translate the
+bytecode into machine code via
+just-in-time compilation, as in the
+case of .NET and Java, instead of
+interpreting the bytecode directly.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~83
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

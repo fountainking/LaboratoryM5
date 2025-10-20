@@ -1,0 +1,37 @@
+**CENTRAL PROCESSING UNIT**
+
+Category: Wikipedia
+---------------------------------------
+
+Central processing unit
+
+A central processing unit (CPU), also
+called a central processor, main
+processor, or just processor, is the
+primary processor in a given computer.
+Its electronic circuitry executes
+instructions of a computer program,
+such as arithmetic, logic, controlling,
+and input/output (I/O) operations. This
+role contrasts with that of external
+components, such as main memory and I/O
+circuitry, and specialized coprocessors
+such as graphics processing units
+(GPUs).
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~68
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

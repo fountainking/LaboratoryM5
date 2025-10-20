@@ -1,0 +1,326 @@
+**PYTHON REFERENCE**
+
+Category: Programming_Languages
+---------------------------------------
+
+Python Programming Guide
+
+Python is a high-level, interpreted
+programming language known for its
+simple, readable syntax.
+
+**BASIC SYNTAX:**
+# Comments start with #
+
+# Variables (no declaration needed)
+x = 10
+name = "Python"
+pi = 3.14159
+is_true = True
+
+# Print output
+print("Hello, World!")
+print(f"x = {x}") # f-string
+
+**DATA TYPES:**
+# Numbers
+integer = 42
+floating = 3.14
+complex_num = 3 + 4j
+
+# Strings
+single = 'hello'
+double = "world"
+multi = '''multiple
+lines'''
+
+# Boolean
+true_val = True
+false_val = False
+
+# None
+nothing = None
+
+**COLLECTIONS:**
+# List (mutable, ordered)
+my_list = [1, 2, 3, "four"]
+my_list.append(5)
+my_list[0] = 10
+len(my_list)
+
+# Tuple (immutable, ordered)
+my_tuple = (1, 2, 3)
+a, b, c = my_tuple # unpacking
+
+# Set (mutable, unordered, unique)
+my_set = {1, 2, 3, 3} # {1, 2, 3}
+my_set.add(4)
+
+# Dictionary (key-value pairs)
+my_dict = {"name": "John", "age": 30}
+my_dict["city"] = "NYC"
+my_dict.get("name")
+
+**CONTROL FLOW:**
+# If statements
+if x > 10:
+print("Greater")
+elif x == 10:
+print("Equal")
+else:
+print("Less")
+
+# Ternary operator
+result = "yes" if x > 5 else "no"
+
+# For loops
+for i in range(5): # 0 to 4
+print(i)
+
+for item in my_list:
+print(item)
+
+for key, value in my_dict.items():
+print(f"{key}: {value}")
+
+# While loops
+while x > 0:
+x -= 1
+
+# Break and continue
+for i in range(10):
+if i == 3:
+continue # skip
+if i == 7:
+break # exit loop
+
+**FUNCTIONS:**
+# Basic function
+def greet(name):
+return f"Hello, {name}!"
+
+# Default arguments
+def power(base, exp=2):
+return base ** exp
+
+# Variable arguments
+def sum_all(*args):
+return sum(args)
+
+# Keyword arguments
+def person(**kwargs):
+return kwargs
+
+# Lambda (anonymous)
+square = lambda x: x ** 2
+add = lambda a, b: a + b
+
+**LIST COMPREHENSIONS:**
+# Create lists efficiently
+squares = [x**2 for x in range(10)]
+evens = [x for x in range(20) if
+x%2==0]
+pairs = [(x,y) for x in range(3)
+for y in range(3)]
+
+# Dict comprehension
+sq_dict = {x: x**2 for x in range(5)}
+
+# Set comprehension
+unique = {x%5 for x in range(20)}
+
+**CLASSES:**
+class Person:
+# Constructor
+def __init__(self, name, age):
+self.name = name
+self.age = age
+
+# Method
+def greet(self):
+return f"Hi, I'm {self.name}"
+
+# String representation
+def __str__(self):
+return f"Person({self.name})"
+
+# Create object
+p = Person("Alice", 30)
+print(p.greet())
+
+# Inheritance
+class Student(Person):
+def __init__(self, name, age, major):
+super().__init__(name, age)
+self.major = major
+
+**FILE HANDLING:**
+# Read file
+with open("file.txt", "r") as f:
+content = f.read()
+# or line by line
+for line in f:
+print(line)
+
+# Write file
+with open("file.txt", "w") as f:
+f.write("Hello\n")
+f.writelines(["line1\n", "line2\n"])
+
+# Append
+with open("file.txt", "a") as f:
+f.write("more\n")
+
+**EXCEPTION HANDLING:**
+try:
+result = 10 / 0
+except ZeroDivisionError as e:
+print(f"Error: {e}")
+except Exception as e:
+print(f"Unexpected: {e}")
+else:
+print("No error")
+finally:
+print("Always runs")
+
+# Raise exception
+raise ValueError("Invalid input")
+
+**MODULES & IMPORTS:**
+# Import entire module
+import math
+math.sqrt(16)
+
+# Import specific items
+from math import pi, sqrt
+sqrt(16)
+
+# Import with alias
+import numpy as np
+import pandas as pd
+
+# Import all (not recommended)
+from math import *
+
+**COMMON LIBRARIES:**
+# Web requests
+import requests
+r = requests.get(url)
+data = r.json()
+
+# Data analysis
+import pandas as pd
+df = pd.read_csv("data.csv")
+
+# Numerical computing
+import numpy as np
+arr = np.array([1, 2, 3])
+
+# Web framework
+from flask import Flask
+app = Flask(__name__)
+
+# Date/time
+from datetime import datetime
+now = datetime.now()
+
+**STRING OPERATIONS:**
+s = "Hello World"
+s.upper() # "HELLO WORLD"
+s.lower() # "hello world"
+s.split() # ["Hello", "World"]
+s.replace("World", "Python")
+s.startswith("Hello")
+s.endswith("World")
+" ".join(["a", "b"]) # "a b"
+s.strip() # remove whitespace
+s.find("World") # index or -1
+
+**USEFUL FUNCTIONS:**
+# Type conversion
+int("42")
+float("3.14")
+str(42)
+list("abc") # ['a', 'b', 'c']
+
+# Math
+abs(-5)
+round(3.14159, 2)
+min(1, 2, 3)
+max(1, 2, 3)
+sum([1, 2, 3])
+
+# Iteration
+enumerate(['a', 'b']) # (index, value)
+zip([1,2], ['a','b']) # pairs
+sorted([3, 1, 2])
+reversed([1, 2, 3])
+
+# Filtering
+filter(lambda x: x>0, [-1, 2, -3])
+map(lambda x: x**2, [1, 2, 3])
+
+**DECORATORS:**
+def my_decorator(func):
+def wrapper(*args, **kwargs):
+print("Before")
+result = func(*args, **kwargs)
+print("After")
+return result
+return wrapper
+
+@my_decorator
+def say_hello():
+print("Hello!")
+
+**CONTEXT MANAGERS:**
+class MyContext:
+def __enter__(self):
+print("Enter")
+return self
+
+def __exit__(self, *args):
+print("Exit")
+
+with MyContext() as ctx:
+print("Inside")
+
+**GENERATORS:**
+def fibonacci(n):
+a, b = 0, 1
+for _ in range(n):
+yield a
+a, b = b, a + b
+
+for num in fibonacci(10):
+print(num)
+
+# Generator expression
+gen = (x**2 for x in range(10))
+
+**BEST PRACTICES:**
+- Use meaningful variable names
+- Follow PEP 8 style guide
+- Write docstrings
+- Use virtual environments
+- Handle exceptions properly
+- Write tests
+- Use type hints (Python 3.5+)
+- Keep functions small and focused
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~772
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

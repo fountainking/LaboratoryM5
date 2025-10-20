@@ -1,0 +1,29 @@
+**FORTRAN**
+
+Category: Wikipedia
+---------------------------------------
+
+Fortran
+
+Fortran is a third-generation,
+compiled, imperative programming
+language that is especially suited to
+numeric computation and scientific
+computing.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~19
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

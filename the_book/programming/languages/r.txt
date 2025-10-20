@@ -1,0 +1,30 @@
+**R**
+
+Category: Programming › Languages
+---------------------------------------
+
+R (programming language)
+
+R is a programming language for
+statistical computing and data
+visualization. It has been widely
+adopted in the fields of data mining,
+bioinformatics, data analysis, and data
+science.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~31
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

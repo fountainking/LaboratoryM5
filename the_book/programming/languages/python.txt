@@ -1,0 +1,29 @@
+**PYTHON**
+
+Category: Programming › Languages
+---------------------------------------
+
+Python (programming language)
+
+Python is a high-level, general-purpose
+programming language. Its design
+philosophy emphasizes code readability
+with the use of significant
+indentation.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~22
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

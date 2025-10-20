@@ -1,0 +1,39 @@
+**RATIONAL NUMBER**
+
+Category: Wikipedia
+---------------------------------------
+
+Rational number
+
+In mathematics, a rational number is a
+number that can be expressed as the
+quotient or fraction of two integers, a
+numerator p and a non-zero denominator
+q. For example, is a rational number,
+as is every integer. The set of all
+rational numbers is often referred to
+as "the rationals", and is closed under
+addition, subtraction, multiplication,
+and division by a nonzero rational
+number. It is a field under these
+operations and therefore also called
+the field of rationals or the field of
+rational numbers. It is usually denoted
+by boldface Q, or blackboard bold
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~98
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

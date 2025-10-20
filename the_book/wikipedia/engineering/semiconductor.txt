@@ -1,0 +1,33 @@
+**SEMICONDUCTOR**
+
+Category: Wikipedia › Engineering
+---------------------------------------
+
+Semiconductor
+
+A semiconductor is a material with
+electrical conductivity between that of
+a conductor and an insulator. Its
+conductivity can be modified by adding
+impurities ("doping") to its crystal
+structure. When two regions with
+different doping levels are present in
+the same crystal, they form a
+semiconductor junction.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Bridge
+• Wheel
+• Road
+• Structural Engineering
+• Circuit
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~48
+Category: Wikipedia › Engineering
+
+<!-- FORMATTED: 85b3ca62 -->

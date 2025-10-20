@@ -1,0 +1,241 @@
+**R PROGRAMMING**
+
+Category: Programming_Languages
+---------------------------------------
+
+**R PROGRAMMING GUIDE**
+
+**COMPREHENSIVE R REFERENCE**
+
+**OVERVIEW:**
+R is a language for statistical
+computing and graphics. Widely used in
+data science, research, and analytics.
+
+**INSTALLATION:**
+Download from r-project.org
+RStudio IDE recommended
+
+**HELLO WORLD:**
+```r
+print("Hello World!")
+cat("Hello", "World\n")
+```
+
+**VARIABLES:**
+```r
+x <- 5 # Assignment
+y = 10 # Also works
+name <- "John"
+age <- 25
+active <- TRUE
+```
+
+**VECTORS:**
+```r
+# Numeric vector
+numbers <- c(1, 2, 3, 4, 5)
+
+# Character vector
+names <- c("Alice", "Bob", "Charlie")
+
+# Logical vector
+flags <- c(TRUE, FALSE, TRUE)
+
+# Access elements
+numbers[1] # First element
+(1-indexed!)
+numbers[2:4] # Elements 2-4
+numbers[c(1,3,5)] # Elements 1, 3, 5
+```
+
+**FUNCTIONS:**
+```r
+# Define function
+add <- function(a, b) {
+return(a + b)
+}
+
+# Call function
+result <- add(5, 3)
+
+# Default parameters
+greet <- function(name = "Guest") {
+paste("Hello", name)
+}
+```
+
+**DATA FRAMES:**
+```r
+# Create data frame
+df <- data.frame(
+name = c("Alice", "Bob", "Charlie"),
+age = c(25, 30, 35),
+score = c(85, 92, 78)
+)
+
+# Access columns
+df$name
+df[, "age"]
+df[, 1]
+
+# Access rows
+df[1, ] # First row
+df[1:2, ] # First two rows
+
+# Subset
+subset(df, age > 25)
+```
+
+**READING DATA:**
+```r
+**# CSV**
+data <- read.csv("file.csv")
+write.csv(data, "output.csv")
+
+# Excel (requires package)
+library(readxl)
+data <- read_excel("file.xlsx")
+```
+
+**BASIC STATISTICS:**
+```r
+x <- c(1, 2, 3, 4, 5)
+
+mean(x) # Average
+median(x) # Median
+sd(x) # Standard deviation
+var(x) # Variance
+sum(x) # Sum
+min(x) # Minimum
+max(x) # Maximum
+```
+
+**PLOTTING:**
+```r
+# Basic plot
+plot(x, y)
+
+# Histogram
+hist(data$age)
+
+# Boxplot
+boxplot(data$score)
+
+# Scatter plot
+plot(data$age, data$score)
+
+# ggplot2 (advanced)
+library(ggplot2)
+ggplot(data, aes(x=age, y=score)) +
+geom_point()
+```
+
+**CONTROL STRUCTURES:**
+```r
+# If statement
+if (x > 10) {
+print("Greater")
+} else if (x > 5) {
+print("Medium")
+} else {
+print("Small")
+}
+
+# For loop
+for (i in 1:10) {
+print(i)
+}
+
+# While loop
+while (condition) {
+# code
+}
+```
+
+**APPLY FUNCTIONS:**
+```r
+# Apply to each element
+sapply(numbers, function(x) x * 2)
+
+# Apply to rows/columns
+apply(matrix, 1, mean) # Row means
+apply(matrix, 2, mean) # Column means
+
+# Apply to list
+lapply(list, function(x) x * 2)
+```
+
+**PACKAGES:**
+```r
+# Install package
+install.packages("package_name")
+
+# Load package
+library(package_name)
+
+# Useful packages
+library(dplyr) # Data manipulation
+library(ggplot2) # Plotting
+library(tidyr) # Data tidying
+```
+
+DATA MANIPULATION (dplyr):
+```r
+library(dplyr)
+
+# Filter rows
+filter(df, age > 25)
+
+# Select columns
+select(df, name, age)
+
+# Mutate (add column)
+mutate(df, age_squared = age^2)
+
+# Arrange (sort)
+arrange(df, age)
+
+# Summarize
+summarize(df, mean_age = mean(age))
+
+# Pipe operator
+df %>%
+filter(age > 25) %>%
+select(name, score) %>%
+arrange(score)
+```
+
+**COMMON USE CASES:**
+- Statistical analysis
+- Data visualization
+- Machine learning
+- Bioinformatics
+- Financial modeling
+- Research
+
+**BEST PRACTICES:**
+- Use RStudio
+- Comment your code
+- Use meaningful variable names
+- Load packages at top
+- Save scripts
+- Use projects
+- Version control
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• Ruby
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~485
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

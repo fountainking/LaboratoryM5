@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "description": "M5Cardputer Book Formatting Configuration",
+
+  "display": {
+    "line_width": 39,
+    "comment": "Maximum characters per line for M5Cardputer display"
+  },
+
+  "title_style": {
+    "make_bold": true,
+    "make_uppercase": true,
+    "underline_char": "",
+    "comment": "Use empty string for no underline, or choose: =, -, ~, etc"
+  },
+
+  "separators": {
+    "section_divider": "=",
+    "subsection_divider": "-",
+    "divider_length": 39,
+    "comment": "Characters used for visual section breaks"
+  },
+
+  "features": {
+    "add_category_breadcrumb": true,
+    "add_table_of_contents": true,
+    "add_related_articles": true,
+    "add_metadata_footer": true,
+    "add_verse_index_for_religious": true,
+    "comment": "Toggle major formatting features on/off"
+  },
+
+  "thresholds": {
+    "short_article": 5000,
+    "long_document_toc": 50000,
+    "very_long_chapter_breaks": 200000,
+    "max_related_articles": 5,
+    "comment": "Character counts that trigger different formatting levels"
+  },
+
+  "colors": {
+    "enabled": false,
+    "title_color": "",
+    "section_color": "",
+    "link_color": "",
+    "comment": "ANSI color codes - set enabled to true if M5Cardputer supports colors"
+  },
+
+  "header_detection": {
+    "all_caps_as_header": true,
+    "min_header_length": 3,
+    "max_header_length": 100,
+    "chapter_patterns": ["Chapter \\d+", "Section \\d+", "Part \\d+"],
+    "comment": "Rules for detecting headers in source text"
+  },
+
+  "special_formatting": {
+    "bold_all_caps_lines": true,
+    "preserve_existing_markdown": true,
+    "wrap_long_words": true,
+    "comment": "Additional text processing options"
+  }
+}

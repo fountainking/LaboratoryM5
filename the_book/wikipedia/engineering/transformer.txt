@@ -1,0 +1,42 @@
+**TRANSFORMER**
+
+Category: Wikipedia › Engineering
+---------------------------------------
+
+Transformer
+
+In electrical engineering, a
+transformer is a passive component that
+transfers electrical energy from one
+electrical circuit to another circuit,
+or multiple circuits. A varying current
+in any coil of the transformer produces
+a varying magnetic flux in the
+transformer's core, which induces a
+varying electromotive force (EMF)
+across any other coils wound around the
+same core. Electrical energy can be
+transferred between separate coils
+without a metallic (conductive)
+connection between the two circuits.
+Faraday's law of induction, discovered
+in 1831, describes the induced voltage
+effect in any coil due to a changing
+magnetic flux encircled by the coil.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Bridge
+• Wheel
+• Road
+• Structural Engineering
+• Circuit
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~100
+Category: Wikipedia › Engineering
+
+<!-- FORMATTED: 85b3ca62 -->

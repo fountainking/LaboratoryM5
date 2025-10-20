@@ -1,0 +1,35 @@
+**LINEAR EQUATION**
+
+Category: Wikipedia
+---------------------------------------
+
+Linear equation
+
+In mathematics, a linear equation is an
+equation that may be put in the form
+where are the variables, and are the
+coefficients, which are often real
+numbers. The coefficients may be
+considered as parameters of the
+equation and may be arbitrary
+expressions, provided they do not
+contain any of the variables. To yield
+a meaningful equation, the coefficients
+are required to not all be zero.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~68
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

@@ -1,0 +1,309 @@
+**GO**
+
+Category: Programming_Languages
+---------------------------------------
+
+**GO PROGRAMMING - COMPREHENSIVE
+GUIDE**
+
+Go (Golang) is a statically typed,
+compiled language designed at Google.
+Known for simplicity, concurrency, and
+performance.
+
+**INSTALLATION:**
+Download from golang.org
+Verify: go version
+
+**HELLO WORLD:**
+```go
+package main
+import "fmt"
+
+func main() {
+fmt.Println("Hello, World!")
+}
+```
+
+Run: go run main.go
+Build: go build main.go
+
+**VARIABLES & TYPES:**
+```go
+var age int = 25
+var name string = "John"
+price := 19.99 // Short declaration
+const PI = 3.14159
+```
+
+Basic types: int, float64, string, bool
+
+**FUNCTIONS:**
+```go
+func add(a, b int) int {
+return a + b
+}
+
+func swap(a, b string) (string, string)
+{
+return b, a
+}
+
+// Multiple return values
+func divide(a, b float64) (float64,
+error) {
+if b == 0 {
+return 0, errors.New("division
+by zero")
+}
+return a / b, nil
+}
+```
+
+**ARRAYS & SLICES:**
+```go
+// Array (fixed size)
+var arr [5]int = [5]int{1, 2, 3, 4, 5}
+
+// Slice (dynamic)
+slice := []int{1, 2, 3}
+slice = append(slice, 4, 5)
+
+// Make slice with capacity
+s := make([]int, 5, 10) // len=5,
+cap=10
+```
+
+**MAPS:**
+```go
+ages := make(map[string]int)
+ages["Alice"] = 25
+ages["Bob"] = 30
+
+// Literal
+person := map[string]string{
+"name": "John",
+"city": "NYC",
+}
+
+// Check existence
+if age, ok := ages["Alice"]; ok {
+fmt.Println(age)
+}
+```
+
+**STRUCTS:**
+```go
+type Person struct {
+Name string
+Age int
+}
+
+p := Person{Name: "John", Age: 30}
+fmt.Println(p.Name)
+
+// Methods
+func (p Person) Greet() string {
+return "Hello, " + p.Name
+}
+```
+
+**POINTERS:**
+```go
+x := 10
+ptr := &x // Address of x
+*ptr = 20 // Dereference and modify
+```
+
+**LOOPS:**
+```go
+// For loop
+for i := 0; i < 10; i++ {
+fmt.Println(i)
+}
+
+// While-style
+for condition {
+// code
+}
+
+// Infinite loop
+for {
+// code
+break
+}
+
+// Range
+for index, value := range slice {
+fmt.Println(index, value)
+}
+```
+
+**CONDITIONALS:**
+```go
+if x > 10 {
+// code
+} else if x > 5 {
+// code
+} else {
+// code
+}
+
+// Switch
+switch day {
+case "Monday":
+// code
+case "Tuesday":
+// code
+default:
+// code
+}
+```
+
+GOROUTINES (Concurrency):
+```go
+// Run function concurrently
+go functionName()
+
+// Anonymous function
+go func() {
+fmt.Println("Running concurrently")
+}()
+```
+
+**CHANNELS:**
+```go
+ch := make(chan int)
+
+// Send
+go func() {
+ch <- 42
+}()
+
+// Receive
+value := <-ch
+
+// Buffered channel
+ch := make(chan int, 10)
+```
+
+**ERROR HANDLING:**
+```go
+file, err := os.Open("file.txt")
+if err != nil {
+log.Fatal(err)
+}
+defer file.Close()
+```
+
+**INTERFACES:**
+```go
+type Shape interface {
+Area() float64
+}
+
+type Circle struct {
+Radius float64
+}
+
+func (c Circle) Area() float64 {
+return math.Pi * c.Radius *
+c.Radius
+}
+```
+
+**PACKAGES:**
+```go
+package mypackage
+
+import "fmt"
+
+// Exported (capitalized)
+func PublicFunc() {
+fmt.Println("Public")
+}
+
+// Unexported (lowercase)
+func privateFunc() {
+fmt.Println("Private")
+}
+```
+
+**FILE I/O:**
+```go
+// Write
+ioutil.WriteFile("file.txt",
+[]byte("Hello"), 0644)
+
+// Read
+content, err :=
+ioutil.ReadFile("file.txt")
+if err != nil {
+log.Fatal(err)
+}
+```
+
+**HTTP SERVER:**
+```go
+http.HandleFunc("/", func(w
+http.ResponseWriter, r *http.Request) {
+fmt.Fprintf(w, "Hello, World!")
+})
+
+http.ListenAndServe(":8080", nil)
+```
+
+**COMMON USE CASES:**
+- Web services/APIs
+- Cloud infrastructure
+- DevOps tools
+- Microservices
+- Command-line tools
+- Network programming
+
+**BEST PRACTICES:**
+- Use gofmt for formatting
+- Handle errors explicitly
+- Use defer for cleanup
+- Keep functions small
+- Follow naming conventions
+- Write tests (go test)
+- Use interfaces for flexibility
+
+**GO MODULES:**
+```bash
+go mod init myproject
+go get package@version
+go mod tidy
+```
+
+**TESTING:**
+```go
+// file_test.go
+func TestAdd(t *testing.T) {
+result := add(2, 3)
+if result != 5 {
+t.Errorf("Expected 5, got %d",
+result)
+}
+}
+```
+
+Run: go test
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~606
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

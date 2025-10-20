@@ -1,0 +1,33 @@
+**COMPILER**
+
+Category: Wikipedia
+---------------------------------------
+
+Compiler
+
+In computing, a compiler is software
+that translates computer code written
+in one programming language into
+another language. The name "compiler"
+is primarily used for programs that
+translate source code from a high-level
+programming language to a low-level
+programming language to create an
+executable program.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~46
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

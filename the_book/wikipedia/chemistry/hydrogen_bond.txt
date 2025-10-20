@@ -1,0 +1,42 @@
+**HYDROGEN BOND**
+
+Category: Wikipedia › Chemistry
+---------------------------------------
+
+Hydrogen bond
+
+In chemistry, a hydrogen bond (H-bond)
+is a specific type of molecular
+interaction that exhibits partial
+covalent character and cannot be
+described as a purely electrostatic
+force. It occurs when a hydrogen (H)
+atom, covalently bonded to a more
+electronegative donor atom or group
+(Dn), interacts with another
+electronegative atom bearing a lone
+pair of electrons—the hydrogen bond
+acceptor (Ac). Unlike simple
+dipole–dipole interactions, hydrogen
+bonding arises from charge transfer,
+orbital interactions, and quantum
+mechanical delocalization, making it a
+resonance-assisted interaction rather
+than a mere electrostatic attraction.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Salt Chemistry
+• Oxygen
+• Carbon Dioxide
+• Aluminium
+• Carbohydrate
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~89
+Category: Wikipedia › Chemistry
+
+<!-- FORMATTED: 85b3ca62 -->

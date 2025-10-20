@@ -1,0 +1,37 @@
+**RECTANGLE**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Rectangle
+
+In Euclidean plane geometry, a
+rectangle is a rectilinear convex
+polygon or a quadrilateral with four
+right angles. It can also be defined
+as: an equiangular quadrilateral, since
+equiangular means that all of its
+angles are equal ; or a parallelogram
+containing a right angle. A rectangle
+with four sides of equal length is a
+square. The term "oblong" is used to
+refer to a non-square rectangle. A
+rectangle with vertices ABCD would be
+denoted as ABCD.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~78
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

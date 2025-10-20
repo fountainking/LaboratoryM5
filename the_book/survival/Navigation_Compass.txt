@@ -1,0 +1,242 @@
+**NAVIGATION COMPASS**
+
+Category: Survival
+---------------------------------------
+
+**NAVIGATION WITH COMPASS**
+
+**COMPLETE GUIDE TO COMPASS
+NAVIGATION**
+
+**COMPASS BASICS:**
+
+**PARTS OF A COMPASS:**
+- Base plate (transparent)
+- Rotating bezel/dial
+- Magnetic needle (red points north)
+- Direction of travel arrow
+- Orienting arrow
+- Orienting lines
+- Index line
+
+**CARDINAL DIRECTIONS:**
+- North: 0° or 360°
+- East: 90°
+- South: 180°
+- West: 270°
+
+**TAKING A BEARING:**
+
+**FROM MAP:**
+1. Place compass on map
+2. Align edge with start and
+destination
+3. Rotate bezel until N aligns with map
+north
+4. Read bearing at index line
+
+**IN FIELD:**
+1. Point direction of travel at target
+2. Rotate bezel until red needle in
+orienting arrow
+3. Read bearing at index line
+
+**FOLLOWING A BEARING:**
+1. Set bearing on compass
+2. Hold compass level at waist
+3. Rotate body until needle in arrow
+4. Follow direction of travel arrow
+5. Pick intermediate landmarks
+6. Recheck frequently
+
+**DECLINATION:**
+
+**WHAT IT IS:**
+- Difference between true north and
+magnetic north
+- Varies by location
+- Changes over time
+- Must adjust for accuracy
+
+**TYPES:**
+- EAST declination: Add to bearing
+- WEST declination: Subtract from
+bearing
+- Remember: "West is best, East is
+least"
+
+**ADJUSTING:**
+Manual method:
+- Rotate bezel by declination amount
+- East: rotate right
+- West: rotate left
+
+**TRIANGULATION:**
+
+**FINDING YOUR POSITION:**
+1. Take bearing to known landmark A
+2. Draw line on map from landmark
+3. Take bearing to landmark B
+4. Draw second line
+5. Your position is where lines cross
+
+Need 2-3 landmarks for accuracy
+
+**NAVIGATION TECHNIQUES:**
+
+**AIMING OFF:**
+- Deliberately aim left/right of
+destination
+- Then know which way to turn
+- Useful for linear features (rivers,
+roads)
+
+**CATCHING FEATURES:**
+- Use feature beyond destination
+- Know you've gone too far if you hit
+it
+- Safety backup
+
+**BOXING:**
+- Navigate around obstacle
+- Use 90° turns
+- Maintain direction
+
+**PACING:**
+- Count steps to measure distance
+- Calibrate your pace count
+- Average: 1000 paces = 1 km
+- Varies with terrain
+
+**HANDRAIL NAVIGATION:**
+- Follow linear feature (river, ridge)
+- Easier than compass bearing
+- Use when available
+
+**NIGHT NAVIGATION:**
+- More difficult
+- Use illuminated compass
+- Choose larger landmarks
+- Go slower
+- Double-check bearings
+
+**CHALLENGING CONDITIONS:**
+
+**DENSE FOREST:**
+- Shorter legs
+- More frequent checks
+- Use sun direction
+- Mark trail
+
+**MOUNTAINS:**
+- Account for up/down
+- Pace count changes with slope
+- Use contour lines
+- Identify peaks/valleys
+
+**DESERT:**
+- Few landmarks
+- Mirage confusion
+- Use celestial navigation backup
+- Mark trail
+
+**EMERGENCY NAVIGATION:**
+
+**WITHOUT COMPASS:**
+- Sun (rises east, sets west)
+- Stars (North Star, Southern Cross)
+- Moon
+- Watch method
+- Shadow stick
+
+**SUN NAVIGATION:**
+- At noon, sun is south (Northern
+Hemisphere)
+- Morning: east, Evening: west
+- Shadow points opposite sun
+
+**STAR NAVIGATION:**
+Northern Hemisphere:
+- Find North Star (Polaris)
+- Use Big Dipper pointer stars
+- Polaris marks true north
+
+Southern Hemisphere:
+- Use Southern Cross
+- Extended long axis points south
+
+**WATCH METHOD:**
+- Point hour hand at sun
+- Bisect angle between hand and 12
+- That's south (Northern Hemisphere)
+
+**SHADOW STICK:**
+1. Place stick vertical in ground
+2. Mark end of shadow
+3. Wait 15-20 minutes
+4. Mark new shadow end
+5. Line connects west to east
+
+**NAVIGATION ERRORS:**
+
+**COMMON MISTAKES:**
+- Not adjusting for declination
+- Reading wrong end of needle
+- Not holding compass level
+- Deviation from iron objects
+- Not rechecking bearing
+
+**AVOIDING ERRORS:**
+- Practice in known areas
+- Cross-check with other methods
+- Use multiple techniques
+- Stay aware of position
+- Mark progress
+
+**EQUIPMENT CARE:**
+
+**COMPASS MAINTENANCE:**
+- Keep away from magnets/metal
+- Protect from drops
+- Check bubble isn't cracked
+- Verify accuracy periodically
+- Carry backup
+
+**PRACTICE EXERCISES:**
+1. Take bearings to known objects
+2. Follow bearing to destination
+3. Plot course on map
+4. Triangulate position
+5. Navigate at night
+6. Practice without landmarks
+
+**TIPS FOR ACCURACY:**
+- Hold compass steady
+- Stand still when reading
+- Multiple readings average out error
+- Check bearing every few minutes
+- Account for drift/curves
+
+**SURVIVAL PRIORITIES:**
+1. Know general direction
+2. Maintain awareness
+3. Mark your trail
+4. Have backup navigation
+5. Don't panic if lost
+
+=======================================
+**RELATED ARTICLES:**
+
+• Water Purification
+• Hunting Basics
+• Water Procurement
+• Index
+• First Aid
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~697
+Category: Survival
+
+<!-- FORMATTED: 85b3ca62 -->

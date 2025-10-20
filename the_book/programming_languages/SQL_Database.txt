@@ -1,0 +1,338 @@
+**SQL DATABASE**
+
+Category: Programming_Languages
+---------------------------------------
+
+**SQL DATABASE GUIDE**
+
+**COMPREHENSIVE SQL REFERENCE**
+
+**OVERVIEW:**
+SQL (Structured Query Language) is used
+to manage and query relational
+databases. Essential for data storage
+and retrieval.
+
+**BASIC CONCEPTS:**
+
+**DATABASE:**
+Collection of tables
+
+**TABLE:**
+Collection of rows and columns
+Like a spreadsheet
+
+**ROW:**
+Single record (e.g., one person)
+
+**COLUMN:**
+Field in record (e.g., name, age)
+
+**PRIMARY KEY:**
+Unique identifier for each row
+
+**FOREIGN KEY:**
+Links to another table's primary key
+
+**DATA TYPES:**
+```sql
+INT -- Integer
+VARCHAR(n) -- Variable string (max
+n chars)
+TEXT -- Long text
+DATE -- Date (YYYY-MM-DD)
+DATETIME -- Date and time
+DECIMAL(p,s) -- Decimal number
+BOOLEAN -- True/False
+```
+
+**CREATING DATABASE:**
+```sql
+CREATE DATABASE company;
+USE company;
+```
+
+**CREATING TABLE:**
+```sql
+CREATE TABLE employees (
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100),
+age INT,
+department VARCHAR(50),
+salary DECIMAL(10, 2),
+hire_date DATE
+);
+```
+
+**INSERTING DATA:**
+```sql
+-- Single row
+INSERT INTO employees (name, age,
+department, salary)
+VALUES ('John Doe', 30, 'Sales',
+50000.00);
+
+-- Multiple rows
+INSERT INTO employees (name, age,
+department, salary)
+**VALUES**
+('Jane Smith', 28, 'Marketing',
+55000.00),
+('Bob Johnson', 35, 'IT',
+65000.00);
+```
+
+**SELECTING DATA:**
+```sql
+-- All columns, all rows
+SELECT * FROM employees;
+
+-- Specific columns
+SELECT name, salary FROM employees;
+
+-- With condition
+SELECT * FROM employees WHERE age > 30;
+
+-- Multiple conditions
+SELECT * FROM employees
+WHERE age > 25 AND department =
+'Sales';
+
+-- OR condition
+SELECT * FROM employees
+WHERE department = 'Sales' OR
+department = 'Marketing';
+
+-- LIKE (pattern matching)
+SELECT * FROM employees WHERE name LIKE
+'John%';
+
+-- IN clause
+SELECT * FROM employees
+WHERE department IN ('Sales',
+'Marketing', 'IT');
+
+**-- BETWEEN**
+SELECT * FROM employees WHERE age
+**BETWEEN 25 AND 35;**
+```
+
+**ORDERING RESULTS:**
+```sql
+-- Ascending
+SELECT * FROM employees ORDER BY
+salary;
+
+-- Descending
+SELECT * FROM employees ORDER BY salary
+**DESC;**
+
+-- Multiple columns
+SELECT * FROM employees ORDER BY
+department, salary DESC;
+```
+
+**LIMITING RESULTS:**
+```sql
+-- First 10 rows
+SELECT * FROM employees LIMIT 10;
+
+-- Skip 5, take 10
+SELECT * FROM employees LIMIT 5, 10;
+```
+
+**UPDATING DATA:**
+```sql
+-- Update single column
+UPDATE employees SET salary = 55000
+WHERE id = 1;
+
+-- Update multiple columns
+UPDATE employees
+SET salary = 60000, department =
+'Sales'
+WHERE id = 2;
+
+-- Update with condition
+UPDATE employees
+SET salary = salary * 1.1
+WHERE department = 'Sales';
+```
+
+**DELETING DATA:**
+```sql
+-- Delete specific row
+DELETE FROM employees WHERE id = 1;
+
+-- Delete with condition
+DELETE FROM employees WHERE age > 65;
+
+-- Delete all rows (CAREFUL!)
+DELETE FROM employees;
+```
+
+**AGGREGATE FUNCTIONS:**
+```sql
+-- Count
+SELECT COUNT(*) FROM employees;
+
+-- Sum
+SELECT SUM(salary) FROM employees;
+
+-- Average
+SELECT AVG(salary) FROM employees;
+
+-- Min/Max
+SELECT MIN(salary), MAX(salary) FROM
+employees;
+
+-- Group by
+SELECT department, AVG(salary)
+FROM employees
+GROUP BY department;
+
+-- Having (filter after grouping)
+SELECT department, AVG(salary) as
+avg_sal
+FROM employees
+GROUP BY department
+HAVING avg_sal > 50000;
+```
+
+**JOINS:**
+```sql
+**-- INNER JOIN**
+SELECT employees.name,
+departments.dept_name
+FROM employees
+INNER JOIN departments ON
+employees.dept_id = departments.id;
+
+-- LEFT JOIN (all from left table)
+SELECT employees.name,
+departments.dept_name
+FROM employees
+LEFT JOIN departments ON
+employees.dept_id = departments.id;
+
+-- RIGHT JOIN (all from right table)
+SELECT employees.name,
+departments.dept_name
+FROM employees
+RIGHT JOIN departments ON
+employees.dept_id = departments.id;
+```
+
+**SUBQUERIES:**
+```sql
+-- In WHERE clause
+SELECT * FROM employees
+WHERE salary > (SELECT AVG(salary) FROM
+employees);
+
+-- In FROM clause
+**SELECT * FROM (**
+SELECT name, salary FROM employees
+WHERE age > 30
+) AS older_employees;
+```
+
+**INDEXES:**
+```sql
+-- Create index (speeds up searches)
+CREATE INDEX idx_name ON
+employees(name);
+
+-- Composite index
+CREATE INDEX idx_dept_salary ON
+employees(department, salary);
+
+-- Drop index
+DROP INDEX idx_name ON employees;
+```
+
+**CONSTRAINTS:**
+```sql
+CREATE TABLE users (
+id INT PRIMARY KEY AUTO_INCREMENT,
+email VARCHAR(100) UNIQUE NOT NULL,
+age INT CHECK (age >= 18),
+created_at DATETIME DEFAULT
+**CURRENT_TIMESTAMP**
+);
+```
+
+**ALTER TABLE:**
+```sql
+-- Add column
+ALTER TABLE employees ADD COLUMN email
+**VARCHAR(100);**
+
+-- Drop column
+ALTER TABLE employees DROP COLUMN
+email;
+
+-- Modify column
+ALTER TABLE employees MODIFY COLUMN
+name VARCHAR(150);
+
+-- Add constraint
+ALTER TABLE employees ADD CONSTRAINT
+chk_age CHECK (age >= 18);
+```
+
+**TRANSACTIONS:**
+```sql
+**START TRANSACTION;**
+
+UPDATE accounts SET balance = balance -
+100 WHERE id = 1;
+UPDATE accounts SET balance = balance +
+100 WHERE id = 2;
+
+COMMIT; -- Save changes
+-- or --
+ROLLBACK; -- Undo changes
+```
+
+**COMMON USE CASES:**
+- Application databases
+- Data warehousing
+- Reporting
+- E-commerce
+- User management
+- Analytics
+
+**BEST PRACTICES:**
+- Use meaningful table/column names
+- Always use WHERE in UPDATE/DELETE
+- Index frequently queried columns
+- Normalize database structure
+- Use transactions for related changes
+- Backup regularly
+- Use prepared statements (prevent SQL
+injection)
+
+**POPULAR DATABASES:**
+- MySQL (open source)
+- PostgreSQL (open source)
+- SQL Server (Microsoft)
+- SQLite (embedded)
+- Oracle (enterprise)
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~796
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

@@ -1,0 +1,37 @@
+**SQUARE**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Square
+
+In geometry, a square is a regular
+quadrilateral. It has four straight
+sides of equal length and four equal
+angles. Squares are special cases of
+rectangles, which have four equal
+angles, and of rhombuses, which have
+four equal sides. As with all
+rectangles, a square's angles are right
+angles, making adjacent sides
+perpendicular. The area of a square is
+the side length multiplied by itself,
+and so in algebra, multiplying a number
+by itself is called squaring.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~78
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

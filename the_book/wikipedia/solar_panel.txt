@@ -1,0 +1,47 @@
+**SOLAR PANEL**
+
+Category: Wikipedia
+---------------------------------------
+
+Solar panel
+
+A solar panel is a device that converts
+sunlight into electricity by using
+multiple solar modules that consist of
+photovoltaic (PV) cells. PV cells are
+made of materials that produce excited
+electrons when exposed to light. These
+electrons flow through a circuit and
+produce direct current electricity,
+which can be used to power various
+devices or be stored in batteries.
+Solar panels can be known as solar cell
+panels, or solar electric panels. Solar
+panels are usually arranged in groups
+called arrays or systems. A
+photovoltaic system consists of one or
+more solar panels, an inverter that
+converts direct current electricity to
+alternating current electricity, and
+sometimes other components such as
+controllers, meters, and trackers. Most
+panels are in solar farms or rooftop
+solar panels which supply the
+electricity grid.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~132
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

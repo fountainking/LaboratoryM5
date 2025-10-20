@@ -1,0 +1,41 @@
+**EUCLIDEAN GEOMETRY**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Euclidean geometry
+
+Euclidean geometry is a mathematical
+system attributed to Euclid, an ancient
+Greek mathematician, which he described
+in his textbook on geometry, Elements.
+Euclid's approach consists in assuming
+a small set of intuitively appealing
+axioms (postulates) and deducing many
+other propositions (theorems) from
+these. One of those is the parallel
+postulate which relates to parallel
+lines on a Euclidean plane. Although
+many of Euclid's results had been
+stated earlier, Euclid was the first to
+organize these propositions into a
+logical system in which each result is
+proved from axioms and previously
+proved theorems.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~94
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

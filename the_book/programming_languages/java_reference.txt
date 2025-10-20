@@ -1,0 +1,352 @@
+**JAVA REFERENCE**
+
+Category: Programming_Languages
+---------------------------------------
+
+Java Programming Guide
+
+Java is a popular object-oriented
+language designed for portability
+(Write Once, Run Anywhere).
+
+**BASICS:**
+// Comments
+/* Multi-line comment */
+
+// Main method (entry point)
+public class Main {
+public static void main(String[] args)
+{
+System.out.println("Hello");
+}
+}
+
+**DATA TYPES:**
+// Primitives
+byte b = 127; // 8-bit
+short s = 32767; // 16-bit
+int i = 2147483647; // 32-bit
+long l = 9223372036854775807L;
+float f = 3.14f; // 32-bit
+double d = 3.14159; // 64-bit
+char c = 'A'; // 16-bit Unicode
+boolean bool = true;
+
+// Wrapper classes
+Integer num = 42;
+Double pi = 3.14;
+Character ch = 'A';
+
+**STRINGS:**
+String s = "Hello";
+String s2 = new String("World");
+
+// Methods
+s.length()
+s.charAt(0)
+s.substring(0, 3)
+s.toUpperCase()
+s.toLowerCase()
+s.equals("hello")
+s.equalsIgnoreCase("HELLO")
+s.contains("ell")
+s.startsWith("He")
+s.endsWith("lo")
+s.replace("l", "L")
+s.split(" ")
+s.trim()
+s.concat(" World")
+
+// String builder (mutable)
+StringBuilder sb = new StringBuilder();
+sb.append("Hello");
+sb.append(" World");
+sb.toString()
+
+**ARRAYS:**
+// Declaration
+int[] arr = new int[5];
+int[] arr2 = {1, 2, 3, 4, 5};
+
+// Access
+arr[0] = 10;
+int len = arr.length;
+
+// Multi-dimensional
+int[][] matrix = new int[3][3];
+int[][] matrix2 = {{1,2},{3,4}};
+
+**COLLECTIONS:**
+// ArrayList (dynamic array)
+ArrayList<String> list = new
+ArrayList<>();
+list.add("item");
+list.get(0);
+list.set(0, "new");
+list.remove(0);
+list.size();
+
+// HashMap (key-value)
+HashMap<String, Integer> map =
+new HashMap<>();
+map.put("key", 42);
+map.get("key");
+map.containsKey("key");
+map.remove("key");
+map.keySet();
+map.values();
+
+// HashSet (unique values)
+HashSet<String> set = new HashSet<>();
+set.add("item");
+set.contains("item");
+set.remove("item");
+
+**CONTROL FLOW:**
+// If statement
+if (x > 10) {
+System.out.println("Greater");
+} else if (x == 10) {
+System.out.println("Equal");
+} else {
+System.out.println("Less");
+}
+
+// Ternary
+int result = (x > 5) ? 1 : 0;
+
+// Switch
+switch(x) {
+case 1:
+System.out.println("One");
+break;
+case 2:
+System.out.println("Two");
+break;
+default:
+System.out.println("Other");
+}
+
+**LOOPS:**
+// For loop
+for (int i = 0; i < 10; i++) {
+System.out.println(i);
+}
+
+// Enhanced for (for-each)
+for (String item : list) {
+System.out.println(item);
+}
+
+// While
+while (x > 0) {
+x--;
+}
+
+// Do-while
+do {
+x++;
+} while (x < 10);
+
+**METHODS:**
+// Basic method
+public static int add(int a, int b) {
+return a + b;
+}
+
+// Void method
+public static void printHello() {
+System.out.println("Hello");
+}
+
+// Variable arguments
+public static int sum(int... numbers) {
+int total = 0;
+for (int n : numbers) {
+total += n;
+}
+return total;
+}
+
+**CLASSES:**
+public class Person {
+// Fields
+private String name;
+private int age;
+
+// Constructor
+public Person(String name, int age) {
+this.name = name;
+this.age = age;
+}
+
+// Getter
+public String getName() {
+return name;
+}
+
+// Setter
+public void setName(String name) {
+this.name = name;
+}
+
+// Method
+public void greet() {
+System.out.println("Hi, I'm " + name);
+}
+
+// Static method
+public static String species() {
+return "Human";
+}
+}
+
+// Create object
+Person p = new Person("Alice", 30);
+p.greet();
+
+**INHERITANCE:**
+public class Student extends Person {
+private String major;
+
+public Student(String name, int age,
+String major) {
+super(name, age);
+this.major = major;
+}
+
+@Override
+public void greet() {
+System.out.println("Student: " +
+getName());
+}
+}
+
+**INTERFACES:**
+public interface Drawable {
+void draw(); // abstract method
+
+default void display() {
+System.out.println("Display");
+}
+}
+
+public class Circle implements Drawable
+{
+public void draw() {
+System.out.println("Drawing circle");
+}
+}
+
+**EXCEPTION HANDLING:**
+try {
+int result = 10 / 0;
+} catch (ArithmeticException e) {
+System.out.println("Error: " +
+e.getMessage());
+} catch (Exception e) {
+System.out.println("General error");
+} finally {
+System.out.println("Always runs");
+}
+
+// Throw exception
+throw new IllegalArgumentException(
+"Invalid input");
+
+// Checked exception
+public void readFile() throws
+IOException {
+// File operations
+}
+
+**FILE I/O:**
+// Read file
+BufferedReader reader =
+new BufferedReader(
+new FileReader("file.txt"));
+String line;
+while ((line = reader.readLine()) !=
+null) {
+System.out.println(line);
+}
+reader.close();
+
+// Write file
+BufferedWriter writer =
+new BufferedWriter(
+new FileWriter("file.txt"));
+writer.write("Hello\n");
+writer.close();
+
+// Try-with-resources (auto-close)
+try (BufferedReader r =
+new BufferedReader(
+new FileReader("file.txt"))) {
+String line = r.readLine();
+}
+
+LAMBDA EXPRESSIONS (Java 8+):
+// Functional interface
+@FunctionalInterface
+interface Calculator {
+int calculate(int a, int b);
+}
+
+// Lambda
+Calculator add = (a, b) -> a + b;
+Calculator multiply = (a, b) -> a * b;
+
+// Collections with lambdas
+list.forEach(item ->
+System.out.println(item));
+
+list.stream()
+.filter(x -> x.length() > 3)
+.map(String::toUpperCase)
+.forEach(System.out::println);
+
+STREAMS (Java 8+):
+// Create stream
+Stream<Integer> stream =
+Arrays.asList(1,2,3,4,5).stream();
+
+// Operations
+stream.filter(x -> x > 2)
+.map(x -> x * 2)
+.sorted()
+.forEach(System.out::println);
+
+// Collect results
+List<Integer> result = stream
+.filter(x -> x % 2 == 0)
+.collect(Collectors.toList());
+
+**BEST PRACTICES:**
+- Follow naming conventions
+- Use meaningful names
+- Keep methods small
+- Handle exceptions properly
+- Use interfaces
+- Favor composition over inheritance
+- Use generics for type safety
+- Close resources properly
+- Write unit tests
+- Use Java 8+ features
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Index
+• Javascript Reference
+• R Programming
+• Ruby
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~769
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

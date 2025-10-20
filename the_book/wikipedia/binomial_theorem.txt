@@ -1,0 +1,34 @@
+**BINOMIAL THEOREM**
+
+Category: Wikipedia
+---------------------------------------
+
+Binomial theorem
+
+In elementary algebra, the binomial
+theorem describes the algebraic
+expansion of powers of a binomial.
+According to the theorem, the power
+expands into a polynomial with terms of
+the form , where the exponents and are
+nonnegative integers satisfying and the
+coefficient of each term is a specific
+positive integer depending on and . For
+example, for ,
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~60
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

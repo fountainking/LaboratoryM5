@@ -1,0 +1,33 @@
+**TYPESCRIPT**
+
+Category: Programming › Languages
+---------------------------------------
+
+TypeScript
+
+TypeScript (TS) is a high-level
+programming language that adds static
+typing with optional type annotations
+to JavaScript. It is designed for
+developing large applications and
+transpiles to JavaScript. It is
+developed by Microsoft as free and
+open-source software released under an
+Apache License 2.0.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~45
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

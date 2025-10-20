@@ -1,0 +1,34 @@
+**PASCALS TRIANGLE**
+
+Category: Wikipedia
+---------------------------------------
+
+Pascal's triangle
+
+In mathematics, Pascal's triangle is an
+infinite triangular array of the
+binomial coefficients which play a
+crucial role in probability theory,
+combinatorics, and algebra. In much of
+the Western world, it is named after
+the French mathematician Blaise Pascal,
+although other mathematicians studied
+it centuries before him in Persia,
+India, China, Germany, and Italy.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~56
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

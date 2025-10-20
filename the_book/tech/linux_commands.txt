@@ -1,0 +1,68 @@
+**LINUX COMMANDS**
+
+Category: Tech
+---------------------------------------
+
+Linux Command Reference
+
+Essential commands for Linux/Unix
+terminal usage.
+
+**FILE OPERATIONS:**
+ls # List files
+ls -la # Detailed list
+cd dir # Change directory
+pwd # Print working directory
+cp a b # Copy file
+mv a b # Move/rename file
+rm file # Remove file
+rm -rf dir # Remove directory
+mkdir dir # Make directory
+touch file # Create empty file
+cat file # Display file
+less file # View file (paginated)
+head file # First 10 lines
+tail file # Last 10 lines
+find . -name "*.txt" # Find files
+
+**PERMISSIONS:**
+chmod 755 file # Change permissions
+chmod +x script # Make executable
+chown user file # Change owner
+ls -l # View permissions
+
+**SYSTEM:**
+ps aux # List processes
+top # Process monitor
+kill PID # Kill process
+df -h # Disk usage
+free -h # Memory usage
+uname -a # System info
+
+**NETWORKING:**
+ping host # Test connection
+curl url # Download/request
+wget url # Download file
+ssh user@host # Remote connect
+
+**TEXT PROCESSING:**
+grep "text" file # Search in file
+sed 's/old/new/' file # Replace text
+awk '{print $1}' file # Column extract
+wc -l file # Count lines
+
+=======================================
+**RELATED ARTICLES:**
+
+• Index
+• Javascript Reference
+• Git Commands
+• Python Reference
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~196
+Category: Tech
+
+<!-- FORMATTED: 85b3ca62 -->

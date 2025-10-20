@@ -1,0 +1,30 @@
+**PERL**
+
+Category: Programming › Languages
+---------------------------------------
+
+Perl
+
+Perl is a high-level, general-purpose,
+interpreted, dynamic programming
+language. Though Perl is not officially
+an acronym, there are various
+backronyms in use, including "Practical
+Extraction and Reporting Language".
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~29
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

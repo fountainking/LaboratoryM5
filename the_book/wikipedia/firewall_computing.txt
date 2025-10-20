@@ -1,0 +1,34 @@
+**FIREWALL COMPUTING**
+
+Category: Wikipedia
+---------------------------------------
+
+Firewall (computing)
+
+In computing, a firewall is a network
+security system that monitors and
+controls incoming and outgoing network
+traffic based on configurable security
+rules. A firewall typically establishes
+a barrier between a trusted network and
+an untrusted network, such as the
+Internet or between several VLANs.
+Firewalls can be categorized as
+network-based or host-based.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~55
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

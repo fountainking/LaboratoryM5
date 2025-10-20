@@ -1,0 +1,44 @@
+**TRIANGLE**
+
+Category: Wikipedia
+---------------------------------------
+
+Triangle
+
+A triangle is a polygon with three
+corners and three sides, one of the
+basic shapes in geometry. The corners,
+also called vertices, are
+zero-dimensional points while the sides
+connecting them, also called edges, are
+one-dimensional line segments. A
+triangle has three internal angles,
+each one bounded by a pair of adjacent
+edges; the sum of angles of a triangle
+always equals a straight angle. The
+triangle is a plane figure and its
+interior is a planar region. Sometimes
+an arbitrary edge is chosen to be the
+base, in which case the opposite vertex
+is called the apex; the shortest
+segment between the base and apex is
+the height. The area of a triangle
+equals one-half the product of height
+and base length.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~124
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

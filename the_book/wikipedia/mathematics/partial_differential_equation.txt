@@ -1,0 +1,28 @@
+**PARTIAL DIFFERENTIAL EQUATION**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Partial differential equation
+
+In mathematics, a partial differential
+equation (PDE) is an equation which
+involves a multivariable function and
+one or more of its partial derivatives.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~26
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

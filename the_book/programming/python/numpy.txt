@@ -1,0 +1,40 @@
+**NUMPY**
+
+Category: Programming › Python
+---------------------------------------
+
+NumPy
+
+NumPy is a library for the Python
+programming language, adding support
+for large, multi-dimensional arrays and
+matrices, along with a large collection
+of high-level mathematical functions to
+operate on these arrays. The
+predecessor of NumPy, Numeric, was
+originally created by Jim Hugunin with
+contributions from several other
+developers. In 2005, Travis Oliphant
+created NumPy by incorporating features
+of the competing Numarray into Numeric,
+with extensive modifications. NumPy is
+open-source software and has many
+contributors. NumPy is fiscally
+sponsored by NumFOCUS.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Django (Web Framework)
+• Matplotlib
+• Tensorflow
+• Flask (Web Framework)
+• Python Syntax And Semantics
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~81
+Category: Programming › Python
+
+<!-- FORMATTED: 85b3ca62 -->

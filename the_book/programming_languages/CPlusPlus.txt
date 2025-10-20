@@ -1,0 +1,215 @@
+**CPLUSPLUS**
+
+Category: Programming_Languages
+---------------------------------------
+
+**C++ PROGRAMMING GUIDE**
+
+**COMPREHENSIVE C++ REFERENCE**
+
+**OVERVIEW:**
+C++ is a powerful, high-performance
+language used for system programming,
+game development, and applications
+requiring direct hardware access.
+
+**BASIC SYNTAX:**
+
+**HELLO WORLD:**
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+cout << "Hello World!" << endl;
+return 0;
+}
+```
+
+**VARIABLES:**
+```cpp
+int age = 25;
+double price = 19.99;
+char grade = 'A';
+string name = "John";
+bool isActive = true;
+```
+
+**FUNCTIONS:**
+```cpp
+int add(int a, int b) {
+return a + b;
+}
+
+double multiply(double x, double y) {
+return x * y;
+}
+```
+
+**CLASSES & OBJECTS:**
+```cpp
+class Person {
+private:
+string name;
+int age;
+
+public:
+Person(string n, int a) {
+name = n;
+age = a;
+}
+
+void display() {
+cout << name << ": " << age <<
+endl;
+}
+};
+
+// Usage
+Person p("John", 30);
+p.display();
+```
+
+**POINTERS:**
+```cpp
+int x = 10;
+int* ptr = &x; // Pointer to x
+cout << *ptr; // Dereference: prints
+10
+```
+
+**ARRAYS:**
+```cpp
+int numbers[5] = {1, 2, 3, 4, 5};
+string names[] = {"Alice", "Bob",
+"Charlie"};
+```
+
+**LOOPS:**
+```cpp
+// For loop
+for(int i = 0; i < 10; i++) {
+cout << i << endl;
+}
+
+// While loop
+while(condition) {
+// code
+}
+
+// Do-while
+do {
+// code
+} while(condition);
+```
+
+**CONDITIONALS:**
+```cpp
+if(x > 10) {
+// code
+} else if(x > 5) {
+// code
+} else {
+// code
+}
+
+// Switch
+switch(choice) {
+case 1:
+// code
+break;
+case 2:
+// code
+break;
+default:
+// code
+}
+```
+
+VECTORS (Dynamic Arrays):
+```cpp
+#include <vector>
+
+vector<int> numbers;
+numbers.push_back(1);
+numbers.push_back(2);
+numbers.push_back(3);
+
+for(int n : numbers) {
+cout << n << endl;
+}
+```
+
+**STRINGS:**
+```cpp
+#include <string>
+
+string str = "Hello";
+str += " World";
+int len = str.length();
+string sub = str.substr(0, 5);
+```
+
+**FILE I/O:**
+```cpp
+#include <fstream>
+
+// Writing
+ofstream outFile("file.txt");
+outFile << "Hello World";
+outFile.close();
+
+// Reading
+ifstream inFile("file.txt");
+string line;
+while(getline(inFile, line)) {
+cout << line << endl;
+}
+inFile.close();
+```
+
+**COMMON USE CASES:**
+- Operating systems
+- Game engines
+- Embedded systems
+- High-performance applications
+- Graphics programming
+
+**COMPILATION:**
+```
+g++ program.cpp -o program
+./program
+```
+
+**BEST PRACTICES:**
+- Use const for immutable values
+- Prefer references over pointers
+- Use RAII for resource management
+- Follow naming conventions
+- Comment complex logic
+- Use smart pointers (C++11+)
+- Handle exceptions properly
+
+**MODERN C++ (C++11/14/17/20):**
+- Auto type deduction
+- Range-based for loops
+- Lambda functions
+- Smart pointers
+- Move semantics
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~418
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

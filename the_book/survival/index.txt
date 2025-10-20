@@ -1,0 +1,41 @@
+**INDEX**
+
+Category: Survival
+---------------------------------------
+
+Water
+Procurement|water_procurement.txt|0|Water
+Procurement & Purification
+
+CRITICAL: Human can surviv
+Fire Starting|fire_starting.txt|0|Fire
+Starting & Maintenance
+
+Fire provides: warmth, water pu
+Shelter
+Building|shelter_building.txt|0|Shelter
+Construction
+
+Exposure kills faster than hunger.
+She
+First Aid|first_aid.txt|0|First Aid &
+Medical Emergencies
+
+Know these skills BEFORE yo
+
+=======================================
+**RELATED ARTICLES:**
+
+• Navigation Compass
+• Water Purification
+• Hunting Basics
+• Water Procurement
+• First Aid
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~39
+Category: Survival
+
+<!-- FORMATTED: 85b3ca62 -->

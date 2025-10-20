@@ -1,0 +1,75 @@
+**GIT COMMANDS**
+
+Category: Tech
+---------------------------------------
+
+Git Quick Reference
+
+Git is a version control system for
+tracking code changes.
+
+**BASIC COMMANDS:**
+# Initialize repository
+git init
+
+# Clone repository
+git clone <url>
+
+# Check status
+git status
+
+# Add files
+git add .
+git add file.txt
+
+# Commit changes
+git commit -m "message"
+
+# Push to remote
+git push origin main
+
+# Pull from remote
+git pull origin main
+
+# Create branch
+git branch feature-name
+git checkout feature-name
+
+# Merge branch
+git checkout main
+git merge feature-name
+
+# View history
+git log
+git log --oneline
+
+# Undo changes
+git reset --hard HEAD
+git checkout -- file.txt
+
+# Stash changes
+git stash
+git stash pop
+
+**WORKFLOW:**
+1. git pull
+2. Make changes
+3. git add .
+4. git commit -m "description"
+5. git push
+
+=======================================
+**RELATED ARTICLES:**
+
+• Index
+• Javascript Reference
+• Linux Commands
+• Python Reference
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~127
+Category: Tech
+
+<!-- FORMATTED: 85b3ca62 -->

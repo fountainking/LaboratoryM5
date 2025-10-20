@@ -1,0 +1,33 @@
+**MATLAB**
+
+Category: Programming › Languages
+---------------------------------------
+
+**MATLAB**
+
+MATLAB is a proprietary multi-paradigm
+programming language and numeric
+computing environment developed by
+MathWorks. MATLAB allows matrix
+manipulations, plotting of functions
+and data, implementation of algorithms,
+creation of user interfaces, and
+interfacing with programs written in
+other languages.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~39
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

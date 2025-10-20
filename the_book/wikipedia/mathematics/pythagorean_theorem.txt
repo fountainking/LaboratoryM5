@@ -1,0 +1,32 @@
+**PYTHAGOREAN THEOREM**
+
+Category: Wikipedia › Mathematics
+---------------------------------------
+
+Pythagorean theorem
+
+In mathematics, the Pythagorean theorem
+or Pythagoras' theorem is a fundamental
+relation in Euclidean geometry between
+the three sides of a right triangle. It
+states that the area of the square
+whose side is the hypotenuse is equal
+to the sum of the areas of the squares
+on the other two sides.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Arithmetic
+• Hexagon
+• Golden Ratio
+• Calculus
+• Cone
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~54
+Category: Wikipedia › Mathematics
+
+<!-- FORMATTED: 85b3ca62 -->

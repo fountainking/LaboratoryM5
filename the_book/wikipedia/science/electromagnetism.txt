@@ -1,0 +1,51 @@
+**ELECTROMAGNETISM**
+
+Category: Wikipedia › Science
+---------------------------------------
+
+Electromagnetism
+
+In physics, electromagnetism is an
+interaction that occurs between
+particles with electric charge via
+electromagnetic fields. The
+electromagnetic force is one of the
+four fundamental forces of nature. It
+is the dominant force in the
+interactions of atoms and molecules.
+Electromagnetism can be thought of as a
+combination of electrostatics and
+magnetism, which are distinct but
+closely intertwined phenomena.
+Electromagnetic forces occur between
+any two charged particles. Electric
+forces cause an attraction between
+particles with opposite charges and
+repulsion between particles with the
+same charge, while magnetism is an
+interaction that occurs between charged
+particles in relative motion. These two
+forces are described in terms of
+electromagnetic fields. Macroscopic
+charged objects are described in terms
+of Coulomb's law for electricity and
+Ampère's force law for magnetism; the
+Lorentz force describes microscopic
+charged particles.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Relativity
+• Thermodynamics
+• Black Hole
+• Chemistry
+• Inorganic Chemistry
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~134
+Category: Wikipedia › Science
+
+<!-- FORMATTED: 85b3ca62 -->

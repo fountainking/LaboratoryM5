@@ -1,0 +1,43 @@
+**HARD DISK DRIVE**
+
+Category: Wikipedia
+---------------------------------------
+
+Hard disk drive
+
+A hard disk drive (HDD), hard disk,
+hard drive, or fixed disk is an
+electro-mechanical data storage device
+that stores and retrieves digital data
+using magnetic storage with one or more
+rigid rapidly rotating platters coated
+with magnetic material. The platters
+are paired with magnetic heads, usually
+arranged on a moving actuator arm,
+which read and write data to the
+platter surfaces. Data is accessed in a
+random-access manner, meaning that
+individual blocks of data can be stored
+and retrieved in any order. HDDs are a
+type of non-volatile storage, retaining
+stored data when powered off. Modern
+HDDs are typically in the form of a
+small rectangular box, possibly in a
+disk enclosure for portability.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~118
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

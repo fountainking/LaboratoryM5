@@ -1,0 +1,37 @@
+**DEEP LEARNING**
+
+Category: Wikipedia
+---------------------------------------
+
+Deep learning
+
+In machine learning, deep learning
+focuses on utilizing multilayered
+neural networks to perform tasks such
+as classification, regression, and
+representation learning. The field
+takes inspiration from biological
+neuroscience and is centered around
+stacking artificial neurons into layers
+and "training" them to process data.
+The adjective "deep" refers to the use
+of multiple layers in the network.
+Methods used can be supervised,
+semi-supervised or unsupervised.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~66
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

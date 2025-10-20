@@ -1,0 +1,32 @@
+**SCALA**
+
+Category: Programming › Languages
+---------------------------------------
+
+Scala (programming language)
+
+Scala is a strongly statically typed
+high-level general-purpose programming
+language that supports both
+object-oriented programming and
+functional programming. Designed to be
+concise, many of Scala's design
+decisions are intended to address
+criticisms of Java.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~37
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

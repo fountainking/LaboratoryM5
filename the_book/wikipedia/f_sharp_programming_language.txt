@@ -1,0 +1,34 @@
+**F SHARP PROGRAMMING LANGUAGE**
+
+Category: Wikipedia
+---------------------------------------
+
+F Sharp (programming language)
+
+F# is a general-purpose, high-level,
+strongly typed, multi-paradigm
+programming language that encompasses
+functional, imperative, and
+object-oriented programming methods. It
+is most often used as a cross-platform
+Common Language Infrastructure (CLI)
+language on .NET, but can also generate
+JavaScript and graphics processing unit
+(GPU) code.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~48
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

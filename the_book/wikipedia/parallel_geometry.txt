@@ -1,0 +1,37 @@
+**PARALLEL GEOMETRY**
+
+Category: Wikipedia
+---------------------------------------
+
+Parallel (geometry)
+
+In geometry, parallel lines are
+coplanar infinite straight lines that
+do not intersect at any point. Parallel
+planes are infinite flat planes in the
+same three-dimensional space that never
+meet. In three-dimensional Euclidean
+space, a line and a plane that do not
+share a point are also said to be
+parallel. However, two noncoplanar
+lines are called skew lines. Line
+segments and Euclidean vectors are
+parallel if they have the same
+direction or opposite direction.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Womens Suffrage
+• Tornado
+• Carl Jung
+• Arithmetic
+• Brain
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~77
+Category: Wikipedia
+
+<!-- FORMATTED: 85b3ca62 -->

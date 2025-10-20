@@ -1,0 +1,215 @@
+**KOTLIN**
+
+Category: Programming_Languages
+---------------------------------------
+
+**KOTLIN PROGRAMMING GUIDE**
+
+**COMPREHENSIVE KOTLIN REFERENCE**
+
+**OVERVIEW:**
+Kotlin is a modern programming language
+that runs on the JVM, developed by
+JetBrains. Fully interoperable with
+Java, used for Android development.
+
+**BASIC SYNTAX:**
+
+**HELLO WORLD:**
+```kotlin
+fun main() {
+println("Hello World!")
+}
+```
+
+**VARIABLES:**
+```kotlin
+val name = "John" // Immutable
+(val)
+var age = 25 // Mutable (var)
+val price: Double = 19.99
+var isActive: Boolean = true
+```
+
+**FUNCTIONS:**
+```kotlin
+fun greet(name: String): String {
+return "Hello, $name!"
+}
+
+fun add(a: Int, b: Int): Int {
+return a + b
+}
+
+// Single expression
+fun multiply(a: Int, b: Int) = a * b
+
+// Default parameters
+fun greet(name: String = "Guest") {
+println("Hello, $name")
+}
+```
+
+**CLASSES:**
+```kotlin
+class Person(val name: String, var age:
+Int) {
+fun display() {
+println("$name: $age")
+}
+}
+
+// Data class
+data class User(val id: Int, val name:
+String)
+
+// Usage
+val person = Person("John", 30)
+person.display()
+```
+
+**NULL SAFETY:**
+```kotlin
+var name: String = "John" //
+Cannot be null
+var nullableName: String? = null //
+Can be null
+
+// Safe call
+val length = nullableName?.length
+
+// Elvis operator
+val len = nullableName?.length ?: 0
+
+// Non-null assertion
+val len2 = nullableName!!.length //
+Throws if null
+```
+
+**COLLECTIONS:**
+```kotlin
+// Lists
+val numbers = listOf(1, 2, 3, 4, 5)
+val mutableList = mutableListOf(1, 2,
+3)
+mutableList.add(4)
+
+// Maps
+val ages = mapOf("Alice" to 25, "Bob"
+to 30)
+val mutableMap = mutableMapOf<String,
+Int>()
+mutableMap["Charlie"] = 35
+
+// Sets
+val uniqueNumbers = setOf(1, 2, 3, 3,
+4)
+```
+
+**CONTROL FLOW:**
+```kotlin
+// If expression
+val max = if (a > b) a else b
+
+// When (switch)
+when (x) {
+1 -> println("One")
+2 -> println("Two")
+in 3..10 -> println("3 to 10")
+else -> println("Other")
+}
+
+// For loop
+for (i in 0..10) {
+println(i)
+}
+
+for (item in collection) {
+println(item)
+}
+
+// While
+while (condition) {
+// code
+}
+```
+
+**LAMBDA EXPRESSIONS:**
+```kotlin
+val numbers = listOf(1, 2, 3, 4, 5)
+val doubled = numbers.map { it * 2 }
+val evens = numbers.filter { it % 2 ==
+0 }
+val sum = numbers.reduce { acc, n ->
+acc + n }
+```
+
+**EXTENSION FUNCTIONS:**
+```kotlin
+fun String.addExclamation(): String {
+return this + "!"
+}
+
+val greeting = "Hello".addExclamation()
+```
+
+**OBJECT AND COMPANION OBJECT:**
+```kotlin
+object Singleton {
+fun doSomething() {
+println("Singleton")
+}
+}
+
+class MyClass {
+companion object {
+fun create(): MyClass =
+MyClass()
+}
+}
+```
+
+**COROUTINES:**
+```kotlin
+import kotlinx.coroutines.*
+
+fun main() = runBlocking {
+launch {
+delay(1000L)
+println("World!")
+}
+println("Hello,")
+}
+```
+
+**COMMON USE CASES:**
+- Android app development
+- Server-side applications
+- Multiplatform mobile development
+- Web development
+- Data science
+
+**BEST PRACTICES:**
+- Prefer val over var
+- Use data classes for DTOs
+- Leverage null safety
+- Use extension functions
+- Follow Kotlin conventions
+- Use coroutines for async
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~471
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

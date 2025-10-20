@@ -1,0 +1,413 @@
+**JAVASCRIPT REFERENCE**
+
+Category: Programming_Languages
+---------------------------------------
+
+JavaScript Programming Guide
+
+JavaScript is the language of the web,
+enabling interactive websites and
+modern web applications.
+
+**BASICS:**
+// Comments
+/* Multi-line
+comment */
+
+// Variables
+var old = "old style"; // function
+scope
+let x = 10; // block scope
+const PI = 3.14159; // constant
+
+// Semicolons optional but recommended
+console.log("Hello");
+
+**DATA TYPES:**
+// Primitives
+let num = 42;
+let float = 3.14;
+let str = "hello";
+let bool = true;
+let nothing = null;
+let notDefined = undefined;
+let sym = Symbol("id");
+
+// typeof operator
+typeof 42; // "number"
+typeof "hi"; // "string"
+typeof true; // "boolean"
+
+**STRINGS:**
+let s = "JavaScript";
+let s2 = 'also valid';
+let s3 = `template literal ${x}`;
+
+// String methods
+s.length
+s.toUpperCase()
+s.toLowerCase()
+s.charAt(0)
+s.substring(0, 4)
+s.slice(0, 4)
+s.split('')
+s.indexOf('a')
+s.includes('Script')
+s.startsWith('Java')
+s.endsWith('Script')
+s.replace('Java', 'Type')
+s.trim()
+
+**ARRAYS:**
+let arr = [1, 2, 3, "four"];
+
+// Access
+arr[0]
+arr.length
+
+// Add/remove
+arr.push(5) // end
+arr.pop() // end
+arr.unshift(0) // start
+arr.shift() // start
+
+// Iteration
+arr.forEach(item => console.log(item))
+
+// Transform
+arr.map(x => x * 2)
+arr.filter(x => x > 2)
+arr.reduce((acc, x) => acc + x, 0)
+arr.find(x => x > 2)
+arr.some(x => x > 2)
+arr.every(x => x > 0)
+
+// Other
+arr.slice(1, 3)
+arr.splice(1, 2)
+arr.concat([5, 6])
+arr.join(', ')
+arr.reverse()
+arr.sort()
+
+**OBJECTS:**
+let person = {
+name: "John",
+age: 30,
+greet: function() {
+return `Hi, I'm ${this.name}`;
+},
+// ES6 method syntax
+wave() {
+return "👋";
+}
+};
+
+// Access
+person.name
+person["age"]
+
+// Add/modify
+person.city = "NYC";
+delete person.age;
+
+// Object methods
+Object.keys(person)
+Object.values(person)
+Object.entries(person)
+Object.assign({}, person)
+
+// Destructuring
+let {name, age} = person;
+
+**FUNCTIONS:**
+// Function declaration
+function add(a, b) {
+return a + b;
+}
+
+// Function expression
+const multiply = function(a, b) {
+return a * b;
+};
+
+// Arrow function
+const divide = (a, b) => a / b;
+const square = x => x * x;
+const greet = () => "Hello";
+
+// Default parameters
+function power(base, exp = 2) {
+return base ** exp;
+}
+
+// Rest parameters
+function sum(...numbers) {
+return numbers.reduce((a, b) => a + b);
+}
+
+// Spread operator
+Math.max(...[1, 2, 3])
+let arr2 = [...arr, 4, 5]
+let obj2 = {...person, city: "LA"}
+
+**CONTROL FLOW:**
+// If statement
+if (x > 10) {
+console.log("Greater");
+} else if (x === 10) {
+console.log("Equal");
+} else {
+console.log("Less");
+}
+
+// Ternary
+let result = x > 5 ? "yes" : "no";
+
+// Switch
+switch(x) {
+case 1:
+console.log("One");
+break;
+case 2:
+console.log("Two");
+break;
+default:
+console.log("Other");
+}
+
+**LOOPS:**
+// For loop
+for (let i = 0; i < 5; i++) {
+console.log(i);
+}
+
+// For...of (values)
+for (let item of arr) {
+console.log(item);
+}
+
+// For...in (keys)
+for (let key in person) {
+console.log(key, person[key]);
+}
+
+// While
+while (x > 0) {
+x--;
+}
+
+// Do...while
+do {
+x++;
+} while (x < 10);
+
+**CLASSES (ES6):**
+class Person {
+constructor(name, age) {
+this.name = name;
+this.age = age;
+}
+
+greet() {
+return `Hi, I'm ${this.name}`;
+}
+
+static species() {
+return "Homo sapiens";
+}
+}
+
+// Inheritance
+class Student extends Person {
+constructor(name, age, major) {
+super(name, age);
+this.major = major;
+}
+
+study() {
+return `${this.name} is studying`;
+}
+}
+
+let s = new Student("Alice", 20, "CS");
+
+**ASYNC/AWAIT:**
+// Promises
+const promise = new Promise((resolve,
+reject) => {
+setTimeout(() => resolve("Done!"),
+1000);
+});
+
+promise.then(result =>
+console.log(result));
+
+// Async/await
+async function fetchData() {
+try {
+const response = await fetch(url);
+const data = await response.json();
+return data;
+} catch (error) {
+console.error(error);
+}
+}
+
+// Promise methods
+Promise.all([p1, p2, p3])
+Promise.race([p1, p2])
+Promise.allSettled([p1, p2])
+
+**DOM MANIPULATION:**
+// Select elements
+document.getElementById('id')
+document.querySelector('.class')
+document.querySelectorAll('div')
+
+// Modify content
+element.innerHTML = '<p>HTML</p>'
+element.textContent = 'Text'
+element.innerText = 'Text'
+
+// Modify attributes
+element.setAttribute('class', 'active')
+element.classList.add('highlight')
+element.classList.remove('old')
+element.classList.toggle('visible')
+
+// Modify styles
+element.style.color = 'red'
+element.style.fontSize = '16px'
+
+// Create/remove elements
+let div = document.createElement('div')
+parent.appendChild(div)
+parent.removeChild(div)
+
+// Event listeners
+element.addEventListener('click', (e)
+=> {
+console.log('Clicked!', e);
+});
+
+// Common events:
+// click, dblclick, mouseenter,
+// mouseleave, keydown, keyup,
+// submit, change, focus, blur
+
+**ERROR HANDLING:**
+try {
+let result = JSON.parse(jsonString);
+} catch (error) {
+console.error(error.message);
+} finally {
+console.log("Always runs");
+}
+
+// Throw error
+throw new Error("Something went
+wrong");
+
+**MODULES (ES6):**
+// Export
+export const PI = 3.14;
+export function add(a, b) {
+return a + b;
+}
+export default class MyClass {}
+
+// Import
+import MyClass from './module.js';
+import { PI, add } from './module.js';
+import * as utils from './module.js';
+
+**LOCAL STORAGE:**
+// Save
+localStorage.setItem('key', 'value');
+localStorage.setItem('obj',
+JSON.stringify(object));
+
+// Get
+let value =
+localStorage.getItem('key');
+let obj = JSON.parse(
+localStorage.getItem('obj'));
+
+// Remove
+localStorage.removeItem('key');
+localStorage.clear();
+
+**USEFUL METHODS:**
+// Array methods
+Array.isArray([])
+Array.from('abc') // ['a','b','c']
+
+// Number methods
+Number('42')
+Number.isInteger(42)
+Number.isNaN(NaN)
+parseFloat('3.14')
+parseInt('42')
+
+// Math
+Math.random()
+Math.floor(3.7)
+Math.ceil(3.2)
+Math.round(3.5)
+Math.max(1, 2, 3)
+Math.min(1, 2, 3)
+Math.abs(-5)
+Math.pow(2, 3)
+Math.sqrt(16)
+
+// Date
+let now = new Date()
+now.getFullYear()
+now.getMonth() // 0-11
+now.getDate()
+now.getHours()
+now.toISOString()
+
+**MODERN FEATURES:**
+// Nullish coalescing
+let x = null ?? "default"
+
+// Optional chaining
+let name = user?.address?.city
+
+// Template literals
+let html = `
+<div>
+<h1>${title}</h1>
+</div>
+`;
+
+**BEST PRACTICES:**
+- Use const by default, let when needed
+- Use === instead of ==
+- Use arrow functions for callbacks
+- Async/await over .then()
+- Use semicolons
+- Use strict mode: 'use strict';
+- Avoid global variables
+- Use descriptive names
+- Handle errors properly
+- Comment complex logic
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• R Programming
+• Ruby
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~883
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

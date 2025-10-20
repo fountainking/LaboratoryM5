@@ -1,0 +1,249 @@
+**RUBY**
+
+Category: Programming_Languages
+---------------------------------------
+
+**RUBY PROGRAMMING GUIDE**
+
+**COMPREHENSIVE RUBY REFERENCE**
+
+**OVERVIEW:**
+Ruby is a dynamic, object-oriented
+language known for its elegance and
+readability. Popular for web
+development (Rails framework).
+
+**BASIC SYNTAX:**
+
+**HELLO WORLD:**
+```ruby
+puts "Hello World!"
+```
+
+**VARIABLES:**
+```ruby
+age = 25
+name = "John"
+price = 19.99
+is_active = true
+```
+
+METHODS (Functions):
+```ruby
+def greet(name)
+"Hello, #{name}!"
+end
+
+def add(a, b)
+a + b # implicit return
+end
+
+puts greet("World")
+```
+
+**CLASSES:**
+```ruby
+class Person
+attr_accessor :name, :age
+
+def initialize(name, age)
+@name = name
+@age = age
+end
+
+def display
+puts "#{@name}: #{@age}"
+end
+end
+
+# Usage
+person = Person.new("John", 30)
+person.display
+```
+
+**ARRAYS:**
+```ruby
+numbers = [1, 2, 3, 4, 5]
+names = ["Alice", "Bob", "Charlie"]
+
+numbers.each do |n|
+puts n
+end
+
+# Map/transform
+doubled = numbers.map { |n| n * 2 }
+```
+
+HASHES (Dictionaries):
+```ruby
+person = {
+name: "John",
+age: 30,
+city: "NYC"
+}
+
+puts person[:name]
+```
+
+**LOOPS:**
+```ruby
+# Times
+5.times do |i|
+puts i
+end
+
+# Each
+[1,2,3].each do |num|
+puts num
+end
+
+# While
+while condition
+# code
+end
+
+# For
+for i in 0..10
+puts i
+end
+```
+
+**CONDITIONALS:**
+```ruby
+if x > 10
+puts "Greater"
+elsif x > 5
+puts "Medium"
+else
+puts "Small"
+end
+
+# One-liner
+puts "Big" if x > 10
+
+# Unless (opposite of if)
+puts "Not big" unless x > 10
+
+# Case
+case value
+when 1
+puts "One"
+when 2
+puts "Two"
+else
+puts "Other"
+end
+```
+
+**STRING MANIPULATION:**
+```ruby
+str = "Hello"
+str += " World"
+length = str.length
+upper = str.upcase
+lower = str.downcase
+includes = str.include?("llo")
+parts = str.split(" ")
+```
+
+**FILE I/O:**
+```ruby
+# Writing
+File.write("file.txt", "Hello World")
+
+# Reading
+content = File.read("file.txt")
+
+# Line by line
+File.readlines("file.txt").each do
+|line|
+puts line
+end
+```
+
+**BLOCKS & ITERATORS:**
+```ruby
+# Block with each
+[1,2,3].each { |n| puts n }
+
+# Multiline block
+[1,2,3].each do |n|
+puts n * 2
+end
+
+# Select (filter)
+evens = [1,2,3,4].select { |n| n.even?
+}
+
+# Map (transform)
+doubled = [1,2,3].map { |n| n * 2 }
+
+# Reduce
+sum = [1,2,3,4].reduce(:+)
+```
+
+**SYMBOLS:**
+```ruby
+# Symbols are immutable strings
+status = :active
+hash = { name: "John", age: 30 }
+```
+
+**REGULAR EXPRESSIONS:**
+```ruby
+if "hello" =~ /ell/
+puts "Match found"
+end
+
+# Extract matches
+matches = "hello".scan(/[aeiou]/)
+```
+
+**COMMON USE CASES:**
+- Web applications (Ruby on Rails)
+- Automation scripts
+- Data processing
+- DevOps tools
+- Prototyping
+
+**RUNNING RUBY:**
+```
+ruby program.rb
+```
+
+Interactive Ruby:
+```
+irb
+```
+
+**BEST PRACTICES:**
+- Use snake_case for methods/variables
+- Use CamelCase for classes
+- Keep methods small
+- Use meaningful names
+- Prefer symbols over strings for keys
+- Use blocks effectively
+- Follow Ruby style guide
+
+**GEM MANAGEMENT:**
+```
+gem install package_name
+gem list
+```
+
+=======================================
+**RELATED ARTICLES:**
+
+• Rust
+• Java Reference
+• Index
+• Javascript Reference
+• R Programming
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~457
+Category: Programming_Languages
+
+<!-- FORMATTED: 85b3ca62 -->

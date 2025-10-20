@@ -1,0 +1,29 @@
+**DART**
+
+Category: Programming › Languages
+---------------------------------------
+
+Dart (programming language)
+
+Dart is a programming language designed
+by Lars Bak and Kasper Lund and
+developed by Google. It can be used to
+develop web and mobile apps as well as
+server and desktop applications.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Lisp
+• Objective C
+• Java
+• Nim
+• Rust
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~36
+Category: Programming › Languages
+
+<!-- FORMATTED: 85b3ca62 -->

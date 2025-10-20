@@ -1,0 +1,36 @@
+**MOMENTUM**
+
+Category: Wikipedia › Physics
+---------------------------------------
+
+Momentum
+
+In Newtonian mechanics, momentum is the
+product of the mass and velocity of an
+object. It is a vector quantity,
+possessing a magnitude and a direction.
+If m is an object's mass and v is its
+velocity, then the object's momentum p
+is:
+In the International System of Units
+(SI), the unit of measurement of
+momentum is the kilogram metre per
+second (kg⋅m/s), which is dimensionally
+equivalent to the newton-second.
+
+=======================================
+**RELATED ARTICLES:**
+
+• Special Relativity
+• Absolute Zero
+• Strong Interaction
+• Relativity
+• Energy
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~71
+Category: Wikipedia › Physics
+
+<!-- FORMATTED: 85b3ca62 -->

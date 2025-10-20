@@ -1,0 +1,38 @@
+**INDEX**
+
+Category: Edible_Plants
+---------------------------------------
+
+Dandelion|dandelion.txt|0|Edible plant
+guide: Dandelion
+Cattail|cattail.txt|0|Edible plant
+guide: Cattail
+Acorns|acorns.txt|0|Edible plant guide:
+Acorns
+Plantain|plantain.txt|0|Edible plant
+guide: Plantain
+Clover|clover.txt|0|Edible plant guide:
+Clover
+Chickweed|chickweed.txt|0|Edible plant
+guide: Chickweed
+Wood_Sorrel|wood_sorrel.txt|0|Edible
+plant guide: Wood_Sorrel
+Purslane|purslane.txt|0|Edible plant
+guide: Purslane
+
+=======================================
+**RELATED ARTICLES:**
+
+• Acorns
+• Wood Sorrel
+• Chickweed
+• Purslane
+• Clover
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~32
+Category: Edible_Plants
+
+<!-- FORMATTED: 85b3ca62 -->

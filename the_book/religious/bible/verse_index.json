@@ -1,0 +1,12 @@
+{
+  "type": "bible_index",
+  "format": "Book Chapter:Verse",
+  "example": "John 3:16",
+  "search_tips": [
+    "Type book name and chapter:verse",
+    "Example: Genesis 1:1",
+    "Example: John 3:16",
+    "Example: Psalm 23"
+  ],
+  "books": []
+}

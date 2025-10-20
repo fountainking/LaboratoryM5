@@ -1,0 +1,40 @@
+**UNIX**
+
+Category: Wikipedia › Programming
+---------------------------------------
+
+Unix
+
+Unix is a family of multitasking,
+multi-user computer operating systems
+that derive from the original AT&T
+Unix, whose development started in 1969
+at the Bell Labs research center by Ken
+Thompson, Dennis Ritchie, and others.
+Initially intended for use inside the
+Bell System, AT&T licensed Unix to
+outside parties in the late 1970s,
+leading to a variety of both academic
+and commercial Unix variants from
+vendors including University of
+California, Berkeley (BSD), Microsoft
+(Xenix), Sun Microsystems
+(SunOS/Solaris), HP/HPE (HP-UX), and
+**IBM (AIX).**
+
+=======================================
+**RELATED ARTICLES:**
+
+• Database
+• Operating System
+• Cryptocurrency
+• Python Programming Language
+• Sql
+
+
+=======================================
+Processed: 2025-10-20 06:09
+Words: ~83
+Category: Wikipedia › Programming
+
+<!-- FORMATTED: 85b3ca62 -->
