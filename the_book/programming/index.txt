@@ -1,0 +1,129 @@
+**INDEX**
+
+Category: Programming
+---------------------------------------
+
+**INDEX**
+
+Category: Programming
+---------------------------------------
+
+ADA|languages/ada.txt|0|Category:
+Programming › Languages
+ASSEMBLY
+LANGUAGE|languages/assembly_language.txt|0|Category:
+Programming › Languages
+BASIC|languages/basic.txt|0|Category:
+Programming › Languages
+C++|languages/c++.txt|0|Category:
+Programming › Languages
+C|languages/c.txt|0|Category:
+Programming › Languages
+C
+SHARP|languages/c_sharp.txt|0|Category:
+Programming › Languages
+CLOJURE|languages/clojure.txt|0|Category:
+Programming › Languages
+COBOL|languages/cobol.txt|0|Category:
+Programming › Languages
+CSS|languages/css.txt|0|Category:
+Programming › Languages
+DART|languages/dart.txt|0|Category:
+Programming › Languages
+DELPHI
+(SOFTWARE)|languages/delphi_(software).txt|0|Category:
+Programming › Languages
+ELIXIR|languages/elixir.txt|0|Category:
+Programming › Languages
+ERLANG|languages/erlang.txt|0|Category:
+Programming › Languages
+F
+SHARP|languages/f_sharp.txt|0|Category:
+Programming › Languages
+FORTRAN|languages/fortran.txt|0|Category:
+Programming › Languages
+GO|languages/go.txt|0|Category:
+Programming › Languages
+GROOVY|languages/groovy.txt|0|Category:
+Programming › Languages
+HASKELL|languages/haskell.txt|0|Category:
+Programming › Languages
+HTML|languages/html.txt|0|Category:
+Programming › Languages
+JAVA|languages/java.txt|0|Category:
+Programming › Languages
+JAVASCRIPT|languages/javascript.txt|0|Category:
+Programming › Languages
+JULIA|languages/julia.txt|0|Category:
+Programming › Languages
+KOTLIN|languages/kotlin.txt|0|Category:
+Programming › Languages
+LISP|languages/lisp.txt|0|Category:
+Programming › Languages
+LUA|languages/lua.txt|0|Category:
+Programming › Languages
+MATLAB|languages/matlab.txt|0|Category:
+Programming › Languages
+NIM|languages/nim.txt|0|Category:
+Programming › Languages
+OBJECTIVE
+C|languages/objective-c.txt|0|Category:
+Programming › Languages
+PASCAL|languages/pascal.txt|0|Category:
+Programming › Languages
+PERL|languages/perl.txt|0|Category:
+Programming › Languages
+PHP|languages/php.txt|0|Category:
+Programming › Languages
+PROLOG|languages/prolog.txt|0|Category:
+Programming › Languages
+PYTHON|languages/python.txt|0|Category:
+Programming › Languages
+R|languages/r.txt|0|Category:
+Programming › Languages
+RUBY|languages/ruby.txt|0|Category:
+Programming › Languages
+RUST|languages/rust.txt|0|Category:
+Programming › Languages
+SCALA|languages/scala.txt|0|Category:
+Programming › Languages
+SCHEME|languages/scheme.txt|0|Category:
+Programming › Languages
+SQL|languages/sql.txt|0|Category:
+Programming › Languages
+SWIFT|languages/swift.txt|0|Category:
+Programming › Languages
+TYPESCRIPT|languages/typescript.txt|0|Category:
+Programming › Languages
+V|languages/v.txt|0|Category:
+Programming › Languages
+VISUAL
+BASIC|languages/visual_basic.txt|0|Category:
+Programming › Languages
+ZIG|languages/zig.txt|0|Category:
+Programming › Languages
+DJANGO (WEB
+FRAMEWORK)|python/django-(web-framework).txt|0|DJANGO
+(WEB FRAMEWORK)
+FLASK (WEB
+FRAMEWORK)|python/flask-(web-framework).txt|0|FLASK
+(WEB FRAMEWORK)
+MATPLOTLIB|python/matplotlib.txt|0|Category:
+Programming › Python
+NUMPY|python/numpy.txt|0|Category:
+Programming › Python
+PANDAS
+(SOFTWARE)|python/pandas-(software).txt|0|Category:
+Programming › Python
+PYTHON SYNTAX AND
+SEMANTICS|python/python-syntax-and-semantics.txt|0|PYTHON
+SYNTAX AND SEMANTICS
+TENSORFLOW|python/tensorflow.txt|0|Category:
+Programming › Python
+
+=======================================
+Processed: 2025-10-20 10:57
+Words: ~220
+Category: Programming
+
+<!-- FORMATTED: 767d13a4 -->

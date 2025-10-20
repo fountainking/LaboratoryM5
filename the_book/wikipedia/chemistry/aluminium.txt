@@ -3,6 +3,11 @@
 Category: Wikipedia › Chemistry
 ---------------------------------------
 
+**ALUMINIUM**
+
+Category: Wikipedia › Chemistry
+---------------------------------------
+
 Aluminium
 
 Aluminium or aluminum is a chemical
@@ -38,4 +43,19 @@ Processed: 2025-10-20 06:09
 Words: ~103
 Category: Wikipedia › Chemistry
 
-<!-- FORMATTED: 85b3ca62 -->
+=======================================
+**RELATED ARTICLES:**
+
+• Salt Chemistry
+• Oxygen
+• Carbon Dioxide
+• Carbohydrate
+• Ammonia
+
+
+=======================================
+Processed: 2025-10-20 10:57
+Words: ~134
+Category: Wikipedia › Chemistry
+
+<!-- FORMATTED: 767d13a4 -->

@@ -3,6 +3,11 @@
 Category: Survival › Shelter
 ---------------------------------------
 
+**EMERGENCY BIVOUAC**
+
+Category: Survival › Shelter
+---------------------------------------
+
 SHELTER: Emergency Bivouac
 
 COMPREHENSIVE Emergency Bivouac
@@ -98,4 +103,19 @@ Processed: 2025-10-20 06:09
 Words: ~206
 Category: Survival › Shelter
 
-<!-- FORMATTED: 85b3ca62 -->
+=======================================
+**RELATED ARTICLES:**
+
+• Wickiup
+• Platform Shelter
+• Debris Hut
+• Snow Cave
+• Desert Shelter
+
+
+=======================================
+Processed: 2025-10-20 10:57
+Words: ~240
+Category: Survival › Shelter
+
+<!-- FORMATTED: 767d13a4 -->

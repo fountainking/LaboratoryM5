@@ -1,10 +1,13 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "M5Cardputer Book Formatting Configuration",
 
   "display": {
     "line_width": 39,
-    "comment": "Maximum characters per line for M5Cardputer display"
+    "text_size": 1,
+    "use_bold_text": false,
+    "lines_per_page": 13,
+    "comment": "Display settings - line_width for wrapping, text_size (1=small, 2=medium, 3=large), lines_per_page for pagination"
   },
 
   "title_style": {

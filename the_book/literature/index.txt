@@ -1,0 +1,105 @@
+**INDEX**
+
+Category: Literature
+---------------------------------------
+
+**INDEX**
+
+Category: Literature
+---------------------------------------
+
+A TALE OF TWO
+CITIES|classics/A_Tale_of_Two_Cities.txt|0|Category:
+Literature › Classics
+ADVENTURES OF HUCKLEBERRY
+FINN|classics/Adventures_of_Huckleberry_Finn.txt|0|ADVENTURES
+OF HUCKLEBERRY FINN
+ALICE IN
+WONDERLAND|classics/Alice_in_Wonderland.txt|0|Category:
+Literature › Classics
+CRIME AND
+PUNISHMENT|classics/Crime_and_Punishment.txt|0|Category:
+Literature › Classics
+DRACULA|classics/Dracula.txt|0|Category:
+Literature › Classics
+FRANKENSTEIN|classics/Frankenstein.txt|0|Category:
+Literature › Classics
+GREAT
+EXPECTATIONS|classics/Great_Expectations.txt|0|Category:
+Literature › Classics
+JANE
+EYRE|classics/Jane_Eyre.txt|0|Category:
+Literature › Classics
+LES
+MISERABLES|classics/Les_Miserables.txt|0|Category:
+Literature › Classics
+MEDITATIONS BY MARCUS
+AURELIUS|classics/Meditations_by_Marcus_Aurelius.txt|0|MEDITATIONS
+BY MARCUS AURELIUS
+METAMORPHOSIS BY
+KAFKA|classics/Metamorphosis_by_Kafka.txt|0|METAMORPHOSIS
+BY KAFKA
+MOBY
+DICK|classics/Moby_Dick.txt|0|Category:
+Literature › Classics
+PRIDE AND
+PREJUDICE|classics/Pride_and_Prejudice.txt|0|Category:
+Literature › Classics
+THE ADVENTURES OF SHERLOCK
+HOLMES|classics/The_Adventures_of_Sherlock_Holmes.txt|0|THE
+ADVENTURES OF SHERLOCK HOLMES
+THE ART OF
+WAR|classics/The_Art_of_War.txt|0|Category:
+Literature › Classics
+THE CALL OF THE
+WILD|classics/The_Call_of_the_Wild.txt|0|Category:
+Literature › Classics
+THE COUNT OF MONTE
+CRISTO|classics/The_Count_of_Monte_Cristo.txt|0|THE
+COUNT OF MONTE CRISTO
+THE DIVINE
+COMEDY|classics/The_Divine_Comedy.txt|0|Category:
+Literature › Classics
+THE GREAT
+GATSBY|classics/The_Great_Gatsby.txt|0|Category:
+Literature › Classics
+THE
+ILIAD|classics/The_Iliad.txt|0|Category:
+Literature › Classics
+THE
+ODYSSEY|classics/The_Odyssey.txt|0|Category:
+Literature › Classics
+THE PICTURE OF DORIAN
+GRAY|classics/The_Picture_of_Dorian_Gray.txt|0|THE
+PICTURE OF DORIAN GRAY
+THE PRINCE BY
+MACHIAVELLI|classics/The_Prince_by_Machiavelli.txt|0|THE
+PRINCE BY MACHIAVELLI
+THE REPUBLIC BY
+PLATO|classics/The_Republic_by_Plato.txt|0|THE
+REPUBLIC BY PLATO
+THE TIME
+MACHINE|classics/The_Time_Machine.txt|0|Category:
+Literature › Classics
+THE WAR OF THE
+WORLDS|classics/The_War_of_the_Worlds.txt|0|THE
+WAR OF THE WORLDS
+TREASURE
+ISLAND|classics/Treasure_Island.txt|0|Category:
+Literature › Classics
+**Twenty Thousand Leagues Under
+The|classics/Twenty_Thousand_Leagues_Under_the_Sea.txt|0|**TWENTY
+THOUSAND LEAGUES UNDER THE
+WAR AND
+PEACE|classics/War_and_Peace.txt|0|Category:
+Literature › Classics
+WUTHERING
+HEIGHTS|classics/Wuthering_Heights.txt|0|Category:
+Literature › Classics
+
+=======================================
+Processed: 2025-10-20 10:57
+Words: ~195
+Category: Literature
+
+<!-- FORMATTED: 767d13a4 -->

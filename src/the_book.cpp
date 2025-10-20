@@ -13,15 +13,25 @@ String currentArticleTitle = "";
 std::vector<String> articleLines;
 int currentCategoryIndex = 0;
 
-// Categories for The Book (expanded)
+// Categories for The Book (all 15 categories)
 BookCategory categories[] = {
   {"Wikipedia", "/the_book/wikipedia", TFT_BLUE},
-  {"Programming", "/the_book/programming_languages", TFT_GREEN},
-  {"Survival", "/the_book/survival", TFT_ORANGE},
+  {"Science", "/the_book/science", TFT_CYAN},
+  {"History", "/the_book/history", TFT_ORANGE},
+  {"Literature", "/the_book/literature", TFT_MAGENTA},
   {"Religious Texts", "/the_book/religious", TFT_PURPLE},
-  {"Edible Plants", "/the_book/edible_plants", TFT_DARKGREEN}
+  {"Medical", "/the_book/medical", TFT_RED},
+  {"Survival", "/the_book/survival", TFT_DARKORANGE},
+  {"Programming", "/the_book/programming", TFT_GREEN},
+  {"Prog Languages", "/the_book/programming_languages", TFT_DARKGREEN},
+  {"Edible Plants", "/the_book/edible_plants", TFT_GREENYELLOW},
+  {"Poisonous Plants", "/the_book/poisonous_plants", TFT_MAROON},
+  {"Agriculture", "/the_book/agriculture", TFT_OLIVE},
+  {"DIY/Technical", "/the_book/diy_technical", TFT_NAVY},
+  {"Reference", "/the_book/reference", TFT_DARKGREY},
+  {"Tech", "/the_book/tech", TFT_LIGHTGREY}
 };
-const int totalCategories = 5;
+const int totalCategories = 15;
 
 // Display constants
 const int RESULTS_PER_PAGE = 8;

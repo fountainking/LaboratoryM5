@@ -3,8 +3,13 @@
 Category: Medical
 ---------------------------------------
 
+**HYPOTHERMIA TREATMENT**
+
+Category: Medical
+---------------------------------------
+
 **HYPOTHERMIA - RECOGNITION &
-TREATMENT**
+**TREATMENT****
 
 **DEADLY COLD WEATHER THREAT**
 
@@ -244,4 +249,19 @@ Processed: 2025-10-20 06:09
 Words: ~657
 Category: Medical
 
-<!-- FORMATTED: 85b3ca62 -->
+=======================================
+**RELATED ARTICLES:**
+
+• Dehydration
+• Wound Care Infection
+• Diarrhea Treatment
+• Index
+• Constipation Relief
+
+
+=======================================
+Processed: 2025-10-20 10:57
+Words: ~687
+Category: Medical
+
+<!-- FORMATTED: 767d13a4 -->
