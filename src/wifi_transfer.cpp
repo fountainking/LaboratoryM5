@@ -10,8 +10,8 @@ int uploadCount = 0;
 int downloadCount = 0;
 String lastAction = "Ready";
 
-// HTML for the web interface
-const char* htmlPage = R"rawliteral(
+// HTML for the web interface - stored in PROGMEM (flash) to save RAM
+const char htmlPage[] PROGMEM = R"rawliteral(
 <!DOCTYPE html>
 <html>
 <head>
@@ -865,7 +865,8 @@ void handleRoot() {
   delay(100);
   M5Cardputer.Speaker.tone(1200, 100);
 
-  webServer->send(200, "text/html", htmlPage);
+  // Send HTML page from PROGMEM (flash memory)
+  webServer->send_P(200, "text/html", htmlPage);
 }
 
 void listDirectory(File dir, String path, String &json, bool &first, int depth = 0) {

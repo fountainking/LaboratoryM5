@@ -2125,9 +2125,8 @@ void loop() {
   }
 
   // Handle web server for file transfer
-  if (currentState == SCREEN_VIEW && currentScreenNumber == 3 && transferState == TRANSFER_RUNNING) {
-    handleWebServerLoop();
-  }
+  // NOTE: Web server is handled by FreeRTOS background task (transferTask in background_services.cpp)
+  // No need to call handleWebServerLoop() here - it would cause double-handling and crashes!
 
   // Update guitar tuner
   if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == GUITAR_TUNER) {
