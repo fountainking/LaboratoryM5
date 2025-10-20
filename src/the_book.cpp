@@ -21,7 +21,7 @@ BookCategory categories[] = {
   {"Literature", "/the_book/literature", TFT_MAGENTA},
   {"Religious Texts", "/the_book/religious", TFT_PURPLE},
   {"Medical", "/the_book/medical", TFT_RED},
-  {"Survival", "/the_book/survival", TFT_DARKORANGE},
+  {"Survival", "/the_book/survival", TFT_YELLOW},
   {"Programming", "/the_book/programming", TFT_GREEN},
   {"Prog Languages", "/the_book/programming_languages", TFT_DARKGREEN},
   {"Edible Plants", "/the_book/edible_plants", TFT_GREENYELLOW},
