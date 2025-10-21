@@ -43,6 +43,11 @@ extern int currentCategoryIndex;
 extern BookCategory categories[];
 extern const int totalCategories;
 
+// Search debouncing
+extern unsigned long lastSearchInputTime;
+extern const unsigned long SEARCH_DEBOUNCE_MS;
+extern bool searchPending;
+
 // Main functions
 void enterTheBook();
 void exitTheBook();

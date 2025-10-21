@@ -2,10 +2,11 @@
 #define AUDIO_MANAGER_H
 
 #include <M5Cardputer.h>
-#include <AudioOutputI2S.h>
+#include "AudioOutputM5Speaker.h"  // Custom output for M5 Speaker
 #include <AudioGeneratorMP3.h>
 #include <AudioFileSourceSD.h>
 #include <AudioFileSourceHTTPStream.h>
+#include "AudioGeneratorMP3_PSRAM.h"  // PSRAM-optimized MP3 decoder
 
 // Audio source types
 enum AudioSource {
@@ -16,7 +17,7 @@ enum AudioSource {
 
 // Global audio manager functions
 void initAudioManager();
-AudioOutputI2S* getSharedAudioOutput();
+AudioOutputM5Speaker* getSharedAudioOutput();
 AudioSource getCurrentAudioSource();
 
 // Music player interface

@@ -8,6 +8,7 @@ static String musicFiles[50];
 static int musicCount = 0;
 static int selectedMusicIndex = 0;
 static bool isPlaying = false;
+static String lastError = "";  // Store last error message
 
 void loadMusicFolder() {
   musicCount = 0;
@@ -26,11 +27,20 @@ void loadMusicFolder() {
   File file = dir.openNextFile();
   while (file && musicCount < 50) {
     String filename = String(file.name());
+
+    // Extract just the filename (not full path)
+    int lastSlash = filename.lastIndexOf('/');
+    if (lastSlash >= 0) {
+      filename = filename.substring(lastSlash + 1);
+    }
+
     // Skip hidden files (starting with .)
     if (!file.isDirectory() && filename.endsWith(".mp3") && !filename.startsWith(".")) {
       musicFiles[musicCount] = filename;
       musicCount++;
+      Serial.printf("Found MP3: %s\n", filename.c_str());
     }
+    file.close();
     file = dir.openNextFile();
   }
   dir.close();
@@ -48,9 +58,18 @@ void loadMusicFolder() {
 }
 
 void enterMusicPlayer() {
+  lastError = "";
   loadMusicFolder();
   selectedMusicIndex = 0;
   isPlaying = false;
+
+  Serial.printf("Music Player: Loaded %d MP3 files from /mp3s\n", musicCount);
+  if (musicCount > 0) {
+    for (int i = 0; i < musicCount; i++) {
+      Serial.printf("  [%d] %s\n", i, musicFiles[i].c_str());
+    }
+  }
+
   drawMusicPlayer();
 }
 
@@ -165,17 +184,45 @@ void drawMusicPlayer() {
     }
   }
 
+  // Show error message if present
+  if (lastError.length() > 0) {
+    M5Cardputer.Display.fillRect(0, 115, 240, 10, TFT_RED);
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(TFT_WHITE);
+    M5Cardputer.Display.drawString(lastError.c_str(), 10, 116);
+  }
+
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
   M5Cardputer.Display.drawString(",/=Nav +/- =Vol Enter=Play `=Back", 15, 125);
 }
 
 void playSelectedTrack() {
-  if (musicCount == 0) return;
+  if (musicCount == 0) {
+    lastError = "No MP3 files";
+    return;
+  }
 
   String path = "/mp3s/" + musicFiles[selectedMusicIndex];
-  playAudioFile(path);
-  isPlaying = true;
+  Serial.printf("Music Player: Playing track %d/%d: %s\n", selectedMusicIndex + 1, musicCount, path.c_str());
+
+  lastError = "";  // Clear previous error
+  bool success = playAudioFile(path);
+
+  if (success) {
+    isPlaying = true;
+    Serial.println("Music Player: Playback started successfully");
+  } else {
+    isPlaying = false;
+    lastError = "Playback failed!";
+    Serial.println("Music Player: ERROR - Playback failed to start!");
+    Serial.println("Possible causes:");
+    Serial.println("  1. SD card not accessible");
+    Serial.println("  2. File doesn't exist or corrupt");
+    Serial.println("  3. Audio hardware not responding");
+    Serial.println("  4. Insufficient memory");
+  }
+
   drawMusicPlayer();
 }
 

@@ -311,6 +311,35 @@ const char htmlPage[] PROGMEM = R"rawliteral(
       fileInput.click();
     }
 
+    // Optimize image for device (resize to 240x135, convert to JPG)
+    async function optimizeImage(file) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        img.onload = () => {
+          // Resize to device screen size
+          canvas.width = 240;
+          canvas.height = 135;
+
+          // Draw resized image
+          ctx.drawImage(img, 0, 0, 240, 135);
+
+          // Convert to blob (JPG format, 85% quality)
+          canvas.toBlob((blob) => {
+            // Create new file with _optimized suffix
+            const newName = file.name.replace(/\\.(png|jpg|jpeg|gif|bmp)$/i, '_optimized.jpg');
+            const newFile = new File([blob], newName, { type: 'image/jpeg' });
+            resolve(newFile);
+          }, 'image/jpeg', 0.85);
+        };
+
+        img.onerror = () => resolve(file); // If error, use original
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
     async function uploadFiles() {
       const files = fileInput.files;
       if (files.length === 0) {
@@ -322,16 +351,50 @@ const char htmlPage[] PROGMEM = R"rawliteral(
       const progressBar = document.getElementById('progressBar');
       progressContainer.style.display = 'block';
 
+      // Check if any images need optimization (only for files > 1MB)
+      let hasLargeImages = false;
+      for (let file of files) {
+        if (file.type.startsWith('image/') && file.size > 1000000) { // > 1MB
+          hasLargeImages = true;
+          break;
+        }
+      }
+
+      let shouldOptimize = false;
+      if (hasLargeImages) {
+        shouldOptimize = confirm('Some images are very large (>1MB) and may not display.\\n\\nOptimize them automatically? (Click Cancel to upload as-is)');
+      }
+
       for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        // Use webkitRelativePath if available (for folders), otherwise just filename
-        const filePath = file.webkitRelativePath || file.name;
-        showStatus(`Uploading ${filePath}...`);
+        let file = files[i];
+        const originalPath = file.webkitRelativePath || file.name;
+        let uploadPath = originalPath;
+
+        // Only optimize if user agreed AND file is large image
+        if (shouldOptimize && file.type.startsWith('image/') && file.size > 1000000) {
+          try {
+            showStatus(`Optimizing ${file.name}...`);
+            const optimizedFile = await optimizeImage(file);
+            if (optimizedFile && optimizedFile.size < file.size) {
+              file = optimizedFile;
+              uploadPath = file.name;
+              showStatus(`Uploading optimized ${file.name}...`);
+            } else {
+              showStatus(`Uploading ${originalPath}...`);
+            }
+          } catch (err) {
+            console.error('Optimization failed:', err);
+            showStatus(`Uploading ${originalPath}... (optimization failed)`);
+          }
+        } else {
+          showStatus(`Uploading ${originalPath}...`);
+        }
+
         progressBar.style.width = ((i / files.length) * 100) + '%';
 
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('path', filePath);
+        formData.append('path', uploadPath);
 
         try {
           const response = await fetch('/upload', {
@@ -340,12 +403,12 @@ const char htmlPage[] PROGMEM = R"rawliteral(
           });
 
           if (response.ok) {
-            showStatus(`Uploaded ${filePath}`);
+            showStatus(`Uploaded ${uploadPath}`);
           } else {
-            showStatus(`Failed: ${filePath}`);
+            showStatus(`Failed: ${uploadPath}`);
           }
         } catch (error) {
-          showStatus(`Error: ${file.name}`);
+          showStatus(`Error: ${uploadPath}`);
         }
       }
 

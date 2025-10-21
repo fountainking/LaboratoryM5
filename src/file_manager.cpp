@@ -548,38 +548,121 @@ void drawImageViewer(const String& path) {
     imgFile.close();
   } else if (lowerPath.endsWith(".png")) {
     imgFile.close();
-    // Try PNGdec first for better format support
-    int rc = png.open(path.c_str(), PNGOpenFile, PNGCloseFile, PNGReadFile, PNGSeekFile, PNGDraw);
 
-    if (rc == PNG_SUCCESS) {
-      // PNGdec can handle this file
-      M5Cardputer.Display.fillScreen(TFT_BLACK);
-      rc = png.decode(NULL, 0);
-      png.close();
-      success = (rc == PNG_SUCCESS);
-    } else if (rc == 7) {
-      // Error 7 = PNG_TOO_BIG - try M5GFX as fallback for large files
+    // Get file size for diagnostics
+    File sizeCheck = SD.open(path.c_str());
+    size_t fileSize = sizeCheck.size();
+    sizeCheck.close();
+
+    Serial.printf("PNG file size: %d bytes (%.2f MB)\n", fileSize, fileSize / 1048576.0);
+
+    // For files > 500KB, skip PNGdec and go straight to M5GFX (handles large files better)
+    if (fileSize > 512000) {
+      Serial.println("Large PNG detected, using M5GFX with auto-scaling...");
       File pngFile = SD.open(path.c_str());
       if (pngFile) {
         M5Cardputer.Display.fillScreen(TFT_BLACK);
+        M5Cardputer.Display.setTextColor(TFT_YELLOW);
+        M5Cardputer.Display.setTextSize(1);
+        M5Cardputer.Display.drawString("Loading large image...", 50, 60);
+
+        // Show file size on screen
+        String sizeInfo = String(fileSize / 1024) + " KB";
+        M5Cardputer.Display.drawString(sizeInfo, 90, 75);
+        delay(1500);  // Give user time to see the message
+
+        M5Cardputer.Display.fillScreen(TFT_BLACK);
+
+        // Try M5GFX drawPng with scaling
+        Serial.println("Calling M5Cardputer.Display.drawPng()...");
         success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
         pngFile.close();
 
-        if (!success) {
-          // M5GFX also failed - show helpful error
-          M5Cardputer.Display.fillScreen(TFT_BLACK);
-          M5Cardputer.Display.setTextSize(1);
-          M5Cardputer.Display.setTextColor(TFT_RED);
-          M5Cardputer.Display.drawString("PNG too large for memory", 35, 45);
-          M5Cardputer.Display.setTextColor(TFT_YELLOW);
-          M5Cardputer.Display.drawString("Try resizing to 240x135", 40, 60);
-          M5Cardputer.Display.drawString("or smaller file size", 50, 72);
-          drawNavHint("Press ` to return", 65, 122);
+        Serial.printf("M5GFX drawPng returned: %s\n", success ? "SUCCESS" : "FAILED");
+
+        if (success) {
+          Serial.println("PNG displayed successfully!");
+          // Keep image on screen - don't clear
+        } else {
+          Serial.println("M5GFX drawPng failed - PNG may be too complex or unsupported color mode");
         }
+      } else {
+        Serial.println("Failed to open PNG file");
+        success = false;
       }
     } else {
-      // Other error (invalid file, etc)
-      success = false;
+      // Small file - try PNGdec first for better quality
+      int rc = png.open(path.c_str(), PNGOpenFile, PNGCloseFile, PNGReadFile, PNGSeekFile, PNGDraw);
+      Serial.printf("PNGdec open result: %d\n", rc);
+
+      if (rc == PNG_SUCCESS) {
+        // PNGdec can handle this file
+        M5Cardputer.Display.fillScreen(TFT_BLACK);
+        rc = png.decode(NULL, 0);
+        png.close();
+        success = (rc == PNG_SUCCESS);
+        Serial.printf("PNGdec decode result: %d\n", rc);
+      } else if (rc == 7) {
+        // Error 7 = PNG_TOO_BIG - try M5GFX as fallback
+        Serial.println("PNGdec says too big, trying M5GFX...");
+        File pngFile = SD.open(path.c_str());
+        if (pngFile) {
+          M5Cardputer.Display.fillScreen(TFT_BLACK);
+          success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
+          pngFile.close();
+        }
+      } else {
+        // PNGdec error - try M5GFX as fallback
+        Serial.printf("PNGdec failed with error %d, trying M5GFX...\n", rc);
+        File pngFile = SD.open(path.c_str());
+        if (pngFile) {
+          M5Cardputer.Display.fillScreen(TFT_BLACK);
+          success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
+          pngFile.close();
+        }
+      }
+    }
+
+    if (!success) {
+      // Both methods failed - try one more thing: load without scaling
+      Serial.println("Standard methods failed, trying drawPng without scaling...");
+      File pngFile = SD.open(path.c_str());
+      if (pngFile) {
+        M5Cardputer.Display.fillScreen(TFT_BLACK);
+        success = M5Cardputer.Display.drawPng(&pngFile, 0, 0);  // No width/height = no scaling
+        pngFile.close();
+
+        if (success) {
+          Serial.println("Success with no-scaling method!");
+        } else {
+          Serial.println("No-scaling method also failed");
+        }
+      }
+    }
+
+    if (!success) {
+      // All methods failed - show helpful message
+      Serial.println("All PNG methods failed");
+
+      M5Cardputer.Display.fillScreen(TFT_BLACK);
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.setTextColor(TFT_RED);
+      M5Cardputer.Display.drawString("PNG format unsupported", 40, 25);
+
+      M5Cardputer.Display.setTextColor(TFT_YELLOW);
+      String sizeStr = "Size: " + String(fileSize / 1024) + " KB";
+      M5Cardputer.Display.drawString(sizeStr, 75, 42);
+
+      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      M5Cardputer.Display.drawString("This PNG uses features", 45, 60);
+      M5Cardputer.Display.drawString("not supported by the", 50, 72);
+      M5Cardputer.Display.drawString("embedded decoder.", 60, 84);
+
+      M5Cardputer.Display.setTextColor(TFT_CYAN);
+      M5Cardputer.Display.drawString("Use WiFi Transfer's", 55, 100);
+      M5Cardputer.Display.drawString("auto-optimizer to fix", 50, 112);
+
+      drawNavHint("` Back", 95, 127);
     }
   } else if (lowerPath.endsWith(".bmp")) {
     success = M5Cardputer.Display.drawBmp(&imgFile, 0, 0, 240, 135);
@@ -822,11 +905,13 @@ void audioVolumeDown() {
   masterVolumeDown();
 }
 
-void playAudioFile(const String& path) {
-  if (startMusicPlayback(path)) {
+bool playAudioFile(const String& path) {
+  bool success = startMusicPlayback(path);
+  if (success) {
     currentAudioPath = path;
     audioStartTime = millis();
   }
+  return success;
 }
 
 void stopAudioPlayback() {

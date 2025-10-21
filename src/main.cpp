@@ -990,10 +990,28 @@ void loop() {
           for (auto key : status.word) {
             if (key == '`') {
               if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              stopWebServer();  // CRITICAL: Clean up WebServer to free RAM!
               currentState = APPS_MENU;
               drawScreen(true);
               return;
             }
+          }
+          return;
+        } else if (transferState == TRANSFER_RUNNING) {
+          // Allow stopping the server when it's running
+          for (auto key : status.word) {
+            if (key == '`') {
+              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              stopWebServer();  // CRITICAL: Clean up WebServer to free RAM!
+              currentState = APPS_MENU;
+              drawScreen(true);
+              return;
+            }
+          }
+          if (status.del) {
+            // ESC stops the server and returns to menu
+            stopWebServer();
+            return;
           }
           return;
         }
@@ -1175,10 +1193,19 @@ void loop() {
           }
           return;
         } else if (wifiFunState == TV_B_GONE_RUNNING) {
-          // ESC key stops TV-B-Gone
+          // ESC or ` key stops TV-B-Gone
           if (status.del) {
             stopTVBGone();
             return;
+          }
+          for (auto key : status.word) {
+            if (key == '`') {
+              stopTVBGone();
+              wifiFunState = WIFI_FUN_MENU;
+              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              drawWiFiFunMenu();
+              return;
+            }
           }
           return;
         } else if (wifiFunState == ANALYTICS_MENU) {
@@ -1662,38 +1689,43 @@ void loop() {
             }
           }
 
-          // Live search: search as you type and show preview inline!
+          // INSTANT LIVE SEARCH - run immediately as user types
           if (searchChanged) {
-            if (searchInput.length() >= 2) {
-              // Search but DON'T switch to results page - just preview
-              searchResults.clear();
-              selectedResultIndex = 0;
+            // Clear old results immediately and search NOW
+            searchResults.clear();
+            selectedResultIndex = 0;
 
-              // Search all category indexes
+            if (searchInput.length() >= 1) {
+              // Search all category indexes LIVE (limited to 100 lines each for speed)
+              const int MAX_TOTAL_RESULTS = 30;  // Hard cap to prevent crashes
+
               for (int i = 0; i < totalCategories; i++) {
+                // Stop if we already have enough results
+                if (searchResults.size() >= MAX_TOTAL_RESULTS) {
+                  break;
+                }
+
                 String indexPath = categories[i].path + "/index.txt";
                 std::vector<SearchResult> catResults = searchIndex(indexPath, searchInput);
 
-                // Add results from this category
-                for (size_t j = 0; j < catResults.size(); j++) {
+                // Add results from this category (up to the cap)
+                for (size_t j = 0; j < catResults.size() && searchResults.size() < MAX_TOTAL_RESULTS; j++) {
                   searchResults.push_back(catResults[j]);
                 }
               }
-            } else {
-              // Clear results if search too short
-              searchResults.clear();
-              selectedResultIndex = 0;
             }
-            drawBookSearch();  // Redraw with preview
+
+            drawBookSearch();  // Redraw immediately with new results
           } else if (needsRedraw) {
             drawBookSearch();  // Redraw for selection change
           }
 
-          // Enter key: open selected result directly!
+          // Enter key: go to full results page
           if (status.enter) {
             if (searchResults.size() > 0) {
               if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
-              loadArticle(searchResults[selectedResultIndex]);
+              bookState = BOOK_RESULTS;
+              drawBookResults();
               return;
             }
           }

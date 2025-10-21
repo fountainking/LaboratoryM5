@@ -75,7 +75,7 @@ extern int selectedCount;
 
 // Audio player functions
 void drawAudioPlayer(const String& path);
-void playAudioFile(const String& path);
+bool playAudioFile(const String& path);  // Returns true if playback started successfully
 void stopAudioPlayback();
 bool isAudioPlaying();
 void updateAudioPlayback();

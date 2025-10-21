@@ -2,6 +2,7 @@
 #include "ui.h"
 #include "settings.h"
 #include "ascii_art.h"
+#include <algorithm>
 
 // Global state
 BookState bookState = BOOK_SEARCH;
@@ -12,6 +13,11 @@ int articleScrollOffset = 0;
 String currentArticleTitle = "";
 std::vector<String> articleLines;
 int currentCategoryIndex = 0;
+
+// Search debouncing
+unsigned long lastSearchInputTime = 0;
+const unsigned long SEARCH_DEBOUNCE_MS = 100;  // Wait 100ms after typing stops (faster!)
+bool searchPending = false;
 
 // Categories for The Book (all 15 categories)
 BookCategory categories[] = {
@@ -89,7 +95,7 @@ void drawBookSearch() {
   M5Cardputer.Display.drawString(displayInput, 75, 40);
 
   // Show live search results preview under search bar
-  if (searchResults.size() > 0 && searchInput.length() >= 2) {
+  if (searchResults.size() > 0 && searchInput.length() >= 1) {
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(TFT_BLACK);
     String preview = String(searchResults.size()) + " results - UP/DOWN to select";
@@ -138,7 +144,7 @@ void drawTableOfContents() {
 
   // Title
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_ORANGE);
+  M5Cardputer.Display.setTextColor(TFT_RED);
   M5Cardputer.Display.drawString("Table of Contents", popupX + 30, popupY + 8);
 
   // Draw categories list
@@ -158,18 +164,18 @@ void drawBookResults() {
   M5Cardputer.Display.setTextSize(1);
 
   // Title
-  M5Cardputer.Display.setTextColor(TFT_ORANGE);
+  M5Cardputer.Display.setTextColor(TFT_RED);
   M5Cardputer.Display.drawString("Search Results", 10, 5);
 
   // Results count
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
   String countStr = "Found: " + String(searchResults.size()) + " results";
   M5Cardputer.Display.drawString(countStr, 10, 15);
 
   if (searchResults.size() == 0) {
-    M5Cardputer.Display.setTextColor(TFT_ORANGE);
+    M5Cardputer.Display.setTextColor(TFT_RED);
     M5Cardputer.Display.drawString("No results found", 10, 50);
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
     M5Cardputer.Display.drawString("Try a different search term", 10, 65);
     M5Cardputer.Display.drawString("` Back", 5, 120);
     return;
@@ -183,7 +189,7 @@ void drawBookResults() {
   int y = 30;
   for (int i = startIdx; i < endIdx; i++) {
     if (i == selectedResultIndex) {
-      M5Cardputer.Display.fillRect(5, y - 2, 230, 13, TFT_LIGHTGREY);
+      M5Cardputer.Display.fillRect(5, y - 2, 230, 13, TFT_YELLOW);
     }
 
     // Truncate title if too long
@@ -192,11 +198,11 @@ void drawBookResults() {
       title = title.substring(0, 32) + "...";
     }
 
-    M5Cardputer.Display.setTextColor(TFT_BLUE);
+    M5Cardputer.Display.setTextColor(TFT_RED);
     M5Cardputer.Display.drawString("> " + title, 8, y);
 
     // Category tag
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
     M5Cardputer.Display.drawString("[" + searchResults[i].category + "]", 200, y);
 
     y += 13;
@@ -214,8 +220,8 @@ void drawBookArticle() {
   M5Cardputer.Display.setTextSize(1);
 
   // Title bar
-  M5Cardputer.Display.fillRect(0, 0, 240, 18, TFT_LIGHTGREY);
-  M5Cardputer.Display.setTextColor(TFT_ORANGE);
+  M5Cardputer.Display.fillRect(0, 0, 240, 18, TFT_YELLOW);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
   String truncTitle = currentArticleTitle;
   if (truncTitle.length() > 35) {
     truncTitle = truncTitle.substring(0, 32) + "...";
@@ -231,6 +237,13 @@ void drawBookArticle() {
   for (int i = startLine; i < endLine; i++) {
     String line = articleLines[i];
 
+    // Highlight markdown links/bold in red
+    if (line.indexOf("**") >= 0 || line.indexOf("http") >= 0) {
+      M5Cardputer.Display.setTextColor(TFT_RED);
+    } else {
+      M5Cardputer.Display.setTextColor(TFT_BLACK);
+    }
+
     // Word wrap for long lines
     if (line.length() > 39) {
       line = line.substring(0, 39);
@@ -242,13 +255,13 @@ void drawBookArticle() {
 
   // Scroll indicator
   if (articleLines.size() > LINES_PER_PAGE) {
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
     String scrollInfo = String(startLine + 1) + "-" + String(endLine) + "/" + String(articleLines.size());
     M5Cardputer.Display.drawString(scrollInfo, 190, 5);
   }
 
   // Instructions
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
   M5Cardputer.Display.drawString("UP/DOWN: Scroll | ` Back", 5, 128);
 }
 
@@ -300,18 +313,24 @@ std::vector<SearchResult> searchIndex(String indexPath, String query) {
 
   query.toLowerCase();
 
-  // Read index line by line
-  while (indexFile.available() && results.size() < 50) {  // Limit to 50 results
+  // Three-tier priority ranking (Google-style)
+  std::vector<SearchResult> startsWithMatches;  // Title STARTS with query (highest)
+  std::vector<SearchResult> titleContainsMatches;  // Title CONTAINS query
+  std::vector<SearchResult> contentMatches;  // Content contains query (lowest)
+
+  int linesRead = 0;
+  const int MAX_LINES_TO_READ = 100;  // Only read first 100 lines for speed
+
+  // Read index line by line (limited for responsiveness)
+  while (indexFile.available() && linesRead < MAX_LINES_TO_READ &&
+         (startsWithMatches.size() + titleContainsMatches.size() + contentMatches.size()) < 5) {
+
+    linesRead++;
     String line = indexFile.readStringUntil('\n');
     line.trim();
 
     // Skip empty lines
     if (line.length() == 0) continue;
-
-    // Check if query matches (case-insensitive)
-    String lowerLine = line;
-    lowerLine.toLowerCase();
-    if (lowerLine.indexOf(query) == -1) continue;
 
     // Parse: KEYWORD|FILENAME|LINE|PREVIEW
     int pipe1 = line.indexOf('|');
@@ -340,8 +359,47 @@ std::vector<SearchResult> searchIndex(String indexPath, String query) {
         result.category = "Other";
       }
 
-      results.push_back(result);
+      // Smart ranking like Google
+      String lowerTitle = result.title;
+      lowerTitle.toLowerCase();
+      int titleMatchPos = lowerTitle.indexOf(query);
+
+      if (titleMatchPos == 0) {
+        // HIGHEST PRIORITY: Title STARTS with query ("fi" -> "Fire", not "Goldfish")
+        startsWithMatches.push_back(result);
+      } else if (titleMatchPos > 0) {
+        // MEDIUM PRIORITY: Title CONTAINS query
+        titleContainsMatches.push_back(result);
+      } else {
+        // LOWEST PRIORITY: Only in content
+        String lowerPreview = result.preview;
+        lowerPreview.toLowerCase();
+        if (lowerPreview.indexOf(query) >= 0) {
+          contentMatches.push_back(result);
+        }
+      }
     }
+  }
+
+  // Sort each tier by title length (shorter = more relevant)
+  std::sort(startsWithMatches.begin(), startsWithMatches.end(),
+    [](const SearchResult& a, const SearchResult& b) {
+      return a.title.length() < b.title.length();
+    });
+  std::sort(titleContainsMatches.begin(), titleContainsMatches.end(),
+    [](const SearchResult& a, const SearchResult& b) {
+      return a.title.length() < b.title.length();
+    });
+
+  // Combine results: starts-with first, then contains, then content (max 5 per category)
+  for (size_t i = 0; i < startsWithMatches.size() && results.size() < 5; i++) {
+    results.push_back(startsWithMatches[i]);
+  }
+  for (size_t i = 0; i < titleContainsMatches.size() && results.size() < 5; i++) {
+    results.push_back(titleContainsMatches[i]);
+  }
+  for (size_t i = 0; i < contentMatches.size() && results.size() < 5; i++) {
+    results.push_back(contentMatches[i]);
   }
 
   indexFile.close();
@@ -379,18 +437,30 @@ void loadArticle(SearchResult result) {
   articleScrollOffset = 0;
   currentArticleTitle = result.title;
 
-  // Build full path
+  // Build full path - find matching category
   String fullPath = "";
-  if (result.category == "Wiki") {
-    fullPath = "/the_book/wikipedia/" + result.filename;
-  } else if (result.category == "Code") {
-    fullPath = "/the_book/programming_languages/" + result.filename;
-  } else if (result.category == "Survival") {
-    fullPath = "/the_book/survival/" + result.filename;
-  } else if (result.category == "Religious") {
-    fullPath = "/the_book/religious/" + result.filename;
-  } else if (result.category == "Plants") {
-    fullPath = "/the_book/edible_plants/" + result.filename;
+  for (int i = 0; i < totalCategories; i++) {
+    // Extract category name from path (e.g., "/the_book/wikipedia" -> "Wiki")
+    String catPath = categories[i].path;
+    String catName = categories[i].name;
+
+    // Match the result category to the full path
+    if ((result.category == "Wiki" && catPath.indexOf("wikipedia") >= 0) ||
+        (result.category == "Code" && catPath.indexOf("programming") >= 0) ||
+        (result.category == "Survival" && catPath.indexOf("survival") >= 0) ||
+        (result.category == "Religious" && catPath.indexOf("religious") >= 0) ||
+        (result.category == "Plants" && catPath.indexOf("edible") >= 0) ||
+        (result.category == catName)) {
+      fullPath = catPath + "/" + result.filename;
+      break;
+    }
+  }
+
+  // Fallback: try to guess from category name
+  if (fullPath == "") {
+    String categoryLower = result.category;
+    categoryLower.toLowerCase();
+    fullPath = "/the_book/" + categoryLower + "/" + result.filename;
   }
 
   // Check if file exists
@@ -418,23 +488,29 @@ void loadArticle(SearchResult result) {
     }
   }
 
-  // Read article content (limit to 500 lines to avoid memory issues)
+  // Read article content (limit total display lines to avoid memory issues)
+  // For very large files like Quran (1MB+), limit to 300 lines max
+  const int MAX_DISPLAY_LINES = 300;
   int linesRead = 0;
-  while (articleFile.available() && linesRead < 500) {
+
+  while (articleFile.available() && articleLines.size() < MAX_DISPLAY_LINES) {
     String line = articleFile.readStringUntil('\n');
     line.trim();
 
     // Handle long lines - split into multiple display lines
-    while (line.length() > 39) {
+    while (line.length() > 39 && articleLines.size() < MAX_DISPLAY_LINES) {
       articleLines.push_back(line.substring(0, 39));
       line = line.substring(39);
-      linesRead++;
     }
 
-    if (line.length() > 0 || articleLines.size() > 0) {
+    if ((line.length() > 0 || articleLines.size() > 0) && articleLines.size() < MAX_DISPLAY_LINES) {
       articleLines.push_back(line);
-      linesRead++;
     }
+
+    linesRead++;
+
+    // Additional safety: break if we've read too many source lines
+    if (linesRead > 200) break;
   }
 
   articleFile.close();
