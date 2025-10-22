@@ -26,17 +26,23 @@ void loadMusicFolder() {
   // Load all MP3 files from /mp3s folder
   File file = dir.openNextFile();
   while (file && musicCount < 50) {
-    String filename = String(file.name());
+    const char* filename = file.name();  // No String allocation!
 
-    // Extract just the filename (not full path)
-    int lastSlash = filename.lastIndexOf('/');
-    if (lastSlash >= 0) {
-      filename = filename.substring(lastSlash + 1);
+    // Extract just the filename (not full path) - NO String allocations!
+    const char* baseFilename = strrchr(filename, '/');
+    if (baseFilename) {
+      baseFilename++;  // Skip the '/'
+    } else {
+      baseFilename = filename;
     }
 
-    // Skip hidden files (starting with .)
-    if (!file.isDirectory() && filename.endsWith(".mp3") && !filename.startsWith(".")) {
-      strncpy(musicFiles[musicCount], filename.c_str(), 63);
+    // Skip hidden files (starting with .) and directories
+    int len = strlen(baseFilename);
+    if (!file.isDirectory() &&
+        len > 4 &&
+        strcmp(baseFilename + len - 4, ".mp3") == 0 &&
+        baseFilename[0] != '.') {
+      strncpy(musicFiles[musicCount], baseFilename, 63);
       musicFiles[musicCount][63] = '\0';  // Ensure null termination
       musicCount++;
       Serial.printf("Found MP3: %s\n", musicFiles[musicCount-1]);
@@ -96,17 +102,29 @@ void drawMusicPlayer() {
     M5Cardputer.Display.drawString("Add MP3 files to /mp3s", 40, 75);
     M5Cardputer.Display.drawString("folder on SD card", 55, 85);
   } else {
-    // Show currently playing track info
+    // Show currently playing track info (NO String allocations - prevent fragmentation!)
     M5Cardputer.Display.setTextSize(1);
-    String displayName = musicFiles[selectedMusicIndex];
-    if (displayName.endsWith(".mp3")) {
-      displayName = displayName.substring(0, displayName.length() - 4);
+    char displayName[34];  // 30 chars + "..." + null
+    strncpy(displayName, musicFiles[selectedMusicIndex], 33);
+    displayName[33] = '\0';
+
+    // Remove .mp3 extension if present
+    int len = strlen(displayName);
+    if (len > 4 && strcmp(displayName + len - 4, ".mp3") == 0) {
+      displayName[len - 4] = '\0';
+      len -= 4;
     }
-    if (displayName.length() > 30) {
-      displayName = displayName.substring(0, 30) + "...";
+
+    // Truncate to 30 chars with "..."
+    if (len > 30) {
+      displayName[27] = '.';
+      displayName[28] = '.';
+      displayName[29] = '.';
+      displayName[30] = '\0';
     }
+
     M5Cardputer.Display.setTextColor(TFT_WHITE);
-    M5Cardputer.Display.drawString(displayName.c_str(), 10, 45);
+    M5Cardputer.Display.drawString(displayName, 10, 45);
 
     // Draw play/pause icon
     if (isPlaying && isAudioPlaying()) {
@@ -168,12 +186,24 @@ void drawMusicPlayer() {
       M5Cardputer.Display.setTextSize(1);
       M5Cardputer.Display.setTextColor(isSelected ? TFT_WHITE : TFT_DARKGREY);
 
-      String trackName = musicFiles[i];
-      if (trackName.endsWith(".mp3")) {
-        trackName = trackName.substring(0, trackName.length() - 4);
+      // NO String allocations - prevent fragmentation!
+      char trackName[30];  // 26 chars + "..." + null
+      strncpy(trackName, musicFiles[i], 29);
+      trackName[29] = '\0';
+
+      // Remove .mp3 extension if present
+      int len = strlen(trackName);
+      if (len > 4 && strcmp(trackName + len - 4, ".mp3") == 0) {
+        trackName[len - 4] = '\0';
+        len -= 4;
       }
-      if (trackName.length() > 26) {
-        trackName = trackName.substring(0, 26) + "...";
+
+      // Truncate to 26 chars with "..."
+      if (len > 26) {
+        trackName[23] = '.';
+        trackName[24] = '.';
+        trackName[25] = '.';
+        trackName[26] = '\0';
       }
 
       // Show selection indicator
@@ -181,7 +211,7 @@ void drawMusicPlayer() {
         M5Cardputer.Display.drawString(">", 10, yPos);
       }
 
-      M5Cardputer.Display.drawString(trackName.c_str(), 20, yPos);
+      M5Cardputer.Display.drawString(trackName, 20, yPos);
       yPos += 10;
     }
   }
