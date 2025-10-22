@@ -3,6 +3,9 @@
 #include <SPI.h>
 #include <FS.h>
 
+// Forward declaration for safeBeep() from main.cpp
+extern void safeBeep(int freq, int duration, bool checkSound = true);
+
 WiFiTransferState transferState = TRANSFER_MENU;
 WebServer* webServer = nullptr;
 bool serverRunning = false;
@@ -851,7 +854,7 @@ void startWebServer() {
     if (SD.mkdir(folderPath)) {
       webServer->send(200, "text/plain", "Folder created");
       lastAction = "Created folder: " + folderName;
-      M5Cardputer.Speaker.tone(1100, 50);
+      safeBeep(1100, 50, false);
       drawTransferRunning();
     } else {
       webServer->send(500, "text/plain", "Failed to create folder");
@@ -883,7 +886,7 @@ void startWebServer() {
     if (SD.rename(fromPath.c_str(), toPath.c_str())) {
       webServer->send(200, "text/plain", "File moved");
       lastAction = "Moved: " + fileName;
-      M5Cardputer.Speaker.tone(1000, 50);
+      safeBeep(1000, 50, false);
       drawTransferRunning();
     } else {
       webServer->send(500, "text/plain", "Failed to move file");
@@ -894,9 +897,9 @@ void startWebServer() {
   serverRunning = true;
   transferState = TRANSFER_RUNNING;
 
-  M5Cardputer.Speaker.tone(1200, 100);
+  safeBeep(1200, 100, false);
   delay(100);
-  M5Cardputer.Speaker.tone(1500, 100);
+  safeBeep(1500, 100, false);
 
   drawTransferRunning();
 }
@@ -909,8 +912,8 @@ void stopWebServer() {
   }
   serverRunning = false;
   transferState = TRANSFER_MENU;
-  
-  M5Cardputer.Speaker.tone(800, 100);
+
+  safeBeep(800, 100, false);
   drawTransferMenu();
 }
 
@@ -922,11 +925,11 @@ void handleWebServerLoop() {
 
 void handleRoot() {
   // Connection melody - three ascending beeps!
-  M5Cardputer.Speaker.tone(800, 80);
+  safeBeep(800, 80, false);
   delay(100);
-  M5Cardputer.Speaker.tone(1000, 80);
+  safeBeep(1000, 80, false);
   delay(100);
-  M5Cardputer.Speaker.tone(1200, 100);
+  safeBeep(1200, 100, false);
 
   // Send HTML page from PROGMEM (flash memory)
   webServer->send_P(200, "text/html", htmlPage);
@@ -1138,7 +1141,7 @@ void handleFileUpload() {
       uploadFile.close();
       uploadCount++;
       lastAction = "Uploaded: " + uploadPath;
-      M5Cardputer.Speaker.tone(1000, 50);
+      safeBeep(1000, 50, false);
       drawTransferRunning();
     }
   }
@@ -1161,10 +1164,10 @@ void handleFileDownload() {
   
   webServer->streamFile(file, "application/octet-stream");
   file.close();
-  
+
   downloadCount++;
   lastAction = "Downloaded: " + filename;
-  M5Cardputer.Speaker.tone(1200, 50);
+  safeBeep(1200, 50, false);
   drawTransferRunning();
 }
 
@@ -1190,7 +1193,7 @@ void handleFileDelete() {
   if (success) {
     webServer->send(200, "text/plain", isDir ? "Folder deleted" : "File deleted");
     lastAction = "Deleted: " + filename;
-    M5Cardputer.Speaker.tone(800, 50);
+    safeBeep(800, 50, false);
     drawTransferRunning();
   } else {
     webServer->send(500, "text/plain", isDir ? "Failed to delete folder (may not be empty)" : "Failed to delete file");

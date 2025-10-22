@@ -4,8 +4,8 @@
 #include <SPI.h>
 
 // Shared audio hardware (ONE instance for entire system)
-static AudioOutputM5Speaker *sharedAudioOutput = nullptr;
-static int masterVolume = 50; // 0-100
+static AudioOutputI2S *sharedAudioOutput = nullptr;
+static int masterVolume = 50; // 0-100 (default 50%)
 static int savedVolumeBeforeMute = -1; // -1 means not muted
 
 // Current audio source
@@ -21,31 +21,22 @@ static AudioGeneratorMP3 *radioMP3 = nullptr;
 static AudioFileSourceHTTPStream *radioStream = nullptr;
 
 void initAudioManager() {
+  // Only initialize ONCE - never recreate the audio output object
+  // This matches the minimal test program that works perfectly
   if (sharedAudioOutput == nullptr) {
-    Serial.println("Audio Manager: Creating AudioOutputM5Speaker...");
-    sharedAudioOutput = new AudioOutputM5Speaker();
-    if (sharedAudioOutput) {
-      Serial.println("Audio Manager: AudioOutputM5Speaker allocated");
-      bool success = sharedAudioOutput->begin();
-      Serial.printf("Audio Manager: AudioOutputM5Speaker->begin() returned %s\n", success ? "true" : "false");
-      if (success) {
-        // Set initial volume
-        sharedAudioOutput->SetGain(masterVolume / 25.0); // 0-100 mapped to 0.0-4.0
-        Serial.println("Audio Manager: AudioOutputM5Speaker initialized successfully");
-      } else {
-        Serial.println("Audio Manager: ERROR - AudioOutputM5Speaker begin() failed!");
-        delete sharedAudioOutput;
-        sharedAudioOutput = nullptr;
-      }
-    } else {
-      Serial.println("Audio Manager: ERROR - Failed to allocate AudioOutputM5Speaker!");
-    }
-  } else {
-    Serial.println("Audio Manager: AudioOutputM5Speaker already initialized");
+    // CRITICAL: Stop M5Speaker to release I2S port 0 (only needed first time)
+    M5Cardputer.Speaker.end();
+    Serial.println("Audio Manager: Stopped M5Speaker to release I2S port 0");
+
+    sharedAudioOutput = new AudioOutputI2S(0);  // Use I2S port 0 (now available)
+    sharedAudioOutput->SetPinout(41, 43, 42); // M5Cardputer I2S pins
+    sharedAudioOutput->SetOutputModeMono(true);
+    sharedAudioOutput->SetGain(masterVolume / 25.0); // Set initial gain based on masterVolume (50/25 = 2.0)
+    Serial.println("Audio Manager: Initialized AudioOutputI2S on port 0");
   }
 }
 
-AudioOutputM5Speaker* getSharedAudioOutput() {
+AudioOutputI2S* getSharedAudioOutput() {
   if (sharedAudioOutput == nullptr) {
     initAudioManager();
   }
@@ -100,22 +91,18 @@ void restoreAudioVolume() {
 
 // Music player implementation
 bool startMusicPlayback(const String& path) {
+  Serial.printf("Starting music playback: %s\n", path.c_str());
+  Serial.printf("Free heap before: %d bytes\n", ESP.getFreeHeap());
+
   // Stop any existing audio first
   stopMusicPlayback();
   stopRadioStream();
 
   initAudioManager();
 
-  // CRITICAL: Ensure SPI bus and SD card are initialized with correct pins
-  // AudioFileSourceSD uses the global SD instance, so we need to make sure it's ready
-  SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-
-  if (!SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ)) {
-    Serial.println("ERROR: SD card not available for audio playback!");
-    return false;
-  }
-
-  // Verify file exists before trying to play
+  // DON'T reinitialize SD card here - it's already initialized by the main app
+  // Calling SD.begin() multiple times causes conflicts and makes SD unavailable
+  // Just verify the SD card is accessible and file exists
   if (!SD.exists(path.c_str())) {
     Serial.printf("ERROR: Audio file not found: %s\n", path.c_str());
     return false;
@@ -141,12 +128,18 @@ bool startMusicPlayback(const String& path) {
   }
   Serial.printf("AudioFileSourceSD successfully opened, size: %d bytes\n", musicFile->getSize());
 
-  musicMP3 = new AudioGeneratorMP3_PSRAM();
-  if (!musicMP3) {
-    Serial.println("ERROR: Failed to create AudioGeneratorMP3!");
-    delete musicFile;
-    musicFile = nullptr;
-    return false;
+  // Create MP3 decoder only once (like minimal test and AudioOutputI2S)
+  if (musicMP3 == nullptr) {
+    musicMP3 = new AudioGeneratorMP3();
+    if (!musicMP3) {
+      Serial.println("ERROR: Failed to create AudioGeneratorMP3!");
+      delete musicFile;
+      musicFile = nullptr;
+      return false;
+    }
+    Serial.println("Created new MP3 decoder");
+  } else {
+    Serial.println("Reusing existing MP3 decoder");
   }
 
   Serial.println("Calling musicMP3->begin()...");
@@ -173,34 +166,37 @@ bool startMusicPlayback(const String& path) {
     Serial.println("    1. Invalid MP3 file format");
     Serial.println("    2. File is corrupted");
     Serial.println("    3. Insufficient memory");
-    delete musicMP3;
+    // Don't delete musicMP3 - keep it alive for next song
     delete musicFile;
-    musicMP3 = nullptr;
     musicFile = nullptr;
     return false;
   }
 }
 
 void stopMusicPlayback() {
-  if (musicMP3) {
-    if (musicMP3->isRunning()) {
-      musicMP3->stop();
-    }
-    delay(50);
-    delete musicMP3;
-    musicMP3 = nullptr;
+  Serial.println("Stopping music playback...");
+
+  if (musicMP3 && musicMP3->isRunning()) {
+    Serial.println("Stopping MP3 decoder...");
+    musicMP3->stop();
   }
 
+  // Close file but keep decoder alive (like minimal test program)
   if (musicFile) {
+    Serial.println("Closing music file...");
     delete musicFile;
     musicFile = nullptr;
+    Serial.println("Music file closed");
   }
 
   if (currentSource == AUDIO_SOURCE_MUSIC) {
     currentSource = AUDIO_SOURCE_NONE;
+    Serial.println("Audio Manager: Music stopped");
   }
 
   currentMusicPath = "";
+
+  Serial.printf("Free heap after stop: %d bytes\n", ESP.getFreeHeap());
 }
 
 bool isMusicPlaying() {
@@ -231,7 +227,7 @@ bool startRadioStream(const char* url) {
     return false;
   }
 
-  radioMP3 = new AudioGeneratorMP3_PSRAM();
+  radioMP3 = new AudioGeneratorMP3();
   if (!radioMP3) {
     delete radioStream;
     radioStream = nullptr;
@@ -269,6 +265,10 @@ void stopRadioStream() {
 
   if (currentSource == AUDIO_SOURCE_RADIO) {
     currentSource = AUDIO_SOURCE_NONE;
+
+    // Don't restart M5Speaker here - it will be started on-demand by safeBeep() when needed
+    // This prevents stealing I2S port 0 from subsequent audio playback
+    Serial.println("Audio Manager: Radio stopped, I2S port 0 released");
   }
 
   delay(100); // Extra delay to ensure resources released

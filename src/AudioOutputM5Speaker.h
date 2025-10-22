@@ -2,15 +2,15 @@
 #define _AUDIOOUTPUTM5SPEAKER_H
 
 #include <M5Cardputer.h>
-#include <AudioOutput.h>
+#include <AudioOutputI2S.h>
 
-// Ultra-simple AudioOutput class for M5Cardputer
-// Minimal implementation - just output samples directly
-class AudioOutputM5Speaker : public AudioOutput
+// Simple wrapper that uses standard I2S output for M5Cardputer
+// M5Cardputer Speaker uses I2S internally
+class AudioOutputM5Speaker : public AudioOutputI2S
 {
   public:
-    AudioOutputM5Speaker() {
-      Serial.println("AudioOutputM5Speaker: Simple constructor");
+    AudioOutputM5Speaker() : AudioOutputI2S() {
+      Serial.println("AudioOutputM5Speaker: Using I2S");
     }
 
     virtual ~AudioOutputM5Speaker() {
@@ -18,66 +18,28 @@ class AudioOutputM5Speaker : public AudioOutput
     }
 
     virtual bool begin() override {
-      Serial.println("AudioOutputM5Speaker: begin()");
-      M5Cardputer.Speaker.setVolume(255);  // Max volume
-      return true;
-    }
+      Serial.println("AudioOutputM5Speaker: Initializing I2S for M5Cardputer");
 
-    virtual bool ConsumeSample(int16_t sample[2]) override {
-      // Accumulate samples in buffer
-      if (bufferPos < BUFFER_SIZE) {
-        buffer[bufferPos++] = sample[0];  // Left
-        buffer[bufferPos++] = sample[1];  // Right
-        return true;
+      // M5Cardputer speaker I2S pins
+      SetPinout(41, 43, 42);  // BCLK, WCLK (LRC), DOUT
+
+      // Start I2S with standard settings
+      bool result = AudioOutputI2S::begin();
+
+      if (result) {
+        Serial.println("AudioOutputM5Speaker: I2S initialized successfully");
+        SetGain(2.0);  // Set moderate gain
+      } else {
+        Serial.println("AudioOutputM5Speaker: I2S initialization failed");
       }
 
-      // Buffer full - play it
-      flush();
-      return false;
+      return result;
     }
-
-    virtual void flush() override {
-      if (bufferPos > 0) {
-        // Play buffer: playRaw(data, length, sampleRate, stereo, repeat, channel)
-        M5Cardputer.Speaker.playRaw(buffer, bufferPos, hertz, true, 1, 0);
-        bufferPos = 0;
-      }
-    }
-
 
     virtual bool stop() override {
       Serial.println("AudioOutputM5Speaker: stop()");
-      M5Cardputer.Speaker.stop();
-      return true;
+      return AudioOutputI2S::stop();
     }
-
-    bool SetRate(int hz) override {
-      Serial.printf("AudioOutputM5Speaker: SetRate(%d)\n", hz);
-      hertz = hz;
-      return true;
-    }
-
-    bool SetBitsPerSample(int bits) override {
-      return (bits == 16);
-    }
-
-    bool SetChannels(int channels) override {
-      return (channels >= 1 && channels <= 2);
-    }
-
-    bool SetGain(float gain) override {
-      int vol = (int)(gain * 64.0);
-      if (vol > 255) vol = 255;
-      if (vol < 0) vol = 0;
-      M5Cardputer.Speaker.setVolume(vol);
-      return true;
-    }
-
-  private:
-    static const int BUFFER_SIZE = 256;
-    int16_t buffer[BUFFER_SIZE];
-    int bufferPos = 0;
-    int hertz = 44100;
 };
 
 #endif

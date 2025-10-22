@@ -30,7 +30,7 @@ String partyTimeInput = "";
 // Analytics globals
 bool crowdCounterActive = false;
 int deviceCount = 0;
-String deviceMACs[50];  // Store unique MAC addresses
+String deviceMACs[20];  // Reduced: Store unique MAC addresses
 unsigned long lastCrowdUpdate = 0;
 
 // Promiscuous mode globals for actual device detection
@@ -39,7 +39,7 @@ unsigned long lastChannelSwitch = 0;
 const int CHANNEL_HOP_INTERVAL = 300;  // ms between channel hops
 
 // Queue for processing new devices found in interrupt handler
-String newDeviceQueue[10];  // Temporary queue for MACs found in interrupt
+String newDeviceQueue[5];  // Reduced: Temporary queue for MACs found in interrupt
 int newDeviceQueueCount = 0;
 bool displayNeedsUpdate = false;
 
@@ -47,7 +47,7 @@ bool displayNeedsUpdate = false;
 BLEScan* pBLEScan = nullptr;
 bool bleInitialized = false;
 int bleDeviceCount = 0;
-String bleDeviceMACs[50];  // Separate array for BLE devices
+String bleDeviceMACs[20];  // Reduced: Separate array for BLE devices
 unsigned long lastBLEScan = 0;
 const int BLE_SCAN_INTERVAL = 2000;  // ms between BLE scans
 
@@ -153,13 +153,13 @@ const int analyticsMenuCount = 2;
 // OUI lookup from SD card - much more memory efficient!
 String lookupOUIFromSD(String macPrefix) {
   if (!sdCardMounted) {
-    Serial.println("ERROR: SD card not mounted");
+    Serial.println(F("ERROR: SD card not mounted"));
     return "";
   }
 
   File file = SD.open("/oui.csv");
   if (!file) {
-    Serial.println("ERROR: Cannot open /oui.csv");
+    Serial.println(F("ERROR: Cannot open /oui.csv"));
     return "";
   }
 
@@ -189,13 +189,13 @@ String lookupOUIFromSD(String macPrefix) {
         file.close();
 
         // Log the match
-        Serial.print("OUI Match: ");
+        Serial.print(F("OUI Match: "));
         Serial.print(macPrefix);
-        Serial.print(" = ");
+        Serial.print(F(" = "));
         Serial.print(brand);
-        Serial.print(" (");
+        Serial.print(F(" ("));
         Serial.print(type);
-        Serial.println(")");
+        Serial.println(F(")"));
 
         return brand + "|" + type;  // Return both brand and type
       }
@@ -241,7 +241,7 @@ DeviceInfo lookupDevice(String macAddress) {
     result.brand = "Phone";
     result.type = "phone";
     result.found = true;
-    Serial.print("Randomized MAC detected: ");
+    Serial.print(F("Randomized MAC detected: "));
     Serial.println(macAddress.substring(0, 8));
     return result;
   }
@@ -895,7 +895,7 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
         deviceCount++;
         drawCrowdCounter();
 
-        Serial.print("BLE Device found: ");
+        Serial.print(F("BLE Device found: "));
         Serial.println(address);
       }
     }
@@ -1001,7 +1001,7 @@ void startCrowdCounter() {
   lastBLEScan = millis();
 
   if (!bleInitialized) {
-    Serial.println("Initializing BLE...");
+    Serial.println(F("Initializing BLE..."));
     BLEDevice::init("");
     pBLEScan = BLEDevice::getScan();
     pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks());
@@ -1009,18 +1009,18 @@ void startCrowdCounter() {
     pBLEScan->setInterval(100);
     pBLEScan->setWindow(99);
     bleInitialized = true;
-    Serial.println("BLE initialized successfully!");
+    Serial.println(F("BLE initialized successfully!"));
   }
 
   // Initialize SD card if not already mounted (needed for OUI lookup)
   if (!sdCardMounted) {
-    Serial.println("Initializing SD card for OUI lookup...");
+    Serial.println(F("Initializing SD card for OUI lookup..."));
     SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
     sdCardMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
     if (sdCardMounted) {
-      Serial.println("SD card mounted successfully!");
+      Serial.println(F("SD card mounted successfully!"));
     } else {
-      Serial.println("SD card mount failed - device identification will be limited");
+      Serial.println(F("SD card mount failed - device identification will be limited"));
     }
   }
 
@@ -1037,24 +1037,24 @@ void startCrowdCounter() {
   if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
 
   // Check CSV file status immediately and log
-  Serial.println("=== DEVICE COUNTER START (PROMISCUOUS MODE) ===");
-  Serial.print("SD Card Mounted: ");
+  Serial.println(F("=== DEVICE COUNTER START (PROMISCUOUS MODE) ==="));
+  Serial.print(F("SD Card Mounted: "));
   Serial.println(sdCardMounted ? "YES" : "NO");
   if (sdCardMounted) {
     File csvFile = SD.open("/oui.csv");
     if (csvFile) {
-      Serial.println("oui.csv file: FOUND");
-      Serial.print("File size: ");
+      Serial.println(F("oui.csv file: FOUND"));
+      Serial.print(F("File size: "));
       Serial.print(csvFile.size());
-      Serial.println(" bytes");
+      Serial.println(F(" bytes"));
       csvFile.close();
     } else {
-      Serial.println("oui.csv file: NOT FOUND");
+      Serial.println(F("oui.csv file: NOT FOUND"));
     }
   }
-  Serial.println("Promiscuous mode: ENABLED");
-  Serial.println("Now sniffing for WiFi probe requests from client devices...");
-  Serial.println("==================================================");
+  Serial.println(F("Promiscuous mode: ENABLED"));
+  Serial.println(F("Now sniffing for WiFi probe requests from client devices..."));
+  Serial.println(F("=================================================="));
 
   drawCrowdCounter();
 }
@@ -1073,11 +1073,11 @@ void updateCrowdCounter() {
         deviceMACs[deviceCount] = mac;
         deviceCount++;
 
-        Serial.print("NEW DEVICE: ");
+        Serial.print(F("NEW DEVICE: "));
         Serial.print(mac);
-        Serial.print(" (Ch ");
+        Serial.print(F(" (Ch "));
         Serial.print(currentChannel);
-        Serial.println(")");
+        Serial.println(F(")"));
 
         // Lookup device info (safe to do file I/O here in main loop)
         DeviceInfo device = lookupDevice(mac);
@@ -1136,13 +1136,13 @@ void updateCrowdCounter() {
 
   // Periodic BLE scanning - scan every 2 seconds for BLE devices
   if (bleInitialized && millis() - lastBLEScan > BLE_SCAN_INTERVAL) {
-    Serial.println("Starting BLE scan...");
+    Serial.println(F("Starting BLE scan..."));
     BLEScanResults foundDevices = pBLEScan->start(1, false);  // 1 second scan, don't delete results
     pBLEScan->clearResults();  // Clear results for next scan
     lastBLEScan = millis();
-    Serial.print("BLE scan complete. Found ");
+    Serial.print(F("BLE scan complete. Found "));
     Serial.print(foundDevices.getCount());
-    Serial.println(" devices in this scan.");
+    Serial.println(F(" devices in this scan."));
   }
 
   // The actual WiFi device detection happens in the promiscuous mode callback
@@ -1316,7 +1316,7 @@ void stopCrowdCounter() {
   // Stop BLE scanning (but don't deinit - keep it ready for next time)
   if (bleInitialized && pBLEScan != nullptr) {
     pBLEScan->stop();
-    Serial.println("BLE scanning: STOPPED");
+    Serial.println(F("BLE scanning: STOPPED"));
   }
 
   // Restore normal WiFi mode
@@ -1324,8 +1324,8 @@ void stopCrowdCounter() {
 
   if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 100);
 
-  Serial.println("=== DEVICE COUNTER STOPPED ===");
-  Serial.println("Promiscuous mode: DISABLED");
+  Serial.println(F("=== DEVICE COUNTER STOPPED ==="));
+  Serial.println(F("Promiscuous mode: DISABLED"));
 
   wifiFunState = ANALYTICS_MENU;
   drawAnalyticsMenu();
@@ -1677,8 +1677,8 @@ void startProbeSniffer() {
   wifiFunState = PROBE_SNIFFER_RUNNING;
   if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
 
-  Serial.println("=== PROBE SNIFFER START ===");
-  Serial.println("Listening for WiFi probe requests...");
+  Serial.println(F("=== PROBE SNIFFER START ==="));
+  Serial.println(F("Listening for WiFi probe requests..."));
 
   drawProbeSniffer();
 }
@@ -1703,13 +1703,13 @@ void updateProbeSniffer() {
       }
 
       // Log to serial
-      Serial.print("PROBE: ");
+      Serial.print(F("PROBE: "));
       Serial.print(probeQueue[q]);
-      Serial.print(" -> ");
+      Serial.print(F(" -> "));
       Serial.print(probeQueueSSID[q].length() > 0 ? probeQueueSSID[q] : "[Broadcast]");
-      Serial.print(" (");
+      Serial.print(F(" ("));
       Serial.print(probeQueueRSSI[q]);
-      Serial.println(" dBm)");
+      Serial.println(F(" dBm)"));
     }
 
     // Clear queue
@@ -1726,8 +1726,8 @@ void stopProbeSniffer() {
 
   if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 100);
 
-  Serial.println("=== PROBE SNIFFER STOPPED ===");
-  Serial.print("Total probes seen: ");
+  Serial.println(F("=== PROBE SNIFFER STOPPED ==="));
+  Serial.print(F("Total probes seen: "));
   Serial.println(totalProbesSeen);
 
   wifiFunState = ANALYTICS_MENU;
@@ -2389,7 +2389,7 @@ void startTVBGone() {
 
   drawTVBGone();
 
-  Serial.println("=== TV-B-GONE STARTED ===");
+  Serial.println(F("=== TV-B-GONE STARTED ==="));
   Serial.printf("Total codes to send: %d\n", totalTVCodes);
   Serial.printf("IR LED on GPIO%d initialized\n", kIrLedPin);
 }
@@ -2410,7 +2410,7 @@ void updateTVBGone() {
       // Send NEC IR code (3 repeats for reliability)
       IrSender.sendNEC(code.address, code.command, 3);
 
-      Serial.println("Sent!");
+      Serial.println(F("Sent!"));
 
       tvbgoneProgress++;
       lastCodeTime = currentTime;
@@ -2433,7 +2433,7 @@ void stopTVBGone() {
 
   if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 200);
 
-  Serial.println("=== TV-B-GONE COMPLETE ===");
+  Serial.println(F("=== TV-B-GONE COMPLETE ==="));
   Serial.printf("Codes sent: %d\n", tvbgoneProgress);
 
   wifiFunState = WIFI_FUN_MENU;

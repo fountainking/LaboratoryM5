@@ -4,6 +4,7 @@
 #include "audio_manager.h"
 #include <SD.h>
 #include <SPI.h>
+#include <WiFi.h>
 #include <AnimatedGIF.h>
 #include <PNGdec.h>
 
@@ -558,7 +559,7 @@ void drawImageViewer(const String& path) {
 
     // For files > 500KB, skip PNGdec and go straight to M5GFX (handles large files better)
     if (fileSize > 512000) {
-      Serial.println("Large PNG detected, using M5GFX with auto-scaling...");
+      Serial.println(F("Large PNG detected, using M5GFX with auto-scaling..."));
       File pngFile = SD.open(path.c_str());
       if (pngFile) {
         M5Cardputer.Display.fillScreen(TFT_BLACK);
@@ -574,20 +575,20 @@ void drawImageViewer(const String& path) {
         M5Cardputer.Display.fillScreen(TFT_BLACK);
 
         // Try M5GFX drawPng with scaling
-        Serial.println("Calling M5Cardputer.Display.drawPng()...");
+        Serial.println(F("Calling M5Cardputer.Display.drawPng()..."));
         success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
         pngFile.close();
 
         Serial.printf("M5GFX drawPng returned: %s\n", success ? "SUCCESS" : "FAILED");
 
         if (success) {
-          Serial.println("PNG displayed successfully!");
+          Serial.println(F("PNG displayed successfully!"));
           // Keep image on screen - don't clear
         } else {
-          Serial.println("M5GFX drawPng failed - PNG may be too complex or unsupported color mode");
+          Serial.println(F("M5GFX drawPng failed - PNG may be too complex or unsupported color mode"));
         }
       } else {
-        Serial.println("Failed to open PNG file");
+        Serial.println(F("Failed to open PNG file"));
         success = false;
       }
     } else {
@@ -604,7 +605,7 @@ void drawImageViewer(const String& path) {
         Serial.printf("PNGdec decode result: %d\n", rc);
       } else if (rc == 7) {
         // Error 7 = PNG_TOO_BIG - try M5GFX as fallback
-        Serial.println("PNGdec says too big, trying M5GFX...");
+        Serial.println(F("PNGdec says too big, trying M5GFX..."));
         File pngFile = SD.open(path.c_str());
         if (pngFile) {
           M5Cardputer.Display.fillScreen(TFT_BLACK);
@@ -625,7 +626,7 @@ void drawImageViewer(const String& path) {
 
     if (!success) {
       // Both methods failed - try one more thing: load without scaling
-      Serial.println("Standard methods failed, trying drawPng without scaling...");
+      Serial.println(F("Standard methods failed, trying drawPng without scaling..."));
       File pngFile = SD.open(path.c_str());
       if (pngFile) {
         M5Cardputer.Display.fillScreen(TFT_BLACK);
@@ -633,16 +634,16 @@ void drawImageViewer(const String& path) {
         pngFile.close();
 
         if (success) {
-          Serial.println("Success with no-scaling method!");
+          Serial.println(F("Success with no-scaling method!"));
         } else {
-          Serial.println("No-scaling method also failed");
+          Serial.println(F("No-scaling method also failed"));
         }
       }
     }
 
     if (!success) {
       // All methods failed - show helpful message
-      Serial.println("All PNG methods failed");
+      Serial.println(F("All PNG methods failed"));
 
       M5Cardputer.Display.fillScreen(TFT_BLACK);
       M5Cardputer.Display.setTextSize(1);
@@ -906,11 +907,11 @@ void audioVolumeDown() {
 }
 
 bool playAudioFile(const String& path) {
+  // ALWAYS set currentAudioPath so we can retry with Enter key if it fails
+  currentAudioPath = path;
+  audioStartTime = millis();
+
   bool success = startMusicPlayback(path);
-  if (success) {
-    currentAudioPath = path;
-    audioStartTime = millis();
-  }
   return success;
 }
 

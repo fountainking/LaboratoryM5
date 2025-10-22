@@ -8,9 +8,10 @@
 #include "terminal.h"
 #include "star_rain.h"
 #include "roadmap.h"
+#include "the_book.h"
 #include "radio.h"
 #include "music_player.h"
-#include "the_book.h"
+#include "music_tools.h"
 #include <AnimatedGIF.h>
 
 // GIF objects for star animations
@@ -145,7 +146,7 @@ void updateStarGifPlayback() {
 
       starGifToPlay = "";  // Clear the request
     } else {
-      Serial.println("Failed to open GIF file!");
+      Serial.println(F("Failed to open GIF file!"));
     }
   }
 
@@ -172,7 +173,7 @@ void updateStarGifPlayback() {
 
     // Safety limit
     if (starGifFrameCount > 50) {
-      Serial.println("Hit safety limit - stopping animation");
+      Serial.println(F("Hit safety limit - stopping animation"));
       starGif.close();
       starGifOpen = false;
       starGifPlaying = false;
@@ -386,6 +387,9 @@ void handleSelect() {
 }
 
 void handleBack() {
+  // ALWAYS reset speaker volume first to prevent loud beeps
+  M5Cardputer.Speaker.setVolume(80);
+
   if (currentState == SCREEN_VIEW) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
 

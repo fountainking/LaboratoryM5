@@ -328,9 +328,10 @@ void setup() {
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
 
-  // Initialize Speaker
-  M5Cardputer.Speaker.begin();
-  M5Cardputer.Speaker.setVolume(80); // Lower volume (0-255)
+  // CRITICAL: M5Cardputer.begin() auto-initializes Speaker, which claims I2S port 0
+  // We MUST release it immediately so audio can use I2S port 0
+  M5Cardputer.Speaker.end();
+  Serial.println("Released I2S port 0 from M5Speaker for audio use");
 
   // Load settings first
   loadSettings();
@@ -349,7 +350,7 @@ void setup() {
   Serial.println("======================");
   preferences.end();
 
-  // Initialize background services
+  // Initialize background services (now on Core 1 with lower priority to not block audio)
   initBackgroundServices();
 
   // Auto-connect WiFi BEFORE boot animation (if we have saved networks)
@@ -508,6 +509,15 @@ void updateAudioIfPlaying() {
   }
 }
 
+// Safe beep function that won't interfere with audio playback
+void safeBeep(int freq, int duration, bool checkSound = true) {
+  if (!checkSound || settings.soundEnabled) {
+    M5Cardputer.Speaker.begin();
+    M5Cardputer.Speaker.setVolume(128);  // 0-255 scale, 128 = 50%
+    M5Cardputer.Speaker.tone(freq, duration);
+  }
+}
+
 void loop() {
   // Update audio at the very start of the loop to minimize gaps
   updateAudioIfPlaying();
@@ -526,7 +536,7 @@ void loop() {
     M5Cardputer.Keyboard.updateKeyList();
     if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
       stopStarRain();
-      if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 100);
+      safeBeep(800, 100);
 
       currentState = MAIN_MENU;
       lastActivityTime = millis(); // Reset activity timer
@@ -789,7 +799,7 @@ void loop() {
           // SD card error screen, allow back button
           for (auto key : status.word) {
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               currentState = APPS_MENU;
               drawScreen(true);
               return;
@@ -809,7 +819,7 @@ void loop() {
                   currentPath = currentPath + "/" + fileInfoList[selectedFileIndex].name;
                 }
                 selectedFileIndex = 0;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+                safeBeep(1200, 100);
                 loadFolder(currentPath);
               } else {
                 // Open file - build full path
@@ -819,7 +829,7 @@ void loop() {
                 } else {
                   filePath = currentPath + "/" + fileInfoList[selectedFileIndex].name;
                 }
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+                safeBeep(1200, 100);
                 loadFile(filePath);
               }
             }
@@ -830,11 +840,11 @@ void loop() {
             extern int selectedCount;
             if (selectedCount > 0) {
               // Batch delete selected files
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+              safeBeep(800, 50);
               showBatchDeleteConfirmation();
             } else if (fileCount > 0) {
               // Single file delete
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+              safeBeep(800, 50);
               showDeleteConfirmation();
             }
             return;
@@ -860,7 +870,7 @@ void loop() {
               searchActive = true;
               searchQuery = "";
               selectedFileIndex = 0;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+              safeBeep(1000, 50);
               drawFolderView();
               return;
             } else if (key == '`' && searchActive) {
@@ -868,7 +878,7 @@ void loop() {
               searchActive = false;
               searchQuery = "";
               selectedFileIndex = 0;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 50);
+              safeBeep(600, 50);
               drawFolderView();
               return;
             } else if (searchActive && key >= 32 && key <= 126) {
@@ -887,7 +897,7 @@ void loop() {
                 // Toggle selection for current file
                 fileSelected[selectedFileIndex] = !fileSelected[selectedFileIndex];
                 selectedCount += fileSelected[selectedFileIndex] ? 1 : -1;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 50);
+                safeBeep(1200, 50);
                 drawFolderView();
               }
               return;
@@ -896,14 +906,14 @@ void loop() {
             if (key == 'n' || key == 'N') {
               // Create new folder
               if (searchActive) continue;  // Skip if searching
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(700, 50);
+              safeBeep(700, 50);
               createFolder();
               return;
             } else if (key == 'r' || key == 'R') {
               // Rename file
               if (searchActive) continue;  // Skip if searching
               if (fileCount > 0) {
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+                safeBeep(800, 50);
                 renameFile();
               }
               return;
@@ -911,7 +921,7 @@ void loop() {
               // Cut file
               if (searchActive) continue;  // Skip if searching
               if (fileCount > 0) {
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(900, 50);
+                safeBeep(900, 50);
                 cutFile();
               }
               return;
@@ -919,14 +929,14 @@ void loop() {
               // Copy file
               if (searchActive) continue;  // Skip if searching
               if (fileCount > 0) {
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+                safeBeep(1000, 50);
                 copyFile();
               }
               return;
             } else if (key == 'v' || key == 'V') {
               // Paste file
               if (searchActive) continue;  // Skip if searching
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1100, 50);
+              safeBeep(1100, 50);
               pasteFile();
               return;
             }
@@ -937,7 +947,7 @@ void loop() {
             if (key == '`') {
               // Go back to parent directory or exit
               if (currentPath == "/") {
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+                safeBeep(600, 100);
                 currentState = APPS_MENU;
                 drawScreen(true);
               } else {
@@ -945,7 +955,7 @@ void loop() {
                 int lastSlash = currentPath.lastIndexOf('/', currentPath.length() - 2);
                 currentPath = currentPath.substring(0, lastSlash + 1);
                 selectedFileIndex = 0;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+                safeBeep(600, 100);
                 loadFolder(currentPath);
               }
               return;
@@ -958,17 +968,23 @@ void loop() {
             // Toggle play/pause for audio files
             if (isAudioPlaying()) {
               stopAudioPlayback();
+              safeBeep(800, 50);
             } else if (currentAudioPath != "") {
               playAudioFile(currentAudioPath);
+              safeBeep(1200, 50);
+            }
+            // Redraw audio player to show updated status
+            if (currentAudioPath != "") {
+              drawAudioPlayer(currentAudioPath);
             }
           }
 
           for (auto key : status.word) {
             handleFileManagerNavigation(key); // Allow scrolling through files
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
               stopGifPlayback(); // Stop GIF if playing
               stopAudioPlayback(); // Stop audio if playing
+              safeBeep(600, 100); // Use safe beep that resets volume
               fmState = FM_FOLDER_VIEW;
               drawFolderView();
               return;
@@ -989,7 +1005,7 @@ void loop() {
 
           for (auto key : status.word) {
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               stopWebServer();  // CRITICAL: Clean up WebServer to free RAM!
               currentState = APPS_MENU;
               drawScreen(true);
@@ -1001,7 +1017,7 @@ void loop() {
           // Allow stopping the server when it's running
           for (auto key : status.word) {
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               stopWebServer();  // CRITICAL: Clean up WebServer to free RAM!
               currentState = APPS_MENU;
               drawScreen(true);
@@ -1025,30 +1041,30 @@ void loop() {
               // Fake WiFi selected
               wifiFunState = FAKE_WIFI_INPUT;
               fakeSSID = "";
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               drawFakeWiFiInput();
             } else if (wifiFunMenuIndex == 1) {
               // Portals submenu selected
               wifiFunState = PORTALS_MENU;
               portalsMenuIndex = 0;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               drawPortalsMenu();
             } else if (wifiFunMenuIndex == 2) {
               // Wi-Fi Party submenu selected
               wifiFunState = BIG_PARTY_MENU;
               bigPartyMenuIndex = 0;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               drawBigPartyMenu();
             } else if (wifiFunMenuIndex == 3) {
               // TURN THIS TV OFF selected
               wifiFunState = TV_B_GONE_RUNNING;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               startTVBGone();
             } else if (wifiFunMenuIndex == 4) {
               // Analytics submenu selected
               wifiFunState = ANALYTICS_MENU;
               analyticsMenuIndex = 0;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               drawAnalyticsMenu();
             }
           }
@@ -1056,7 +1072,7 @@ void loop() {
           for (auto key : status.word) {
             handleWiFiFunNavigation(key);
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               currentState = APPS_MENU;
               drawScreen(true);
               return;
@@ -1088,7 +1104,7 @@ void loop() {
 
           for (auto key : status.word) {
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               wifiFunState = WIFI_FUN_MENU;
               drawWiFiFunMenu();
               return;
@@ -1120,7 +1136,7 @@ void loop() {
 
           for (auto key : status.word) {
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               wifiFunState = WIFI_FUN_MENU;
               drawWiFiFunMenu();
               return;
@@ -1142,7 +1158,7 @@ void loop() {
           for (auto key : status.word) {
             handleWiFiFunNavigation(key);
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               wifiFunState = WIFI_FUN_MENU;
               drawWiFiFunMenu();
               return;
@@ -1161,7 +1177,7 @@ void loop() {
               wifiFunState = PARTY_TIME_EDIT;
               partyTimeInput = "";
               partyTimeListScroll = 0;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               drawPartyTimeEdit();
             }
           }
@@ -1169,7 +1185,7 @@ void loop() {
           for (auto key : status.word) {
             handleWiFiFunNavigation(key);
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               wifiFunState = WIFI_FUN_MENU;
               drawWiFiFunMenu();
               return;
@@ -1202,7 +1218,7 @@ void loop() {
             if (key == '`') {
               stopTVBGone();
               wifiFunState = WIFI_FUN_MENU;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               drawWiFiFunMenu();
               return;
             }
@@ -1224,7 +1240,7 @@ void loop() {
           for (auto key : status.word) {
             handleWiFiFunNavigation(key);
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               wifiFunState = WIFI_FUN_MENU;
               drawWiFiFunMenu();
               return;
@@ -1248,7 +1264,7 @@ void loop() {
                 speedTestStartTime = millis();
                 uploadSpeed = 0.0;
                 downloadSpeed = 0.0;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+                safeBeep(1200, 100);
                 drawSpeedometer();
               }
               return;
@@ -1269,7 +1285,7 @@ void loop() {
               extern int probeRequestCount;
               if (probeRequestScrollPos < probeRequestCount - 6) {
                 probeRequestScrollPos++;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+                safeBeep(800, 50);
                 drawProbeSniffer();
               }
             } else if (key == '.' || key == '/') {
@@ -1277,7 +1293,7 @@ void loop() {
               extern int probeRequestScrollPos;
               if (probeRequestScrollPos > 0) {
                 probeRequestScrollPos--;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+                safeBeep(1000, 50);
                 drawProbeSniffer();
               }
             } else if (key == '`') {
@@ -1307,7 +1323,7 @@ void loop() {
                 apList[apListCount] = partyTimeInput;
                 apListCount++;
                 partyTimeInput = "";
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 50);
+                safeBeep(1200, 50);
                 // Auto-scroll to show new item
                 if (apListCount > 4) {
                   partyTimeListScroll = apListCount - 4;
@@ -1332,7 +1348,7 @@ void loop() {
           for (auto key : status.word) {
             handleWiFiFunNavigation(key);
             if (key == '`') {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               wifiFunState = BIG_PARTY_MENU;
               drawBigPartyMenu();
               return;
@@ -1534,7 +1550,7 @@ void loop() {
           if (key == '`') {
             // Back to music menu
             exitRadioApp();
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+            safeBeep(600, 100);
             currentScreenNumber = 12;
             musicMenuIndex = 1;  // Set to Radio position
             drawMusicMenu();
@@ -1590,7 +1606,7 @@ void loop() {
             scrollTerminalDown();
           } else if (key == '`') {
             // Back to apps menu
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+            safeBeep(600, 100);
             currentState = APPS_MENU;
             drawScreen(true);
             return;
@@ -1618,17 +1634,17 @@ void loop() {
           if (key == '+' || key == '=') {
             // Volume up
             audioVolumeUp();
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 50);
+            safeBeep(1200, 50);
             drawMusicPlayer();
           } else if (key == '-' || key == '_') {
             // Volume down
             audioVolumeDown();
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+            safeBeep(800, 50);
             drawMusicPlayer();
           } else if (key == '`') {
             // Back to music menu
             exitMusicPlayer();
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+            safeBeep(600, 100);
             currentScreenNumber = 12;
             musicMenuIndex = 0;  // Set to Player position
             drawMusicMenu();
@@ -1651,7 +1667,7 @@ void loop() {
               // UP arrow - navigate results up
               if (searchResults.size() > 0 && selectedResultIndex > 0) {
                 selectedResultIndex--;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+                safeBeep(800, 50);
                 needsRedraw = true;
               }
             } else if (key == '.' || key == '/') {
@@ -1659,19 +1675,19 @@ void loop() {
               if (key == '/' && searchInput.length() == 0) {
                 // Secret: show TOC when search is empty and press /
                 bookState = BOOK_TOC;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 50);
+                safeBeep(1200, 50);
                 drawTableOfContents();
                 return;
               } else if (searchResults.size() > 0 && selectedResultIndex < (int)searchResults.size() - 1) {
                 // Navigate results down
                 selectedResultIndex++;
-                if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+                safeBeep(1000, 50);
                 needsRedraw = true;
               }
             } else if (key == '`') {
               // Back to main menu
               exitTheBook();
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               currentState = MAIN_MENU;
               drawScreen(false);
               return;
@@ -1723,7 +1739,7 @@ void loop() {
           // Enter key: go to full results page
           if (status.enter) {
             if (searchResults.size() > 0) {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               bookState = BOOK_RESULTS;
               drawBookResults();
               return;
@@ -1738,7 +1754,7 @@ void loop() {
             if (key == '`') {
               // Back to main menu
               exitTheBook();
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               currentState = MAIN_MENU;
               drawScreen(false);
               return;
@@ -1749,7 +1765,7 @@ void loop() {
           if (status.enter) {
             // Open selected article
             if (searchResults.size() > 0) {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+              safeBeep(1200, 100);
               loadArticle(searchResults[selectedResultIndex]);
             }
           }
@@ -1758,7 +1774,7 @@ void loop() {
             handleBookNavigation(key);
             if (key == '`') {
               // Back to search
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               bookState = BOOK_SEARCH;
               drawBookSearch();
               return;
@@ -1770,7 +1786,7 @@ void loop() {
             handleBookNavigation(key);
             if (key == '`') {
               // Back to results
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               bookState = BOOK_RESULTS;
               drawBookResults();
               return;
@@ -1785,7 +1801,7 @@ void loop() {
         for (auto key : status.word) {
           if (key == '`') {
             // Back to main menu
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+            safeBeep(600, 100);
             currentState = MAIN_MENU;
             drawScreen(false);
             return;
@@ -1829,7 +1845,7 @@ void loop() {
               applyTimezone();
             }
             saveSettings();
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+            safeBeep(1000, 50);
             settingsState = SETTINGS_MAIN;
             drawSettingsMenu();
           }
@@ -1840,12 +1856,12 @@ void loop() {
           if (key == '`') {
             if (settingsState == SETTINGS_MAIN) {
               // Back to main menu
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(400, 50);
+              safeBeep(400, 50);
               currentState = MAIN_MENU;
               drawScreen(false);
             } else {
               // Back to settings main
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(400, 50);
+              safeBeep(400, 50);
               settingsState = SETTINGS_MAIN;
               drawSettingsMenu();
             }
@@ -1860,7 +1876,7 @@ void loop() {
         if (status.enter) {
           // Navigate to selected music item
           currentScreenNumber = musicMenuItems[musicMenuIndex].screenNumber;
-          if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+          safeBeep(1000, 50);
 
           // Call appropriate enter function based on screen number
           if (currentScreenNumber == 6) {
@@ -1879,19 +1895,19 @@ void loop() {
             // Navigate up
             if (musicMenuIndex > 0) {
               musicMenuIndex--;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
+              safeBeep(800, 50);
               drawMusicMenu();
             }
           } else if (key == '.' || key == '/') {
             // Navigate down
             if (musicMenuIndex < totalMusicItems - 1) {
               musicMenuIndex++;
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
+              safeBeep(1000, 50);
               drawMusicMenu();
             }
           } else if (key == '`') {
             // Back to apps menu
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+            safeBeep(600, 100);
             currentState = APPS_MENU;
             currentAppIndex = 4;  // Set to Music position in apps
             musicMenuIndex = 0;
@@ -1908,11 +1924,11 @@ void loop() {
           // Select menu item
           if (musicToolsMenuIndex == 0) {
             // Guitar Tuner
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+            safeBeep(1200, 100);
             startGuitarTuner();
           } else if (musicToolsMenuIndex == 1) {
             // Audio Test
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+            safeBeep(1200, 100);
             startAudioVisualizer();
           }
         }
@@ -1922,18 +1938,18 @@ void loop() {
             if (musicToolsState == GUITAR_TUNER) {
               // Stop tuner and back to tools menu
               stopGuitarTuner();
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               musicToolsState = TOOLS_MENU;
               drawMusicToolsMenu();
             } else if (musicToolsState == AUDIO_VISUALIZER) {
               // Stop visualizer and back to tools menu
               stopAudioVisualizer();
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               musicToolsState = TOOLS_MENU;
               drawMusicToolsMenu();
             } else {
               // Back to music menu
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+              safeBeep(600, 100);
               currentScreenNumber = 12;
               drawMusicMenu();
             }
@@ -1956,7 +1972,7 @@ void loop() {
             scrollRoadmapDown();
           } else if (key == '`') {
             // Back to main menu
-            if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+            safeBeep(600, 100);
             currentState = MAIN_MENU;
             drawScreen(false);
             return;
@@ -2000,7 +2016,7 @@ void loop() {
         
         // Only allow deleting if a saved network is selected
         if (selectedNetworkIndex < numSaved) {
-          M5Cardputer.Speaker.tone(600, 100);
+          safeBeep(600, 100, false);
           
           // Delete the selected saved network
           deleteNetwork(selectedNetworkIndex);
@@ -2024,7 +2040,7 @@ void loop() {
       if (status.del) {
         // Special case: delete saved network
         if (currentState == WIFI_SAVED && numSavedNetworks > 0) {
-          M5Cardputer.Speaker.tone(600, 100);
+          safeBeep(600, 100, false);
           deleteNetwork(selectedSavedIndex);
           if (selectedSavedIndex >= numSavedNetworks && selectedSavedIndex > 0) {
             selectedSavedIndex--;
@@ -2052,7 +2068,7 @@ void loop() {
         else if (key == 'g') {
           // Special case: scan from saved networks screen
           if (currentState == WIFI_SAVED) {
-            M5Cardputer.Speaker.tone(1200, 100);
+            safeBeep(1200, 100, false);
             scanWiFiNetworks();
           } else {
             handleSelect();
@@ -2156,9 +2172,17 @@ void loop() {
     handlePortalGamesLoop();
   }
 
-  // Handle web server for file transfer
-  // NOTE: Web server is handled by FreeRTOS background task (transferTask in background_services.cpp)
-  // No need to call handleWebServerLoop() here - it would cause double-handling and crashes!
+  // Handle web server for file transfer ONLY when actively running
+  // Now handled directly in main loop instead of background task to avoid audio interference
+  if (transferState == TRANSFER_RUNNING && serverRunning) {
+    handleWebServerLoop();
+  }
+
+  // Handle captive portal ONLY when actively running
+  // Now handled directly in main loop instead of background task to avoid audio interference
+  if (isPortalRunning()) {
+    handlePortalLoop();
+  }
 
   // Update guitar tuner
   if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == GUITAR_TUNER) {

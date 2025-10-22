@@ -34,41 +34,45 @@ void portalTask(void* parameter) {
         currentStatus.portalName = portalSSID;
       }
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS); // 10ms delay
+    vTaskDelay(50 / portTICK_PERIOD_MS); // 50ms delay - don't block audio
   }
 }
 
 // FreeRTOS task for file transfer server
+// NOTE: This task is DISABLED - transfer is now handled directly in main loop
+//       to avoid constant background processing that interferes with audio
 void transferTask(void* parameter) {
   while (true) {
     if (currentStatus.transferRunning && serverRunning) {
       handleWebServerLoop();
     }
-    vTaskDelay(10 / portTICK_PERIOD_MS); // 10ms delay
+    vTaskDelay(50 / portTICK_PERIOD_MS); // 50ms delay - don't block audio
   }
 }
 
 void initBackgroundServices() {
-  // Create FreeRTOS tasks
-  xTaskCreatePinnedToCore(
-    portalTask,
-    "PortalTask",
-    8192,  // Stack size
-    NULL,
-    1,     // Priority
-    &portalTaskHandle,
-    0      // Core 0
-  );
+  // DISABLED: All background tasks interfere with audio playback
+  // Portal and transfer are now handled on-demand in main loop only when active
 
-  xTaskCreatePinnedToCore(
-    transferTask,
-    "TransferTask",
-    8192,  // Stack size
-    NULL,
-    1,     // Priority
-    &transferTaskHandle,
-    0      // Core 0
-  );
+  // xTaskCreatePinnedToCore(
+  //   portalTask,
+  //   "PortalTask",
+  //   4096,
+  //   NULL,
+  //   0,
+  //   &portalTaskHandle,
+  //   1
+  // );
+
+  // xTaskCreatePinnedToCore(
+  //   transferTask,
+  //   "TransferTask",
+  //   4096,
+  //   NULL,
+  //   0,
+  //   &transferTaskHandle,
+  //   1
+  // );
 }
 
 void startBackgroundFakeAP(const String& ssid) {

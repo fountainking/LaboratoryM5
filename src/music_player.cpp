@@ -74,8 +74,8 @@ void enterMusicPlayer() {
 }
 
 void exitMusicPlayer() {
-  // Keep music playing in background when exiting app
-  // Don't call stopAudioPlayback() anymore
+  // Stop music when exiting the player
+  stopAudioPlayback();
 }
 
 void drawMusicPlayer() {

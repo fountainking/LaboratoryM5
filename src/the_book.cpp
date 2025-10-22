@@ -54,12 +54,12 @@ void enterTheBook() {
   // Initialize SD card if not already done
   SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
   if (!SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ)) {
-    Serial.println("SD card mount failed for The Book");
+    Serial.println(F("SD card mount failed for The Book"));
   }
 
   // Check if data folder exists
   if (!SD.exists("/the_book")) {
-    Serial.println("WARNING: /the_book folder not found on SD card!");
+    Serial.println(F("WARNING: /the_book folder not found on SD card!"));
   }
 
   drawBookSearch();

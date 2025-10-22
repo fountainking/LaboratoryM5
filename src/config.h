@@ -4,7 +4,7 @@
 #include <M5Cardputer.h>
 
 // Version
-#define FIRMWARE_VERSION "v0.08h1"
+#define FIRMWARE_VERSION "v0.08g(3)"
 
 // Constants
 #define MAX_SAVED_NETWORKS 5

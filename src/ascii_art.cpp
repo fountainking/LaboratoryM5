@@ -5,8 +5,8 @@
 // Font definitions - 5x5 character matrices
 // Using simplified fonts that fit the M5Cardputer display
 
-// Banner font (5 rows tall)
-const char* banner_font[26][5] = {
+// Banner font (5 rows tall) - STORED IN FLASH MEMORY (PROGMEM)
+const char* const banner_font[26][5] PROGMEM = {
   // A
   {" ### ", "#   #", "#####", "#   #", "#   #"},
   // B
@@ -61,8 +61,8 @@ const char* banner_font[26][5] = {
   {"#####", "   # ", "  #  ", " #   ", "#####"}
 };
 
-// Block font (3 rows tall, chunky)
-const char* block_font[26][3] = {
+// Block font (3 rows tall, chunky) - STORED IN FLASH MEMORY (PROGMEM)
+const char* const block_font[26][3] PROGMEM = {
   // A
   {"███ ", "█ █ ", "███ "},
   // B
@@ -118,13 +118,13 @@ const char* block_font[26][3] = {
 };
 
 // Small font (1 row, just styled letters)
-const char* small_font[26] = {
+const char* const small_font[26] PROGMEM = {
   "ᴀ", "ʙ", "ᴄ", "ᴅ", "ᴇ", "ꜰ", "ɢ", "ʜ", "ɪ", "ᴊ", "ᴋ", "ʟ", "ᴍ",
   "ɴ", "ᴏ", "ᴘ", "ǫ", "ʀ", "ꜱ", "ᴛ", "ᴜ", "ᴠ", "ᴡ", "x", "ʏ", "ᴢ"
 };
 
-// Slant font (6 rows tall, slanted style)
-const char* slant_font[26][6] = {
+// Slant font (6 rows tall, slanted style) - STORED IN FLASH MEMORY (PROGMEM)
+const char* const slant_font[26][6] PROGMEM = {
   // A
   {"   ___   ", "  / _ |  ", " / __ |  ", "/_/ |_|  ", "         ", "         "},
   // B
