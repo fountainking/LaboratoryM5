@@ -3,12 +3,12 @@
 #include "settings.h"
 #include "file_manager.h"
 
-// Music player state
-static String musicFiles[50];
+// Music player state - USE char arrays instead of String to prevent heap fragmentation!
+static char musicFiles[50][64];  // 50 files, 64 chars max (fixed allocation, no heap fragmentation)
 static int musicCount = 0;
 static int selectedMusicIndex = 0;
 static bool isPlaying = false;
-static String lastError = "";  // Store last error message
+static char lastError[128] = "";  // Store last error message (fixed size)
 
 void loadMusicFolder() {
   musicCount = 0;
@@ -36,29 +36,31 @@ void loadMusicFolder() {
 
     // Skip hidden files (starting with .)
     if (!file.isDirectory() && filename.endsWith(".mp3") && !filename.startsWith(".")) {
-      musicFiles[musicCount] = filename;
+      strncpy(musicFiles[musicCount], filename.c_str(), 63);
+      musicFiles[musicCount][63] = '\0';  // Ensure null termination
       musicCount++;
-      Serial.printf("Found MP3: %s\n", filename.c_str());
+      Serial.printf("Found MP3: %s\n", musicFiles[musicCount-1]);
     }
     file.close();
     file = dir.openNextFile();
   }
   dir.close();
 
-  // Simple alphabetical sort
+  // Simple alphabetical sort - NO String allocations!
   for (int i = 0; i < musicCount - 1; i++) {
     for (int j = i + 1; j < musicCount; j++) {
-      if (musicFiles[i] > musicFiles[j]) {
-        String temp = musicFiles[i];
-        musicFiles[i] = musicFiles[j];
-        musicFiles[j] = temp;
+      if (strcmp(musicFiles[i], musicFiles[j]) > 0) {
+        char temp[64];
+        strcpy(temp, musicFiles[i]);
+        strcpy(musicFiles[i], musicFiles[j]);
+        strcpy(musicFiles[j], temp);
       }
     }
   }
 }
 
 void enterMusicPlayer() {
-  lastError = "";
+  lastError[0] = '\0';  // Clear error (now char array, not String)
   loadMusicFolder();
   selectedMusicIndex = 0;
   isPlaying = false;
@@ -66,7 +68,7 @@ void enterMusicPlayer() {
   Serial.printf("Music Player: Loaded %d MP3 files from /mp3s\n", musicCount);
   if (musicCount > 0) {
     for (int i = 0; i < musicCount; i++) {
-      Serial.printf("  [%d] %s\n", i, musicFiles[i].c_str());
+      Serial.printf("  [%d] %s\n", i, musicFiles[i]);  // char array, not String
     }
   }
 
@@ -185,11 +187,11 @@ void drawMusicPlayer() {
   }
 
   // Show error message if present
-  if (lastError.length() > 0) {
+  if (strlen(lastError) > 0) {
     M5Cardputer.Display.fillRect(0, 115, 240, 10, TFT_RED);
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(TFT_WHITE);
-    M5Cardputer.Display.drawString(lastError.c_str(), 10, 116);
+    M5Cardputer.Display.drawString(lastError, 10, 116);
   }
 
   M5Cardputer.Display.setTextSize(1);
@@ -199,14 +201,17 @@ void drawMusicPlayer() {
 
 void playSelectedTrack() {
   if (musicCount == 0) {
-    lastError = "No MP3 files";
+    strncpy(lastError, "No MP3 files", 127);
+    lastError[127] = '\0';
     return;
   }
 
-  String path = "/mp3s/" + musicFiles[selectedMusicIndex];
-  Serial.printf("Music Player: Playing track %d/%d: %s\n", selectedMusicIndex + 1, musicCount, path.c_str());
+  // Build path without String (avoid heap allocation)
+  char path[96];  // /mp3s/ + 64 char filename + null
+  snprintf(path, sizeof(path), "/mp3s/%s", musicFiles[selectedMusicIndex]);
+  Serial.printf("Music Player: Playing track %d/%d: %s\n", selectedMusicIndex + 1, musicCount, path);
 
-  lastError = "";  // Clear previous error
+  lastError[0] = '\0';  // Clear previous error
   bool success = playAudioFile(path);
 
   if (success) {
@@ -214,7 +219,8 @@ void playSelectedTrack() {
     Serial.println("Music Player: Playback started successfully");
   } else {
     isPlaying = false;
-    lastError = "Playback failed!";
+    strncpy(lastError, "Playback failed!", 127);
+    lastError[127] = '\0';
     Serial.println("Music Player: ERROR - Playback failed to start!");
     Serial.println("Possible causes:");
     Serial.println("  1. SD card not accessible");
