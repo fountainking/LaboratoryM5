@@ -529,13 +529,22 @@ void safeBeep(int freq, int duration, bool checkSound = true) {
 }
 
 void loop() {
-  // Heap monitoring - log every 10 seconds
+  // Heap monitoring - log every 10 seconds (includes build timestamp for verification)
   static unsigned long lastHeapCheck = 0;
+  static bool firstHeapLog = true;
   if (millis() - lastHeapCheck > 10000) {
     size_t freeHeap = ESP.getFreeHeap();
     size_t minFreeHeap = ESP.getMinFreeHeap();
     size_t maxAllocHeap = ESP.getMaxAllocHeap();
-    Serial.printf("=== HEAP MONITOR ===\n");
+
+    if (firstHeapLog) {
+      // Show build info in first heap log so you can verify firmware uploaded
+      Serial.printf("=== HEAP MONITOR (BUILD: %s %s) ===\n", __DATE__, __TIME__);
+      firstHeapLog = false;
+    } else {
+      Serial.printf("=== HEAP MONITOR ===\n");
+    }
+
     Serial.printf("Free: %d bytes (%.1f KB)\n", freeHeap, freeHeap / 1024.0);
     Serial.printf("Min Free: %d bytes (%.1f KB)\n", minFreeHeap, minFreeHeap / 1024.0);
     Serial.printf("Max Alloc: %d bytes (%.1f KB)\n", maxAllocHeap, maxAllocHeap / 1024.0);

@@ -208,10 +208,21 @@ bool isMusicPlaying() {
 }
 
 void updateMusicPlayback() {
+  // CRITICAL: Check if decoder needs to be deleted from PREVIOUS iteration
+  // (we can't delete inside musicMP3->loop() - that's a "delete this" bug!)
+  static bool pendingStop = false;
+  if (pendingStop) {
+    stopMusicPlayback();
+    pendingStop = false;
+    return;
+  }
+
   if (currentSource == AUDIO_SOURCE_MUSIC && musicMP3 && musicMP3->isRunning()) {
     if (!musicMP3->loop()) {
-      // Track finished
-      stopMusicPlayback();
+      // Track finished - DON'T delete immediately (we're inside musicMP3->loop()!)
+      // Mark for deletion on next iteration
+      Serial.println("Track finished - marking for cleanup on next loop");
+      pendingStop = true;
     }
   }
 }
