@@ -327,6 +327,9 @@ void stopCaptivePortal() {
         portalWebServer = nullptr;
     }
 
+    // CRITICAL FIX: Free customPortalHTML memory (can be 10-100KB!)
+    customPortalHTML = "";  // String destructor will free memory
+
     WiFi.softAPdisconnect(true);
     WiFi.mode(WIFI_OFF);
     delay(100);

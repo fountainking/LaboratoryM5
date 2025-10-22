@@ -128,19 +128,15 @@ bool startMusicPlayback(const String& path) {
   }
   Serial.printf("AudioFileSourceSD successfully opened, size: %d bytes\n", musicFile->getSize());
 
-  // Create MP3 decoder only once (like minimal test and AudioOutputI2S)
-  if (musicMP3 == nullptr) {
-    musicMP3 = new AudioGeneratorMP3();
-    if (!musicMP3) {
-      Serial.println("ERROR: Failed to create AudioGeneratorMP3!");
-      delete musicFile;
-      musicFile = nullptr;
-      return false;
-    }
-    Serial.println("Created new MP3 decoder");
-  } else {
-    Serial.println("Reusing existing MP3 decoder");
+  // Create MP3 decoder fresh every time (prevents stale state issues)
+  musicMP3 = new AudioGeneratorMP3();
+  if (!musicMP3) {
+    Serial.println("ERROR: Failed to create AudioGeneratorMP3!");
+    delete musicFile;
+    musicFile = nullptr;
+    return false;
   }
+  Serial.println("Created fresh MP3 decoder");
 
   Serial.println("Calling musicMP3->begin()...");
   Serial.printf("  Free heap: %d bytes\n", ESP.getFreeHeap());
@@ -181,7 +177,15 @@ void stopMusicPlayback() {
     musicMP3->stop();
   }
 
-  // Close file but keep decoder alive (like minimal test program)
+  // CRITICAL FIX: Delete and recreate decoder to prevent stale state
+  // This fixes the "second song causes freeze" issue
+  if (musicMP3) {
+    delete musicMP3;
+    musicMP3 = nullptr;
+    Serial.println("Deleted MP3 decoder - will recreate fresh on next play");
+  }
+
+  // Close file
   if (musicFile) {
     Serial.println("Closing music file...");
     delete musicFile;

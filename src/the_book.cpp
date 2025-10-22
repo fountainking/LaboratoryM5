@@ -66,8 +66,11 @@ void enterTheBook() {
 }
 
 void exitTheBook() {
-  searchResults.clear();
-  articleLines.clear();
+  // CRITICAL FIX: Force deallocation of vectors (can be 10-15KB!)
+  std::vector<SearchResult>().swap(searchResults);  // Force deallocation
+  std::vector<String>().swap(articleLines);          // Force deallocation
+
+  Serial.printf("Book cleanup: freed search results and article lines\n");
 }
 
 void drawBookSearch() {
@@ -319,11 +322,12 @@ std::vector<SearchResult> searchIndex(String indexPath, String query) {
   std::vector<SearchResult> contentMatches;  // Content contains query (lowest)
 
   int linesRead = 0;
-  const int MAX_LINES_TO_READ = 100;  // Only read first 100 lines for speed
+  const int MAX_LINES_TO_READ = 150;  // Increased from 100 for better results
+  const int MAX_RESULTS_PER_CATEGORY = 5;  // Limit to 5 per category (15 total max across 3 tiers)
 
   // Read index line by line (limited for responsiveness)
   while (indexFile.available() && linesRead < MAX_LINES_TO_READ &&
-         (startsWithMatches.size() + titleContainsMatches.size() + contentMatches.size()) < 5) {
+         (startsWithMatches.size() + titleContainsMatches.size() + contentMatches.size()) < MAX_RESULTS_PER_CATEGORY) {
 
     linesRead++;
     String line = indexFile.readStringUntil('\n');
@@ -391,14 +395,14 @@ std::vector<SearchResult> searchIndex(String indexPath, String query) {
       return a.title.length() < b.title.length();
     });
 
-  // Combine results: starts-with first, then contains, then content (max 5 per category)
-  for (size_t i = 0; i < startsWithMatches.size() && results.size() < 5; i++) {
+  // Combine results: starts-with first, then contains, then content (max 5 total to conserve memory)
+  for (size_t i = 0; i < startsWithMatches.size() && results.size() < MAX_RESULTS_PER_CATEGORY; i++) {
     results.push_back(startsWithMatches[i]);
   }
-  for (size_t i = 0; i < titleContainsMatches.size() && results.size() < 5; i++) {
+  for (size_t i = 0; i < titleContainsMatches.size() && results.size() < MAX_RESULTS_PER_CATEGORY; i++) {
     results.push_back(titleContainsMatches[i]);
   }
-  for (size_t i = 0; i < contentMatches.size() && results.size() < 5; i++) {
+  for (size_t i = 0; i < contentMatches.size() && results.size() < MAX_RESULTS_PER_CATEGORY; i++) {
     results.push_back(contentMatches[i]);
   }
 
@@ -415,18 +419,20 @@ void searchTheBook(String query) {
   searchResults.clear();
   selectedResultIndex = 0;
 
+  const int MAX_TOTAL_RESULTS = 15;  // Hard limit to prevent memory bloat (was unlimited!)
+
   // Search all category indexes
-  for (int i = 0; i < totalCategories; i++) {
+  for (int i = 0; i < totalCategories && searchResults.size() < MAX_TOTAL_RESULTS; i++) {
     String indexPath = categories[i].path + "/index.txt";
     std::vector<SearchResult> catResults = searchIndex(indexPath, query);
 
-    // Add results from this category
-    for (size_t j = 0; j < catResults.size(); j++) {
+    // Add results from this category (up to limit)
+    for (size_t j = 0; j < catResults.size() && searchResults.size() < MAX_TOTAL_RESULTS; j++) {
       searchResults.push_back(catResults[j]);
     }
   }
 
-  Serial.println("Search found " + String(searchResults.size()) + " results");
+  Serial.printf("Search found %d results (max %d)\n", searchResults.size(), MAX_TOTAL_RESULTS);
 
   bookState = BOOK_RESULTS;
   drawBookResults();

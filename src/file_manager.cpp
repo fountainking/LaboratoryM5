@@ -6,7 +6,7 @@
 #include <SPI.h>
 #include <WiFi.h>
 #include <AnimatedGIF.h>
-#include <PNGdec.h>
+// PNGdec removed - wasn't working properly, use JPG instead
 
 // Audio playback variables (simplified - now using audio_manager)
 String currentAudioPath = "";  // Non-static so main.cpp can access it
@@ -30,9 +30,8 @@ static File gifFile;
 int gifYOffset = 0; // Non-static so main.cpp can use it
 static bool fullScreenMode = true; // Always full screen for file viewing
 
-// PNG decoder variables
-static PNG png;
-static File pngFile;
+// PNG SUPPORT REMOVED - wasn't working, adds 4KB static allocation
+// Use WiFi Transfer's auto-optimizer to convert PNG -> JPG before uploading
 
 // File operation clipboard
 static String clipboardPath = "";
@@ -47,8 +46,134 @@ bool searchActive = false;
 bool fileSelected[50];  // Selection state for each file
 int selectedCount = 0;  // Number of selected files
 
-// Forward declarations for PNG callbacks
-void * PNGOpenFile(const char *filename, int32_t *size);
+// PNG support removed - use JPG instead
+
+// Forward declarations
+void drawNavHint(const char* text, int x, int y);
+void drawFolderView();
+
+// ============================================================================
+// REUSABLE UI HELPER FUNCTIONS (reduces 488 lines of duplicate dialog code!)
+// ============================================================================
+
+// Generic text input dialog - used for rename, create folder, etc.
+String showTextInputDialog(String title, String defaultValue, String okLabel = "OK", String cancelLabel = "Cancel") {
+  String input = defaultValue;
+  bool cursorVisible = true;
+  unsigned long lastBlink = millis();
+
+  while (true) {
+    // Draw dialog box
+    M5Cardputer.Display.fillRect(10, 35, 220, 70, TFT_WHITE);
+    M5Cardputer.Display.drawRect(10, 35, 220, 70, TFT_BLACK);
+    M5Cardputer.Display.drawRect(11, 36, 218, 68, TFT_BLACK);
+
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
+    M5Cardputer.Display.drawString(title.c_str(), 20, 45);
+
+    // Draw input field with cursor
+    M5Cardputer.Display.fillRect(20, 60, 200, 12, TFT_WHITE);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
+
+    String displayName = input;
+    if (displayName.length() > 28) {
+      displayName = displayName.substring(displayName.length() - 28);
+    }
+    M5Cardputer.Display.drawString(displayName.c_str(), 20, 60);
+
+    // Draw blinking cursor
+    if (cursorVisible) {
+      int cursorX = 20 + (displayName.length() * 6);
+      M5Cardputer.Display.drawLine(cursorX, 60, cursorX, 70, TFT_BLACK);
+    }
+
+    // Cursor blinking
+    if (millis() - lastBlink > 500) {
+      cursorVisible = !cursorVisible;
+      lastBlink = millis();
+    }
+
+    // Footer
+    M5Cardputer.Display.fillRect(20, 85, 200, 10, TFT_WHITE);
+    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    String footerText = "Enter=" + okLabel + "  `=" + cancelLabel;
+    drawNavHint(footerText.c_str(), 40, 85);
+
+    M5Cardputer.update();
+
+    if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
+      auto status = M5Cardputer.Keyboard.keysState();
+
+      // Enter key = confirm
+      if (status.enter) {
+        return input;
+      }
+
+      // Delete key = backspace
+      if (status.del && input.length() > 0) {
+        input.remove(input.length() - 1);
+        cursorVisible = true;
+        lastBlink = millis();
+      }
+
+      // Character input
+      for (auto key : status.word) {
+        if (key == '`') {
+          return "";  // Cancel
+        } else if (key >= 32 && key <= 126 && input.length() < 50) {
+          input += (char)key;
+          cursorVisible = true;
+          lastBlink = millis();
+        }
+      }
+    }
+
+    delay(10);
+  }
+}
+
+// Generic confirmation dialog - used for delete, etc.
+bool showConfirmDialog(String title, String message, String okLabel = "Yes", String cancelLabel = "No") {
+  // Draw confirmation dialog
+  M5Cardputer.Display.fillRect(20, 40, 200, 60, TFT_WHITE);
+  M5Cardputer.Display.drawRect(20, 40, 200, 60, TFT_BLACK);
+  M5Cardputer.Display.drawRect(21, 41, 198, 58, TFT_BLACK);
+
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.drawString(title.c_str(), 30, 50);
+
+  // Show message (truncate if needed)
+  if (message.length() > 28) {
+    message = message.substring(0, 25) + "...";
+  }
+  M5Cardputer.Display.drawString(message.c_str(), 30, 65);
+
+  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  String footerText = "Enter=" + okLabel + "  `=" + cancelLabel;
+  drawNavHint(footerText.c_str(), 60, 82);
+
+  // Wait for confirmation
+  while (true) {
+    M5Cardputer.update();
+    if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
+      auto status = M5Cardputer.Keyboard.keysState();
+
+      if (status.enter) {
+        return true;  // Confirmed
+      }
+
+      for (auto key : status.word) {
+        if (key == '`') {
+          drawFolderView();
+          return false;  // Cancelled
+        }
+      }
+    }
+    delay(10);
+  }
+}
 
 // Helper function to draw navigation hints with yellow rounded rectangle background
 void drawNavHint(const char* text, int x, int y) {
@@ -112,10 +237,6 @@ void drawFileManagerStatusBar() {
   }
 }
 
-void PNGCloseFile(void *handle);
-int32_t PNGReadFile(PNGFILE *page, uint8_t *buffer, int32_t length);
-int32_t PNGSeekFile(PNGFILE *page, int32_t position);
-int PNGDraw(PNGDRAW *pDraw);
 
 void enterFileManager() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
@@ -368,11 +489,10 @@ void drawFolderView() {
         if (lowerPath.endsWith(".jpg") || lowerPath.endsWith(".jpeg")) {
           // Draw scaled down to 10x10
           loaded = M5Cardputer.Display.drawJpgFile(thumbnailPath.c_str(), 2, yPos, 10, 10);
-        } else if (lowerPath.endsWith(".png")) {
-          loaded = M5Cardputer.Display.drawPngFile(thumbnailPath.c_str(), 2, yPos, 10, 10);
         } else if (lowerPath.endsWith(".bmp")) {
           loaded = M5Cardputer.Display.drawBmpFile(thumbnailPath.c_str(), 2, yPos, 10, 10);
         }
+        // PNG thumbnails removed - use JPG instead
 
         if (loaded) {
           showThumbnail = true;
@@ -548,123 +668,25 @@ void drawImageViewer(const String& path) {
     success = M5Cardputer.Display.drawJpg(&imgFile, 0, 0, 240, 135);
     imgFile.close();
   } else if (lowerPath.endsWith(".png")) {
+    // PNG SUPPORT REMOVED - show helpful message
     imgFile.close();
+    M5Cardputer.Display.fillScreen(TFT_BLACK);
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(TFT_RED);
+    M5Cardputer.Display.drawString("PNG not supported", 55, 40);
 
-    // Get file size for diagnostics
-    File sizeCheck = SD.open(path.c_str());
-    size_t fileSize = sizeCheck.size();
-    sizeCheck.close();
+    M5Cardputer.Display.setTextColor(TFT_WHITE);
+    M5Cardputer.Display.drawString("Use WiFi Transfer to", 50, 60);
+    M5Cardputer.Display.drawString("upload this file - it will", 40, 72);
+    M5Cardputer.Display.drawString("auto-convert to JPG!", 50, 84);
 
-    Serial.printf("PNG file size: %d bytes (%.2f MB)\n", fileSize, fileSize / 1048576.0);
+    M5Cardputer.Display.setTextColor(TFT_CYAN);
+    M5Cardputer.Display.drawString("Or convert manually to", 45, 100);
+    M5Cardputer.Display.drawString("JPG before uploading", 50, 112);
 
-    // For files > 500KB, skip PNGdec and go straight to M5GFX (handles large files better)
-    if (fileSize > 512000) {
-      Serial.println(F("Large PNG detected, using M5GFX with auto-scaling..."));
-      File pngFile = SD.open(path.c_str());
-      if (pngFile) {
-        M5Cardputer.Display.fillScreen(TFT_BLACK);
-        M5Cardputer.Display.setTextColor(TFT_YELLOW);
-        M5Cardputer.Display.setTextSize(1);
-        M5Cardputer.Display.drawString("Loading large image...", 50, 60);
-
-        // Show file size on screen
-        String sizeInfo = String(fileSize / 1024) + " KB";
-        M5Cardputer.Display.drawString(sizeInfo, 90, 75);
-        delay(1500);  // Give user time to see the message
-
-        M5Cardputer.Display.fillScreen(TFT_BLACK);
-
-        // Try M5GFX drawPng with scaling
-        Serial.println(F("Calling M5Cardputer.Display.drawPng()..."));
-        success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
-        pngFile.close();
-
-        Serial.printf("M5GFX drawPng returned: %s\n", success ? "SUCCESS" : "FAILED");
-
-        if (success) {
-          Serial.println(F("PNG displayed successfully!"));
-          // Keep image on screen - don't clear
-        } else {
-          Serial.println(F("M5GFX drawPng failed - PNG may be too complex or unsupported color mode"));
-        }
-      } else {
-        Serial.println(F("Failed to open PNG file"));
-        success = false;
-      }
-    } else {
-      // Small file - try PNGdec first for better quality
-      int rc = png.open(path.c_str(), PNGOpenFile, PNGCloseFile, PNGReadFile, PNGSeekFile, PNGDraw);
-      Serial.printf("PNGdec open result: %d\n", rc);
-
-      if (rc == PNG_SUCCESS) {
-        // PNGdec can handle this file
-        M5Cardputer.Display.fillScreen(TFT_BLACK);
-        rc = png.decode(NULL, 0);
-        png.close();
-        success = (rc == PNG_SUCCESS);
-        Serial.printf("PNGdec decode result: %d\n", rc);
-      } else if (rc == 7) {
-        // Error 7 = PNG_TOO_BIG - try M5GFX as fallback
-        Serial.println(F("PNGdec says too big, trying M5GFX..."));
-        File pngFile = SD.open(path.c_str());
-        if (pngFile) {
-          M5Cardputer.Display.fillScreen(TFT_BLACK);
-          success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
-          pngFile.close();
-        }
-      } else {
-        // PNGdec error - try M5GFX as fallback
-        Serial.printf("PNGdec failed with error %d, trying M5GFX...\n", rc);
-        File pngFile = SD.open(path.c_str());
-        if (pngFile) {
-          M5Cardputer.Display.fillScreen(TFT_BLACK);
-          success = M5Cardputer.Display.drawPng(&pngFile, 0, 0, 240, 135);
-          pngFile.close();
-        }
-      }
-    }
-
-    if (!success) {
-      // Both methods failed - try one more thing: load without scaling
-      Serial.println(F("Standard methods failed, trying drawPng without scaling..."));
-      File pngFile = SD.open(path.c_str());
-      if (pngFile) {
-        M5Cardputer.Display.fillScreen(TFT_BLACK);
-        success = M5Cardputer.Display.drawPng(&pngFile, 0, 0);  // No width/height = no scaling
-        pngFile.close();
-
-        if (success) {
-          Serial.println(F("Success with no-scaling method!"));
-        } else {
-          Serial.println(F("No-scaling method also failed"));
-        }
-      }
-    }
-
-    if (!success) {
-      // All methods failed - show helpful message
-      Serial.println(F("All PNG methods failed"));
-
-      M5Cardputer.Display.fillScreen(TFT_BLACK);
-      M5Cardputer.Display.setTextSize(1);
-      M5Cardputer.Display.setTextColor(TFT_RED);
-      M5Cardputer.Display.drawString("PNG format unsupported", 40, 25);
-
-      M5Cardputer.Display.setTextColor(TFT_YELLOW);
-      String sizeStr = "Size: " + String(fileSize / 1024) + " KB";
-      M5Cardputer.Display.drawString(sizeStr, 75, 42);
-
-      M5Cardputer.Display.setTextColor(TFT_WHITE);
-      M5Cardputer.Display.drawString("This PNG uses features", 45, 60);
-      M5Cardputer.Display.drawString("not supported by the", 50, 72);
-      M5Cardputer.Display.drawString("embedded decoder.", 60, 84);
-
-      M5Cardputer.Display.setTextColor(TFT_CYAN);
-      M5Cardputer.Display.drawString("Use WiFi Transfer's", 55, 100);
-      M5Cardputer.Display.drawString("auto-optimizer to fix", 50, 112);
-
-      drawNavHint("` Back", 95, 127);
-    }
+    drawNavHint("` Back", 95, 127);
+    Serial.println("PNG support removed - use JPG instead");
+    success = false;
   } else if (lowerPath.endsWith(".bmp")) {
     success = M5Cardputer.Display.drawBmp(&imgFile, 0, 0, 240, 135);
     imgFile.close();
@@ -766,54 +788,7 @@ void GIFDraw(GIFDRAW *pDraw) {
   }
 }
 
-// PNG callback functions
-void * PNGOpenFile(const char *filename, int32_t *size) {
-  pngFile = SD.open(filename);
-  if (pngFile) {
-    *size = pngFile.size();
-    return (void *)&pngFile;
-  }
-  return NULL;
-}
-
-void PNGCloseFile(void *handle) {
-  File *f = static_cast<File *>(handle);
-  if (f != NULL) f->close();
-}
-
-int32_t PNGReadFile(PNGFILE *page, uint8_t *buffer, int32_t length) {
-  if (!pngFile) return 0;
-  return pngFile.read(buffer, length);
-}
-
-int32_t PNGSeekFile(PNGFILE *page, int32_t position) {
-  if (!pngFile) return 0;
-  return pngFile.seek(position);
-}
-
-int PNGDraw(PNGDRAW *pDraw) {
-  uint16_t usPixels[240];  // Line buffer for RGB565 pixels
-
-  // Convert the line to RGB565 format
-  png.getLineAsRGB565(pDraw, usPixels, PNG_RGB565_LITTLE_ENDIAN, 0x00000000);
-
-  // Center the PNG if it's smaller than the display
-  int xOffset = 0;
-  int yOffset = 0;
-
-  if (pDraw->iWidth < 240) {
-    xOffset = (240 - pDraw->iWidth) / 2;
-  }
-  if (png.getHeight() < 135) {
-    yOffset = (135 - png.getHeight()) / 2;
-  }
-
-  int y = pDraw->y + yOffset;
-  if (y >= 135) return 1; // Off screen
-
-  M5Cardputer.Display.pushImage(xOffset, y, pDraw->iWidth, 1, usPixels);
-  return 1; // Success
-}
+// PNG callback functions REMOVED - use JPG instead (saves 4KB RAM + code complexity)
 
 void drawGifViewer(const String& path) {
   gifPlaying = true;
@@ -983,50 +958,11 @@ void drawAudioPlayer(const String& path) {
 void showDeleteConfirmation() {
   if (fileCount == 0 || selectedFileIndex >= fileCount) return;
 
-  // Draw confirmation dialog - white with black outline
-  M5Cardputer.Display.fillRect(20, 40, 200, 60, TFT_WHITE);
-  M5Cardputer.Display.drawRect(20, 40, 200, 60, TFT_BLACK);
-  M5Cardputer.Display.drawRect(21, 41, 198, 58, TFT_BLACK);
-
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("Delete this file?", 55, 50);
-
-  // Show filename
-  String displayName = fileInfoList[selectedFileIndex].name;
-  if (displayName.length() > 28) {
-    displayName = displayName.substring(0, 25) + "...";
-  }
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString(displayName.c_str(), 30, 65);
-
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  drawNavHint("Enter=Yes  `=No", 60, 82);
-
-  // Wait for confirmation
-  while (true) {
-    M5Cardputer.update();
-    if (M5Cardputer.Keyboard.isChange()) {
-      if (M5Cardputer.Keyboard.isPressed()) {
-        auto status = M5Cardputer.Keyboard.keysState();
-
-        // Check for Enter key via status flag
-        if (status.enter) {
-          deleteCurrentFile();
-          return;
-        }
-
-        // Check for backtick in word keys
-        for (auto key : status.word) {
-          if (key == '`') {
-            // Cancelled
-            drawFolderView();
-            return;
-          }
-        }
-      }
-    }
-    delay(10);
+  // Use reusable dialog system (was 48 lines, now 3!)
+  if (showConfirmDialog("Delete this file?", fileInfoList[selectedFileIndex].name)) {
+    deleteCurrentFile();
+  } else {
+    drawFolderView();
   }
 }
 
@@ -1158,47 +1094,12 @@ void deleteCurrentFile() {
 void showBatchDeleteConfirmation() {
   if (selectedCount == 0) return;
 
-  // Draw confirmation dialog - white with black outline
-  M5Cardputer.Display.fillRect(20, 40, 200, 60, TFT_WHITE);
-  M5Cardputer.Display.drawRect(20, 40, 200, 60, TFT_BLACK);
-  M5Cardputer.Display.drawRect(21, 41, 198, 58, TFT_BLACK);
-
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("Delete selected files?", 45, 50);
-
-  // Show count
-  String countMsg = String(selectedCount) + " files selected";
-  M5Cardputer.Display.setTextColor(TFT_RED);
-  M5Cardputer.Display.drawString(countMsg.c_str(), 55, 65);
-
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  drawNavHint("Enter=Yes  `=No", 60, 82);
-
-  // Wait for confirmation
-  while (true) {
-    M5Cardputer.update();
-    if (M5Cardputer.Keyboard.isChange()) {
-      if (M5Cardputer.Keyboard.isPressed()) {
-        auto status = M5Cardputer.Keyboard.keysState();
-
-        // Check for Enter key via status flag
-        if (status.enter) {
-          batchDeleteFiles();
-          return;
-        }
-
-        // Check for backtick in word keys
-        for (auto key : status.word) {
-          if (key == '`') {
-            // Cancelled
-            drawFolderView();
-            return;
-          }
-        }
-      }
-    }
-    delay(10);
+  // Use reusable dialog system (was 45 lines, now 5!)
+  String message = String(selectedCount) + " files";
+  if (showConfirmDialog("Delete selected?", message)) {
+    batchDeleteFiles();
+  } else {
+    drawFolderView();
   }
 }
 
@@ -1257,216 +1158,63 @@ void renameFile() {
   if (fileCount == 0 || selectedFileIndex >= fileCount) return;
 
   String oldName = fileInfoList[selectedFileIndex].name;
-  String newName = oldName;
 
-  // Draw rename dialog
-  M5Cardputer.Display.fillRect(10, 35, 220, 70, TFT_WHITE);
-  M5Cardputer.Display.drawRect(10, 35, 220, 70, TFT_BLACK);
-  M5Cardputer.Display.drawRect(11, 36, 218, 68, TFT_BLACK);
+  // Use reusable dialog system (was 110 lines, now 20!)
+  String newName = showTextInputDialog("Rename:", oldName);
 
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("Rename:", 20, 45);
+  if (newName.length() > 0 && newName != oldName) {
+    // Perform rename
+    String oldPath;
+    String newPath;
 
-  // Input loop
-  bool cursorVisible = true;
-  unsigned long lastBlink = millis();
-
-  while (true) {
-    // Draw input field with cursor
-    M5Cardputer.Display.fillRect(20, 60, 200, 12, TFT_WHITE);
-    M5Cardputer.Display.setTextColor(TFT_BLACK);
-
-    String displayName = newName;
-    if (displayName.length() > 28) {
-      displayName = displayName.substring(displayName.length() - 28);
-    }
-    M5Cardputer.Display.drawString(displayName.c_str(), 20, 60);
-
-    // Draw cursor
-    if (cursorVisible) {
-      int cursorX = 20 + (displayName.length() * 6);
-      M5Cardputer.Display.drawLine(cursorX, 60, cursorX, 70, TFT_BLACK);
+    if (currentPath.endsWith("/")) {
+      oldPath = currentPath + oldName;
+      newPath = currentPath + newName;
+    } else {
+      oldPath = currentPath + "/" + oldName;
+      newPath = currentPath + "/" + newName;
     }
 
-    // Blink cursor
-    if (millis() - lastBlink > 500) {
-      cursorVisible = !cursorVisible;
-      lastBlink = millis();
+    if (SD.rename(oldPath.c_str(), newPath.c_str())) {
+      if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
+      loadFolder(currentPath);
+    } else {
+      M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+      M5Cardputer.Display.setTextColor(TFT_RED);
+      M5Cardputer.Display.drawString("Rename failed!", 70, 112);
+      delay(1000);
+      drawFolderView();
     }
-
-    // Footer
-    M5Cardputer.Display.fillRect(20, 85, 200, 10, TFT_WHITE);
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    drawNavHint("Enter=OK  `=Cancel", 50, 85);
-
-    M5Cardputer.update();
-
-    if (M5Cardputer.Keyboard.isChange()) {
-      if (M5Cardputer.Keyboard.isPressed()) {
-        auto status = M5Cardputer.Keyboard.keysState();
-
-        // Check for Enter key
-        if (status.enter) {
-          if (newName.length() > 0 && newName != oldName) {
-            // Perform rename
-            String oldPath;
-            String newPath;
-
-            if (currentPath.endsWith("/")) {
-              oldPath = currentPath + oldName;
-              newPath = currentPath + newName;
-            } else {
-              oldPath = currentPath + "/" + oldName;
-              newPath = currentPath + "/" + newName;
-            }
-
-            if (SD.rename(oldPath.c_str(), newPath.c_str())) {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
-              loadFolder(currentPath);
-            } else {
-              M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
-              M5Cardputer.Display.setTextColor(TFT_RED);
-              M5Cardputer.Display.drawString("Rename failed!", 70, 112);
-              delay(1000);
-              drawFolderView();
-            }
-          } else {
-            drawFolderView();
-          }
-          return;
-        }
-
-        // Check for Delete key
-        if (status.del) {
-          if (newName.length() > 0) {
-            newName.remove(newName.length() - 1);
-          }
-          cursorVisible = true;
-          lastBlink = millis();
-        }
-
-        // Check for character input
-        for (auto key : status.word) {
-          if (key == '`') {
-            // Cancel
-            drawFolderView();
-            return;
-          } else if (key >= 32 && key <= 126 && newName.length() < 50) {
-            newName += (char)key;
-            cursorVisible = true;
-            lastBlink = millis();
-          }
-        }
-      }
-    }
-
-    delay(10);
+  } else {
+    drawFolderView();
   }
 }
 
 void createFolder() {
-  String folderName = "";
+  // Use reusable dialog system (was 103 lines, now 17!)
+  String folderName = showTextInputDialog("New Folder:", "", "Create");
 
-  // Draw create folder dialog
-  M5Cardputer.Display.fillRect(10, 35, 220, 70, TFT_WHITE);
-  M5Cardputer.Display.drawRect(10, 35, 220, 70, TFT_BLACK);
-  M5Cardputer.Display.drawRect(11, 36, 218, 68, TFT_BLACK);
-
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("New Folder:", 20, 45);
-
-  // Input loop
-  bool cursorVisible = true;
-  unsigned long lastBlink = millis();
-
-  while (true) {
-    // Draw input field with cursor
-    M5Cardputer.Display.fillRect(20, 60, 200, 12, TFT_WHITE);
-    M5Cardputer.Display.setTextColor(TFT_BLACK);
-
-    String displayName = folderName;
-    if (displayName.length() > 28) {
-      displayName = displayName.substring(displayName.length() - 28);
-    }
-    M5Cardputer.Display.drawString(displayName.c_str(), 20, 60);
-
-    // Draw cursor
-    if (cursorVisible) {
-      int cursorX = 20 + (displayName.length() * 6);
-      M5Cardputer.Display.drawLine(cursorX, 60, cursorX, 70, TFT_BLACK);
+  if (folderName.length() > 0) {
+    // Create folder
+    String newFolderPath;
+    if (currentPath.endsWith("/")) {
+      newFolderPath = currentPath + folderName;
+    } else {
+      newFolderPath = currentPath + "/" + folderName;
     }
 
-    // Blink cursor
-    if (millis() - lastBlink > 500) {
-      cursorVisible = !cursorVisible;
-      lastBlink = millis();
+    if (SD.mkdir(newFolderPath.c_str())) {
+      if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
+      loadFolder(currentPath);
+    } else {
+      M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+      M5Cardputer.Display.setTextColor(TFT_RED);
+      M5Cardputer.Display.drawString("Create failed!", 70, 112);
+      delay(1000);
+      drawFolderView();
     }
-
-    // Footer
-    M5Cardputer.Display.fillRect(20, 85, 200, 10, TFT_WHITE);
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    drawNavHint("Enter=Create  `=Cancel", 45, 85);
-
-    M5Cardputer.update();
-
-    if (M5Cardputer.Keyboard.isChange()) {
-      if (M5Cardputer.Keyboard.isPressed()) {
-        auto status = M5Cardputer.Keyboard.keysState();
-
-        // Check for Enter key
-        if (status.enter) {
-          if (folderName.length() > 0) {
-            // Create folder
-            String newFolderPath;
-            if (currentPath.endsWith("/")) {
-              newFolderPath = currentPath + folderName;
-            } else {
-              newFolderPath = currentPath + "/" + folderName;
-            }
-
-            if (SD.mkdir(newFolderPath.c_str())) {
-              if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
-              loadFolder(currentPath);
-            } else {
-              M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
-              M5Cardputer.Display.setTextColor(TFT_RED);
-              M5Cardputer.Display.drawString("Create failed!", 70, 112);
-              delay(1000);
-              drawFolderView();
-            }
-          } else {
-            drawFolderView();
-          }
-          return;
-        }
-
-        // Check for Delete key
-        if (status.del) {
-          if (folderName.length() > 0) {
-            folderName.remove(folderName.length() - 1);
-          }
-          cursorVisible = true;
-          lastBlink = millis();
-        }
-
-        // Check for character input
-        for (auto key : status.word) {
-          if (key == '`') {
-            // Cancel
-            drawFolderView();
-            return;
-          } else if (key >= 32 && key <= 126 && folderName.length() < 50) {
-            folderName += (char)key;
-            cursorVisible = true;
-            lastBlink = millis();
-          }
-        }
-      }
-    }
-
-    delay(10);
+  } else {
+    drawFolderView();
   }
 }
 

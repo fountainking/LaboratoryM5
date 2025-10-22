@@ -124,18 +124,18 @@ struct Star {
   bool isStatic; // true = slow twinkling static star, false = flying star
 };
 
-Star stars[150]; // Even more stars!
-bool starsInitialized = false;
+Star stars[80]; // Optimized: 80 stars (down from 150) = ~1.6KB RAM saved
+bool starsInitialized = false; // Only runs on landing page + screensaver, NOT during apps
 float starfieldSpeed = 1.5; // Gradually increases for warp effect
 int starfieldFrames = 0; // Count frames to increase speed
 
 void initStarfield() {
-  for (int i = 0; i < 150; i++) {
+  for (int i = 0; i < 80; i++) {
     stars[i].x = random(-120, 120); // Center origin
     stars[i].y = random(-67, 67);
 
     // 30% static stars, 70% flying stars
-    stars[i].isStatic = (i < 45); // First 45 are static
+    stars[i].isStatic = (i < 24); // First 24 are static (30% of 80)
 
     if (stars[i].isStatic) {
       stars[i].z = random(50, 90); // Static stars in mid-distance
@@ -186,7 +186,7 @@ void drawStarfield(String statusText = "") {
   M5Cardputer.Display.fillScreen(M5Cardputer.Display.color565(0, 0, 25));
 
   // Draw and update each star
-  for (int i = 0; i < 150; i++) {
+  for (int i = 0; i < 80; i++) {
     // Store old position for streak effect
     float oldZ = stars[i].z;
 
@@ -519,6 +519,20 @@ void safeBeep(int freq, int duration, bool checkSound = true) {
 }
 
 void loop() {
+  // Heap monitoring - log every 10 seconds
+  static unsigned long lastHeapCheck = 0;
+  if (millis() - lastHeapCheck > 10000) {
+    size_t freeHeap = ESP.getFreeHeap();
+    size_t minFreeHeap = ESP.getMinFreeHeap();
+    size_t maxAllocHeap = ESP.getMaxAllocHeap();
+    Serial.printf("=== HEAP MONITOR ===\n");
+    Serial.printf("Free: %d bytes (%.1f KB)\n", freeHeap, freeHeap / 1024.0);
+    Serial.printf("Min Free: %d bytes (%.1f KB)\n", minFreeHeap, minFreeHeap / 1024.0);
+    Serial.printf("Max Alloc: %d bytes (%.1f KB)\n", maxAllocHeap, maxAllocHeap / 1024.0);
+    Serial.printf("===================\n");
+    lastHeapCheck = millis();
+  }
+
   // Update audio at the very start of the loop to minimize gaps
   updateAudioIfPlaying();
 
