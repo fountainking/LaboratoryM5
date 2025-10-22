@@ -315,6 +315,16 @@ void drawStarfield(String statusText = "") {
 
 void setup() {
   Serial.begin(115200);
+  delay(500);
+
+  // FIRMWARE BUILD VERIFICATION - Auto-updates every compile!
+  // You'll ALWAYS see a new timestamp when firmware is uploaded
+  Serial.println("\n\n╔════════════════════════════════════════╗");
+  Serial.println("║  Laboratory M5 Cardputer Firmware     ║");
+  Serial.println("╠════════════════════════════════════════╣");
+  Serial.printf("║  BUILD: %s @ %s  ║\n", __DATE__, __TIME__);
+  Serial.println("╚════════════════════════════════════════╝\n");
+
   auto cfg = M5.config();
   M5Cardputer.begin(cfg, true);
   M5Cardputer.Display.setRotation(1);
