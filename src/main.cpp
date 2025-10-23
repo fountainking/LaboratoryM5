@@ -440,9 +440,9 @@ void setup() {
   // Play boot animation
   playBootAnimation();
 
-  // Initialize star rain for landing page
-  initStarRain(STARRAIN_LANDING);
-  currentState = STAR_LANDING_PAGE;
+  // Skip star rain landing page - go straight to main menu
+  currentState = MAIN_MENU;
+  drawScreen(false);
 
   // Mark when boot completes - defer expensive WiFi ops for smooth animation
   bootCompleteTime = millis();
@@ -689,8 +689,9 @@ void loop() {
   // Check for inactivity timeout (works on all screens)
   if (!screensaverActive &&
       millis() - lastActivityTime > SCREENSAVER_TIMEOUT) {
-    // Start screensaver (star rain disabled - just black screen)
+    // Start screensaver with star rain dissolve effect
     screensaverActive = true;
+    initStarRain(STARRAIN_SCREENSAVER);
     delay(10);
     return;
   }

@@ -16,20 +16,26 @@ void loadMusicFolder() {
 
   // Check both /mp3 and /mp3s folders (try /mp3 first, then /mp3s)
   const char* musicFolder = nullptr;
+  Serial.println("Music Player: Checking for music folders...");
   if (SD.exists("/mp3")) {
     musicFolder = "/mp3";
+    Serial.println("  Found /mp3 folder");
   } else if (SD.exists("/mp3s")) {
     musicFolder = "/mp3s";
+    Serial.println("  Found /mp3s folder");
   } else {
+    Serial.println("  ERROR: No music folder found (/mp3 or /mp3s)");
     return;  // No music folder found
   }
 
   // Save the folder path for playback
   strncpy(musicFolderPath, musicFolder, 15);
   musicFolderPath[15] = '\0';
+  Serial.printf("  Using folder: %s\n", musicFolderPath);
 
   File dir = SD.open(musicFolder);
   if (!dir || !dir.isDirectory()) {
+    Serial.println("  ERROR: Failed to open music folder as directory");
     return;
   }
 
@@ -107,10 +113,10 @@ void drawMusicPlayer() {
   if (musicCount == 0) {
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(TFT_WHITE);
-    M5Cardputer.Display.drawString("No MP3 files in /mp3s", 40, 60);
+    M5Cardputer.Display.drawString("No MP3 files found", 50, 60);
     M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    M5Cardputer.Display.drawString("Add MP3 files to /mp3s", 40, 75);
-    M5Cardputer.Display.drawString("folder on SD card", 55, 85);
+    M5Cardputer.Display.drawString("Add MP3 files to /mp3", 40, 75);
+    M5Cardputer.Display.drawString("or /mp3s on SD card", 45, 85);
   } else {
     // Show currently playing track info (NO String allocations - prevent fragmentation!)
     M5Cardputer.Display.setTextSize(1);

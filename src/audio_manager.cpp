@@ -28,11 +28,12 @@ void initAudioManager() {
     M5Cardputer.Speaker.end();
     Serial.println("Audio Manager: Stopped M5Speaker to release I2S port 0");
 
-    sharedAudioOutput = new AudioOutputI2S(0);  // Use I2S port 0 (now available)
+    sharedAudioOutput = new AudioOutputI2S(0, 1);  // I2S port 0, external DAC mode
     sharedAudioOutput->SetPinout(41, 43, 42); // M5Cardputer I2S pins
     sharedAudioOutput->SetOutputModeMono(true);
     sharedAudioOutput->SetGain(masterVolume / 25.0); // Set initial gain based on masterVolume (50/25 = 2.0)
     Serial.println("Audio Manager: Initialized AudioOutputI2S on port 0");
+
   }
 }
 
@@ -270,8 +271,9 @@ void updateMusicPlayback() {
   }
 
   if (currentSource == AUDIO_SOURCE_MUSIC && musicMP3 && musicMP3->isRunning()) {
-    // Feed watchdog BEFORE calling loop() to prevent timeout during MP3 decoding
+    // AGGRESSIVE watchdog feeding to prevent timeout during MP3 decoding
     yield();
+    delay(1);  // Give watchdog extra time
 
     // Log every 100 loops to track progress without flooding serial
     loopCount++;
@@ -281,6 +283,9 @@ void updateMusicPlayback() {
       lastLoopLog = millis();
     }
 
+    // Feed watchdog again before the potentially long loop() call
+    yield();
+
     if (!musicMP3->loop()) {
       // Track finished - DON'T delete immediately (we're inside musicMP3->loop()!)
       // Mark for deletion on next iteration
@@ -288,6 +293,9 @@ void updateMusicPlayback() {
       pendingStop = true;
       loopCount = 0;  // Reset counter
     }
+
+    // Feed watchdog after loop() completes
+    yield();
   }
 }
 

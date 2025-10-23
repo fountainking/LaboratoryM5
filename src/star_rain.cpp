@@ -12,7 +12,8 @@ float gravityX = 0.0f;  // -1.0 to 1.0 (left to right tilt)
 float gravityY = 1.0f;  // 0.5 to 2.0 (slow to fast)
 
 // Color palette for stars - Original colors plus shades of blue
-const uint16_t starColors[] = {
+// NON-CONST so we can shuffle for randomization!
+uint16_t starColors[] = {
   // Original colors
   0xAD55,  // Light blue
   0x001F,  // Blue
@@ -43,6 +44,16 @@ void initStarRain(StarRainMode mode) {
   starRainActive = true;
   gravityX = 0.0f;
   gravityY = 1.0f;
+
+  // Randomize star colors for variety (Fisher-Yates shuffle)
+  // Seed with current time for true randomness
+  randomSeed(millis());
+  for (int i = numColors - 1; i > 0; i--) {
+    int j = random(0, i + 1);
+    uint16_t temp = starColors[i];
+    starColors[i] = starColors[j];
+    starColors[j] = temp;
+  }
 
   // Initialize IMU - M5.begin() should have done this, but try again
   M5.Imu.begin();
@@ -117,8 +128,7 @@ void updateStarRain() {
     }
   }
 
-  // Spawn multiple stars per frame to maintain heavy density
-  // With 1500 max stars and fast fall speeds, we need to spawn many per frame
+  // Spawn new stars to maintain heavy rain
   for (int i = 0; i < 5; i++) {
     if (random(100) < STAR_SPAWN_CHANCE) {
       spawnStar();
@@ -145,11 +155,13 @@ void drawStarRain() {
   if (currentStarMode == STARRAIN_LANDING) {
     M5Cardputer.Display.fillRect(0, 25, 240, 110, bgColor);  // Clear main area (below status bar, above bottom text)
     // Status bar and nav dots are drawn once in initStarRain, don't redraw them here
-  } else if (currentStarMode == STARRAIN_TERMINAL) {
-    // Clear screen for terminal mode
+  }
+
+  // TERMINAL: Clear full screen
+  if (currentStarMode == STARRAIN_TERMINAL) {
     M5Cardputer.Display.fillScreen(bgColor);
   }
-  // For screensaver, don't clear the screen - transparent overlay!
+  // SCREENSAVER: Don't clear screen - creates dissolve/pooling effect!
 
   // Draw each raindrop as single asterisk - no trails
   // For landing page, draw below status bar (y >= 25)
