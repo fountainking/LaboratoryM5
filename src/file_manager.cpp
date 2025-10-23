@@ -191,77 +191,85 @@ void drawNavHint(const char* text, int x, int y) {
   M5Cardputer.Display.drawString(text, x, y);
 }
 
-// Custom status bar for file manager - yellow background with black text
-void drawFileManagerStatusBar() {
-  uint16_t bgColor = TFT_YELLOW;
-  uint16_t fgColor = TFT_BLACK;
+// Draw star icon (matches WiFi Transfer style!)
+void drawStar(int x, int y, int size, uint16_t color) {
+  // 5-pointed star using filled triangles
+  // This creates the iconic star from the WiFi Transfer page
+  float angle = -PI / 2; // Start at top
+  int outerR = size;
+  int innerR = size / 2;
 
-  // WiFi status box
-  int wifiWidth = 110;
-  M5Cardputer.Display.fillRoundRect(5, 5, wifiWidth, 18, 9, bgColor);
-  for (int i = 0; i < 2; i++) {
-    M5Cardputer.Display.drawRoundRect(5+i, 5+i, wifiWidth-i*2, 18-i*2, 9-i, fgColor);
-  }
+  for (int i = 0; i < 5; i++) {
+    float a1 = angle + (i * 2 * PI / 5);
+    float a2 = angle + ((i + 0.5) * 2 * PI / 5);
+    float a3 = angle + ((i + 1) * 2 * PI / 5);
 
-  bool wifiConnected = (WiFi.status() == WL_CONNECTED);
-  if (wifiConnected) {
-    String rawSSID = WiFi.SSID();
-    String ssid = (rawSSID.length() > 16) ? rawSSID.substring(0, 13) + "..." : rawSSID;
-    M5Cardputer.Display.setTextColor(fgColor);
-    M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.drawString(ssid.c_str(), 10, 10);
-  } else {
-    M5Cardputer.Display.setTextColor(fgColor);
-    M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.drawString("Off", 10, 10);
-  }
+    int x1 = x + outerR * cos(a1);
+    int y1 = y + outerR * sin(a1);
+    int x2 = x + innerR * cos(a2);
+    int y2 = y + innerR * sin(a2);
+    int x3 = x + outerR * cos(a3);
+    int y3 = y + outerR * sin(a3);
 
-  // Time box
-  int timeWidth = 110;
-  M5Cardputer.Display.fillRoundRect(125, 5, timeWidth, 18, 9, bgColor);
-  for (int i = 0; i < 2; i++) {
-    M5Cardputer.Display.drawRoundRect(125+i, 5+i, timeWidth-i*2, 18-i*2, 9-i, fgColor);
+    M5Cardputer.Display.fillTriangle(x, y, x1, y1, x2, y2, color);
+    M5Cardputer.Display.fillTriangle(x, y, x2, y2, x3, y3, color);
   }
+}
 
-  struct tm timeinfo;
-  if (getLocalTime(&timeinfo)) {
-    char timeStr[10];
-    sprintf(timeStr, "%02d:%02d", timeinfo.tm_hour, timeinfo.tm_min);
-    M5Cardputer.Display.setTextColor(fgColor);
-    M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.drawString(timeStr, 130, 10);
-  } else {
-    M5Cardputer.Display.setTextColor(fgColor);
-    M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.drawString("--:--", 130, 10);
-  }
+// Custom header for file manager - matches WiFi Transfer style!
+void drawFileManagerHeader() {
+  // White rounded rectangle with black border (like Transfer header)
+  M5Cardputer.Display.fillRoundRect(60, 3, 120, 20, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(60, 3, 120, 20, 10, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(61, 4, 118, 18, 9, TFT_BLACK);
+
+  // Draw golden star icon
+  drawStar(75, 13, 6, TFT_YELLOW);
+
+  // "FILES" text in bold black
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.drawString("FILES", 95, 9);
 }
 
 
 void enterFileManager() {
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawFileManagerStatusBar();
+  // Light gray background
+  M5Cardputer.Display.fillScreen(0xE71C);
+  drawFileManagerHeader();
+
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_YELLOW);
-  M5Cardputer.Display.drawString("Initializing SD...", 60, 50);
-  
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.drawString("Initializing SD...", 70, 60);
+
   // SD init - Initialize SPI bus first
   SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-  
+
   // Mount SD with correct pins
   sdCardMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
-  
+
   if (!sdCardMounted) {
-    M5Cardputer.Display.fillScreen(TFT_BLACK);
-    drawFileManagerStatusBar();
+    M5Cardputer.Display.fillScreen(0xE71C);
+    drawFileManagerHeader();
+
+    // Error panel (white rounded rect like WiFi Transfer)
+    M5Cardputer.Display.fillRoundRect(20, 50, 200, 60, 12, TFT_WHITE);
+    M5Cardputer.Display.drawRoundRect(20, 50, 200, 60, 12, TFT_BLACK);
+    M5Cardputer.Display.drawRoundRect(21, 51, 198, 58, 11, TFT_BLACK);
+
     M5Cardputer.Display.setTextSize(2);
     M5Cardputer.Display.setTextColor(TFT_RED);
-    M5Cardputer.Display.drawString("SD Card Error!", 40, 60);
+    M5Cardputer.Display.drawString("SD Error!", 70, 60);
     M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.setTextColor(TFT_WHITE);
-    M5Cardputer.Display.drawString("Insert SD card and try again", 25, 85);
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    M5Cardputer.Display.drawString("Press ` to go back", 60, 110);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
+    M5Cardputer.Display.drawString("Insert SD card", 75, 85);
+
+    // Back button
+    M5Cardputer.Display.fillRoundRect(85, 118, 70, 12, 6, TFT_WHITE);
+    M5Cardputer.Display.drawRoundRect(85, 118, 70, 12, 6, TFT_BLACK);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
+    M5Cardputer.Display.drawString("`=Back", 95, 120);
+
     fileCount = 0;
     return;
   }
@@ -283,27 +291,31 @@ void loadFolder(String path) {
   }
   selectedCount = 0;
 
-  // Debug - show what we're trying to open
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawFileManagerStatusBar();
+  // Loading message with WiFi Transfer style
+  M5Cardputer.Display.fillScreen(0xE71C);
+  drawFileManagerHeader();
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_YELLOW);
-  M5Cardputer.Display.drawString(("Opening: " + path).c_str(), 10, 60);
-  delay(500);
-  
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  String loadMsg = "Opening: " + path;
+  if (loadMsg.length() > 30) {
+    loadMsg = loadMsg.substring(0, 27) + "...";
+  }
+  M5Cardputer.Display.drawString(loadMsg.c_str(), 20, 65);
+  delay(300);
+
   File root = SD.open(path);
-  
+
   if (!root) {
     M5Cardputer.Display.setTextColor(TFT_RED);
-    M5Cardputer.Display.drawString("Failed to open!", 10, 75);
+    M5Cardputer.Display.drawString("Failed to open!", 75, 85);
     delay(1500);
     drawFolderView();
     return;
   }
-  
+
   if (!root.isDirectory()) {
     M5Cardputer.Display.setTextColor(TFT_RED);
-    M5Cardputer.Display.drawString("Not a directory!", 10, 75);
+    M5Cardputer.Display.drawString("Not a directory!", 70, 85);
     delay(1500);
     root.close();
     drawFolderView();
@@ -376,44 +388,37 @@ String formatFileSize(size_t bytes) {
 }
 
 void drawFolderView() {
-  M5Cardputer.Display.fillScreen(TFT_YELLOW);
-  drawFileManagerStatusBar();
+  // Light gray background (like WiFi Transfer #f5f5f5)
+  M5Cardputer.Display.fillScreen(0xE71C); // RGB565 for #f5f5f5
 
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("Files", 5, 28);
+  // Draw header with star
+  drawFileManagerHeader();
 
-  // Show current path
+  // Show current path in small text below header
   String displayPath = currentPath;
-  if (displayPath.length() > 32) {
-    displayPath = "..." + displayPath.substring(displayPath.length() - 29);
+  if (displayPath.length() > 35) {
+    displayPath = "..." + displayPath.substring(displayPath.length() - 32);
   }
+  M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString(displayPath.c_str(), 5, 38);
+  M5Cardputer.Display.drawString(displayPath.c_str(), 5, 26);
 
   // Show search box if searching
   if (searchActive) {
-    M5Cardputer.Display.fillRect(2, 26, 236, 12, TFT_WHITE);
-    M5Cardputer.Display.drawRect(2, 26, 236, 12, TFT_BLACK);
+    M5Cardputer.Display.fillRoundRect(5, 26, 230, 12, 6, TFT_WHITE);
+    M5Cardputer.Display.drawRoundRect(5, 26, 230, 12, 6, TFT_BLACK);
     M5Cardputer.Display.setTextColor(TFT_BLACK);
     String displaySearch = "Search: " + searchQuery;
-    if (displaySearch.length() > 38) {
-      displaySearch = displaySearch.substring(0, 35) + "...";
+    if (displaySearch.length() > 35) {
+      displaySearch = displaySearch.substring(0, 32) + "...";
     }
-    M5Cardputer.Display.drawString(displaySearch.c_str(), 5, 28);
+    M5Cardputer.Display.drawString(displaySearch.c_str(), 10, 29);
   }
 
-  // Draw column headers
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString("Name", 15, 45);
-  M5Cardputer.Display.drawString("Date", 120, 45);
-  M5Cardputer.Display.drawString("Size", 195, 45);
-
-  // Draw vertical column lines
-  M5Cardputer.Display.drawLine(13, 42, 13, 120, TFT_DARKGREY);
-  M5Cardputer.Display.drawLine(115, 42, 115, 120, TFT_DARKGREY);
-  M5Cardputer.Display.drawLine(190, 42, 190, 120, TFT_DARKGREY);
+  // Main yellow content panel (like WiFi Transfer)
+  M5Cardputer.Display.fillRoundRect(3, 40, 234, 82, 10, TFT_YELLOW);
+  M5Cardputer.Display.drawRoundRect(3, 40, 234, 82, 10, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(4, 41, 232, 80, 9, TFT_BLACK);
 
   // Build filtered file list if searching
   int filteredIndices[50];
@@ -439,8 +444,8 @@ void drawFolderView() {
 
   if (filteredCount == 0) {
     M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    M5Cardputer.Display.drawString(searchActive ? "No matches" : "Empty folder", 75, 70);
+    M5Cardputer.Display.setTextColor(TFT_BLACK);
+    M5Cardputer.Display.drawString(searchActive ? "No matches" : "Empty folder", 70, 75);
   } else {
     // Show up to 5 items from filtered list
     int startIdx = max(0, selectedFileIndex - 2);
@@ -448,20 +453,25 @@ void drawFolderView() {
 
     for (int i = startIdx; i < endIdx; i++) {
       int fileIdx = filteredIndices[i];  // Map to actual file index
-      int yPos = 57 + ((i - startIdx) * 12);
+      int yPos = 47 + ((i - startIdx) * 14);
 
       bool selected = (i == selectedFileIndex);
 
-      if (selected) {
-        M5Cardputer.Display.fillRoundRect(2, yPos - 1, 236, 11, 2, TFT_WHITE);
+      // White rounded rectangle for each file (like WiFi Transfer file-item)
+      uint16_t itemBg = selected ? TFT_WHITE : 0xFFE0; // White when selected, light yellow otherwise
+      M5Cardputer.Display.fillRoundRect(8, yPos, 224, 12, 4, itemBg);
+
+      // Subtle border for non-selected items
+      if (!selected) {
+        M5Cardputer.Display.drawRoundRect(8, yPos, 224, 12, 4, 0xDEDB); // rgba(0,0,0,0.2) approximation
       }
 
       M5Cardputer.Display.setTextSize(1);
 
       // Show selection checkbox if file is selected for batch operation
       if (fileSelected[fileIdx] && selectedCount > 0) {
-        M5Cardputer.Display.fillRect(2, yPos, 8, 8, TFT_GREEN);
-        M5Cardputer.Display.drawRect(2, yPos, 8, 8, TFT_BLACK);
+        M5Cardputer.Display.fillRect(10, yPos + 2, 8, 8, TFT_GREEN);
+        M5Cardputer.Display.drawRect(10, yPos + 2, 8, 8, TFT_BLACK);
       }
 
       // File type icon or thumbnail
@@ -469,100 +479,51 @@ void drawFolderView() {
       uint16_t iconColor = TFT_BLACK;
       bool showThumbnail = false;
 
-      // Check if this is an image file and we should show a thumbnail
-      if (fileInfoList[fileIdx].type == TYPE_IMAGE) {
-        String thumbnailPath;
-        if (currentPath.endsWith("/")) {
-          thumbnailPath = currentPath + fileInfoList[fileIdx].name;
-        } else {
-          thumbnailPath = currentPath + "/" + fileInfoList[fileIdx].name;
-        }
-
-        // Try to load and display a small thumbnail (10x10 pixels)
-        bool loaded = false;
-        String lowerPath = thumbnailPath;
-        lowerPath.toLowerCase();
-
-        // Clear the thumbnail area first
-        M5Cardputer.Display.fillRect(2, yPos, 10, 10, TFT_YELLOW);
-
-        if (lowerPath.endsWith(".jpg") || lowerPath.endsWith(".jpeg")) {
-          // Draw scaled down to 10x10
-          loaded = M5Cardputer.Display.drawJpgFile(thumbnailPath.c_str(), 2, yPos, 10, 10);
-        } else if (lowerPath.endsWith(".bmp")) {
-          loaded = M5Cardputer.Display.drawBmpFile(thumbnailPath.c_str(), 2, yPos, 10, 10);
-        }
-        // PNG thumbnails removed - use JPG instead
-
-        if (loaded) {
-          showThumbnail = true;
-          // Draw border around thumbnail
-          M5Cardputer.Display.drawRect(2, yPos, 10, 10, TFT_DARKGREY);
-        }
-      }
-
-      if (!showThumbnail) {
-        // Show icon if thumbnail couldn't be loaded
-        switch (fileInfoList[fileIdx].type) {
-          case TYPE_FOLDER:  icon = "D"; iconColor = TFT_BLUE; break;
-          case TYPE_PDF:     icon = "P"; iconColor = TFT_RED; break;
-          case TYPE_IMAGE:   icon = "I"; iconColor = TFT_GREEN; break;
-          case TYPE_GIF:     icon = "G"; iconColor = TFT_PURPLE; break;
-          case TYPE_VIDEO:   icon = "V"; iconColor = TFT_CYAN; break;
-          case TYPE_AUDIO:   icon = "M"; iconColor = TFT_ORANGE; break;
-          case TYPE_TEXT:    icon = "T"; iconColor = TFT_DARKGREY; break;
-          case TYPE_MODEL:   icon = "3"; iconColor = TFT_MAGENTA; break;
-          default:           icon = "?"; iconColor = TFT_DARKGREY; break;
-        }
-
-        M5Cardputer.Display.setTextColor(iconColor);
-        M5Cardputer.Display.drawString(icon.c_str(), 5, yPos);
-      }
-
-      // Filename
+      // Determine file icon (bullet point style from WiFi Transfer)
+      String bullet = fileInfoList[fileIdx].isDirectory ? ">" : "•";
       M5Cardputer.Display.setTextColor(TFT_BLACK);
+      M5Cardputer.Display.drawString(bullet.c_str(), 14, yPos + 2);
+
+      // Filename (bold black text)
       String displayName = fileInfoList[fileIdx].name;
-      if (displayName.length() > 16) {
-        displayName = displayName.substring(0, 13) + "...";
+      if (fileInfoList[fileIdx].isDirectory) {
+        displayName += "/";
       }
-      M5Cardputer.Display.drawString(displayName.c_str(), 15, yPos);
-
-      // Date (formatted as MM/DD)
-      if (fileInfoList[fileIdx].modified > 0) {
-        struct tm timeinfo;
-        time_t modTime = fileInfoList[fileIdx].modified;
-        localtime_r(&modTime, &timeinfo);
-        char dateStr[10];
-        sprintf(dateStr, "%02d/%02d", timeinfo.tm_mon + 1, timeinfo.tm_mday);
-        M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-        M5Cardputer.Display.drawString(dateStr, 120, yPos);
+      if (displayName.length() > 20) {
+        displayName = displayName.substring(0, 17) + "...";
       }
+      M5Cardputer.Display.setTextColor(TFT_BLACK);
+      M5Cardputer.Display.drawString(displayName.c_str(), 25, yPos + 2);
 
-      // File size
+      // File size (small gray text on the right)
       if (!fileInfoList[fileIdx].isDirectory) {
         String sizeStr = formatFileSize(fileInfoList[fileIdx].size);
-        M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-        M5Cardputer.Display.drawString(sizeStr.c_str(), 195, yPos);
+        M5Cardputer.Display.setTextColor(0x7BEF); // #777 gray
+        int sizeWidth = sizeStr.length() * 6;
+        M5Cardputer.Display.drawString(sizeStr.c_str(), 225 - sizeWidth, yPos + 2);
+      } else {
+        M5Cardputer.Display.setTextColor(0x7BEF);
+        M5Cardputer.Display.drawString("folder", 188, yPos + 2);
       }
     }
 
-    // Scroll indicators
+    // Scroll indicators (small triangles)
     if (startIdx > 0) {
-      M5Cardputer.Display.fillTriangle(230, 59, 225, 64, 235, 64, TFT_BLACK);
+      M5Cardputer.Display.fillTriangle(230, 48, 227, 52, 233, 52, TFT_BLACK);
     }
     if (endIdx < filteredCount) {
-      M5Cardputer.Display.fillTriangle(230, 110, 225, 105, 235, 105, TFT_BLACK);
+      M5Cardputer.Display.fillTriangle(230, 116, 227, 112, 233, 112, TFT_BLACK);
     }
   }
 
+  // Bottom navigation hints (WiFi Transfer style white rounded buttons)
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
 
   // Show selection count if files are selected for batch operations
   if (selectedCount > 0) {
     String selectionMsg = String(selectedCount) + " selected";
     M5Cardputer.Display.setTextColor(TFT_GREEN);
-    M5Cardputer.Display.drawString(selectionMsg.c_str(), 5, 112);
+    M5Cardputer.Display.drawString(selectionMsg.c_str(), 8, 125);
   }
   // Show clipboard status if file is cut/copied
   else if (clipboardPath.length() > 0) {
@@ -572,21 +533,29 @@ void drawFolderView() {
       clipboardMsg = clipboardMsg.substring(0, 22) + "...";
     }
     M5Cardputer.Display.setTextColor(clipboardIsCut ? TFT_RED : TFT_BLUE);
-    M5Cardputer.Display.drawString(clipboardMsg.c_str(), 5, 112);
+    M5Cardputer.Display.drawString(clipboardMsg.c_str(), 8, 125);
   }
-
-  // Simple search hint at bottom
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  if (searchActive) {
-    drawNavHint("Press Esc to clear search", 5, 122);
-  } else {
-    drawNavHint("Press → or / to search", 5, 122);
+  // Otherwise show navigation hints in WiFi Transfer button style
+  else {
+    if (searchActive) {
+      // White button style for Esc hint
+      M5Cardputer.Display.fillRoundRect(70, 124, 100, 10, 5, TFT_WHITE);
+      M5Cardputer.Display.drawRoundRect(70, 124, 100, 10, 5, TFT_BLACK);
+      M5Cardputer.Display.setTextColor(TFT_BLACK);
+      M5Cardputer.Display.drawString("Esc=Clear", 80, 125);
+    } else {
+      // White button style for navigation hints
+      M5Cardputer.Display.fillRoundRect(60, 124, 120, 10, 5, TFT_WHITE);
+      M5Cardputer.Display.drawRoundRect(60, 124, 120, 10, 5, TFT_BLACK);
+      M5Cardputer.Display.setTextColor(TFT_BLACK);
+      M5Cardputer.Display.drawString(";/.=Nav `=Back", 68, 125);
+    }
   }
 }
 
 void drawFileViewer() {
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawFileManagerStatusBar();
+  M5Cardputer.Display.fillScreen(0xE71C);
+  drawFileManagerHeader();
   
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -601,8 +570,8 @@ void drawFileViewer() {
 }
 
 void drawTextViewer(const String& path) {
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawFileManagerStatusBar();
+  M5Cardputer.Display.fillScreen(0xE71C);
+  drawFileManagerHeader();
   
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -848,8 +817,8 @@ bool isGifPlaying() {
 }
 
 void drawPDFViewer(const String& path) {
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawFileManagerStatusBar();
+  M5Cardputer.Display.fillScreen(0xE71C);
+  drawFileManagerHeader();
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_YELLOW);
@@ -904,8 +873,8 @@ void updateAudioPlayback() {
 }
 
 void drawAudioPlayer(const String& path) {
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawFileManagerStatusBar();
+  M5Cardputer.Display.fillScreen(0xE71C);
+  drawFileManagerHeader();
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_ORANGE);
