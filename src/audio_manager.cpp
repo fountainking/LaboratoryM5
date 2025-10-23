@@ -91,60 +91,109 @@ void restoreAudioVolume() {
 
 // Music player implementation
 bool startMusicPlayback(const String& path) {
-  Serial.printf("Starting music playback: %s\n", path.c_str());
-  Serial.printf("Free heap before: %d bytes\n", ESP.getFreeHeap());
+  Serial.println("========================================");
+  Serial.printf("startMusicPlayback() called with: %s\n", path.c_str());
+  Serial.printf("Free heap: %d bytes\n", ESP.getFreeHeap());
+  Serial.printf("Largest free block: %d bytes\n", ESP.getMaxAllocHeap());
+  Serial.flush();
 
   // Stop any existing audio first
+  Serial.println("Step 1: Stopping existing audio...");
+  Serial.flush();
   stopMusicPlayback();
+
+  Serial.println("Step 2: Stopping radio stream...");
+  Serial.flush();
   stopRadioStream();
 
+  Serial.println("Step 3: Initializing audio manager...");
+  Serial.flush();
   initAudioManager();
+  Serial.println("Step 3: Audio manager initialized");
+  Serial.flush();
 
   // DON'T reinitialize SD card here - it's already initialized by the main app
   // Calling SD.begin() multiple times causes conflicts and makes SD unavailable
   // Just verify the SD card is accessible and file exists
+  Serial.println("Step 4: Checking if file exists...");
+  Serial.flush();
   if (!SD.exists(path.c_str())) {
     Serial.printf("ERROR: Audio file not found: %s\n", path.c_str());
+    Serial.flush();
     return false;
   }
+  Serial.println("Step 4: File exists!");
+  Serial.flush();
 
-  Serial.printf("Starting playback: %s\n", path.c_str());
-  Serial.printf("Free heap before MP3 creation: %d bytes\n", ESP.getFreeHeap());
-  Serial.printf("Largest free block: %d bytes\n", ESP.getMaxAllocHeap());
+  Serial.println("Step 5: Creating AudioFileSourceSD...");
+  Serial.printf("  Free heap before: %d bytes\n", ESP.getFreeHeap());
+  Serial.printf("  Largest free block: %d bytes\n", ESP.getMaxAllocHeap());
+  Serial.flush();
 
   musicFile = new AudioFileSourceSD(path.c_str());
+
+  Serial.println("Step 5: AudioFileSourceSD created (checking validity...)");
+  Serial.flush();
+
   if (!musicFile) {
-    Serial.println("ERROR: Failed to create AudioFileSourceSD!");
+    Serial.println("ERROR: Failed to create AudioFileSourceSD (null pointer)!");
+    Serial.flush();
     return false;
   }
 
   // Check if file was actually opened
-  Serial.printf("AudioFileSourceSD created, checking if open...\n");
+  Serial.println("Step 6: Checking if file opened...");
+  Serial.flush();
   if (!musicFile->isOpen()) {
     Serial.println("ERROR: AudioFileSourceSD failed to open file!");
+    Serial.flush();
     delete musicFile;
     musicFile = nullptr;
     return false;
   }
-  Serial.printf("AudioFileSourceSD successfully opened, size: %d bytes\n", musicFile->getSize());
+  Serial.printf("Step 6: File opened! Size: %d bytes\n", musicFile->getSize());
+  Serial.flush();
 
   // Create MP3 decoder fresh every time (prevents stale state issues)
+  Serial.println("Step 7: Creating AudioGeneratorMP3...");
+  Serial.printf("  Free heap before: %d bytes\n", ESP.getFreeHeap());
+  Serial.printf("  Largest free block: %d bytes\n", ESP.getMaxAllocHeap());
+  Serial.flush();
+
   musicMP3 = new AudioGeneratorMP3();
+
+  Serial.println("Step 7: AudioGeneratorMP3 created (checking validity...)");
+  Serial.flush();
+
   if (!musicMP3) {
-    Serial.println("ERROR: Failed to create AudioGeneratorMP3!");
+    Serial.println("ERROR: Failed to create AudioGeneratorMP3 (null pointer)!");
+    Serial.flush();
     delete musicFile;
     musicFile = nullptr;
     return false;
   }
-  Serial.println("Created fresh MP3 decoder");
+  Serial.println("Step 7: MP3 decoder created successfully!");
+  Serial.flush();
 
   Serial.println("Calling musicMP3->begin()...");
   Serial.printf("  Free heap: %d bytes\n", ESP.getFreeHeap());
+  Serial.printf("  Largest free block: %d bytes\n", ESP.getMaxAllocHeap());
   Serial.printf("  musicFile = %p (open=%s, size=%d)\n", musicFile,
                 musicFile->isOpen() ? "YES" : "NO", musicFile->getSize());
   Serial.printf("  sharedAudioOutput = %p\n", sharedAudioOutput);
 
+  // CRITICAL: Feed watchdog before potentially blocking begin() call
+  Serial.println("  Feeding watchdog before begin()...");
+  yield();
+  delay(1);  // Allow other tasks to run
+
+  Serial.println("  Calling begin() NOW...");
+  Serial.flush();  // Ensure all serial output is sent before potentially freezing
+
   bool beginResult = musicMP3->begin(musicFile, sharedAudioOutput);
+
+  Serial.println("  begin() RETURNED!");  // If you see this, begin() didn't freeze
+  Serial.flush();
   Serial.printf("  Free heap after begin(): %d bytes\n", ESP.getFreeHeap());
   Serial.printf("  musicMP3->begin() returned: %s\n", beginResult ? "true" : "false");
 
@@ -211,6 +260,9 @@ void updateMusicPlayback() {
   // CRITICAL: Check if decoder needs to be deleted from PREVIOUS iteration
   // (we can't delete inside musicMP3->loop() - that's a "delete this" bug!)
   static bool pendingStop = false;
+  static unsigned long lastLoopLog = 0;
+  static int loopCount = 0;
+
   if (pendingStop) {
     stopMusicPlayback();
     pendingStop = false;
@@ -218,11 +270,23 @@ void updateMusicPlayback() {
   }
 
   if (currentSource == AUDIO_SOURCE_MUSIC && musicMP3 && musicMP3->isRunning()) {
+    // Feed watchdog BEFORE calling loop() to prevent timeout during MP3 decoding
+    yield();
+
+    // Log every 100 loops to track progress without flooding serial
+    loopCount++;
+    if (loopCount % 100 == 0 || millis() - lastLoopLog > 5000) {
+      Serial.printf("Music loop %d - Free heap: %d bytes\n", loopCount, ESP.getFreeHeap());
+      Serial.flush();
+      lastLoopLog = millis();
+    }
+
     if (!musicMP3->loop()) {
       // Track finished - DON'T delete immediately (we're inside musicMP3->loop()!)
       // Mark for deletion on next iteration
       Serial.println("Track finished - marking for cleanup on next loop");
       pendingStop = true;
+      loopCount = 0;  // Reset counter
     }
   }
 }

@@ -440,9 +440,9 @@ void setup() {
   // Play boot animation
   playBootAnimation();
 
-  // Star rain disabled - go straight to main menu
-  currentState = MAIN_MENU;
-  drawScreen(false);
+  // Initialize star rain for landing page
+  initStarRain(STARRAIN_LANDING);
+  currentState = STAR_LANDING_PAGE;
 
   // Mark when boot completes - defer expensive WiFi ops for smooth animation
   bootCompleteTime = millis();
@@ -549,7 +549,20 @@ void loop() {
   updateAudioIfPlaying();
 #endif
 
-  // Star rain landing page disabled - removed
+  // Handle star rain landing page
+  if (currentState == STAR_LANDING_PAGE) {
+    updateStarRain();
+    drawStarRain();
+
+    // Check for any key press to proceed to main menu
+    M5Cardputer.update();
+    if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
+      stopStarRain();
+      currentState = MAIN_MENU;
+      drawScreen(false);
+    }
+    return;  // Skip rest of loop while on landing page
+  }
 
   // Normal operation for all other states
   M5Cardputer.update();
@@ -561,8 +574,9 @@ void loop() {
 
   // Handle screensaver
   if (screensaverActive) {
-    // Star rain disabled - just show black screen
-    M5Cardputer.Display.fillScreen(TFT_BLACK);
+    // Update and draw star rain dissolve effect
+    updateStarRain();
+    drawStarRain();
 
     // Update audio during screensaver to prevent skipping
 #if DEBUG_ENABLE_AUDIO
@@ -572,6 +586,7 @@ void loop() {
     // Check if any key is pressed to exit screensaver
     if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
       screensaverActive = false;
+      stopStarRain();
       lastActivityTime = millis();
 
       // Redraw screen based on current state

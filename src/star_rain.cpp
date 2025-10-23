@@ -162,12 +162,14 @@ void drawStarRain() {
     // Skip stars that are in the status bar area for landing page
     if (star.y < minY) continue;
 
-    // Erase old position - use black for screensaver to create pooling effect
+    // Erase old position - use BLACK for screensaver to create dissolve/pooling effect!
     if (star.prevY >= minY) {
       int prevPixelX = star.prevX * 6;
       int prevPixelY = star.prevY;
-      // Clear old position with background color (black for screensaver/terminal, white for landing)
-      M5Cardputer.Display.fillRect(prevPixelX, prevPixelY, 6, 8, bgColor);
+      // DISSOLVE EFFECT: For screensaver, erase with BLACK to create pooling
+      // For other modes, erase with background color normally
+      uint16_t eraseColor = (currentStarMode == STARRAIN_SCREENSAVER) ? TFT_BLACK : bgColor;
+      M5Cardputer.Display.fillRect(prevPixelX, prevPixelY, 6, 8, eraseColor);
     }
 
     // Calculate pixel position

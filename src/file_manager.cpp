@@ -489,8 +489,9 @@ void drawFolderView() {
       if (fileInfoList[fileIdx].isDirectory) {
         displayName += "/";
       }
-      if (displayName.length() > 20) {
-        displayName = displayName.substring(0, 17) + "...";
+      // Allow longer filenames (up to 28 chars before truncating)
+      if (displayName.length() > 28) {
+        displayName = displayName.substring(0, 25) + "...";
       }
       M5Cardputer.Display.setTextColor(TFT_BLACK);
       M5Cardputer.Display.drawString(displayName.c_str(), 25, yPos + 2);

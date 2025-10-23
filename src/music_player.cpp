@@ -9,16 +9,26 @@ static int musicCount = 0;
 static int selectedMusicIndex = 0;
 static bool isPlaying = false;
 static char lastError[128] = "";  // Store last error message (fixed size)
+static char musicFolderPath[16] = "";  // Store which folder we're using (/mp3 or /mp3s)
 
 void loadMusicFolder() {
   musicCount = 0;
 
-  // Check if /mp3s folder exists
-  if (!SD.exists("/mp3s")) {
-    return;
+  // Check both /mp3 and /mp3s folders (try /mp3 first, then /mp3s)
+  const char* musicFolder = nullptr;
+  if (SD.exists("/mp3")) {
+    musicFolder = "/mp3";
+  } else if (SD.exists("/mp3s")) {
+    musicFolder = "/mp3s";
+  } else {
+    return;  // No music folder found
   }
 
-  File dir = SD.open("/mp3s");
+  // Save the folder path for playback
+  strncpy(musicFolderPath, musicFolder, 15);
+  musicFolderPath[15] = '\0';
+
+  File dir = SD.open(musicFolder);
   if (!dir || !dir.isDirectory()) {
     return;
   }
@@ -40,7 +50,7 @@ void loadMusicFolder() {
     int len = strlen(baseFilename);
     if (!file.isDirectory() &&
         len > 4 &&
-        strcmp(baseFilename + len - 4, ".mp3") == 0 &&
+        (strcasecmp(baseFilename + len - 4, ".mp3") == 0) &&  // Case-insensitive!
         baseFilename[0] != '.') {
       strncpy(musicFiles[musicCount], baseFilename, 63);
       musicFiles[musicCount][63] = '\0';  // Ensure null termination
@@ -71,7 +81,7 @@ void enterMusicPlayer() {
   selectedMusicIndex = 0;
   isPlaying = false;
 
-  Serial.printf("Music Player: Loaded %d MP3 files from /mp3s\n", musicCount);
+  Serial.printf("Music Player: Loaded %d MP3 files from %s\n", musicCount, musicFolderPath);
   if (musicCount > 0) {
     for (int i = 0; i < musicCount; i++) {
       Serial.printf("  [%d] %s\n", i, musicFiles[i]);  // char array, not String
@@ -237,8 +247,8 @@ void playSelectedTrack() {
   }
 
   // Build path without String (avoid heap allocation)
-  char path[96];  // /mp3s/ + 64 char filename + null
-  snprintf(path, sizeof(path), "/mp3s/%s", musicFiles[selectedMusicIndex]);
+  char path[96];  // folder path + / + 64 char filename + null
+  snprintf(path, sizeof(path), "%s/%s", musicFolderPath, musicFiles[selectedMusicIndex]);
   Serial.printf("Music Player: Playing track %d/%d: %s\n", selectedMusicIndex + 1, musicCount, path);
 
   lastError[0] = '\0';  // Clear previous error

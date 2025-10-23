@@ -193,10 +193,10 @@ void navigateLeft() {
       startStarGif(true);  // true = left
       updateStarGifPlayback();
     } else {
-      // At first app, go back to screensaver (black background version)
+      // At first app, go back to screensaver with star rain
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
       extern bool screensaverActive;
-      // Star rain disabled - just go to screensaver directly
+      initStarRain(STARRAIN_SCREENSAVER);
       screensaverActive = true;
     }
   } else if (currentState == MAIN_MENU) {
