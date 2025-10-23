@@ -118,15 +118,33 @@ String truncateUTF8(const String& str, int maxChars) {
   return str.substring(0, bytePos);
 }
 
+// Cached time to avoid blocking getLocalTime() calls on every draw
+static String cachedTime = "--:--";
+static unsigned long lastTimeUpdate = 0;
+const unsigned long TIME_UPDATE_INTERVAL = 30000; // Update every 30 seconds
+
 String getCurrentTime() {
-  struct tm timeinfo;
-  if (!getLocalTime(&timeinfo)) {
-    return "--:--";
+  // Return cached time if recently updated (within 30 seconds)
+  if (millis() - lastTimeUpdate < TIME_UPDATE_INTERVAL) {
+    return cachedTime;
   }
 
-  char timeStr[6];
-  strftime(timeStr, sizeof(timeStr), "%H:%M", &timeinfo);
-  return String(timeStr);
+  // Only update if WiFi is connected (NTP needs network)
+  if (WiFi.status() != WL_CONNECTED) {
+    cachedTime = "--:--";
+    return cachedTime;
+  }
+
+  // Try to get time (non-blocking with timeout)
+  struct tm timeinfo;
+  if (getLocalTime(&timeinfo, 100)) { // 100ms timeout instead of default 5000ms
+    char timeStr[6];
+    strftime(timeStr, sizeof(timeStr), "%H:%M", &timeinfo);
+    cachedTime = String(timeStr);
+    lastTimeUpdate = millis();
+  }
+
+  return cachedTime;
 }
 
 int getBatteryPercent() {
@@ -200,16 +218,27 @@ void drawIndicatorDots(int currentIndex, int totalItems, bool inverted) {
 }
 
 void drawStatusBar(bool inverted) {
+#if DEBUG_ENABLE_STATUSBAR == 0
+  // Minimal status bar - just a line
+  uint16_t fgColor = inverted ? TFT_WHITE : TFT_BLACK;
+  M5Cardputer.Display.drawLine(0, 25, 240, 25, fgColor);
+  return;
+#endif
+
   uint16_t bgColor = inverted ? TFT_BLACK : TFT_WHITE;
   uint16_t fgColor = inverted ? TFT_WHITE : TFT_BLACK;
-  
+
   int wifiWidth = 110;
   M5Cardputer.Display.fillRoundRect(5, 5, wifiWidth, 18, 9, bgColor);
   for (int i = 0; i < 2; i++) {
     M5Cardputer.Display.drawRoundRect(5+i, 5+i, wifiWidth-i*2, 18-i*2, 9-i, fgColor);
   }
-  
+
+#if DEBUG_ENABLE_WIFI
   wifiConnected = (WiFi.status() == WL_CONNECTED);
+#else
+  wifiConnected = false;
+#endif
   if (wifiConnected) {
     String rawSSID = WiFi.SSID();
 
@@ -294,15 +323,20 @@ void drawStatusBar(bool inverted) {
     M5Cardputer.Display.drawRoundRect(120+i, 5+i, 55-i*2, 18-i*2, 9-i, fgColor);
   }
   M5Cardputer.Display.setTextColor(fgColor);
+#if DEBUG_ENABLE_TIME
   M5Cardputer.Display.drawString(getCurrentTime().c_str(), 132, 10);
+#else
+  M5Cardputer.Display.drawString("--:--", 132, 10);
+#endif
   
   // Battery indicator - colored based on charge level
+#if DEBUG_ENABLE_BATTERY
   int voltage = M5Cardputer.Power.getBatteryVoltage();
-  
+
   // Convert voltage to percentage (LiPo: 4200mV=100%, 3300mV=0%)
   int batteryPercent = map(voltage, 3300, 4200, 0, 100);
   batteryPercent = constrain(batteryPercent, 0, 100);
-  
+
   // Choose color based on battery level
   uint16_t batteryColor;
   if (batteryPercent > 50) {
@@ -312,6 +346,9 @@ void drawStatusBar(bool inverted) {
   } else {
     batteryColor = TFT_RED;
   }
+#else
+  uint16_t batteryColor = TFT_DARKGREY;  // Gray when disabled
+#endif
   
   // Fill the entire battery box with the color
   M5Cardputer.Display.fillRoundRect(180, 5, 55, 18, 9, batteryColor);
@@ -322,6 +359,7 @@ void drawStatusBar(bool inverted) {
   }
 
   // Background service indicators (colored circles between time and battery)
+#if DEBUG_ENABLE_BG_SERVICES
   ServiceStatus status = getServiceStatus();
   int iconX = 175;
   int iconY = 12;
@@ -343,6 +381,7 @@ void drawStatusBar(bool inverted) {
     // Transfer - Green circle
     M5Cardputer.Display.fillCircle(iconX, iconY, 4, TFT_GREEN);
   }
+#endif
 }
 
 void drawCard(const char* label, bool inverted) {
@@ -407,12 +446,14 @@ void drawScreen(bool inverted) {
 
   if (currentState == APPS_MENU) {
     drawCard(apps[currentAppIndex].name.c_str(), inverted);
-    drawStillStar(); // Draw static star image (no animation)
     drawIndicatorDots(currentAppIndex, totalApps, inverted);
+    // Draw static star (will be overwritten during navigation animations)
+    drawStillStar();
   } else if (currentState == MAIN_MENU) {
     drawCard(mainItems[currentMainIndex].name.c_str(), inverted);
-    drawStillStar(); // Draw static star image (no animation)
     drawIndicatorDots(currentMainIndex, totalMainItems, inverted);
+    // Draw static star (will be overwritten during navigation animations)
+    drawStillStar();
   }
 }
 

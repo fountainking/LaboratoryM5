@@ -12,14 +12,15 @@
 #include "radio.h"
 #include "music_player.h"
 #include "music_tools.h"
+#include "embedded_gifs.h"
 #include <AnimatedGIF.h>
 
-// GIF objects for star animations
+// GIF objects for star animations (using embedded GIFs from PROGMEM)
 AnimatedGIF starGif;
-bool gifInitialized = false;
 bool starGifOpen = false;
 bool starGifPlaying = false;
-String starGifToPlay = "";
+const unsigned char* starGifData = nullptr;
+unsigned int starGifDataLen = 0;
 int starGifFrameCount = 0;
 int starGifXOffset = 0;
 int starGifYOffset = 0;
@@ -66,26 +67,11 @@ void StarGIFDraw(GIFDRAW *pDraw) {
 }
 
 void drawStillStar() {
-  // Initialize SD if not done yet
-  if (!gifInitialized) {
-    SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-    SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
-    gifInitialized = true;
-  }
-
   // Initialize GIF with Little Endian palette
   starGif.begin(GIF_PALETTE_RGB565_LE);
 
-  // Determine which star to show based on current state
-  const char* starFile = "/Gifs/starL2.gif"; // Use left star as default still
-  if (currentState == APPS_MENU) {
-    starFile = "/Gifs/starL2.gif";
-  } else if (currentState == MAIN_MENU) {
-    starFile = "/Gifs/starL2.gif";
-  }
-
-  // Try to open and draw just the first frame
-  if (starGif.open(starFile, GIFOpenFile, GIFCloseFile, GIFReadFile, GIFSeekFile, StarGIFDraw)) {
+  // Use left star as default still image (from embedded PROGMEM)
+  if (starGif.open((uint8_t*)gif_star_left, gif_star_left_len, StarGIFDraw)) {
     // Get GIF dimensions for centering
     int gifWidth = starGif.getCanvasWidth();
     int gifHeight = starGif.getCanvasHeight();
@@ -101,14 +87,20 @@ void drawStillStar() {
   }
 }
 
-void startStarGif(const char* filename) {
-  // Just set the filename to play - actual playback happens in main loop
-  starGifToPlay = String(filename);
+void startStarGif(bool isLeft) {
+  // Set which embedded GIF to play based on direction
+  if (isLeft) {
+    starGifData = gif_star_left;
+    starGifDataLen = gif_star_left_len;
+  } else {
+    starGifData = gif_star_right;
+    starGifDataLen = gif_star_right_len;
+  }
 }
 
 void updateStarGifPlayback() {
   // Check if we need to start a new animation (can interrupt current one)
-  if (starGifToPlay != "") {
+  if (starGifData != nullptr && starGifDataLen > 0) {
     // Stop any currently playing GIF to allow restart
     if (starGifOpen) {
       starGif.close();
@@ -116,20 +108,11 @@ void updateStarGifPlayback() {
       starGifPlaying = false;
     }
 
-    // Initialize SD if not done yet
-    if (!gifInitialized) {
-      SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-      SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
-      gifInitialized = true;
-    }
-
     // Initialize GIF with Little Endian palette
     starGif.begin(GIF_PALETTE_RGB565_LE);
 
-    Serial.printf("Attempting to open GIF: %s\n", starGifToPlay.c_str());
-
-    // Try to open the GIF
-    if (starGif.open(starGifToPlay.c_str(), GIFOpenFile, GIFCloseFile, GIFReadFile, GIFSeekFile, StarGIFDraw)) {
+    // Try to open the embedded GIF from PROGMEM
+    if (starGif.open((uint8_t*)starGifData, starGifDataLen, StarGIFDraw)) {
       starGifOpen = true;
       starGifPlaying = true;
       starGifFrameCount = 0;
@@ -138,15 +121,13 @@ void updateStarGifPlayback() {
       int gifWidth = starGif.getCanvasWidth();
       int gifHeight = starGif.getCanvasHeight();
 
-      Serial.printf("GIF opened successfully! Size: %dx%d\n", gifWidth, gifHeight);
-
       // 50% scaling - 32x32 GIF displays as 16x16
       starGifXOffset = 120 - (gifWidth / 4);
       starGifYOffset = 118 - (gifHeight / 4);
 
-      starGifToPlay = "";  // Clear the request
-    } else {
-      Serial.println(F("Failed to open GIF file!"));
+      // Clear the request
+      starGifData = nullptr;
+      starGifDataLen = 0;
     }
   }
 
@@ -205,33 +186,31 @@ void navigateLeft() {
   } else if (currentState == APPS_MENU) {
     if (currentAppIndex > 0) {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
-      // Change state and draw new screen IMMEDIATELY
+      // INSTANT RESPONSE: Change state and draw new screen IMMEDIATELY
       currentAppIndex--;
       drawScreen(inverted);
-      // Start animation and play it immediately
-      startStarGif("/Gifs/starL2.gif");
+      // THEN start star animation (plays on top of already-drawn screen)
+      startStarGif(true);  // true = left
       updateStarGifPlayback();
     } else {
       // At first app, go back to screensaver (black background version)
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
       extern bool screensaverActive;
-      initStarRain(STARRAIN_SCREENSAVER);
+      // Star rain disabled - just go to screensaver directly
       screensaverActive = true;
     }
   } else if (currentState == MAIN_MENU) {
     if (currentMainIndex > 0) {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
-      // Change state and draw new screen IMMEDIATELY
+      // INSTANT RESPONSE: Change state and draw new screen IMMEDIATELY
       currentMainIndex--;
       drawScreen(false);
-      // Start animation and play it immediately
-      startStarGif("/Gifs/starL2.gif");
+      // THEN start star animation (plays on top of already-drawn screen)
+      startStarGif(true);  // true = left
       updateStarGifPlayback();
     } else {
-      // At first main menu item, go to star rain landing page (white background)
+      // At first main menu item, go to landing page (no star rain)
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
-      stopStarRain();  // Stop any existing star rain
-      initStarRain(STARRAIN_LANDING);
       currentState = STAR_LANDING_PAGE;
     }
   }
@@ -256,21 +235,21 @@ void navigateRight() {
   } else if (currentState == APPS_MENU) {
     if (currentAppIndex < totalApps - 1) {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
-      // Change state and draw new screen IMMEDIATELY
+      // INSTANT RESPONSE: Change state and draw new screen IMMEDIATELY
       currentAppIndex++;
       drawScreen(inverted);
-      // Start animation and play it immediately
-      startStarGif("/Gifs/star_R2.gif");
+      // THEN start star animation (plays on top of already-drawn screen)
+      startStarGif(false);  // false = right
       updateStarGifPlayback();
     }
   } else if (currentState == MAIN_MENU) {
     if (currentMainIndex < totalMainItems - 1) {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
-      // Change state and draw new screen IMMEDIATELY
+      // INSTANT RESPONSE: Change state and draw new screen IMMEDIATELY
       currentMainIndex++;
       drawScreen(false);
-      // Start animation and play it immediately
-      startStarGif("/Gifs/star_R2.gif");
+      // THEN start star animation (plays on top of already-drawn screen)
+      startStarGif(false);  // false = right
       updateStarGifPlayback();
     }
   }

@@ -440,17 +440,9 @@ void setup() {
   // Play boot animation
   playBootAnimation();
 
-  // Initialize and show star rain landing page immediately
-  initStarRain(STARRAIN_LANDING);
-
-  // Animate several frames immediately to create smooth transition into loop
-  for (int i = 0; i < 15; i++) {
-    updateStarRain();
-    drawStarRain();
-    delay(10);
-  }
-
-  currentState = STAR_LANDING_PAGE;
+  // Star rain disabled - go straight to main menu
+  currentState = MAIN_MENU;
+  drawScreen(false);
 
   // Mark when boot completes - defer expensive WiFi ops for smooth animation
   bootCompleteTime = millis();
@@ -553,50 +545,32 @@ void loop() {
   }
 
   // Update audio at the very start of the loop to minimize gaps
+#if DEBUG_ENABLE_AUDIO
   updateAudioIfPlaying();
+#endif
 
-  // Handle star rain landing page FIRST - skip expensive M5Cardputer.update() for smooth animation
-  if (currentState == STAR_LANDING_PAGE) {
-    // Skip WiFi operations during initial animation
-    if (!skipWiFiOpsUntilReady) {
-      handleBackgroundWiFi();
-    }
-
-    updateStarRain();
-    drawStarRain();
-
-    // Lightweight keyboard check without full M5Cardputer.update()
-    M5Cardputer.Keyboard.updateKeyList();
-    if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
-      stopStarRain();
-      safeBeep(800, 100);
-
-      currentState = MAIN_MENU;
-      lastActivityTime = millis(); // Reset activity timer
-      drawScreen();
-    }
-
-    delay(10);
-    return;
-  }
+  // Star rain landing page disabled - removed
 
   // Normal operation for all other states
   M5Cardputer.update();
 
   // Handle background WiFi connection (non-blocking)
+#if DEBUG_ENABLE_WIFI
   handleBackgroundWiFi();
+#endif
 
   // Handle screensaver
   if (screensaverActive) {
-    updateStarRain();
-    drawStarRain();
+    // Star rain disabled - just show black screen
+    M5Cardputer.Display.fillScreen(TFT_BLACK);
 
     // Update audio during screensaver to prevent skipping
+#if DEBUG_ENABLE_AUDIO
     updateAudioIfPlaying();
+#endif
 
     // Check if any key is pressed to exit screensaver
     if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
-      stopStarRain();
       screensaverActive = false;
       lastActivityTime = millis();
 
@@ -700,8 +674,7 @@ void loop() {
   // Check for inactivity timeout (works on all screens)
   if (!screensaverActive &&
       millis() - lastActivityTime > SCREENSAVER_TIMEOUT) {
-    // Start screensaver
-    initStarRain(STARRAIN_SCREENSAVER);
+    // Start screensaver (star rain disabled - just black screen)
     screensaverActive = true;
     delay(10);
     return;
@@ -710,6 +683,7 @@ void loop() {
   // Visual debug removed - no longer needed
 
   // Auto-connect WiFi after delay (only on main menu, not in WiFi settings)
+#if DEBUG_ENABLE_WIFI
   if (!autoConnectAttempted && autoConnectTriggerTime > 0 && millis() >= autoConnectTriggerTime &&
       currentState == MAIN_MENU && !wifiConnected) {
     autoConnectAttempted = true;
@@ -774,41 +748,14 @@ void loop() {
 
     drawScreen(false); // Redraw to clear message
   }
+#endif
 
-  // Handle terminal star rain command
-  if (terminalStarRainRequested && currentState == SCREEN_VIEW && currentScreenNumber == 5) {
-    terminalStarRainRequested = false;
-    terminalStarRainActive = true;
-    initStarRain(STARRAIN_TERMINAL);
-    delay(10);
-    return;
-  }
-
-  // Handle terminal star rain animation
-  if (terminalStarRainActive) {
-    updateStarRain();
-    drawStarRain();
-
-    // Check if backtick is pressed to exit
-    if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
-      Keyboard_Class::KeysState status = M5Cardputer.Keyboard.keysState();
-      for (auto key : status.word) {
-        if (key == '`') {
-          stopStarRain();
-          terminalStarRainActive = false;
-          drawTerminal();
-          delay(10);
-          return;
-        }
-      }
-    }
-
-    delay(10);
-    return;
-  }
+  // Terminal star rain disabled - removed
 
   // Update audio before keyboard handling to prevent skipping during input
+#if DEBUG_ENABLE_AUDIO
   updateAudioIfPlaying();
+#endif
 
   if (M5Cardputer.Keyboard.isChange()) {
     if (M5Cardputer.Keyboard.isPressed()) {
@@ -2229,7 +2176,9 @@ void loop() {
 
   // Update audio playback (centralized - handles both radio and music!)
   // This runs ALWAYS to ensure audio continues across all screens/apps/screensaver
+#if DEBUG_ENABLE_AUDIO
   updateAudioIfPlaying();
+#endif
 
   // Update star GIF animation (non-blocking)
   if (currentState == APPS_MENU || currentState == MAIN_MENU) {

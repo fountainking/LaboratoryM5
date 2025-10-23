@@ -1,42 +1,12 @@
 #include "boot_animation.h"
 #include "config.h"
 #include "settings.h"
+#include "embedded_gifs.h"
 #include <SPI.h>
 
 static AnimatedGIF bootGif;
-static File bootGifFile;
 
-// GIF callback functions for boot animation
-void * BootGIFOpenFile(const char *fname, int32_t *pSize) {
-  bootGifFile = SD.open(fname);
-  if (bootGifFile) {
-    *pSize = bootGifFile.size();
-    return (void *)&bootGifFile;
-  }
-  return NULL;
-}
-
-void BootGIFCloseFile(void *pHandle) {
-  File *f = static_cast<File *>(pHandle);
-  if (f != NULL) f->close();
-}
-
-int32_t BootGIFReadFile(GIFFILE *pFile, uint8_t *pBuf, int32_t iLen) {
-  int32_t iBytesRead = iLen;
-  File *f = static_cast<File *>(pFile->fHandle);
-  if ((pFile->iSize - pFile->iPos) < iLen) iBytesRead = pFile->iSize - pFile->iPos;
-  if (iBytesRead <= 0) return 0;
-  iBytesRead = (int32_t)f->read(pBuf, iBytesRead);
-  pFile->iPos = f->position();
-  return iBytesRead;
-}
-
-int32_t BootGIFSeekFile(GIFFILE *pFile, int32_t iPosition) {
-  File *f = static_cast<File *>(pFile->fHandle);
-  f->seek(iPosition);
-  pFile->iPos = (int32_t)f->position();
-  return pFile->iPos;
-}
+// GIF draw callback for boot animation
 
 void BootGIFDraw(GIFDRAW *pDraw) {
   uint8_t *s;
@@ -93,21 +63,21 @@ void BootGIFDraw(GIFDRAW *pDraw) {
   }
 }
 
-bool playBootGIF(const char* gifPath) {
+bool playBootGIF() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  
+
   bootGif.begin(GIF_PALETTE_RGB565_BE);
-  
-  if (!bootGif.open(gifPath, BootGIFOpenFile, BootGIFCloseFile, BootGIFReadFile, BootGIFSeekFile, BootGIFDraw)) {
+
+  // Open embedded boot GIF from PROGMEM
+  if (!bootGif.open((uint8_t*)gif_boot, gif_boot_len, BootGIFDraw)) {
     return false;
   }
-  
-  // Play frames - most boot GIFs are 30-120 frames
-  for (int i = 0; i < 120; i++) {
-    int result = bootGif.playFrame(true, NULL);
-    if (result <= 0) break;
+
+  // Play all frames
+  while (bootGif.playFrame(true, NULL) > 0) {
+    // Keep playing until animation completes
   }
-  
+
   bootGif.close();
   return true;
 }
@@ -176,12 +146,20 @@ bool playBootBMPSequence(const char* folderPath, int frameCount) {
 }
 
 void playBootAnimation() {
-  // Initialize SD card
-  SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-  bool sdMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
-  
-  if (!sdMounted) {
-    // Quick fallback animation if SD fails
+  // Play embedded boot GIF (no SD card needed!)
+  if (playBootGIF()) {
+    // Show version after animation (right side)
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.drawString(FIRMWARE_VERSION, 200, 125);
+    if (settings.soundEnabled) {
+      M5Cardputer.Speaker.tone(1200, 100);
+      delay(100);
+      M5Cardputer.Speaker.tone(1500, 100);
+    }
+    delay(500);
+  } else {
+    // Fallback if GIF failed to play
     M5Cardputer.Display.fillScreen(TFT_BLACK);
     M5Cardputer.Display.setTextSize(3);
     M5Cardputer.Display.setTextColor(TFT_YELLOW);
@@ -194,58 +172,5 @@ void playBootAnimation() {
 
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 100);
     delay(300);
-    return;
   }
-  
-  bool animationPlayed = false;
-  
-  // Try to play GIF first
-  if (SD.exists("/gifs/boot.gif")) {
-    if (playBootGIF("/gifs/boot.gif")) {
-      animationPlayed = true;
-      // Show version after animation (right side)
-      M5Cardputer.Display.setTextSize(1);
-      M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-      M5Cardputer.Display.drawString(FIRMWARE_VERSION, 200, 125);
-      if (settings.soundEnabled) {
-        M5Cardputer.Speaker.tone(1200, 100);
-        delay(100);
-        M5Cardputer.Speaker.tone(1500, 100);
-      }
-      delay(500);
-      return;
-    }
-  }
-
-  // If GIF didn't play, try BMP sequence
-  if (!animationPlayed && SD.exists("/boot")) {
-    if (playBootBMPSequence("/boot", 121)) {
-      animationPlayed = true;
-      // Show version after animation (right side)
-      M5Cardputer.Display.setTextSize(1);
-      M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-      M5Cardputer.Display.drawString(FIRMWARE_VERSION, 200, 125);
-      if (settings.soundEnabled) {
-        M5Cardputer.Speaker.tone(1200, 100);
-        delay(100);
-        M5Cardputer.Speaker.tone(1500, 100);
-      }
-      delay(500);
-      return;
-    }
-  }
-
-  // Fallback if nothing played
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
-  M5Cardputer.Display.setTextSize(3);
-  M5Cardputer.Display.setTextColor(TFT_YELLOW);
-  M5Cardputer.Display.drawString("M5", 95, 55);
-
-  // Display version in lower left
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString(FIRMWARE_VERSION, 5, 125);
-
-  if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 100);
-  delay(300);
 }

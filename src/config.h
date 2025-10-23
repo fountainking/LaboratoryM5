@@ -6,6 +6,20 @@
 // Version
 #define FIRMWARE_VERSION "v0.08g(3)"
 
+// ============================================================================
+// DEBUG FLAGS - Disable non-visual processes to find performance culprit
+// ============================================================================
+// Set to 1 to ENABLE, 0 to DISABLE
+
+#define DEBUG_ENABLE_WIFI           1  // WiFi operations (status checks, background connect) ✅ ENABLED
+#define DEBUG_ENABLE_AUDIO          1  // Audio processing ✅ ENABLED
+#define DEBUG_ENABLE_BATTERY        1  // Battery level reading ✅ ENABLED
+#define DEBUG_ENABLE_TIME           1  // Time sync and display ✅ ENABLED (now with caching!)
+#define DEBUG_ENABLE_BG_SERVICES    1  // Background service status checks ✅ ENABLED
+#define DEBUG_ENABLE_STATUSBAR      1  // Full status bar ✅ ENABLED
+
+// ============================================================================
+
 // Constants
 #define MAX_SAVED_NETWORKS 5
 
