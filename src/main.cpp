@@ -343,6 +343,15 @@ void setup() {
   M5Cardputer.Speaker.end();
   Serial.println("Released I2S port 0 from M5Speaker for audio use");
 
+  // CRITICAL FIX: Initialize SD card ONCE at startup (prevents multiple SD.begin() conflicts)
+  SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
+  bool sdMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
+  if (sdMounted) {
+    Serial.println("SD card mounted successfully in setup()");
+  } else {
+    Serial.println("WARNING: SD card not detected (will retry on-demand)");
+  }
+
   // Load settings first
   loadSettings();
 
@@ -511,9 +520,12 @@ void updateAudioIfPlaying() {
   }
 }
 
-// TESTING: Completely disable beep function
 void safeBeep(int freq, int duration, bool checkSound = true) {
-  // Do nothing - beep completely disabled
+  // Skip beep during audio playback to prevent I2S conflicts
+  if (checkSound && !settings.soundEnabled) return;
+  if (isAudioPlaying() || isRadioPlaying()) return;
+
+  M5Cardputer.Speaker.tone(freq, duration);
 }
 
 void loop() {
@@ -567,13 +579,11 @@ void loop() {
   M5Cardputer.Speaker.end();
 
   // Handle background WiFi connection (non-blocking)
-  // TESTING: COMPLETELY DISABLE WiFi to test if it's blocking audio init
 #if DEBUG_ENABLE_WIFI
-  // handleBackgroundWiFi();  // DISABLED FOR TESTING
+  handleBackgroundWiFi();
 #endif
 
-  // Handle screensaver
-  // TESTING: Skip screensaver during audio
+  // Handle screensaver (skip during audio to prevent I2S conflicts)
   if (screensaverActive && !isAudioPlaying() && !isRadioPlaying()) {
     // Update and draw star rain dissolve effect
     updateStarRain();
@@ -779,14 +789,14 @@ void loop() {
       // Reset activity timer on any key press
       lastActivityTime = millis();
 
-      // TESTING: Disable audio mute/unmute system
-      // if (isRadioPlaying() || isAudioPlaying()) {
-      //   lastKeyPressTime = millis();
-      //   if (!audioCurrentlyMuted) {
-      //     temporarilyMuteAudio();
-      //     audioCurrentlyMuted = true;
-      //   }
-      // }
+      // Temporarily mute audio during navigation to prevent clicks
+      if (isRadioPlaying() || isAudioPlaying()) {
+        lastKeyPressTime = millis();
+        if (!audioCurrentlyMuted) {
+          temporarilyMuteAudio();
+          audioCurrentlyMuted = true;
+        }
+      }
 
       Keyboard_Class::KeysState status = M5Cardputer.Keyboard.keysState();
 
@@ -2169,24 +2179,24 @@ void loop() {
     handlePortalGamesLoop();
   }
 
-  // TESTING: Completely disable web server to test if it blocks audio
-  // if (transferState == TRANSFER_RUNNING && serverRunning) {
-  //   handleWebServerLoop();
-  // }
+  // Handle web server for file transfer
+  if (transferState == TRANSFER_RUNNING && serverRunning) {
+    handleWebServerLoop();
+  }
 
-  // TESTING: Completely disable captive portal to test if it blocks audio
-  // if (isPortalRunning()) {
-  //   handlePortalLoop();
-  // }
+  // Handle captive portal
+  if (isPortalRunning()) {
+    handlePortalLoop();
+  }
 
-  // TESTING: Disable guitar tuner and audio visualizer
-  // if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == GUITAR_TUNER) {
-  //   updateGuitarTuner();
-  // }
+  // Update music tools (guitar tuner and audio visualizer)
+  if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == GUITAR_TUNER) {
+    updateGuitarTuner();
+  }
 
-  // if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == AUDIO_VISUALIZER) {
-  //   updateAudioVisualizer();
-  // }
+  if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == AUDIO_VISUALIZER) {
+    updateAudioVisualizer();
+  }
 
   // Update audio playback (centralized - handles both radio and music!)
   // This runs ALWAYS to ensure audio continues across all screens/apps/screensaver
@@ -2194,19 +2204,19 @@ void loop() {
   updateAudioIfPlaying();
 #endif
 
-  // TESTING: Completely disable star GIF playback
-  // if (!isAudioPlaying() && !isRadioPlaying()) {
-  //   // Update star GIF animation (non-blocking)
-  //   if (currentState == APPS_MENU || currentState == MAIN_MENU) {
-  //     updateStarGifPlayback();
-  //   }
-  // }
+  // Update star GIF animation (skip during audio to prevent I2S conflicts)
+  if (!isAudioPlaying() && !isRadioPlaying()) {
+    // Update star GIF animation (non-blocking)
+    if (currentState == APPS_MENU || currentState == MAIN_MENU) {
+      updateStarGifPlayback();
+    }
+  }
 
-  // TESTING: Disable audio unmute restore
-  // if (audioCurrentlyMuted && millis() - lastKeyPressTime > AUDIO_UNMUTE_DELAY) {
-  //   restoreAudioVolume();
-  //   audioCurrentlyMuted = false;
-  // }
+  // Restore audio volume after navigation delay
+  if (audioCurrentlyMuted && millis() - lastKeyPressTime > AUDIO_UNMUTE_DELAY) {
+    restoreAudioVolume();
+    audioCurrentlyMuted = false;
+  }
 
   // Use shorter delay when audio is playing to keep buffer full
   if (isRadioPlaying() || isAudioPlaying()) {

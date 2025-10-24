@@ -242,11 +242,8 @@ void enterFileManager() {
   M5Cardputer.Display.setTextColor(TFT_BLACK);
   M5Cardputer.Display.drawString("Initializing SD...", 70, 60);
 
-  // SD init - Initialize SPI bus first
-  SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-
-  // Mount SD with correct pins
-  sdCardMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
+  // SD card is already initialized in setup() - just check if it's mounted
+  sdCardMounted = (SD.cardType() != CARD_NONE);
 
   if (!sdCardMounted) {
     M5Cardputer.Display.fillScreen(TFT_WHITE);
@@ -457,8 +454,14 @@ void drawFolderView() {
 
       bool selected = (i == selectedFileIndex);
 
-      // White rounded rectangle for each file (like WiFi Transfer file-item)
-      uint16_t itemBg = selected ? TFT_WHITE : 0xFFE0; // White when selected, light yellow otherwise
+      // Check if this file is currently playing
+      String fullPath = currentPath + "/" + fileInfoList[fileIdx].name;
+      bool isPlaying = (selected && isAudioPlaying() &&
+                       fullPath.endsWith(".mp3") &&
+                       fullPath.equalsIgnoreCase(getCurrentMusicPath()));
+
+      // Blue if playing, white if selected, light yellow otherwise
+      uint16_t itemBg = isPlaying ? TFT_BLUE : (selected ? TFT_WHITE : 0xFFE0);
       M5Cardputer.Display.fillRoundRect(15, yPos, 210, 12, 4, itemBg);
 
       // Subtle border for non-selected items
@@ -493,17 +496,19 @@ void drawFolderView() {
       if (displayName.length() > 28) {
         displayName = displayName.substring(0, 25) + "...";
       }
-      M5Cardputer.Display.setTextColor(TFT_BLACK);
+      // White text on blue background, black text otherwise
+      M5Cardputer.Display.setTextColor(isPlaying ? TFT_WHITE : TFT_BLACK);
       M5Cardputer.Display.drawString(displayName.c_str(), 25, yPos + 2);
 
-      // File size (small gray text on the right)
+      // File size (lighter text on the right)
       if (!fileInfoList[fileIdx].isDirectory) {
         String sizeStr = formatFileSize(fileInfoList[fileIdx].size);
-        M5Cardputer.Display.setTextColor(0x7BEF); // #777 gray
+        // Light gray on normal, lighter on blue background
+        M5Cardputer.Display.setTextColor(isPlaying ? 0xCE79 : 0x7BEF);
         int sizeWidth = sizeStr.length() * 6;
         M5Cardputer.Display.drawString(sizeStr.c_str(), 225 - sizeWidth, yPos + 2);
       } else {
-        M5Cardputer.Display.setTextColor(0x7BEF);
+        M5Cardputer.Display.setTextColor(isPlaying ? 0xCE79 : 0x7BEF);
         M5Cardputer.Display.drawString("folder", 188, yPos + 2);
       }
     }

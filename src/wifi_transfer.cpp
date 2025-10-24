@@ -815,9 +815,8 @@ void startWebServer() {
     return;
   }
   
-  // Initialize SD if needed
-  SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-  if (!SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ)) {
+  // SD card is already initialized in setup() - just check if it's mounted
+  if (SD.cardType() == CARD_NONE) {
     M5Cardputer.Display.fillScreen(TFT_BLACK);
     M5Cardputer.Display.setTextColor(TFT_RED);
     M5Cardputer.Display.drawString("SD Card Error!", 60, 60);

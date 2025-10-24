@@ -51,10 +51,9 @@ void enterTheBook() {
   articleScrollOffset = 0;
   currentCategoryIndex = 0;
 
-  // Initialize SD card if not already done
-  SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-  if (!SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ)) {
-    Serial.println(F("SD card mount failed for The Book"));
+  // SD card is already initialized in setup() - just check if it's mounted
+  if (SD.cardType() == CARD_NONE) {
+    Serial.println(F("SD card not mounted for The Book"));
   }
 
   // Check if data folder exists

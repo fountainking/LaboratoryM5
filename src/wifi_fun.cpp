@@ -1012,16 +1012,10 @@ void startCrowdCounter() {
     Serial.println(F("BLE initialized successfully!"));
   }
 
-  // Initialize SD card if not already mounted (needed for OUI lookup)
+  // SD card is already initialized in setup() - just check if it's mounted
+  sdCardMounted = (SD.cardType() != CARD_NONE);
   if (!sdCardMounted) {
-    Serial.println(F("Initializing SD card for OUI lookup..."));
-    SPI.begin(SD_SPI_SCK_PIN, SD_SPI_MISO_PIN, SD_SPI_MOSI_PIN, SD_SPI_CS_PIN);
-    sdCardMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
-    if (sdCardMounted) {
-      Serial.println(F("SD card mounted successfully!"));
-    } else {
-      Serial.println(F("SD card mount failed - device identification will be limited"));
-    }
+    Serial.println(F("SD card not mounted - device identification will be limited"));
   }
 
   // Enable WiFi in station mode

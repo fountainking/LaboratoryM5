@@ -51,8 +51,8 @@ void enterTerminal() {
     loadCommandHistory();
   }
 
-  // Initialize SD if needed
-  if (!SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ)) {
+  // SD card is already initialized in setup() - just check if it's mounted
+  if (SD.cardType() == CARD_NONE) {
     addOutput("ERROR: SD card not found");
   }
 

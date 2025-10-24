@@ -24,6 +24,7 @@ bool startMusicPlayback(const String& path);
 void stopMusicPlayback();
 bool isMusicPlaying();
 void updateMusicPlayback();
+String getCurrentMusicPath();
 
 // Radio interface
 bool startRadioStream(const char* url);

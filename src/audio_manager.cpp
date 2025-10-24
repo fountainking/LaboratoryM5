@@ -21,20 +21,21 @@ static AudioGeneratorMP3 *radioMP3 = nullptr;
 static AudioFileSourceHTTPStream *radioStream = nullptr;
 
 void initAudioManager() {
-  // Only initialize ONCE - never recreate the audio output object
-  // This matches the minimal test program that works perfectly
-  if (sharedAudioOutput == nullptr) {
-    // CRITICAL: Stop M5Speaker to release I2S port 0 (only needed first time)
-    M5Cardputer.Speaker.end();
-    Serial.println("Audio Manager: Stopped M5Speaker to release I2S port 0");
-
-    sharedAudioOutput = new AudioOutputI2S(0, 1);  // I2S port 0, external DAC mode
-    sharedAudioOutput->SetPinout(41, 43, 42); // M5Cardputer I2S pins
-    sharedAudioOutput->SetOutputModeMono(true);
-    sharedAudioOutput->SetGain(masterVolume / 25.0); // Set initial gain based on masterVolume (50/25 = 2.0)
-    Serial.println("Audio Manager: Initialized AudioOutputI2S on port 0");
-
+  // Only initialize once - don't delete/recreate (causes I2S issues)
+  if (sharedAudioOutput != nullptr) {
+    Serial.println("Audio Manager: Already initialized, skipping");
+    return;
   }
+
+  // CRITICAL: Stop M5Speaker to release I2S port 0
+  M5Cardputer.Speaker.end();
+  Serial.println("Audio Manager: Stopped M5Speaker to release I2S port 0");
+
+  sharedAudioOutput = new AudioOutputI2S(0, 0);  // I2S port 0, internal DAC mode
+  sharedAudioOutput->SetPinout(41, 43, 42); // M5Cardputer I2S pins (BCLK, LRC, DOUT)
+  sharedAudioOutput->SetOutputModeMono(true);
+  sharedAudioOutput->SetGain(masterVolume / 25.0);
+  Serial.println("Audio Manager: Initialized AudioOutputI2S on port 0 (internal DAC)");
 }
 
 AudioOutputI2S* getSharedAudioOutput() {
@@ -107,12 +108,20 @@ bool startMusicPlayback(const String& path) {
   Serial.flush();
   stopRadioStream();
 
-  // TESTING: Skip initAudioManager - it should already be initialized
-  Serial.println("Step 3: Skipping initAudioManager (testing)");
+  // CRITICAL: Allow time for resources to fully release
+  delay(150);
+  Serial.println("Step 3: Waited for cleanup");
   Serial.flush();
-  // initAudioManager();
-  // Serial.println("Step 3: Audio manager initialized");
-  // Serial.flush();
+
+  // CRITICAL: M5Cardputer.update() may have re-enabled Speaker - force it off again
+  M5Cardputer.Speaker.end();
+  Serial.println("Step 4: Force-stopped M5Speaker before playback");
+  Serial.flush();
+
+  // Initialize audio manager if needed
+  initAudioManager();
+  Serial.println("Step 5: Audio manager initialized");
+  Serial.flush();
 
   // Ensure we have the audio output though
   if (sharedAudioOutput == nullptr) {
@@ -120,18 +129,15 @@ bool startMusicPlayback(const String& path) {
     return false;
   }
 
-  // DON'T reinitialize SD card here - it's already initialized by the main app
-  // Calling SD.begin() multiple times causes conflicts and makes SD unavailable
-  // TESTING: Skip SD.exists() check - maybe it's locking SPI
-  Serial.println("Step 4: Skipping file exists check (testing)");
+  // DON'T reinitialize SD card here - it's already initialized in setup()
+  // Check if file exists (SD card is already mounted, so this won't re-init SPI)
+  if (!SD.exists(path.c_str())) {
+    Serial.printf("ERROR: Audio file not found: %s\n", path.c_str());
+    Serial.flush();
+    return false;
+  }
+  Serial.println("Step 4: File exists!");
   Serial.flush();
-  // if (!SD.exists(path.c_str())) {
-  //   Serial.printf("ERROR: Audio file not found: %s\n", path.c_str());
-  //   Serial.flush();
-  //   return false;
-  // }
-  // Serial.println("Step 4: File exists!");
-  // Serial.flush();
 
   Serial.println("Step 5: Creating AudioFileSourceSD...");
   Serial.printf("  Free heap before: %d bytes\n", ESP.getFreeHeap());
@@ -159,18 +165,51 @@ bool startMusicPlayback(const String& path) {
     musicFile = nullptr;
     return false;
   }
-  Serial.printf("Step 6: File opened! Size: %d bytes\n", musicFile->getSize());
+
+  uint32_t fileSize = musicFile->getSize();
+  Serial.printf("Step 6: File opened! Size: %d bytes\n", fileSize);
+
+  // CRITICAL: Validate MP3 header to prevent freeze on corrupt files
+  if (fileSize < 128) {
+    Serial.println("ERROR: File too small to be valid MP3!");
+    delete musicFile;
+    musicFile = nullptr;
+    return false;
+  }
+
+  // Read first 4 bytes to check for MP3 sync word (0xFF 0xFB or 0xFF 0xFA)
+  uint8_t header[4];
+  if (musicFile->read(header, 4) != 4) {
+    Serial.println("ERROR: Could not read MP3 header!");
+    delete musicFile;
+    musicFile = nullptr;
+    return false;
+  }
+
+  // Check for valid MP3 frame sync (first 11 bits should be all 1s)
+  if (header[0] != 0xFF || (header[1] & 0xE0) != 0xE0) {
+    Serial.printf("ERROR: Invalid MP3 header: %02X %02X %02X %02X\n",
+                  header[0], header[1], header[2], header[3]);
+    Serial.println("  This file may be corrupted or not a valid MP3!");
+    delete musicFile;
+    musicFile = nullptr;
+    return false;
+  }
+
+  // Rewind to start after header check
+  musicFile->seek(0, SEEK_SET);
+  Serial.println("Step 7: MP3 header validated - file is likely playable");
   Serial.flush();
 
   // Create MP3 decoder fresh every time (prevents stale state issues)
-  Serial.println("Step 7: Creating AudioGeneratorMP3...");
+  Serial.println("Step 8: Creating AudioGeneratorMP3...");
   Serial.printf("  Free heap before: %d bytes\n", ESP.getFreeHeap());
   Serial.printf("  Largest free block: %d bytes\n", ESP.getMaxAllocHeap());
   Serial.flush();
 
   musicMP3 = new AudioGeneratorMP3();
 
-  Serial.println("Step 7: AudioGeneratorMP3 created (checking validity...)");
+  Serial.println("Step 8: AudioGeneratorMP3 created (checking validity...)");
   Serial.flush();
 
   if (!musicMP3) {
@@ -262,6 +301,10 @@ void stopMusicPlayback() {
 
 bool isMusicPlaying() {
   return (currentSource == AUDIO_SOURCE_MUSIC && musicMP3 && musicMP3->isRunning());
+}
+
+String getCurrentMusicPath() {
+  return currentMusicPath;
 }
 
 void updateMusicPlayback() {
