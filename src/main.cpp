@@ -954,6 +954,10 @@ void loop() {
             if (key == '`') {
               // Go back to parent directory or exit
               if (currentPath == "/") {
+                // Exiting file manager - stop any playing audio
+                if (isAudioPlaying()) {
+                  stopMusicPlayback();
+                }
                 safeBeep(600, 100);
                 currentState = APPS_MENU;
                 drawScreen(true);

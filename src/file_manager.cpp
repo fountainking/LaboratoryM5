@@ -1206,9 +1206,16 @@ void loadFile(String path) {
     fmState = FM_FILE_VIEWER;
     drawGifViewer(path);
   } else if (type == TYPE_AUDIO) {
-    fmState = FM_FILE_VIEWER;
-    playAudioFile(path);
-    drawAudioPlayer(path);
+    // Toggle playback: if this file is playing, stop it; otherwise start it
+    String currentlyPlaying = getCurrentMusicPath();
+    if (isAudioPlaying() && path.equalsIgnoreCase(currentlyPlaying)) {
+      // Stop playback if clicking the same file
+      stopMusicPlayback();
+    } else {
+      // Start playback of new file
+      playAudioFile(path);
+    }
+    drawFolderView();  // Redraw to show blue highlight on playing file
   } else if (type == TYPE_PDF) {
     fmState = FM_FILE_VIEWER;
     drawPDFViewer(path);
