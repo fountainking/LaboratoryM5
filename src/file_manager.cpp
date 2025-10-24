@@ -183,7 +183,7 @@ void drawNavHint(const char* text, int x, int y) {
   int padding = 4;
 
   // Draw yellow rounded rectangle background
-  M5Cardputer.Display.fillRoundRect(x - padding, y - 2, textWidth + (padding * 2), 12, 3, TFT_YELLOW);
+  M5Cardputer.Display.fillRoundRect(x - padding, y - 2, textWidth + (padding * 2), 12, 3, TFT_WHITE);
   M5Cardputer.Display.drawRoundRect(x - padding, y - 2, textWidth + (padding * 2), 12, 3, TFT_BLACK);
 
   // Draw black text on yellow background
@@ -224,7 +224,7 @@ void drawFileManagerHeader() {
   M5Cardputer.Display.drawRoundRect(61, 4, 118, 18, 9, TFT_BLACK);
 
   // Draw golden star icon
-  drawStar(75, 13, 6, TFT_YELLOW);
+  drawStar(75, 13, 6, TFT_WHITE);
 
   // "FILES" text in bold black
   M5Cardputer.Display.setTextSize(1);
@@ -235,7 +235,7 @@ void drawFileManagerHeader() {
 
 void enterFileManager() {
   // Light gray background
-  M5Cardputer.Display.fillScreen(0xE71C);
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawFileManagerHeader();
 
   M5Cardputer.Display.setTextSize(1);
@@ -249,7 +249,7 @@ void enterFileManager() {
   sdCardMounted = SD.begin(SD_SPI_CS_PIN, SPI, SD_SPI_FREQ);
 
   if (!sdCardMounted) {
-    M5Cardputer.Display.fillScreen(0xE71C);
+    M5Cardputer.Display.fillScreen(TFT_WHITE);
     drawFileManagerHeader();
 
     // Error panel (white rounded rect like WiFi Transfer)
@@ -292,7 +292,7 @@ void loadFolder(String path) {
   selectedCount = 0;
 
   // Loading message with WiFi Transfer style
-  M5Cardputer.Display.fillScreen(0xE71C);
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawFileManagerHeader();
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_BLACK);
@@ -389,7 +389,7 @@ String formatFileSize(size_t bytes) {
 
 void drawFolderView() {
   // Light gray background (like WiFi Transfer #f5f5f5)
-  M5Cardputer.Display.fillScreen(0xE71C); // RGB565 for #f5f5f5
+  M5Cardputer.Display.fillScreen(TFT_WHITE); // RGB565 for #f5f5f5
 
   // Draw header with star
   drawFileManagerHeader();
@@ -415,10 +415,10 @@ void drawFolderView() {
     M5Cardputer.Display.drawString(displaySearch.c_str(), 10, 29);
   }
 
-  // Main yellow content panel (like WiFi Transfer)
-  M5Cardputer.Display.fillRoundRect(3, 40, 234, 82, 10, TFT_YELLOW);
-  M5Cardputer.Display.drawRoundRect(3, 40, 234, 82, 10, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(4, 41, 232, 80, 9, TFT_BLACK);
+  // Main content panel - narrower width
+  M5Cardputer.Display.fillRoundRect(10, 40, 220, 82, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(10, 40, 220, 82, 10, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(11, 41, 218, 80, 9, TFT_BLACK);
 
   // Build filtered file list if searching
   int filteredIndices[50];
@@ -459,7 +459,7 @@ void drawFolderView() {
 
       // White rounded rectangle for each file (like WiFi Transfer file-item)
       uint16_t itemBg = selected ? TFT_WHITE : 0xFFE0; // White when selected, light yellow otherwise
-      M5Cardputer.Display.fillRoundRect(8, yPos, 224, 12, 4, itemBg);
+      M5Cardputer.Display.fillRoundRect(15, yPos, 210, 12, 4, itemBg);
 
       // Subtle border for non-selected items
       if (!selected) {
@@ -555,7 +555,7 @@ void drawFolderView() {
 }
 
 void drawFileViewer() {
-  M5Cardputer.Display.fillScreen(0xE71C);
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawFileManagerHeader();
   
   M5Cardputer.Display.setTextSize(2);
@@ -571,7 +571,7 @@ void drawFileViewer() {
 }
 
 void drawTextViewer(const String& path) {
-  M5Cardputer.Display.fillScreen(0xE71C);
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawFileManagerHeader();
   
   M5Cardputer.Display.setTextSize(1);
@@ -818,11 +818,11 @@ bool isGifPlaying() {
 }
 
 void drawPDFViewer(const String& path) {
-  M5Cardputer.Display.fillScreen(0xE71C);
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawFileManagerHeader();
 
   M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_YELLOW);
+  M5Cardputer.Display.setTextColor(TFT_WHITE);
   M5Cardputer.Display.drawString("PDF Viewer", 55, 50);
 
   M5Cardputer.Display.setTextSize(1);
@@ -874,7 +874,7 @@ void updateAudioPlayback() {
 }
 
 void drawAudioPlayer(const String& path) {
-  M5Cardputer.Display.fillScreen(0xE71C);
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawFileManagerHeader();
 
   M5Cardputer.Display.setTextSize(2);
@@ -981,7 +981,7 @@ void pasteFile() {
 
   // Check if source and destination are the same
   if (clipboardPath == destPath) {
-    M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+    M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_WHITE);
     M5Cardputer.Display.setTextColor(TFT_BLACK);
     M5Cardputer.Display.drawString("Already here!", 75, 112);
     delay(1000);
@@ -1020,7 +1020,7 @@ void pasteFile() {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
     loadFolder(currentPath);
   } else {
-    M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+    M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_WHITE);
     M5Cardputer.Display.setTextColor(TFT_RED);
     M5Cardputer.Display.drawString("Paste failed!", 75, 112);
     delay(1000);
@@ -1115,7 +1115,7 @@ void batchDeleteFiles() {
 
   // Show brief summary if there were failures
   if (failedCount > 0) {
-    M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+    M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_WHITE);
     M5Cardputer.Display.setTextColor(TFT_RED);
     String failMsg = String(failedCount) + " failed to delete";
     M5Cardputer.Display.drawString(failMsg.c_str(), 55, 112);
@@ -1149,7 +1149,7 @@ void renameFile() {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
       loadFolder(currentPath);
     } else {
-      M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+      M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_WHITE);
       M5Cardputer.Display.setTextColor(TFT_RED);
       M5Cardputer.Display.drawString("Rename failed!", 70, 112);
       delay(1000);
@@ -1177,7 +1177,7 @@ void createFolder() {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1500, 100);
       loadFolder(currentPath);
     } else {
-      M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_YELLOW);
+      M5Cardputer.Display.fillRect(0, 110, 240, 15, TFT_WHITE);
       M5Cardputer.Display.setTextColor(TFT_RED);
       M5Cardputer.Display.drawString("Create failed!", 70, 112);
       delay(1000);

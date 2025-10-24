@@ -107,24 +107,31 @@ bool startMusicPlayback(const String& path) {
   Serial.flush();
   stopRadioStream();
 
-  Serial.println("Step 3: Initializing audio manager...");
+  // TESTING: Skip initAudioManager - it should already be initialized
+  Serial.println("Step 3: Skipping initAudioManager (testing)");
   Serial.flush();
-  initAudioManager();
-  Serial.println("Step 3: Audio manager initialized");
-  Serial.flush();
+  // initAudioManager();
+  // Serial.println("Step 3: Audio manager initialized");
+  // Serial.flush();
+
+  // Ensure we have the audio output though
+  if (sharedAudioOutput == nullptr) {
+    Serial.println("CRITICAL: sharedAudioOutput is NULL! Audio was never initialized!");
+    return false;
+  }
 
   // DON'T reinitialize SD card here - it's already initialized by the main app
   // Calling SD.begin() multiple times causes conflicts and makes SD unavailable
-  // Just verify the SD card is accessible and file exists
-  Serial.println("Step 4: Checking if file exists...");
+  // TESTING: Skip SD.exists() check - maybe it's locking SPI
+  Serial.println("Step 4: Skipping file exists check (testing)");
   Serial.flush();
-  if (!SD.exists(path.c_str())) {
-    Serial.printf("ERROR: Audio file not found: %s\n", path.c_str());
-    Serial.flush();
-    return false;
-  }
-  Serial.println("Step 4: File exists!");
-  Serial.flush();
+  // if (!SD.exists(path.c_str())) {
+  //   Serial.printf("ERROR: Audio file not found: %s\n", path.c_str());
+  //   Serial.flush();
+  //   return false;
+  // }
+  // Serial.println("Step 4: File exists!");
+  // Serial.flush();
 
   Serial.println("Step 5: Creating AudioFileSourceSD...");
   Serial.printf("  Free heap before: %d bytes\n", ESP.getFreeHeap());

@@ -511,15 +511,9 @@ void updateAudioIfPlaying() {
   }
 }
 
-// Safe beep function that won't interfere with audio playback
+// TESTING: Completely disable beep function
 void safeBeep(int freq, int duration, bool checkSound = true) {
-  if (!checkSound || settings.soundEnabled) {
-    M5Cardputer.Speaker.begin();
-    M5Cardputer.Speaker.setVolume(128);  // 0-255 scale, 128 = 50%
-    M5Cardputer.Speaker.tone(freq, duration);
-    delay(duration);  // Wait for tone to finish
-    M5Cardputer.Speaker.end();  // CRITICAL: Release I2S port 0 after beep!
-  }
+  // Do nothing - beep completely disabled
 }
 
 void loop() {
@@ -551,13 +545,6 @@ void loop() {
   updateAudioIfPlaying();
 #endif
 
-  // TESTING: Skip ALL other processing when audio is playing
-  if (isAudioPlaying() || isRadioPlaying()) {
-    M5Cardputer.update();
-    delay(1);
-    return;
-  }
-
   // Handle star rain landing page
   if (currentState == STAR_LANDING_PAGE) {
     updateStarRain();
@@ -576,13 +563,18 @@ void loop() {
   // Normal operation for all other states
   M5Cardputer.update();
 
+  // TESTING: Immediately release Speaker after update in case it re-inits
+  M5Cardputer.Speaker.end();
+
   // Handle background WiFi connection (non-blocking)
+  // TESTING: COMPLETELY DISABLE WiFi to test if it's blocking audio init
 #if DEBUG_ENABLE_WIFI
-  handleBackgroundWiFi();
+  // handleBackgroundWiFi();  // DISABLED FOR TESTING
 #endif
 
   // Handle screensaver
-  if (screensaverActive) {
+  // TESTING: Skip screensaver during audio
+  if (screensaverActive && !isAudioPlaying() && !isRadioPlaying()) {
     // Update and draw star rain dissolve effect
     updateStarRain();
     drawStarRain();
@@ -787,14 +779,14 @@ void loop() {
       // Reset activity timer on any key press
       lastActivityTime = millis();
 
-      // Temporarily mute audio during navigation to avoid hearing skips
-      if (isRadioPlaying() || isAudioPlaying()) {
-        lastKeyPressTime = millis();
-        if (!audioCurrentlyMuted) {
-          temporarilyMuteAudio();
-          audioCurrentlyMuted = true;
-        }
-      }
+      // TESTING: Disable audio mute/unmute system
+      // if (isRadioPlaying() || isAudioPlaying()) {
+      //   lastKeyPressTime = millis();
+      //   if (!audioCurrentlyMuted) {
+      //     temporarilyMuteAudio();
+      //     audioCurrentlyMuted = true;
+      //   }
+      // }
 
       Keyboard_Class::KeysState status = M5Cardputer.Keyboard.keysState();
 
@@ -2177,27 +2169,24 @@ void loop() {
     handlePortalGamesLoop();
   }
 
-  // Handle web server for file transfer ONLY when actively running
-  // Now handled directly in main loop instead of background task to avoid audio interference
-  if (transferState == TRANSFER_RUNNING && serverRunning) {
-    handleWebServerLoop();
-  }
+  // TESTING: Completely disable web server to test if it blocks audio
+  // if (transferState == TRANSFER_RUNNING && serverRunning) {
+  //   handleWebServerLoop();
+  // }
 
-  // Handle captive portal ONLY when actively running
-  // Now handled directly in main loop instead of background task to avoid audio interference
-  if (isPortalRunning()) {
-    handlePortalLoop();
-  }
+  // TESTING: Completely disable captive portal to test if it blocks audio
+  // if (isPortalRunning()) {
+  //   handlePortalLoop();
+  // }
 
-  // Update guitar tuner
-  if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == GUITAR_TUNER) {
-    updateGuitarTuner();
-  }
+  // TESTING: Disable guitar tuner and audio visualizer
+  // if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == GUITAR_TUNER) {
+  //   updateGuitarTuner();
+  // }
 
-  // Update audio visualizer
-  if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == AUDIO_VISUALIZER) {
-    updateAudioVisualizer();
-  }
+  // if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == AUDIO_VISUALIZER) {
+  //   updateAudioVisualizer();
+  // }
 
   // Update audio playback (centralized - handles both radio and music!)
   // This runs ALWAYS to ensure audio continues across all screens/apps/screensaver
@@ -2205,16 +2194,19 @@ void loop() {
   updateAudioIfPlaying();
 #endif
 
-  // Update star GIF animation (non-blocking)
-  if (currentState == APPS_MENU || currentState == MAIN_MENU) {
-    updateStarGifPlayback();
-  }
+  // TESTING: Completely disable star GIF playback
+  // if (!isAudioPlaying() && !isRadioPlaying()) {
+  //   // Update star GIF animation (non-blocking)
+  //   if (currentState == APPS_MENU || currentState == MAIN_MENU) {
+  //     updateStarGifPlayback();
+  //   }
+  // }
 
-  // Restore audio volume after navigation delay (unmute when idle)
-  if (audioCurrentlyMuted && millis() - lastKeyPressTime > AUDIO_UNMUTE_DELAY) {
-    restoreAudioVolume();
-    audioCurrentlyMuted = false;
-  }
+  // TESTING: Disable audio unmute restore
+  // if (audioCurrentlyMuted && millis() - lastKeyPressTime > AUDIO_UNMUTE_DELAY) {
+  //   restoreAudioVolume();
+  //   audioCurrentlyMuted = false;
+  // }
 
   // Use shorter delay when audio is playing to keep buffer full
   if (isRadioPlaying() || isAudioPlaying()) {
