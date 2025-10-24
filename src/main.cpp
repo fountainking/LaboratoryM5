@@ -517,6 +517,8 @@ void safeBeep(int freq, int duration, bool checkSound = true) {
     M5Cardputer.Speaker.begin();
     M5Cardputer.Speaker.setVolume(128);  // 0-255 scale, 128 = 50%
     M5Cardputer.Speaker.tone(freq, duration);
+    delay(duration);  // Wait for tone to finish
+    M5Cardputer.Speaker.end();  // CRITICAL: Release I2S port 0 after beep!
   }
 }
 
@@ -548,6 +550,13 @@ void loop() {
 #if DEBUG_ENABLE_AUDIO
   updateAudioIfPlaying();
 #endif
+
+  // TESTING: Skip ALL other processing when audio is playing
+  if (isAudioPlaying() || isRadioPlaying()) {
+    M5Cardputer.update();
+    delay(1);
+    return;
+  }
 
   // Handle star rain landing page
   if (currentState == STAR_LANDING_PAGE) {
