@@ -44,7 +44,7 @@ void exitRadioApp() {
 
 void drawRadioUI() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_RED);

@@ -145,7 +145,7 @@ void enterMusicTools() {
 
 void drawMusicToolsMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_CYAN);
@@ -200,7 +200,7 @@ void drawGuitarTuner() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
 
   // Draw status bar first
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   // Fill white background AFTER status bar (starts at y=24 to avoid cutting off status bar)
   M5Cardputer.Display.fillRect(0, 24, 240, 111, TFT_WHITE);
@@ -356,7 +356,7 @@ void stopAudioVisualizer() {
 void drawAudioVisualizer() {
   // Static elements only - draw once
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   // Title
   M5Cardputer.Display.setTextSize(1);

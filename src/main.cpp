@@ -64,6 +64,9 @@ bool wifiConnected = false;
 bool timeIsSynced = false;
 unsigned long lastSyncTime = 0;
 
+// UI inversion state (toggles after screensaver dissolve)
+bool uiInverted = false;
+
 // Saved networks
 String savedSSIDs[MAX_SAVED_NETWORKS];
 String savedPasswords[MAX_SAVED_NETWORKS];
@@ -557,20 +560,7 @@ void loop() {
   updateAudioIfPlaying();
 #endif
 
-  // Handle star rain landing page
-  if (currentState == STAR_LANDING_PAGE) {
-    updateStarRain();
-    drawStarRain();
-
-    // Check for any key press to proceed to main menu
-    M5Cardputer.update();
-    if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
-      stopStarRain();
-      currentState = MAIN_MENU;
-      drawScreen(false);
-    }
-    return;  // Skip rest of loop while on landing page
-  }
+  // Landing page disabled - boot goes straight to main menu
 
   // Normal operation for all other states
   M5Cardputer.update();
@@ -600,11 +590,14 @@ void loop() {
       stopStarRain();
       lastActivityTime = millis();
 
-      // Redraw screen based on current state
+      // MAGIC: Toggle UI inversion after dissolve effect!
+      uiInverted = !uiInverted;
+
+      // Redraw screen based on current state with new inversion
       if (currentState == MAIN_MENU) {
-        drawScreen(false);
+        drawScreen(uiInverted);
       } else if (currentState == APPS_MENU) {
-        drawScreen(true);
+        drawScreen(uiInverted);
       } else if (currentState == WIFI_SCAN) {
         drawWiFiScan();
       } else if (currentState == WIFI_PASSWORD) {
@@ -808,7 +801,7 @@ void loop() {
             if (key == '`') {
               safeBeep(600, 100);
               currentState = APPS_MENU;
-              drawScreen(true);
+              drawScreen(false);
               return;
             }
           }
@@ -960,7 +953,7 @@ void loop() {
                 }
                 safeBeep(600, 100);
                 currentState = APPS_MENU;
-                drawScreen(true);
+                drawScreen(false);
               } else {
                 // Go to parent directory
                 int lastSlash = currentPath.lastIndexOf('/', currentPath.length() - 2);
@@ -1019,7 +1012,7 @@ void loop() {
               safeBeep(600, 100);
               stopWebServer();  // CRITICAL: Clean up WebServer to free RAM!
               currentState = APPS_MENU;
-              drawScreen(true);
+              drawScreen(false);
               return;
             }
           }
@@ -1031,7 +1024,7 @@ void loop() {
               safeBeep(600, 100);
               stopWebServer();  // CRITICAL: Clean up WebServer to free RAM!
               currentState = APPS_MENU;
-              drawScreen(true);
+              drawScreen(false);
               return;
             }
           }
@@ -1085,7 +1078,7 @@ void loop() {
             if (key == '`') {
               safeBeep(600, 100);
               currentState = APPS_MENU;
-              drawScreen(true);
+              drawScreen(false);
               return;
             }
           }
@@ -1619,7 +1612,7 @@ void loop() {
             // Back to apps menu
             safeBeep(600, 100);
             currentState = APPS_MENU;
-            drawScreen(true);
+            drawScreen(false);
             return;
           } else {
             handleTerminalInput(key);
@@ -1922,7 +1915,7 @@ void loop() {
             currentState = APPS_MENU;
             currentAppIndex = 4;  // Set to Music position in apps
             musicMenuIndex = 0;
-            drawScreen(true);
+            drawScreen(false);
             return;
           }
         }

@@ -218,26 +218,32 @@ void drawStar(int x, int y, int size, uint16_t color) {
 
 // Custom header for file manager - matches WiFi Transfer style!
 void drawFileManagerHeader() {
-  // White rounded rectangle with black border (like Transfer header) - narrower
-  M5Cardputer.Display.fillRoundRect(40, 8, 160, 20, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(40, 8, 160, 20, 10, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(41, 9, 158, 18, 9, TFT_BLACK);
+  // Calculate header text width
+  String displayPath = currentPath;
+  if (displayPath.length() > 22) {
+    displayPath = "..." + displayPath.substring(displayPath.length() - 19);
+  }
+
+  // Calculate total width: star (12px) + "FILES" (30px) + " - " (12px) + path + right padding (30px)
+  int pathWidth = displayPath.length() * 6;
+  int totalWidth = 12 + 30 + 12 + pathWidth + 30;
+
+  // Left-aligned header rectangle with dynamic width - aligned with file list at x=18
+  M5Cardputer.Display.fillRoundRect(18, 8, totalWidth, 20, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(18, 8, totalWidth, 20, 10, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(19, 9, totalWidth - 2, 18, 9, TFT_BLACK);
 
   // Draw golden/yellow star icon (TFT_GOLD = 0xFEA0, or use TFT_YELLOW)
-  drawStar(55, 18, 6, 0xFEA0);
+  drawStar(30, 18, 6, 0xFEA0);
 
   // "FILES" text in black
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("FILES", 75, 14);
+  M5Cardputer.Display.drawString("FILES", 48, 14);
 
-  // Show current path after FILES (no bold)
-  String displayPath = currentPath;
-  if (displayPath.length() > 18) {
-    displayPath = "..." + displayPath.substring(displayPath.length() - 15);
-  }
-  M5Cardputer.Display.drawString("-", 110, 14);
-  M5Cardputer.Display.drawString(displayPath.c_str(), 120, 14);
+  // Show current path after FILES
+  M5Cardputer.Display.drawString("-", 83, 14);
+  M5Cardputer.Display.drawString(displayPath.c_str(), 93, 14);
 }
 
 
@@ -462,11 +468,29 @@ void drawFolderView() {
 
       M5Cardputer.Display.setTextSize(1);
 
-      // Highlight for selected item - full width spanning entire container
+      // Prepare display text first to calculate highlight width
+      String displayName = fileInfoList[fileIdx].name;
+      if (displayName.length() > 28) {
+        displayName = displayName.substring(0, 25) + "...";
+      }
+
+      // Calculate text width (including arrow for folders and file size)
+      int xStart = fileInfoList[fileIdx].isDirectory ? 32 : 22;
+      int textWidth = displayName.length() * 6; // 6 pixels per character
+      int arrowWidth = fileInfoList[fileIdx].isDirectory ? 10 : 0; // Arrow + spacing
+
+      // Add file size width if it's a file
+      int totalWidth = arrowWidth + textWidth + 6; // +6 for padding
+      if (!fileInfoList[fileIdx].isDirectory) {
+        String sizeStr = formatFileSize(fileInfoList[fileIdx].size);
+        totalWidth += sizeStr.length() * 6 + 10; // size text + gap
+      }
+
+      // Highlight for selected item - matches text length
       // Blue if playing, yellow if just selected
       if (selected) {
         uint16_t highlightColor = isPlaying ? TFT_BLUE : TFT_YELLOW;
-        M5Cardputer.Display.fillRoundRect(18, yPos - 2, 204, 11, 5, highlightColor);
+        M5Cardputer.Display.fillRoundRect(20, yPos - 2, totalWidth, 11, 5, highlightColor);
       }
 
       // Red arrow for folders - white if playing (blue highlight), red otherwise
@@ -477,14 +501,8 @@ void drawFolderView() {
       }
 
       // Filename - white if playing (blue highlight), black otherwise
-      String displayName = fileInfoList[fileIdx].name;
-      if (displayName.length() > 28) {
-        displayName = displayName.substring(0, 25) + "...";
-      }
-
       uint16_t textColor = (selected && isPlaying) ? TFT_WHITE : TFT_BLACK;
       M5Cardputer.Display.setTextColor(textColor);
-      int xStart = fileInfoList[fileIdx].isDirectory ? 32 : 22;
       M5Cardputer.Display.drawString(displayName.c_str(), xStart, yPos);
 
       // File size (right side) - white if playing, gray otherwise

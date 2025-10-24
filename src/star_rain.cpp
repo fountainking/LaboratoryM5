@@ -71,22 +71,14 @@ void initStarRain(StarRainMode mode) {
     fallingStars.push_back(star);
   }
 
-  // Clear screen - white for landing page, black for terminal, transparent for screensaver
-  uint16_t bgColor = (mode == STARRAIN_TERMINAL || mode == STARRAIN_SCREENSAVER) ? TFT_BLACK : TFT_WHITE;
-
-  // Only clear screen for landing page and terminal, not for screensaver (transparent overlay)
-  if (mode == STARRAIN_LANDING || mode == STARRAIN_TERMINAL) {
-    M5Cardputer.Display.fillScreen(bgColor);
+  // Clear screen for terminal mode only
+  if (mode == STARRAIN_TERMINAL) {
+    M5Cardputer.Display.fillScreen(TFT_WHITE);
   }
-
-  // Draw status bar and nav dots for landing page (drawn once here, not every frame)
-  if (mode == STARRAIN_LANDING) {
-    drawStatusBar(false);  // Non-inverted for white background
-    drawIndicatorDots(0, 4, false);  // Position 0 of 4 main items
-  }
+  // Screensaver mode: don't clear - allows dissolve effect
 
   // Spawn many initial stars at random positions for heavy pouring rain effect
-  int minY = (mode == STARRAIN_LANDING) ? 25 : 0;  // Start below status bar for landing
+  int minY = 0;  // Full screen for all modes
   for (int i = 0; i < 100; i++) {
     spawnStar();
     // Place them at random Y positions so they don't all start at top
@@ -139,49 +131,35 @@ void updateStarRain() {
 void drawStarRain() {
   if (!starRainActive) return;
 
-  // Determine background color based on mode and menu state
-  uint16_t bgColor;
-  if (currentStarMode == STARRAIN_SCREENSAVER) {
-    // For screensaver, match the menu underneath
-    bool inverted = (currentState == APPS_MENU || currentState == SCREEN_VIEW);
-    bgColor = inverted ? TFT_BLACK : TFT_WHITE;
-  } else if (currentStarMode == STARRAIN_TERMINAL) {
-    bgColor = TFT_BLACK;
-  } else {
-    bgColor = TFT_WHITE;  // STARRAIN_LANDING
-  }
+  // Background color depends on mode and current UI state
+  // Terminal: White background (v0.9b)
+  // Screensaver: Inverse of current UI state (white→black, black→white)
+  extern bool uiInverted;
+  uint16_t bgColor = TFT_WHITE;  // Default for terminal
 
-  // For landing page, only clear below status bar to avoid flicker
-  if (currentStarMode == STARRAIN_LANDING) {
-    M5Cardputer.Display.fillRect(0, 25, 240, 110, bgColor);  // Clear main area (below status bar, above bottom text)
-    // Status bar and nav dots are drawn once in initStarRain, don't redraw them here
+  if (currentStarMode == STARRAIN_SCREENSAVER) {
+    // Dissolve to the OPPOSITE of current state
+    bgColor = uiInverted ? TFT_WHITE : TFT_BLACK;
   }
 
   // TERMINAL: Clear full screen
   if (currentStarMode == STARRAIN_TERMINAL) {
-    M5Cardputer.Display.fillScreen(bgColor);
+    M5Cardputer.Display.fillScreen(TFT_WHITE);
   }
-  // SCREENSAVER: Don't clear screen - creates dissolve/pooling effect!
+  // SCREENSAVER: Don't clear screen - creates dissolve/pooling effect from white to black!
 
   // Draw each raindrop as single asterisk - no trails
-  // For landing page, draw below status bar (y >= 25)
-  int minY = (currentStarMode == STARRAIN_LANDING) ? 25 : 0;
+  int minY = 0;  // Full screen for all modes
 
   M5Cardputer.Display.setTextSize(1);
   for (const auto& star : fallingStars) {
     if (!star.active) continue;
 
-    // Skip stars that are in the status bar area for landing page
-    if (star.y < minY) continue;
-
-    // Erase old position - use BLACK for screensaver to create dissolve/pooling effect!
+    // Erase old position - white for terminal, black for screensaver (dissolve effect)
     if (star.prevY >= minY) {
       int prevPixelX = star.prevX * 6;
       int prevPixelY = star.prevY;
-      // DISSOLVE EFFECT: For screensaver, erase with BLACK to create pooling
-      // For other modes, erase with background color normally
-      uint16_t eraseColor = (currentStarMode == STARRAIN_SCREENSAVER) ? TFT_BLACK : bgColor;
-      M5Cardputer.Display.fillRect(prevPixelX, prevPixelY, 6, 8, eraseColor);
+      M5Cardputer.Display.fillRect(prevPixelX, prevPixelY, 6, 8, bgColor);
     }
 
     // Calculate pixel position
@@ -196,16 +174,10 @@ void drawStarRain() {
   // For screensaver mode, we don't redraw the menu to avoid flashing
   // The stars will occasionally cover text, but they move so text shows through
 
-  // Draw hint text based on mode
-  M5Cardputer.Display.setTextSize(1);
-
-  // Choose text color based on background
-  uint16_t textColor = (currentStarMode == STARRAIN_TERMINAL) ? TFT_DARKGREY : TFT_LIGHTGREY;
-  M5Cardputer.Display.setTextColor(textColor);
-
-  if (currentStarMode == STARRAIN_LANDING) {
-    M5Cardputer.Display.drawString("Press any key...", 75, 110);
-  } else if (currentStarMode == STARRAIN_TERMINAL) {
+  // Draw hint text for terminal mode
+  if (currentStarMode == STARRAIN_TERMINAL) {
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(TFT_LIGHTGREY);
     M5Cardputer.Display.drawString("Press ` to exit", 75, 125);
   }
 }
@@ -251,7 +223,8 @@ void spawnStar() {
     if (!star.active) {
       star.active = true;
       star.x = random(0, STAR_COLUMNS);
-      star.y = -8;  // Start just above screen
+      // All stars spawn completely off-screen above (no pooling at top)
+      star.y = random(-30, -8);  // Spawn well above screen
       star.prevX = star.x;  // Initialize previous position
       star.prevY = star.y;
       star.speed = getRandomStarSpeed();

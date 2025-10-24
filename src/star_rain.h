@@ -26,7 +26,6 @@ struct FallingStar {
 
 // Star rain mode
 enum StarRainMode {
-  STARRAIN_LANDING,
   STARRAIN_SCREENSAVER,
   STARRAIN_TERMINAL
 };

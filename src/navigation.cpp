@@ -133,9 +133,9 @@ void updateStarGifPlayback() {
 
   // Play one frame per call for non-blocking, interruptible animation
   if (starGifPlaying && starGifOpen) {
-    // Determine background color
-    bool inverted = (currentState == APPS_MENU);
-    uint16_t bgColor = inverted ? TFT_BLACK : TFT_WHITE;
+    // Background color matches current theme (white or black)
+    extern bool uiInverted;
+    uint16_t bgColor = uiInverted ? TFT_BLACK : TFT_WHITE;
 
     // Clear star area before drawing next frame to prevent layering
     M5Cardputer.Display.fillRect(starGifXOffset, starGifYOffset, 18, 18, bgColor);
@@ -169,7 +169,8 @@ void navigateUp() {
 }
 
 void navigateLeft() {
-  bool inverted = (currentState == APPS_MENU || currentState == SCREEN_VIEW);  // Apps menu and screen views are inverted (black bg)
+  extern bool uiInverted;  // Use global inversion state
+  bool inverted = uiInverted;
 
   if (currentState == WIFI_SAVED) {
     if (selectedSavedIndex > 0) {
@@ -204,20 +205,18 @@ void navigateLeft() {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
       // INSTANT RESPONSE: Change state and draw new screen IMMEDIATELY
       currentMainIndex--;
-      drawScreen(false);
+      drawScreen(inverted);
       // THEN start star animation (plays on top of already-drawn screen)
       startStarGif(true);  // true = left
       updateStarGifPlayback();
-    } else {
-      // At first main menu item, go to landing page (no star rain)
-      if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 50);
-      currentState = STAR_LANDING_PAGE;
     }
+    // At first item - do nothing (no landing page)
   }
 }
 
 void navigateRight() {
-  bool inverted = (currentState == APPS_MENU || currentState == SCREEN_VIEW);  // Apps menu and screen views are inverted (black bg)
+  extern bool uiInverted;  // Use global inversion state
+  bool inverted = uiInverted;
   
   if (currentState == WIFI_SAVED) {
     if (selectedSavedIndex < numSavedNetworks - 1) {
@@ -247,7 +246,7 @@ void navigateRight() {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
       // INSTANT RESPONSE: Change state and draw new screen IMMEDIATELY
       currentMainIndex++;
-      drawScreen(false);
+      drawScreen(inverted);
       // THEN start star animation (plays on top of already-drawn screen)
       startStarGif(false);  // false = right
       updateStarGifPlayback();
@@ -256,13 +255,15 @@ void navigateRight() {
 }
 
 void handleSelect() {
+  extern bool uiInverted;  // Use global inversion state
+
   if (currentState == MAIN_MENU) {
     if (currentMainIndex == 0) {
       // APPS
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
       currentState = APPS_MENU;
       currentAppIndex = 0;
-      drawScreen(true);
+      drawScreen(uiInverted);
     } else if (currentMainIndex == 1) {
       // Join Wi-Fi
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
@@ -366,6 +367,8 @@ void handleSelect() {
 }
 
 void handleBack() {
+  extern bool uiInverted;  // Use global inversion state
+
   // ALWAYS reset speaker volume first to prevent loud beeps
   M5Cardputer.Speaker.setVolume(80);
 
@@ -389,7 +392,7 @@ void handleBack() {
         currentScreenNumber == 5 || currentScreenNumber == 12) {
       // APPS menu screens
       currentState = APPS_MENU;
-      drawScreen(true);
+      drawScreen(uiInverted);
     } else if (currentScreenNumber == 4 || currentScreenNumber == 6 || currentScreenNumber == 13) {
       // Music submenu screens - go back to Music menu
       int prevScreen = currentScreenNumber;  // Save before changing
@@ -403,16 +406,16 @@ void handleBack() {
     } else {
       // MAIN menu screens (7, 8, 9, 10, 11)
       currentState = MAIN_MENU;
-      drawScreen(false);
+      drawScreen(uiInverted);
     }
   } else if (currentState == APPS_MENU) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = MAIN_MENU;
-    drawScreen(false);
+    drawScreen(uiInverted);
   } else if (currentState == WIFI_SCAN) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = MAIN_MENU;
-    drawScreen(false);
+    drawScreen(uiInverted);
   } else if (currentState == WIFI_PASSWORD) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     inputPassword = "";
@@ -421,6 +424,6 @@ void handleBack() {
   } else if (currentState == WIFI_SAVED) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = MAIN_MENU;
-    drawScreen(false);
+    drawScreen(uiInverted);
   }
 }

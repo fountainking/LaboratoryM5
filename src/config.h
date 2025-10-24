@@ -4,7 +4,7 @@
 #include <M5Cardputer.h>
 
 // Version
-#define FIRMWARE_VERSION "v0.9a"
+#define FIRMWARE_VERSION "v0.9b"
 
 // ============================================================================
 // DEBUG FLAGS - Disable non-visual processes to find performance culprit
@@ -46,7 +46,6 @@ struct MainItemInfo {
 
 // Menu states
 enum MenuState {
-  STAR_LANDING_PAGE,
   MAIN_MENU,
   APPS_MENU,
   SCREEN_VIEW,
@@ -81,6 +80,9 @@ extern bool wifiConnected;
 // Time globals (defined in main.cpp)
 extern bool timeIsSynced;
 extern unsigned long lastSyncTime;
+
+// UI inversion state (defined in main.cpp)
+extern bool uiInverted;
 
 // Saved networks (defined in main.cpp)
 extern String savedSSIDs[MAX_SAVED_NETWORKS];

@@ -281,7 +281,7 @@ void enterWiFiFunApp() {
 
 void drawWiFiFunMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -305,7 +305,7 @@ void drawWiFiFunMenu() {
 
 void drawFakeWiFiInput() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
   
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -349,7 +349,7 @@ void drawFakeWiFiInput() {
 
 void drawFakeWiFiRunning() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
   
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_GREEN);
@@ -411,7 +411,7 @@ void stopFakeWiFi() {
 
 void drawPortalInput() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -455,7 +455,7 @@ void drawPortalInput() {
 
 void drawPortalsMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -483,7 +483,7 @@ void drawPortalsMenu() {
 
 void drawBigPartyMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -607,7 +607,7 @@ void stopPartyTime() {
 
 void drawAPListEdit() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -623,7 +623,7 @@ void drawAPListEdit() {
 
 void drawPartyTimeEdit() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_MAGENTA);
@@ -706,7 +706,7 @@ void drawPartyTimeEdit() {
 
 void drawPartyTimeRunning() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_MAGENTA);
@@ -820,7 +820,7 @@ void handleWiFiFunNavigation(char key) {
 
 void drawAnalyticsMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
@@ -1146,7 +1146,7 @@ void updateCrowdCounter() {
 
 void drawCrowdCounter() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_YELLOW);
@@ -1414,7 +1414,7 @@ void updateSpeedometer() {
 
 void drawSpeedometer() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   if (WiFi.status() != WL_CONNECTED) {
     M5Cardputer.Display.setTextSize(1);
@@ -1539,7 +1539,7 @@ void updateHeatmap() {
 
 void drawHeatmap() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_MAGENTA);
@@ -1730,7 +1730,7 @@ void stopProbeSniffer() {
 
 void drawProbeSniffer() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_CYAN);
@@ -2047,7 +2047,7 @@ void stopPortalGames() {
 
 void drawPortalGames() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_CYAN);
@@ -2436,7 +2436,7 @@ void stopTVBGone() {
 
 void drawTVBGone() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_RED);

@@ -158,7 +158,7 @@ void enterPortalManager() {
 
 void drawPortalList() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_CYAN);
@@ -201,7 +201,7 @@ void drawPortalList() {
 
 void drawPortalCreate() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_CYAN);
@@ -299,7 +299,7 @@ void drawPortalCreate() {
 
 void drawPortalUploadHelp() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
-  drawStatusBar(true);
+  drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
   M5Cardputer.Display.setTextColor(TFT_YELLOW);
