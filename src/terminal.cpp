@@ -179,7 +179,7 @@ void drawTerminal() {
   M5Cardputer.Display.setTextSize(1);
 
   int lineHeight = 9;
-  int maxVisibleLines = 13; // Lines 0-117 (13 lines * 9 pixels)
+  int maxVisibleLines = 12; // Lines 0-108 (12 lines * 9 pixels, leaving spacing below)
   int startLine = max(0, (int)outputBuffer.size() - maxVisibleLines + scrollOffset);
   int endLine = min((int)outputBuffer.size(), startLine + maxVisibleLines - 1);
 
@@ -226,10 +226,19 @@ void drawTerminal() {
       return TFT_WHITE;  // Valid commands stay white
     }
 
-    // Use getGradientColor from ascii_art.cpp for smooth interpolation
-    // Create a cycling gradient that repeats every 40 characters
-    int cycleLength = 40;
-    float t = (float)(charIndex % cycleLength) / (float)cycleLength;
+    // Ping-pong gradient: goes forward then reverses (1→7→1 instead of 1→7→1→7)
+    // Total cycle = 80 chars (40 forward + 40 reverse)
+    int cycleLength = 80;
+    int posInCycle = charIndex % cycleLength;
+    float t;
+
+    if (posInCycle < 40) {
+      // First half: forward (0.0 to 1.0)
+      t = (float)posInCycle / 40.0f;
+    } else {
+      // Second half: reverse (1.0 to 0.0)
+      t = (float)(80 - posInCycle) / 40.0f;
+    }
 
     // Map position to color in gradient array with smooth interpolation
     float colorPosition = t * (numColors - 1);
@@ -363,7 +372,7 @@ void handleTerminalInput(char key) {
       // Check if we're on the second line AND output buffer would cause it to go off-screen
       if (totalInputChars > maxCharsPerLine) {
         // Input has wrapped - check if we need to scroll output up
-        int maxVisibleLines = 13;
+        int maxVisibleLines = 12;
         int currentOutputLines = outputBuffer.size();
 
         // If output buffer fills the screen, scroll it up by one to make room
@@ -525,6 +534,10 @@ void addOutput(const String& text) {
   while (outputBuffer.size() > MAX_OUTPUT_LINES) {
     outputBuffer.erase(outputBuffer.begin());
   }
+
+  // Auto-scroll to bottom when new output is added
+  extern int scrollOffset;
+  scrollOffset = 0;
 }
 
 void clearOutput() {
@@ -539,7 +552,7 @@ void scrollTerminalUp() {
 }
 
 void scrollTerminalDown() {
-  int maxVisibleLines = 13;
+  int maxVisibleLines = 12;
   if (outputBuffer.size() > maxVisibleLines && scrollOffset > -(int)(outputBuffer.size() - maxVisibleLines)) {
     scrollOffset--;
     drawTerminal();
@@ -1211,6 +1224,7 @@ void cmd_ssh(const String& args) {
           addOutput("Authenticated!");
           addOutput("Type 'exit' or ` to close");
           addOutput("");
+          scrollOffset = 0;  // Auto-scroll to bottom
           drawTerminal();
           break;
         } else if (authResponse.indexOf("failed") >= 0) {
@@ -1231,7 +1245,16 @@ void cmd_ssh(const String& args) {
 
   // Interactive telnet loop
   String inputLine = "";
+  String currentPath = "~";  // Track current directory path
   bool connected = true;
+  bool waitingForResponse = false;  // Track if waiting for Claude/server response
+  bool inClaudeMode = false;  // Track if in Claude mode
+  unsigned long thinkingStartTime = 0;
+
+  // Command history
+  std::vector<String> commandHistory;
+  int historyIndex = -1;  // -1 = not browsing history, 0+ = index in history
+  String tempInput = "";  // Store current input when browsing history
   unsigned long lastActivity = millis();
 
   while (connected && client.connected()) {
@@ -1245,6 +1268,9 @@ void cmd_ssh(const String& args) {
     while (client.available()) {
       char c = client.read();
 
+      // Stop thinking animation when data arrives
+      waitingForResponse = false;
+
       // Handle telnet control codes (basic)
       if (c == '\xff') {
         // IAC (Interpret As Command) - skip next 2 bytes
@@ -1255,6 +1281,21 @@ void cmd_ssh(const String& args) {
 
       // Display received data from Mac
       if (c == '\n') {
+        // Extract path from prompt if present (format: "/path/here$ ")
+        String lineStr = "";
+        for (const auto& seg : currentLine.segments) {
+          lineStr += seg.text;
+        }
+        if (lineStr.endsWith("$ ")) {
+          int dollarPos = lineStr.lastIndexOf("$ ");
+          if (dollarPos > 0) {
+            currentPath = lineStr.substring(0, dollarPos);
+          }
+          inClaudeMode = false;  // Exited Claude mode
+        } else if (lineStr.endsWith("Claude> ")) {
+          inClaudeMode = true;  // Entered Claude mode
+        }
+
         addOutput("");
         scrollOffset = 0;  // Auto-scroll to bottom on new output
         drawTerminal();
@@ -1269,8 +1310,54 @@ void cmd_ssh(const String& args) {
           if (next >= 64 && next <= 126) break;  // Sequence terminator
         }
       } else if (c >= 32 && c <= 126) {
-        // Add printable character to current line
-        currentLine.segments.push_back(ColoredText(String(c), TFT_YELLOW));
+        // Add printable character to current line with smooth gradient (green-yellow)
+        // Use same interpolation algorithm as main terminal
+        static uint16_t gradientColors[] = {
+          0x0300,  // Dark green
+          0x0400,  // Green
+          0x0500,  // Bright green
+          0x25E0,  // Yellow-green
+          0x65E0,  // More yellow-green
+          0xA5E0,  // Even more yellow
+          0xFFE0,  // Yellow
+        };
+        static int numColors = 7;
+        static int charIndexInGradient = 0;
+
+        // Wrap text at 40 characters
+        int lineLength = 0;
+        for (const auto& seg : currentLine.segments) {
+          lineLength += seg.text.length();
+        }
+
+        if (lineLength >= 40) {
+          addOutput("");  // Start new line
+          // Don't reset charIndexInGradient - let gradient continue across lines
+        }
+
+        // Calculate smooth ping-pong gradient (forward then reverse)
+        int cycleLength = 80;
+        int posInCycle = charIndexInGradient % cycleLength;
+        float t;
+
+        if (posInCycle < 40) {
+          // First half: forward (0.0 to 1.0)
+          t = (float)posInCycle / 40.0f;
+        } else {
+          // Second half: reverse (1.0 to 0.0)
+          t = (float)(80 - posInCycle) / 40.0f;
+        }
+
+        float colorPosition = t * (numColors - 1);
+        int colorIndex1 = (int)colorPosition;
+        int colorIndex2 = (colorIndex1 + 1) % numColors;
+        float blend = colorPosition - colorIndex1;
+
+        // Interpolate between two adjacent colors
+        uint16_t charColor = interpolateColor(gradientColors[colorIndex1], gradientColors[colorIndex2], blend);
+
+        currentLine.segments.push_back(ColoredText(String(c), charColor));
+        charIndexInGradient++;
         charsSinceLastDraw++;
         needsRedraw = true;
       } else if (c == 8 || c == 127) {
@@ -1291,7 +1378,9 @@ void cmd_ssh(const String& args) {
     }
 
     // Batch screen updates: redraw every 100ms OR every 50 chars (whichever comes first)
-    if (needsRedraw && (millis() - lastDrawTime > 100 || charsSinceLastDraw > 50)) {
+    // OR immediately if we have a prompt waiting (currentLine has content and no more data available)
+    bool hasPromptWaiting = (currentLine.segments.size() > 0) && !client.available();
+    if (needsRedraw && (millis() - lastDrawTime > 100 || charsSinceLastDraw > 50 || hasPromptWaiting)) {
       drawTerminal();
       lastDrawTime = millis();
       charsSinceLastDraw = 0;
@@ -1307,21 +1396,49 @@ void cmd_ssh(const String& args) {
         break;
       }
 
-      // Check for Fn+comma (scroll up) or Fn+period (scroll down)
+      // Check for Fn key combinations
+      // Fn+, (left) and Fn+/ (right) = scroll terminal window
+      // Fn+; (up) and Fn+. (down) = navigate command history
       if (status.fn && status.word.size() > 0) {
         if (status.word[0] == ',') {
-          // Scroll up
+          // Fn+, (left) = Scroll terminal DOWN
+          int maxVisibleLines = 12;
+          if (outputBuffer.size() > maxVisibleLines && scrollOffset > -(int)(outputBuffer.size() - maxVisibleLines)) {
+            scrollOffset--;
+            drawTerminal();
+          }
+          continue;
+        } else if (status.word[0] == '/') {
+          // Fn+/ (right) = Scroll terminal UP
           if (scrollOffset < 0) {
             scrollOffset++;
             drawTerminal();
           }
           continue;
+        } else if (status.word[0] == ';') {
+          // Fn+; (up) = Previous command in history
+          if (commandHistory.size() > 0) {
+            // First time pressing up - save current input
+            if (historyIndex == -1) {
+              tempInput = inputLine;
+              historyIndex = commandHistory.size() - 1;
+            } else if (historyIndex > 0) {
+              historyIndex--;
+            }
+            inputLine = commandHistory[historyIndex];
+          }
+          continue;
         } else if (status.word[0] == '.') {
-          // Scroll down
-          int maxVisibleLines = 13;
-          if (outputBuffer.size() > maxVisibleLines && scrollOffset > -(int)(outputBuffer.size() - maxVisibleLines)) {
-            scrollOffset--;
-            drawTerminal();
+          // Fn+. (down) = Next command in history
+          if (historyIndex >= 0) {
+            if (historyIndex < (int)commandHistory.size() - 1) {
+              historyIndex++;
+              inputLine = commandHistory[historyIndex];
+            } else {
+              // Back to current input
+              historyIndex = -1;
+              inputLine = tempInput;
+            }
           }
           continue;
         }
@@ -1334,22 +1451,49 @@ void cmd_ssh(const String& args) {
           break;
         }
 
-        // Send command to Mac
-        client.print(inputLine + "\n");
+        // Add to command history (skip empty commands and duplicates)
+        if (inputLine.length() > 0) {
+          // Don't add if it's the same as the last command
+          if (commandHistory.size() == 0 || commandHistory.back() != inputLine) {
+            commandHistory.push_back(inputLine);
+            // Limit history to 50 commands
+            if (commandHistory.size() > 50) {
+              commandHistory.erase(commandHistory.begin());
+            }
+          }
+        }
 
-        // Show what we sent in output buffer
-        addOutput("> " + inputLine);
-        drawTerminal();
+        // Send command to Mac (use \r for telnet protocol)
+        client.print(inputLine + "\r");
 
-        // Clear input line and bottom bar
+        // If user typed "claude", send another enter to start the session
+        if (inputLine == "claude") {
+          delay(100);  // Brief delay to let server process
+          client.print("\r");
+        }
+
+        // Start thinking animation ONLY if in Claude mode
+        if (inClaudeMode && inputLine.length() > 0) {
+          waitingForResponse = true;
+          thinkingStartTime = millis();
+        }
+
+        // Clear input and redraw
         inputLine = "";
+        historyIndex = -1;  // Reset history navigation
+        tempInput = "";
+        scrollOffset = 0;  // Auto-scroll to bottom
         M5Cardputer.Display.fillRect(0, 117, 240, 18, TFT_BLACK);
+        drawTerminal();
 
         lastActivity = millis();
       } else if (status.del) {
         // Backspace
         if (inputLine.length() > 0) {
           inputLine.remove(inputLine.length() - 1);
+          // Reset history navigation when deleting
+          historyIndex = -1;
+          tempInput = "";
         }
 
         // Check if we need to scroll when input wraps
@@ -1357,7 +1501,7 @@ void cmd_ssh(const String& args) {
         int maxCharsPerLine = 38;
         if (fullInput.length() > maxCharsPerLine) {
           // Input wrapped - scroll output buffer up by 2 lines
-          int maxVisibleLines = 13;
+          int maxVisibleLines = 12;
           if (outputBuffer.size() >= maxVisibleLines - 1 && scrollOffset == 0) {
             scrollOffset = -2;
           }
@@ -1365,44 +1509,31 @@ void cmd_ssh(const String& args) {
 
         // Redraw terminal with auto-scroll
         drawTerminal();
-
-        // Update input display with wrapping support
-        M5Cardputer.Display.fillRect(0, 117, 240, 18, TFT_BLACK);
-        M5Cardputer.Display.setTextColor(TFT_YELLOW);
-        M5Cardputer.Display.setTextSize(1);
-
-        if (fullInput.length() <= maxCharsPerLine) {
-          // Single line
-          M5Cardputer.Display.drawString(fullInput.c_str(), 2, 117);
-          int cursorX = 2 + fullInput.length() * 6;
-          if (millis() % 1000 < 500) {
-            M5Cardputer.Display.fillRect(cursorX, 117, 6, 8, TFT_YELLOW);
-          }
-        } else {
-          // Wrapped to two lines
-          String firstLine = fullInput.substring(0, maxCharsPerLine);
-          String secondLine = fullInput.substring(maxCharsPerLine);
-          M5Cardputer.Display.drawString(firstLine.c_str(), 2, 117);
-          M5Cardputer.Display.drawString(secondLine.c_str(), 2, 126);
-          int cursorX = 2 + secondLine.length() * 6;
-          if (millis() % 1000 < 500) {
-            M5Cardputer.Display.fillRect(cursorX, 126, 6, 8, TFT_YELLOW);
-          }
-        }
       } else {
         // Add character to input buffer (but don't send to server yet!)
         for (auto key : status.word) {
           if (key >= 32 && key <= 126 && inputLine.length() < 120) {
             inputLine += (char)key;
+            // Reset history navigation when typing new characters
+            historyIndex = -1;
+            tempInput = "";
           }
         }
 
         // Check if we need to scroll when input wraps
-        String fullInput = "> " + inputLine;
+        String displayPath = currentPath;
+        if (displayPath.length() > 20) {
+          int lastSlash = displayPath.lastIndexOf('/');
+          if (lastSlash > 0) {
+            displayPath = "..." + displayPath.substring(lastSlash);
+          }
+        }
+        String promptText = displayPath + "> ";
+        String fullInput = promptText + inputLine;
         int maxCharsPerLine = 38;
         if (fullInput.length() > maxCharsPerLine) {
           // Input wrapped - scroll output buffer up by 2 lines
-          int maxVisibleLines = 13;
+          int maxVisibleLines = 12;
           if (outputBuffer.size() >= maxVisibleLines - 1 && scrollOffset == 0) {
             scrollOffset = -2;
           }
@@ -1411,31 +1542,100 @@ void cmd_ssh(const String& args) {
         // Redraw terminal with auto-scroll
         drawTerminal();
 
-        // Update input display at bottom with wrapping support
-        M5Cardputer.Display.fillRect(0, 117, 240, 18, TFT_BLACK);
-        M5Cardputer.Display.setTextColor(TFT_YELLOW);
-        M5Cardputer.Display.setTextSize(1);
-
-        if (fullInput.length() <= maxCharsPerLine) {
-          // Single line
-          M5Cardputer.Display.drawString(fullInput.c_str(), 2, 117);
-          int cursorX = 2 + fullInput.length() * 6;
-          if (millis() % 1000 < 500) {
-            M5Cardputer.Display.fillRect(cursorX, 117, 6, 8, TFT_YELLOW);
-          }
-        } else {
-          // Wrapped to two lines
-          String firstLine = fullInput.substring(0, maxCharsPerLine);
-          String secondLine = fullInput.substring(maxCharsPerLine);
-          M5Cardputer.Display.drawString(firstLine.c_str(), 2, 117);
-          M5Cardputer.Display.drawString(secondLine.c_str(), 2, 126);
-          int cursorX = 2 + secondLine.length() * 6;
-          if (millis() % 1000 < 500) {
-            M5Cardputer.Display.fillRect(cursorX, 126, 6, 8, TFT_YELLOW);
-          }
-        }
-
         lastActivity = millis();
+      }
+    }
+
+    // ALWAYS draw input prompt (not just on keypress) - this shows prompt immediately on connection
+    M5Cardputer.Display.fillRect(0, 117, 240, 18, TFT_BLACK);
+    M5Cardputer.Display.setTextSize(1);
+
+    // Show path in prompt (use last part if too long)
+    String displayPath = currentPath;
+    if (displayPath.length() > 20) {
+      int lastSlash = displayPath.lastIndexOf('/');
+      if (lastSlash > 0) {
+        displayPath = "..." + displayPath.substring(lastSlash);
+      }
+    }
+    String promptText = displayPath + "> ";
+
+    // 5-color gradient matching main terminal style (green to yellow)
+    static uint16_t inputGradientColors[] = {
+      0x0400,  // Green
+      0x0500,  // Bright green
+      0x65E0,  // Yellow-green
+      0xA5E0,  // Light yellow-green
+      0xFFE0,  // Yellow
+    };
+    static int numInputColors = 5;
+
+    // Lambda for smooth gradient color calculation (ping-pong: forward then reverse)
+    auto getInputGradientColor = [&](int charIndex) -> uint16_t {
+      // Ping-pong gradient: goes forward then reverses
+      // Total cycle = 80 chars (40 forward + 40 reverse)
+      int cycleLength = 80;
+      int posInCycle = charIndex % cycleLength;
+      float t;
+
+      if (posInCycle < 40) {
+        // First half: forward (0.0 to 1.0)
+        t = (float)posInCycle / 40.0f;
+      } else {
+        // Second half: reverse (1.0 to 0.0)
+        t = (float)(80 - posInCycle) / 40.0f;
+      }
+
+      float colorPosition = t * (numInputColors - 1);
+      int colorIndex1 = (int)colorPosition;
+      int colorIndex2 = (colorIndex1 + 1) % numInputColors;
+      float blend = colorPosition - colorIndex1;
+      return interpolateColor(inputGradientColors[colorIndex1], inputGradientColors[colorIndex2], blend);
+    };
+
+    String fullInputWithPath = promptText + inputLine;
+
+    // Add animated thinking ellipsis ONLY if in Claude mode and waiting for response
+    if (inClaudeMode && waitingForResponse) {
+      unsigned long elapsed = millis() - thinkingStartTime;
+      int dotCount = (elapsed / 500) % 4;  // 0-3 dots, cycles every 2 seconds
+      String dots = "";
+      for (int i = 0; i < dotCount; i++) {
+        dots += ".";
+      }
+      fullInputWithPath = promptText + dots;
+    }
+
+    int xPos = 2;
+    int yPos = 117;
+    int maxCharsPerLine = 38;
+
+    if (fullInputWithPath.length() <= maxCharsPerLine) {
+      // Single line with gradient
+      for (int i = 0; i < fullInputWithPath.length(); i++) {
+        M5Cardputer.Display.setTextColor(getInputGradientColor(i));
+        M5Cardputer.Display.drawChar(fullInputWithPath[i], xPos, yPos);
+        xPos += 6;
+      }
+      if (!waitingForResponse && millis() % 1000 < 500) {
+        M5Cardputer.Display.fillRect(xPos, yPos, 6, 8, 0xFFE0);
+      }
+    } else {
+      // Wrapped to two lines
+      for (int i = 0; i < maxCharsPerLine && i < fullInputWithPath.length(); i++) {
+        M5Cardputer.Display.setTextColor(getInputGradientColor(i));
+        M5Cardputer.Display.drawChar(fullInputWithPath[i], xPos, yPos);
+        xPos += 6;
+      }
+      xPos = 2;
+      yPos = 126;
+      for (int i = maxCharsPerLine; i < fullInputWithPath.length(); i++) {
+        M5Cardputer.Display.setTextColor(getInputGradientColor(i));
+        M5Cardputer.Display.drawChar(fullInputWithPath[i], xPos, yPos);
+        xPos += 6;
+      }
+      if (!waitingForResponse && millis() % 1000 < 500) {
+        M5Cardputer.Display.fillRect(xPos, yPos, 6, 8, 0xFFE0);
       }
     }
 

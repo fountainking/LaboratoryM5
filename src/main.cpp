@@ -1603,11 +1603,11 @@ void loop() {
               drawTerminal();
             }
           } else if (fnPressed && (key == ',' || key == '<')) {
-            // Fn+, (left arrow) - Scroll output up
-            scrollTerminalUp();
-          } else if (fnPressed && (key == '/' || key == '?')) {
-            // Fn+/ (right arrow) - Scroll output down
+            // Fn+, (left arrow) - Scroll output DOWN
             scrollTerminalDown();
+          } else if (fnPressed && (key == '/' || key == '?')) {
+            // Fn+/ (right arrow) - Scroll output UP
+            scrollTerminalUp();
           } else if (key == '`') {
             // Back to apps menu
             safeBeep(600, 100);
