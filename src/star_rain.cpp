@@ -155,8 +155,8 @@ void drawStarRain() {
   for (const auto& star : fallingStars) {
     if (!star.active) continue;
 
-    // Erase old position - white for terminal, black for screensaver (dissolve effect)
-    if (star.prevY >= minY) {
+    // Erase old position if it was on-screen - white for terminal, black for screensaver (dissolve effect)
+    if (star.prevY >= 0 && star.prevY < 135) {
       int prevPixelX = star.prevX * 6;
       int prevPixelY = star.prevY;
       M5Cardputer.Display.fillRect(prevPixelX, prevPixelY, 6, 8, bgColor);
@@ -166,9 +166,11 @@ void drawStarRain() {
     int pixelX = star.x * 6;  // 6 pixels per character width
     int pixelY = star.y;
 
-    // Draw just the asterisk - no trails
-    M5Cardputer.Display.setTextColor(star.color);
-    M5Cardputer.Display.drawChar('*', pixelX, pixelY);
+    // Only draw if on-screen
+    if (pixelY >= 0 && pixelY < 135) {
+      M5Cardputer.Display.setTextColor(star.color);
+      M5Cardputer.Display.drawChar('*', pixelX, pixelY);
+    }
   }
 
   // For screensaver mode, we don't redraw the menu to avoid flashing
