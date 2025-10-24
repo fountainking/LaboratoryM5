@@ -1238,6 +1238,10 @@ void cmd_ssh(const String& args) {
     M5Cardputer.update();
 
     // Read data from server and display it
+    static unsigned long lastDrawTime = 0;
+    static int charsSinceLastDraw = 0;
+    bool needsRedraw = false;
+
     while (client.available()) {
       char c = client.read();
 
@@ -1254,6 +1258,8 @@ void cmd_ssh(const String& args) {
         addOutput("");
         scrollOffset = 0;  // Auto-scroll to bottom on new output
         drawTerminal();
+        lastDrawTime = millis();
+        charsSinceLastDraw = 0;
       } else if (c == '\r') {
         // Skip carriage returns
       } else if (c == 27) {
@@ -1265,6 +1271,8 @@ void cmd_ssh(const String& args) {
       } else if (c >= 32 && c <= 126) {
         // Add printable character to current line
         currentLine.segments.push_back(ColoredText(String(c), TFT_YELLOW));
+        charsSinceLastDraw++;
+        needsRedraw = true;
       } else if (c == 8 || c == 127) {
         // Backspace - remove last character from current line if any
         if (currentLine.segments.size() > 0) {
@@ -1276,9 +1284,17 @@ void cmd_ssh(const String& args) {
             }
           }
         }
+        needsRedraw = true;
       }
 
       lastActivity = millis();
+    }
+
+    // Batch screen updates: redraw every 100ms OR every 50 chars (whichever comes first)
+    if (needsRedraw && (millis() - lastDrawTime > 100 || charsSinceLastDraw > 50)) {
+      drawTerminal();
+      lastDrawTime = millis();
+      charsSinceLastDraw = 0;
     }
 
     // Handle M5 keyboard input
