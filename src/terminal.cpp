@@ -172,18 +172,28 @@ bool isValidCommand(const String& cmd) {
 }
 
 void drawTerminal() {
-  // Clear only the output area (not the entire screen to reduce flicker)
-  M5Cardputer.Display.fillRect(0, 0, 240, 117, TFT_BLACK);
+  // Clear entire screen
+  M5Cardputer.Display.fillScreen(TFT_BLACK);
 
-  // Draw output buffer with scroll offset
+  // Define layout zones (z-layered design)
+  int pathBoxY = 3;
+  int pathBoxH = 16;
+  int cmdBoxY = 114;
+  int cmdBoxH = 20;
+  int terminalStartY = 0; // Terminal content starts at top (can go behind path box)
+  int terminalEndY = cmdBoxY - 2; // Terminal content stops above command box
+
+  // Draw terminal output buffer with AGGRESSIVE AUTO-SCROLL TO BOTTOM
   M5Cardputer.Display.setTextSize(1);
 
   int lineHeight = 9;
-  int maxVisibleLines = 12; // Lines 0-108 (12 lines * 9 pixels, leaving spacing below)
-  int startLine = max(0, (int)outputBuffer.size() - maxVisibleLines + scrollOffset);
-  int endLine = min((int)outputBuffer.size(), startLine + maxVisibleLines - 1);
+  int maxVisibleLines = (terminalEndY - terminalStartY) / lineHeight; // ~12 lines
 
-  int yPos = 0;
+  // Auto-scroll: always show most recent lines at bottom
+  int startLine = max(0, (int)outputBuffer.size() - maxVisibleLines + scrollOffset);
+  int endLine = min((int)outputBuffer.size(), startLine + maxVisibleLines);
+
+  int yPos = terminalStartY;
   for (int i = startLine; i < endLine; i++) {
     if (i >= 0 && i < outputBuffer.size()) {
       int xPos = 2;
@@ -194,19 +204,37 @@ void drawTerminal() {
         xPos += segment.text.length() * 6; // 6 pixels per character
       }
       yPos += lineHeight;
+
+      // Stop drawing if we've reached the command box area
+      if (yPos >= terminalEndY) break;
     }
   }
 
-  // Draw input line at bottom (with wrapping support)
-  int inputY = 117;
-  // Clear input line area (2 lines = 18 pixels)
-  M5Cardputer.Display.fillRect(0, inputY, 240, 18, TFT_BLACK);
+  // Draw PATH BOX at top (z-index on top, text can go behind it)
+  M5Cardputer.Display.fillRoundRect(5, pathBoxY, 230, pathBoxH, 8, TFT_DARKGREY);
+  M5Cardputer.Display.drawRoundRect(5, pathBoxY, 230, pathBoxH, 8, TFT_YELLOW);
 
-  // Use * for root, > for subdirectories
-  String prompt = (currentDirectory == "/") ? "* " : currentDirectory + "> ";
+  // Draw current directory path (just the path, no label)
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_YELLOW);
+  String pathDisplay = currentDirectory;
+  if (pathDisplay.length() > 36) {
+    pathDisplay = "..." + pathDisplay.substring(pathDisplay.length() - 33);
+  }
+  M5Cardputer.Display.drawString(pathDisplay.c_str(), 10, pathBoxY + 4);
+
+  // Draw COMMAND LINE BOX at bottom (z-index on top)
+  M5Cardputer.Display.fillRoundRect(5, cmdBoxY, 230, cmdBoxH, 8, TFT_DARKGREY);
+  M5Cardputer.Display.drawRoundRect(5, cmdBoxY, 230, cmdBoxH, 8, TFT_WHITE);
+
+  // Draw command line input inside bottom box
+  int inputY = cmdBoxY + 6;
+
+  // Use * as the prompt (asterisk represents command line)
+  String prompt = "* ";
   String fullInput = prompt + currentInput;
 
-  int maxCharsPerLine = 38; // 240px / 6px per char = 40, -2 for margins
+  int maxCharsPerLine = 34; // Fits inside command box (230px width - margins)
 
   // Define cycling gradient colors (yellow -> orange -> red -> purple -> blue -> cyan -> white -> back to yellow)
   uint16_t gradientColors[] = {
@@ -223,7 +251,7 @@ void drawTerminal() {
   // Helper function to get smooth gradient color for a character at position
   auto getInputGradientColor = [&](int charIndex, int totalChars, bool isValidCmd) -> uint16_t {
     if (isValidCmd) {
-      return TFT_WHITE;  // Valid commands stay white
+      return TFT_GREEN;  // Valid commands glow green
     }
 
     // Ping-pong gradient: goes forward then reverses (1→7→1 instead of 1→7→1→7)
@@ -253,7 +281,7 @@ void drawTerminal() {
   // Check if input wraps to second line
   if (fullInput.length() <= maxCharsPerLine) {
     // Single line - draw with gradient
-    int xPos = 2;
+    int xPos = 10; // Start inside command box
 
     // Draw prompt character by character with gradient
     for (int i = 0; i < prompt.length(); i++) {
@@ -284,45 +312,37 @@ void drawTerminal() {
     }
 
     // Draw cursor
-    int cursorX = 2 + fullInput.length() * 6;
+    int cursorX = 10 + fullInput.length() * 6;
     if (millis() % 1000 < 500) {
       M5Cardputer.Display.fillRect(cursorX, inputY, 6, 8, getInputGradientColor(fullInput.length(), fullInput.length(), false));
     }
   } else {
-    // Wrapped to two lines - draw with gradient
-    String firstLine = fullInput.substring(0, maxCharsPerLine);
-    String secondLine = fullInput.substring(maxCharsPerLine);
+    // Auto-scroll input: only show the last N characters that fit
+    String visibleInput = fullInput.substring(fullInput.length() - maxCharsPerLine);
 
-    // Draw first line character by character
-    int xPos = 2;
-    for (int i = 0; i < firstLine.length(); i++) {
-      bool isValid = (i >= prompt.length()) && isValidCommand(currentInput);
-      M5Cardputer.Display.setTextColor(getInputGradientColor(i, fullInput.length(), isValid));
-      M5Cardputer.Display.drawString(String(firstLine[i]).c_str(), xPos, inputY);
+    // Draw visible portion character by character
+    int xPos = 10;
+    for (int i = 0; i < visibleInput.length(); i++) {
+      int actualIndex = fullInput.length() - maxCharsPerLine + i;
+      bool isValid = (actualIndex >= prompt.length()) && isValidCommand(currentInput);
+      M5Cardputer.Display.setTextColor(getInputGradientColor(actualIndex, fullInput.length(), isValid));
+      M5Cardputer.Display.drawString(String(visibleInput[i]).c_str(), xPos, inputY);
       xPos += 6;
     }
 
-    // Draw second line character by character
-    xPos = 2;
-    for (int i = 0; i < secondLine.length(); i++) {
-      M5Cardputer.Display.setTextColor(getInputGradientColor(maxCharsPerLine + i, fullInput.length(), false));
-      M5Cardputer.Display.drawString(String(secondLine[i]).c_str(), xPos, inputY + 9);
-      xPos += 6;
-    }
-
-    // Draw cursor on second line
-    int cursorX = 2 + secondLine.length() * 6;
+    // Draw cursor at end of visible text
+    int cursorX = 10 + visibleInput.length() * 6;
     if (millis() % 1000 < 500) {
-      M5Cardputer.Display.fillRect(cursorX, inputY + 9, 6, 8, getInputGradientColor(fullInput.length(), fullInput.length(), false));
+      M5Cardputer.Display.fillRect(cursorX, inputY, 6, 8, getInputGradientColor(fullInput.length(), fullInput.length(), false));
     }
   }
 
-  // Draw scroll indicators
+  // Draw scroll indicators (adjusted for new layout)
   if (startLine > 0) {
-    M5Cardputer.Display.fillTriangle(235, 5, 230, 10, 240, 10, TFT_DARKGREY);
+    M5Cardputer.Display.fillTriangle(235, 25, 230, 30, 240, 30, TFT_CYAN);
   }
   if (endLine < outputBuffer.size()) {
-    M5Cardputer.Display.fillTriangle(235, 112, 230, 107, 240, 107, TFT_DARKGREY);
+    M5Cardputer.Display.fillTriangle(235, 108, 230, 103, 240, 103, TFT_CYAN);
   }
 }
 
