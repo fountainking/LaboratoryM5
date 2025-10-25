@@ -24,4 +24,7 @@ void drawWiFiSaved();
 // Music UI functions
 void drawMusicMenu();
 
+// Games UI functions
+void drawGamesMenu();
+
 #endif

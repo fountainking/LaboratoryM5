@@ -44,6 +44,20 @@ struct MainItemInfo {
   int screenNumber;
 };
 
+// Music menu item structure
+struct MusicMenuItem {
+  String name;
+  uint16_t color;
+  int screenNumber;
+};
+
+// Games menu item structure
+struct GamesMenuItem {
+  String name;
+  uint16_t color;
+  int screenNumber;
+};
+
 // Menu states
 enum MenuState {
   MAIN_MENU,
@@ -89,5 +103,15 @@ extern String savedSSIDs[MAX_SAVED_NETWORKS];
 extern String savedPasswords[MAX_SAVED_NETWORKS];
 extern int numSavedNetworks;
 extern int selectedSavedIndex;
+
+// Music menu globals (defined in main.cpp)
+extern MusicMenuItem musicMenuItems[];
+extern int totalMusicItems;
+extern int musicMenuIndex;
+
+// Games menu globals (defined in main.cpp)
+extern GamesMenuItem gamesMenuItems[];
+extern int totalGamesItems;
+extern int gamesMenuIndex;
 
 #endif

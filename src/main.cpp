@@ -21,6 +21,7 @@
 #include "audio_manager.h"
 #include "the_book.h"
 #include "music_tools.h"
+#include "chip8.h"
 
 Preferences preferences;
 
@@ -73,21 +74,24 @@ String savedPasswords[MAX_SAVED_NETWORKS];
 int numSavedNetworks = 0;
 int selectedSavedIndex = 0;
 
-// Music submenu
-struct MusicMenuItem {
-  String name;
-  uint16_t color;
-  int screenNumber;
-};
-
+// Music submenu (struct defined in config.h)
 MusicMenuItem musicMenuItems[] = {
   {"Player", TFT_MAGENTA, 6},
   {"Radio", TFT_RED, 4},
-  {"Tools", TFT_CYAN, 13}  // Placeholder for future
+  {"Tools", TFT_CYAN, 13}
 };
 
 int totalMusicItems = 3;
 int musicMenuIndex = 0;
+
+// Games submenu (struct defined in config.h)
+GamesMenuItem gamesMenuItems[] = {
+  {"CHIP-8", TFT_GREEN, 14},
+  {"Game Boy", TFT_PURPLE, 15}
+};
+
+int totalGamesItems = 2;
+int gamesMenuIndex = 0;
 
 // Global state for background WiFi connection
 unsigned long wifiConnectStartTime = 0;
@@ -647,17 +651,8 @@ void loop() {
           else if (bookState == BOOK_RESULTS) drawBookResults();
           else if (bookState == BOOK_ARTICLE) drawBookArticle();
         } else if (currentScreenNumber == 8) {
-          // Games placeholder
-          M5Cardputer.Display.fillScreen(TFT_BLACK);
-          drawStatusBar(false);
-          M5Cardputer.Display.setTextSize(2);
-          M5Cardputer.Display.setTextColor(TFT_PURPLE);
-          M5Cardputer.Display.drawString("Games", 85, 30);
-          M5Cardputer.Display.setTextSize(1);
-          M5Cardputer.Display.setTextColor(TFT_WHITE);
-          M5Cardputer.Display.drawString("Coming Soon!", 75, 60);
-          M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-          M5Cardputer.Display.drawString("Snake, Tetris, and more...", 35, 85);
+          // Games menu
+          drawGamesMenu();
         } else if (currentScreenNumber == 9) {
           drawRoadmap();
         } else if (currentScreenNumber == 10) {
@@ -675,6 +670,19 @@ void loop() {
           } else if (musicToolsState == AUDIO_VISUALIZER) {
             drawAudioVisualizer();
           }
+        } else if (currentScreenNumber == 14) {
+          // CHIP-8
+          drawChip8ROMBrowser();
+        } else if (currentScreenNumber == 15) {
+          // Game Boy placeholder
+          M5Cardputer.Display.fillScreen(TFT_BLACK);
+          drawStatusBar(false);
+          M5Cardputer.Display.setTextSize(2);
+          M5Cardputer.Display.setTextColor(TFT_PURPLE);
+          M5Cardputer.Display.drawString("Game Boy", 70, 50);
+          M5Cardputer.Display.setTextSize(1);
+          M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+          M5Cardputer.Display.drawString("Coming Soon!", 75, 75);
         }
       }
 
@@ -1800,14 +1808,39 @@ void loop() {
         }
       }
 
-      // Handle Games app input
+      // Handle Games menu input
       if (currentState == SCREEN_VIEW && currentScreenNumber == 8) {
+        if (status.enter) {
+          // Select game
+          safeBeep(800, 100);
+          currentScreenNumber = gamesMenuItems[gamesMenuIndex].screenNumber;
+
+          // Call appropriate enter function
+          if (currentScreenNumber == 14) {
+            enterChip8();
+          }
+          return;
+        }
+
         for (auto key : status.word) {
           if (key == '`') {
             // Back to main menu
             safeBeep(600, 100);
             currentState = MAIN_MENU;
+            gamesMenuIndex = 0;
             drawScreen(false);
+            return;
+          } else if (key == ';') {
+            // Up
+            safeBeep(600, 50);
+            gamesMenuIndex = (gamesMenuIndex - 1 + totalGamesItems) % totalGamesItems;
+            drawGamesMenu();
+            return;
+          } else if (key == '.') {
+            // Down
+            safeBeep(600, 50);
+            gamesMenuIndex = (gamesMenuIndex + 1) % totalGamesItems;
+            drawGamesMenu();
             return;
           }
         }
@@ -1890,6 +1923,9 @@ void loop() {
           } else if (currentScreenNumber == 13) {
             // Music Tools
             enterMusicTools();
+          } else if (currentScreenNumber == 14) {
+            // CHIP-8
+            enterChip8();
           }
           return;
         }
@@ -1978,6 +2014,26 @@ void loop() {
             // Back to main menu
             safeBeep(600, 100);
             currentState = MAIN_MENU;
+            drawScreen(false);
+            return;
+          }
+        }
+        return;
+      }
+
+      // Handle CHIP-8 ROM browser input
+      if (currentState == SCREEN_VIEW && currentScreenNumber == 14) {
+        handleChip8BrowserInput(status);
+        return;
+      }
+
+      // Handle Game Boy placeholder input
+      if (currentState == SCREEN_VIEW && currentScreenNumber == 15) {
+        for (auto key : status.word) {
+          if (key == '`') {
+            // Back to Games menu
+            safeBeep(600, 100);
+            currentScreenNumber = 8;
             drawScreen(false);
             return;
           }
@@ -2215,9 +2271,44 @@ void loop() {
     audioCurrentlyMuted = false;
   }
 
-  // Use shorter delay when audio is playing to keep buffer full
+  // Update CHIP-8 emulator if game is running
+  if (currentState == SCREEN_VIEW && currentScreenNumber == 14) {
+    extern bool chip8Running;
+    extern Chip8 chip8;
+    if (chip8Running) {
+      // Run multiple cycles per frame for proper speed (ULTRA FAST!)
+      for (int i = 0; i < 200; i++) {
+        chip8.cycle();
+      }
+
+      // Update timers at 60Hz
+      static unsigned long lastTimerUpdate = 0;
+      if (millis() - lastTimerUpdate >= 16) {  // ~60Hz
+        if (chip8.delayTimer > 0) chip8.delayTimer--;
+        if (chip8.soundTimer > 0) chip8.soundTimer--;
+        lastTimerUpdate = millis();
+      }
+
+      // Redraw if needed
+      if (chip8.drawFlag) {
+        drawChip8Screen();
+      }
+
+      // Handle CHIP-8 game input
+      handleChip8Input();
+    }
+  }
+
+  // Use shorter delay when audio or CHIP-8 is running for responsiveness
   if (isRadioPlaying() || isAudioPlaying()) {
     delay(1);  // Minimal delay for smooth audio
+  } else if (currentState == SCREEN_VIEW && currentScreenNumber == 14) {
+    extern bool chip8Running;
+    if (chip8Running) {
+      delay(1);  // Minimal delay for responsive CHIP-8 input
+    } else {
+      delay(10);  // Normal delay in ROM browser
+    }
   } else {
     delay(10);  // Normal delay when no audio
   }

@@ -279,7 +279,7 @@ void handleSelect() {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
       currentState = SCREEN_VIEW;
       currentScreenNumber = 8;
-      drawPlaceholderScreen(8, "Games", false);
+      drawGamesMenu();
     } else if (currentMainIndex == 4) {
       // Settings
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);

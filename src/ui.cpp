@@ -678,16 +678,6 @@ void drawWiFiSaved() {
 }
 
 // Music Menu
-struct MusicMenuItem {
-  String name;
-  uint16_t color;
-  int screenNumber;
-};
-
-extern MusicMenuItem musicMenuItems[];
-extern int totalMusicItems;
-extern int musicMenuIndex;
-
 void drawMusicMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
@@ -714,4 +704,35 @@ void drawMusicMenu() {
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
   M5Cardputer.Display.drawString(",/=Navigate  Enter=Select", 30, 115);
   M5Cardputer.Display.drawString("`=Back", 95, 125);
+}
+
+void drawGamesMenu() {
+  M5Cardputer.Display.fillScreen(TFT_BLACK);
+  drawStatusBar(false);
+
+  // Title
+  M5Cardputer.Display.setTextSize(2);
+  M5Cardputer.Display.setTextColor(TFT_PURPLE);
+  M5Cardputer.Display.drawString("GAMES", 80, 25);
+
+  // Menu items
+  M5Cardputer.Display.setTextSize(1);
+  int yPos = 50;
+  for (int i = 0; i < totalGamesItems; i++) {
+    if (i == gamesMenuIndex) {
+      // Selected item - draw with highlight
+      M5Cardputer.Display.fillRect(10, yPos - 2, 220, 12, gamesMenuItems[i].color);
+      M5Cardputer.Display.setTextColor(TFT_BLACK);
+      M5Cardputer.Display.drawString("> " + gamesMenuItems[i].name, 15, yPos);
+    } else {
+      // Unselected item
+      M5Cardputer.Display.setTextColor(gamesMenuItems[i].color);
+      M5Cardputer.Display.drawString("  " + gamesMenuItems[i].name, 15, yPos);
+    }
+    yPos += 15;
+  }
+
+  // Instructions
+  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.drawString("`;/. Navigate  Enter Select", 15, 110);
 }
