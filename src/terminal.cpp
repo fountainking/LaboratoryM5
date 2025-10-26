@@ -182,7 +182,7 @@ void drawTerminal() {
   // Terminal content area with margins
   int terminalStartY = pathBoxY + pathBoxH + 2; // Content starts BELOW path box
   int terminalEndY = cmdBoxY - 3; // Stop ABOVE command box with margin
-  int terminalMarginX = 2; // Left margin for text
+  int terminalMarginX = 15; // Left margin for text (aligned with box insets)
 
   // Draw terminal output buffer with AGGRESSIVE AUTO-SCROLL TO BOTTOM
   M5Cardputer.Display.setTextSize(1);
@@ -511,8 +511,8 @@ void executeCommand(const String& cmd) {
 }
 
 void addOutput(const String& text) {
-  // Word wrap: max 38 characters per line (240px / 6px per char = 40, -2 for margins)
-  const int maxLineChars = 38;
+  // Word wrap: max 35 characters per line (220px box - 10px margins = 210px / 6px per char)
+  const int maxLineChars = 35;
 
   if (text.length() <= maxLineChars) {
     // Text fits on one line
@@ -1187,23 +1187,41 @@ void cmd_ssh(const String& args) {
   // Password input with live asterisk masking
   String password = "";
   bool passwordEntered = false;
+  String lastDisplayed = ""; // Track what we last drew to avoid flicker
+
+  int cmdBoxY = 108;
+  int cmdBoxH = 24;
 
   while (!passwordEntered && client.connected()) {
-    // Draw password prompt with asterisks at bottom of screen
-    M5Cardputer.Display.fillRect(0, 117, 240, 18, TFT_BLACK);
-    M5Cardputer.Display.setTextColor(TFT_YELLOW);
-    M5Cardputer.Display.setTextSize(1);
-
     String prompt = "Password: ";
     String stars = "";
     for (int i = 0; i < password.length(); i++) stars += "*";
+    String currentDisplay = prompt + stars;
 
-    M5Cardputer.Display.drawString((prompt + stars).c_str(), 2, 117);
+    // Only redraw if content changed
+    if (currentDisplay != lastDisplayed) {
+      // Clear just the text area inside the box
+      M5Cardputer.Display.fillRect(12, cmdBoxY + 2, 216, 20, TFT_BLACK);
+
+      M5Cardputer.Display.setTextColor(TFT_YELLOW);
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.drawString(currentDisplay.c_str(), 15, cmdBoxY + 8);
+
+      lastDisplayed = currentDisplay;
+    }
 
     // Blinking cursor
-    int cursorX = 2 + (prompt.length() + stars.length()) * 6;
-    if (millis() % 1000 < 500) {
-      M5Cardputer.Display.fillRect(cursorX, 117, 6, 8, TFT_YELLOW);
+    int cursorX = 15 + currentDisplay.length() * 6;
+    static unsigned long lastBlink = 0;
+    static bool cursorVisible = true;
+    if (millis() - lastBlink > 500) {
+      cursorVisible = !cursorVisible;
+      lastBlink = millis();
+      if (cursorVisible) {
+        M5Cardputer.Display.fillRect(cursorX, cmdBoxY + 8, 6, 8, TFT_YELLOW);
+      } else {
+        M5Cardputer.Display.fillRect(cursorX, cmdBoxY + 8, 6, 8, TFT_BLACK);
+      }
     }
 
     M5Cardputer.update();
@@ -1305,18 +1323,42 @@ void cmd_ssh(const String& args) {
 
       // Display received data from Mac
       if (c == '\n') {
-        // Extract path from prompt if present (format: "/path/here$ ")
+        // Extract path from prompt - prompt comes BEFORE user input on same line
+        // Format: "/path$ command" - we need to extract path before the $
         String lineStr = "";
         for (const auto& seg : currentLine.segments) {
           lineStr += seg.text;
         }
-        if (lineStr.endsWith("$ ")) {
-          int dollarPos = lineStr.lastIndexOf("$ ");
-          if (dollarPos > 0) {
-            currentPath = lineStr.substring(0, dollarPos);
+
+        // Try to find $ in the line (prompt marker)
+        int dollarPos = lineStr.indexOf('$');
+
+        if (dollarPos > 0) {
+          // Extract everything before the $ as the prompt
+          String promptPart = lineStr.substring(0, dollarPos);
+
+          // Look for path after last slash or colon
+          int colonPos = promptPart.lastIndexOf(':');
+          int slashPos = promptPart.lastIndexOf('/');
+
+          if (colonPos >= 0 && colonPos < promptPart.length() - 1) {
+            // Format: "user@host:/path" - extract from colon
+            currentPath = promptPart.substring(colonPos + 1);
+          } else if (slashPos >= 0) {
+            // Has a slash - likely a path like "/Users/name"
+            currentPath = promptPart;
+          } else {
+            currentPath = promptPart;
+          }
+
+          // Clean up the path (remove any trailing spaces)
+          currentPath.trim();
+
+          if (currentPath.length() > 0) {
+            currentDirectory = currentPath;  // Update global for path box display
           }
           inClaudeMode = false;  // Exited Claude mode
-        } else if (lineStr.endsWith("Claude> ")) {
+        } else if (lineStr.indexOf("Claude>") >= 0) {
           inClaudeMode = true;  // Entered Claude mode
         }
 
@@ -1487,6 +1529,35 @@ void cmd_ssh(const String& args) {
           }
         }
 
+        // Optimistically update path for cd commands BEFORE sending to server
+        if (inputLine.startsWith("cd ")) {
+          String cdArg = inputLine.substring(3);
+          cdArg.trim();
+
+          if (cdArg == "..") {
+            // Go up one directory
+            int lastSlash = currentDirectory.lastIndexOf('/');
+            if (lastSlash > 0) {
+              currentDirectory = currentDirectory.substring(0, lastSlash);
+            } else if (lastSlash == 0) {
+              currentDirectory = "/";
+            }
+          } else if (cdArg.startsWith("/")) {
+            // Absolute path
+            currentDirectory = cdArg;
+          } else if (cdArg.startsWith("~")) {
+            // Home directory
+            currentDirectory = cdArg;
+          } else if (cdArg.length() > 0) {
+            // Relative path
+            if (currentDirectory.endsWith("/")) {
+              currentDirectory += cdArg;
+            } else {
+              currentDirectory += "/" + cdArg;
+            }
+          }
+        }
+
         // Send command to Mac (use \r for telnet protocol)
         client.print(inputLine + "\r");
 
@@ -1540,28 +1611,70 @@ void cmd_ssh(const String& args) {
       }
     }
 
-    // ALWAYS draw UI boxes (path box at top, command box at bottom)
-    int pathBoxY = 8;  // Moved down from top
-    int pathBoxH = 20; // Taller box
-    int cmdBoxY = 108; // Moved up from bottom
-    int cmdBoxH = 24;  // Taller box
+    // Box dimensions (defined here for input positioning)
+    int pathBoxY = 8;
+    int pathBoxH = 20;
+    int cmdBoxY = 108;
+    int cmdBoxH = 24;
 
-    // Draw PATH BOX at top (yellow outline, narrower)
-    M5Cardputer.Display.fillRoundRect(10, pathBoxY, 220, pathBoxH, 8, TFT_BLACK);
-    M5Cardputer.Display.drawRoundRect(10, pathBoxY, 220, pathBoxH, 8, TFT_YELLOW);
+    // Update path display with marquee scrolling for long paths
+    static String lastPath = "";
+    static int pathScrollPos = 0;
+    static unsigned long lastScrollTime = 0;
+    static unsigned long pauseTimer = 0;
+    static bool paused = false;
 
-    // Draw current path in path box
+    M5Cardputer.Display.fillRect(12, pathBoxY + 2, 216, 16, TFT_BLACK);
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(TFT_YELLOW);
-    String displayPath = currentPath;
-    if (displayPath.length() > 34) {
-      displayPath = "..." + displayPath.substring(displayPath.length() - 31);
+
+    String fullPath = currentDirectory;
+    const int maxVisibleChars = 34;
+
+    // Reset scroll if path changed
+    if (fullPath != lastPath) {
+      lastPath = fullPath;
+      pathScrollPos = 0;
+      paused = true;
+      pauseTimer = millis();
+      lastScrollTime = millis();
     }
+
+    String displayPath;
+    if (fullPath.length() <= maxVisibleChars) {
+      // Path fits - no scrolling needed
+      displayPath = fullPath;
+    } else {
+      // Path is long - scroll smoothly
+      if (paused) {
+        // Pause at start for 2 seconds before scrolling
+        if (millis() - pauseTimer > 2000) {
+          paused = false;
+          lastScrollTime = millis();
+        }
+        displayPath = fullPath.substring(pathScrollPos, pathScrollPos + maxVisibleChars);
+      } else {
+        // Scroll one character every 150ms
+        if (millis() - lastScrollTime > 150) {
+          pathScrollPos++;
+
+          // Reached the end - pause and reset
+          if (pathScrollPos >= fullPath.length() - maxVisibleChars) {
+            pathScrollPos = 0;
+            paused = true;
+            pauseTimer = millis();
+          }
+
+          lastScrollTime = millis();
+        }
+        displayPath = fullPath.substring(pathScrollPos, pathScrollPos + maxVisibleChars);
+      }
+    }
+
     M5Cardputer.Display.drawString(displayPath.c_str(), 15, pathBoxY + 6);
 
-    // Draw COMMAND BOX at bottom (orange outline, narrower)
-    M5Cardputer.Display.fillRoundRect(10, cmdBoxY, 220, cmdBoxH, 8, TFT_BLACK);
-    M5Cardputer.Display.drawRoundRect(10, cmdBoxY, 220, cmdBoxH, 8, TFT_ORANGE);
+    // Clear input area inside command box (boxes already drawn by drawTerminal)
+    M5Cardputer.Display.fillRect(12, cmdBoxY + 2, 216, 20, TFT_BLACK);
 
     // Use * prompt like main terminal (no path in command line)
     String promptText = "* ";
@@ -1650,8 +1763,12 @@ void cmd_ssh(const String& args) {
     delay(10);
   }
 
-  // Clean up
+  // Clean up and restore local directory
   client.stop();
+
+  // Restore local terminal directory
+  currentDirectory = "/";  // Reset to root or restore saved local path
+
   addOutput("");
   addOutput("Telnet session closed");
   drawTerminal();
