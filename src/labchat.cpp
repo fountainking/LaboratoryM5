@@ -193,8 +193,8 @@ void drawMainChat() {
   drawLabChatHeader(subtitle);
 
   // Message area (with margin for input box)
-  M5Cardputer.Display.fillRoundRect(5, 32, 230, 70, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(5, 32, 230, 70, 10, TFT_BLACK);
+  M5Cardputer.Display.fillRoundRect(5, 32, 230, 70, 10, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(5, 32, 230, 70, 10, TFT_ORANGE);
 
   // Display messages with wrapping (4 messages visible with 2-line support)
   M5Cardputer.Display.setTextSize(1);
