@@ -283,13 +283,11 @@ void drawWiFiFunMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_WHITE);
-  M5Cardputer.Display.drawString("Fun", 100, 30);
+  // No "Fun" title - removed
 
-  // Draw menu items (more spacing without instruction text)
+  // Draw menu items (lifted up without title)
   for (int i = 0; i < wifiFunMenuCount; i++) {
-    int yPos = 55 + (i * 18);
+    int yPos = 35 + (i * 18);  // Lifted up
 
     if (i == wifiFunMenuIndex) {
       M5Cardputer.Display.fillRoundRect(10, yPos - 2, 220, 18, 5, TFT_BLUE);
@@ -1732,32 +1730,25 @@ void drawProbeSniffer() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
+  // No title - removed
+  // No green scanning indicator - removed
+
+  // Stats line (moved up)
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_CYAN);
-  M5Cardputer.Display.drawString("Probe Request Sniffer", 45, 20);
-
-  // Scanning indicator
-  if (probeSnifferActive) {
-    int pulseSize = 1 + (millis() / 150) % 3;
-    M5Cardputer.Display.drawCircle(15, 20, pulseSize, TFT_GREEN);
-    M5Cardputer.Display.drawCircle(15, 20, pulseSize + 3, TFT_GREEN);
-  }
-
-  // Stats line
   M5Cardputer.Display.setTextColor(TFT_WHITE);
   char stats[40];
   snprintf(stats, sizeof(stats), "Total: %lu | Shown: %d", totalProbesSeen, probeRequestCount);
-  M5Cardputer.Display.drawString(stats, 10, 35);
+  M5Cardputer.Display.drawString(stats, 10, 25);
 
-  // Column headers - optimized layout for more SSID space
+  // Column headers
   M5Cardputer.Display.setTextColor(TFT_YELLOW);
-  M5Cardputer.Display.drawString("MAC", 5, 50);
-  M5Cardputer.Display.drawString("SSID", 55, 50);
-  M5Cardputer.Display.drawString("RSSI", 205, 50);
+  M5Cardputer.Display.drawString("MAC", 5, 40);
+  M5Cardputer.Display.drawString("SSID", 55, 40);
+  M5Cardputer.Display.drawString("RSSI", 205, 40);
 
-  // Draw probe requests (show last 6)
-  int yPos = 62;
-  int displayCount = min(probeRequestCount, 6);
+  // Draw probe requests (show last 7 - more space now)
+  int yPos = 52;
+  int displayCount = min(probeRequestCount, 7);
 
   for (int i = 0; i < displayCount; i++) {
     // Get index (newest first)

@@ -147,31 +147,31 @@ void drawMusicToolsMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_CYAN);
-  M5Cardputer.Display.drawString("Music Tools", 70, 20);
+  // No title - removed
 
   // Menu items
   const char* menuItems[] = {"Guitar Tuner", "Equalizer"};
   const int menuCount = 2;
 
   M5Cardputer.Display.setTextSize(1);
-  int yPos = 50;
+  int yPos = 35;  // Lifted up
 
   for (int i = 0; i < menuCount; i++) {
     if (i == musicToolsMenuIndex) {
-      // Selected item
-      M5Cardputer.Display.fillRoundRect(10, yPos - 2, 220, 16, 3, TFT_CYAN);
+      // Selected item - white highlight
+      M5Cardputer.Display.fillRoundRect(10, yPos - 2, 220, 16, 3, TFT_WHITE);
       M5Cardputer.Display.setTextColor(TFT_BLACK);
     } else {
-      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      // Use different purple shades
+      uint16_t itemColor = (i == 0) ? 0xF81F : 0xC99F;  // Bright or light purple
+      M5Cardputer.Display.setTextColor(itemColor);
     }
     M5Cardputer.Display.drawString(menuItems[i], 15, yPos);
     yPos += 20;
   }
 
   // Instructions
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(0x780F);  // Deep purple
   M5Cardputer.Display.drawString("`;/.` Navigate | Enter Select", 20, 115);
 }
 
@@ -358,13 +358,10 @@ void drawAudioVisualizer() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
-  // Title
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_CYAN);
-  M5Cardputer.Display.drawString("EQUALIZER", 85, 18);
+  // No title - removed
 
   // Instructions
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(0x780F);  // Deep purple
   M5Cardputer.Display.drawString("`] Back", 95, 120);
 }
 
@@ -375,14 +372,15 @@ void updateAudioVisualizer() {
   static const int numBars = 20;
   static const int barWidth = 10;
   static const int barSpacing = 12;
-  static const int barMaxHeight = 90;
-  static const int barsY = 110;
+  static const int barMaxHeight = 105;  // Taller since no title
+  static const int barsY = 118;
   static const int startX = 5;
+  static float smoothBarHeights[20] = {0};  // Use float for smoother interpolation
   static int16_t lastBarHeights[20] = {0};
 
-  // Read audio samples using M5Cardputer's mic
+  // Read audio samples using M5Cardputer's mic - faster updates
   static unsigned long lastSample = 0;
-  if (millis() - lastSample > 50) {  // Sample every 50ms
+  if (millis() - lastSample > 16) {  // ~60fps updates for smoothness
     lastSample = millis();
 
     if (M5Cardputer.Mic.isEnabled()) {
@@ -401,38 +399,40 @@ void updateAudioVisualizer() {
             if (amp > maxAmp) maxAmp = amp;
           }
 
-          // Convert to bar height with smoothing
-          int targetHeight = (maxAmp * barMaxHeight) / 32768;
+          // Convert to bar height
+          float targetHeight = (maxAmp * barMaxHeight) / 32768.0;
           if (targetHeight > barMaxHeight) targetHeight = barMaxHeight;
 
-          // Smooth transition (decay)
-          if (targetHeight > barHeights[i]) {
-            barHeights[i] = targetHeight;  // Fast rise
+          // Smooth transition with interpolation for buttery smoothness
+          if (targetHeight > smoothBarHeights[i]) {
+            smoothBarHeights[i] = smoothBarHeights[i] * 0.7 + targetHeight * 0.3;  // Fast rise
           } else {
-            barHeights[i] = barHeights[i] * 0.8 + targetHeight * 0.2;  // Slower fall
+            smoothBarHeights[i] = smoothBarHeights[i] * 0.85 + targetHeight * 0.15;  // Slower fall
           }
         }
 
-        // Redraw only bars that changed
+        // Redraw only bars that changed (with anti-flicker)
         for (int i = 0; i < numBars; i++) {
           int x = startX + i * barSpacing;
-          int oldHeight = lastBarHeights[i];
-          int newHeight = barHeights[i];
+          int newHeight = (int)smoothBarHeights[i];
 
-          // Clear old bar area
-          M5Cardputer.Display.fillRect(x, barsY - barMaxHeight, barWidth, barMaxHeight, TFT_BLACK);
+          // Only redraw if changed by more than 1px (reduce flicker)
+          if (abs(newHeight - lastBarHeights[i]) > 0) {
+            // Clear old bar area
+            M5Cardputer.Display.fillRect(x, barsY - barMaxHeight, barWidth, barMaxHeight, TFT_BLACK);
 
-          // Color gradient based on height
-          uint16_t barColor = TFT_GREEN;
-          if (newHeight > barMaxHeight * 0.5) barColor = TFT_YELLOW;
-          if (newHeight > barMaxHeight * 0.75) barColor = TFT_RED;
+            // Purple gradient based on height (3 shades)
+            uint16_t barColor = 0x780F;  // Deep purple (low)
+            if (newHeight > barMaxHeight * 0.4) barColor = 0xA11F;  // Medium purple (mid)
+            if (newHeight > barMaxHeight * 0.7) barColor = 0xF81F;  // Bright purple (high)
 
-          // Draw new bar from bottom up
-          if (newHeight > 0) {
-            M5Cardputer.Display.fillRect(x, barsY - newHeight, barWidth, newHeight, barColor);
+            // Draw new bar from bottom up
+            if (newHeight > 0) {
+              M5Cardputer.Display.fillRect(x, barsY - newHeight, barWidth, newHeight, barColor);
+            }
+
+            lastBarHeights[i] = newHeight;
           }
-
-          lastBarHeights[i] = newHeight;
         }
       }
     }

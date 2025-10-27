@@ -747,32 +747,28 @@ void enterWiFiTransferApp() {
 void drawTransferMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
-  
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_CYAN);
-  M5Cardputer.Display.drawString("Transfer", 70, 30);
-  
+
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_WHITE);
-  
+
   if (WiFi.status() != WL_CONNECTED) {
     M5Cardputer.Display.setTextColor(TFT_RED);
-    M5Cardputer.Display.drawString("Not connected to WiFi!", 40, 60);
+    M5Cardputer.Display.drawString("Not connected to WiFi!", 40, 30);  // Raised 20px
     M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    M5Cardputer.Display.drawString("Connect to WiFi first", 50, 75);
+    M5Cardputer.Display.drawString("Connect to WiFi first", 50, 45);  // Raised 20px
   } else {
-    M5Cardputer.Display.setTextColor(TFT_GREEN);
-    M5Cardputer.Display.drawString("WiFi Connected", 70, 60);
-    M5Cardputer.Display.setTextColor(TFT_CYAN);
-    M5Cardputer.Display.drawString("Press ENTER to start", 50, 80);
-    M5Cardputer.Display.drawString("web server", 80, 92);
+    M5Cardputer.Display.setTextColor(0xAFE5);  // WiFi Connected - chartreuse
+    M5Cardputer.Display.drawString("WiFi Connected", 70, 30);  // Raised 20px
+    M5Cardputer.Display.setTextColor(0x0400);  // Press ENTER - darker green
+    M5Cardputer.Display.drawString("Press ENTER to start", 50, 50);  // Raised 20px
+    M5Cardputer.Display.drawString("web server", 80, 62);  // Raised 20px
   }
-  
+
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString("Upload & Download files", 50, 110);
-  M5Cardputer.Display.drawString("via web browser", 65, 120);
-  M5Cardputer.Display.drawString("`=Back", 95, 130);
+  M5Cardputer.Display.drawString("Upload & Download files", 50, 80);  // Raised 20px
+  M5Cardputer.Display.drawString("via web browser", 65, 90);  // Raised 20px
+  M5Cardputer.Display.drawString("`=Back", 95, 100);  // Raised 20px
 }
 
 void drawTransferRunning() {
@@ -780,11 +776,11 @@ void drawTransferRunning() {
   drawStatusBar(false);
 
   M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_GREEN);
+  M5Cardputer.Display.setTextColor(0xFBDF);  // Baby pink
   M5Cardputer.Display.drawString("Server Running", 40, 25);
   
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_CYAN);
+  M5Cardputer.Display.setTextColor(TFT_RED);  // Red for "Open in browser:"
   M5Cardputer.Display.drawString("Open in browser:", 10, 45);
   
   M5Cardputer.Display.setTextColor(TFT_YELLOW);

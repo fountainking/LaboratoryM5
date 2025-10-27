@@ -46,58 +46,56 @@ void drawRadioUI() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_RED);
-  M5Cardputer.Display.drawString("RADIO", 85, 25);
+  // No "RADIO" title - removed
 
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_WHITE);
+  M5Cardputer.Display.setTextColor(0xF81F);  // Bright purple for station name
 
   String stationName = String(stations[currentStationIndex].name);
   if (stationName.length() > 35) {
     stationName = stationName.substring(0, 35) + "...";
   }
-  M5Cardputer.Display.drawString(stationName.c_str(), 10, 50);
+  M5Cardputer.Display.drawString(stationName.c_str(), 10, 35);  // Lifted up
 
-  M5Cardputer.Display.setTextColor(TFT_CYAN);
+  M5Cardputer.Display.setTextColor(0xC99F);  // Light purple for genre
   String genre = String(stations[currentStationIndex].genre);
-  M5Cardputer.Display.drawString(genre.c_str(), 10, 65);
+  M5Cardputer.Display.drawString(genre.c_str(), 10, 50);  // Lifted
 
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(0x780F);  // Deep purple for bitrate
   String bitrate = String(stations[currentStationIndex].bitrate) + " kbps";
-  M5Cardputer.Display.drawString(bitrate.c_str(), 10, 77);
+  M5Cardputer.Display.drawString(bitrate.c_str(), 10, 62);  // Lifted
 
   M5Cardputer.Display.setTextSize(1);
   switch (radioState) {
     case RADIO_STOPPED:
-      M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-      M5Cardputer.Display.drawString("Stopped", 90, 90);
+      M5Cardputer.Display.setTextColor(0x780F);  // Deep purple
+      M5Cardputer.Display.drawString("Stopped", 90, 75);  // Lifted
       break;
     case RADIO_CONNECTING:
-      M5Cardputer.Display.setTextColor(TFT_YELLOW);
-      M5Cardputer.Display.drawString("Connecting...", 80, 90);
+      M5Cardputer.Display.setTextColor(0xC99F);  // Light purple
+      M5Cardputer.Display.drawString("Connecting...", 80, 75);
       break;
     case RADIO_PLAYING:
-      M5Cardputer.Display.setTextColor(TFT_GREEN);
-      M5Cardputer.Display.drawString("Now Playing", 80, 90);
+      M5Cardputer.Display.setTextColor(0xF81F);  // Bright purple
+      M5Cardputer.Display.drawString("Now Playing", 80, 75);
       break;
     case RADIO_ERROR:
-      M5Cardputer.Display.setTextColor(TFT_RED);
-      M5Cardputer.Display.drawString("Connection Failed", 70, 90);
+      M5Cardputer.Display.setTextColor(TFT_RED);  // Keep red for errors
+      M5Cardputer.Display.drawString("Connection Failed", 70, 75);
       break;
   }
 
-  M5Cardputer.Display.setTextColor(TFT_WHITE);
-  M5Cardputer.Display.drawString("Volume:", 10, 110);
-  M5Cardputer.Display.drawRect(55, 110, 102, 8, TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(0xA11F);  // Medium purple for "Volume:"
+  M5Cardputer.Display.drawString("Volume:", 10, 95);  // Lifted
+  M5Cardputer.Display.drawRect(55, 95, 102, 8, 0x780F);  // Deep purple border
   int volumeWidth = (volume * 100) / 100;
-  M5Cardputer.Display.fillRect(56, 111, volumeWidth, 6, TFT_CYAN);
-  M5Cardputer.Display.drawString(String(volume).c_str(), 165, 110);
+  M5Cardputer.Display.fillRect(56, 96, volumeWidth, 6, 0xC99F);  // Light purple fill
+  M5Cardputer.Display.drawString(String(volume).c_str(), 165, 95);
 
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString(";/. =Stations  Space=Play/Stop", 15, 125);
-  M5Cardputer.Display.drawString("+/- =Volume  `=Back", 30, 135);
+  M5Cardputer.Display.setTextColor(0x780F);  // Deep purple for instructions
+  M5Cardputer.Display.drawString(";/. =Stations  Space=Play/Stop", 15, 110);  // Lifted
+  M5Cardputer.Display.drawString("+/- =Volume  `=Back", 30, 120);
 }
 
 void playStation(int stationIndex) {

@@ -1295,7 +1295,7 @@ void loop() {
               // Scroll up (show older requests)
               extern int probeRequestScrollPos;
               extern int probeRequestCount;
-              if (probeRequestScrollPos < probeRequestCount - 6) {
+              if (probeRequestScrollPos < probeRequestCount - 7) {  // Updated for 7 visible items
                 probeRequestScrollPos++;
                 safeBeep(800, 50);
                 drawProbeSniffer();
@@ -2276,6 +2276,9 @@ void loop() {
     extern bool chip8Running;
     extern Chip8 chip8;
     if (chip8Running) {
+      // Handle CHIP-8 game input FIRST for instant response
+      handleChip8Input();
+
       // Run multiple cycles per frame for proper speed (ULTRA FAST!)
       for (int i = 0; i < 200; i++) {
         chip8.cycle();
@@ -2293,9 +2296,6 @@ void loop() {
       if (chip8.drawFlag) {
         drawChip8Screen();
       }
-
-      // Handle CHIP-8 game input
-      handleChip8Input();
     }
   }
 

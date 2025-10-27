@@ -106,9 +106,7 @@ void drawMusicPlayer() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_MAGENTA);
-  M5Cardputer.Display.drawString("MUSIC", 80, 25);
+  // No "MUSIC" title - removed
 
   if (musicCount == 0) {
     M5Cardputer.Display.setTextSize(1);
@@ -139,39 +137,39 @@ void drawMusicPlayer() {
       displayName[30] = '\0';
     }
 
-    M5Cardputer.Display.setTextColor(TFT_WHITE);
-    M5Cardputer.Display.drawString(displayName, 10, 45);
+    M5Cardputer.Display.setTextColor(0xF81F);  // Bright purple for track name
+    M5Cardputer.Display.drawString(displayName, 10, 35);  // Lifted up
 
     // Draw play/pause icon
     if (isPlaying && isAudioPlaying()) {
-      // Pause icon (two bars)
-      M5Cardputer.Display.fillRect(215, 43, 4, 10, TFT_GREEN);
-      M5Cardputer.Display.fillRect(221, 43, 4, 10, TFT_GREEN);
+      // Pause icon (two bars) - purple
+      M5Cardputer.Display.fillRect(215, 33, 4, 10, 0xC99F);  // Light purple
+      M5Cardputer.Display.fillRect(221, 33, 4, 10, 0xC99F);
     } else {
-      // Play icon (triangle)
-      M5Cardputer.Display.fillTriangle(215, 43, 215, 53, 225, 48, TFT_DARKGREY);
+      // Play icon (triangle) - purple
+      M5Cardputer.Display.fillTriangle(215, 33, 215, 43, 225, 38, 0x780F);  // Deep purple
     }
 
     // Track counter
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.setTextColor(0x780F);  // Deep purple
     char trackInfo[20];
     sprintf(trackInfo, "%d/%d", selectedMusicIndex + 1, musicCount);
-    M5Cardputer.Display.drawString(trackInfo, 10, 57);
+    M5Cardputer.Display.drawString(trackInfo, 10, 47);  // Lifted
 
-    // Volume indicator
+    // Volume indicator - PURPLE
     int vol = getAudioVolume();
-    M5Cardputer.Display.setTextColor(TFT_CYAN);
+    M5Cardputer.Display.setTextColor(0xA11F);  // Medium purple
     char volInfo[10];
     sprintf(volInfo, "Vol:%d%%", vol);
-    M5Cardputer.Display.drawString(volInfo, 180, 57);
+    M5Cardputer.Display.drawString(volInfo, 180, 47);  // Lifted
 
     // Progress bar (simple visual indicator)
     int barWidth = 220;
     int barX = 10;
-    int barY = 70;
+    int barY = 60;  // Lifted
 
     // Draw progress bar background
-    M5Cardputer.Display.drawRect(barX, barY, barWidth, 8, TFT_DARKGREY);
+    M5Cardputer.Display.drawRect(barX, barY, barWidth, 8, 0x780F);  // Deep purple
 
     // Fill progress if playing
     if (isPlaying && isAudioPlaying()) {
@@ -179,13 +177,13 @@ void drawMusicPlayer() {
       static int animPos = 0;
       animPos = (animPos + 1) % barWidth;
       int fillWidth = (animPos * barWidth) / barWidth;
-      M5Cardputer.Display.fillRect(barX + 1, barY + 1, fillWidth, 6, TFT_MAGENTA);
+      M5Cardputer.Display.fillRect(barX + 1, barY + 1, fillWidth, 6, 0xC99F);  // Light purple
     }
 
     // Show mini track list below
     M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-    M5Cardputer.Display.drawString("TRACKS:", 10, 85);
+    M5Cardputer.Display.setTextColor(0x780F);  // Deep purple
+    M5Cardputer.Display.drawString("TRACKS:", 10, 75);  // Lifted
 
     const int maxVisible = 3;
     int startIndex = selectedMusicIndex - 1;
@@ -193,14 +191,14 @@ void drawMusicPlayer() {
     if (startIndex > musicCount - maxVisible && musicCount > maxVisible)
       startIndex = musicCount - maxVisible;
 
-    int yPos = 95;
+    int yPos = 85;  // Lifted
     int endIndex = min(startIndex + maxVisible, musicCount);
 
     for (int i = startIndex; i < endIndex; i++) {
       bool isSelected = (i == selectedMusicIndex);
 
       M5Cardputer.Display.setTextSize(1);
-      M5Cardputer.Display.setTextColor(isSelected ? TFT_WHITE : TFT_DARKGREY);
+      M5Cardputer.Display.setTextColor(isSelected ? 0xF81F : 0xA11F);  // Bright or medium purple
 
       // NO String allocations - prevent fragmentation!
       char trackName[30];  // 26 chars + "..." + null

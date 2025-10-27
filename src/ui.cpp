@@ -389,11 +389,27 @@ void drawCard(const char* label, bool inverted) {
   int cardY = 50;
   int cardW = 200;
   int cardH = 50;
-  
+
   uint16_t bgColor = inverted ? TFT_BLACK : TFT_WHITE;
   uint16_t fgColor = inverted ? TFT_WHITE : TFT_BLACK;
-  
-  M5Cardputer.Display.fillRoundRect(cardX, cardY, cardW, cardH, 25, bgColor);
+  uint16_t fillColor = bgColor;  // Default to background color
+
+  // Special colored backgrounds for APPS menu (page 2)
+  if (currentState == APPS_MENU && !inverted) {
+    if (strcmp(label, "Files") == 0) {
+      fillColor = TFT_YELLOW;  // System yellow
+    } else if (strcmp(label, "Fun") == 0) {
+      fillColor = 0xAEFD;  // Powder blue
+    } else if (strcmp(label, "Transfer") == 0) {
+      fillColor = 0xF800;  // Red #FF0000
+    } else if (strcmp(label, "Terminal") == 0) {
+      fillColor = 0xAFE5;  // Lime green (more yellow - chartreuse)
+    } else if (strcmp(label, "Music") == 0) {
+      fillColor = 0xC99F;  // Lavender
+    }
+  }
+
+  M5Cardputer.Display.fillRoundRect(cardX, cardY, cardW, cardH, 25, fillColor);
   M5Cardputer.Display.drawRoundRect(cardX, cardY, cardW, cardH, 25, fgColor);
   M5Cardputer.Display.drawRoundRect(cardX+1, cardY+1, cardW-2, cardH-2, 24, fgColor);
   M5Cardputer.Display.drawRoundRect(cardX+2, cardY+2, cardW-4, cardH-4, 23, fgColor);
@@ -682,26 +698,28 @@ void drawMusicMenu() {
   M5Cardputer.Display.fillScreen(TFT_BLACK);
   drawStatusBar(false);
 
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_MAGENTA);
-  M5Cardputer.Display.drawString("Music", 90, 25);
+  // No "Music" title - removed
 
-  // Draw menu items
+  // Draw menu items (starting higher without title)
   for (int i = 0; i < totalMusicItems; i++) {
-    int yPos = 50 + (i * 20);
+    int yPos = 35 + (i * 20);  // Lifted up
 
     if (i == musicMenuIndex) {
-      M5Cardputer.Display.fillRoundRect(5, yPos - 2, 230, 18, 5, TFT_DARKGREY);
+      M5Cardputer.Display.fillRoundRect(5, yPos - 2, 230, 18, 5, TFT_WHITE);  // White highlight
+      M5Cardputer.Display.setTextColor(TFT_BLACK);
+    } else {
+      // Use different purple shades for each item
+      uint16_t itemColor = (i == 0) ? 0xF81F : (i == 1) ? 0xC99F : 0xA11F;  // Bright, light, medium purple
+      M5Cardputer.Display.setTextColor(itemColor);
     }
 
     M5Cardputer.Display.setTextSize(1);
-    M5Cardputer.Display.setTextColor(musicMenuItems[i].color);
     M5Cardputer.Display.drawString("> " + musicMenuItems[i].name, 10, yPos);
   }
 
   // Instructions
   M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextColor(0x780F);  // Deep purple
   M5Cardputer.Display.drawString(",/=Navigate  Enter=Select", 30, 115);
   M5Cardputer.Display.drawString("`=Back", 95, 125);
 }
