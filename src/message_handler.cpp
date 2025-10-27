@@ -70,14 +70,11 @@ bool MessageHandler::verifyMessage(const SecureMessage* msg) {
     return false;
   }
 
-  // Check timestamp (reject messages more than 5 minutes old/future)
+  // Timestamp check disabled - offline mesh doesn't have clock sync
   uint32_t now = time(nullptr);
   int32_t timeDiff = (int32_t)(msg->timestamp - now);
-  Serial.printf("  Timestamp check: msg=%u, now=%u, diff=%d\n", msg->timestamp, now, timeDiff);
-  if (abs(timeDiff) > 300) {
-    Serial.println("  Timestamp out of range (>300 seconds)!");
-    return false;
-  }
+  Serial.printf("  Timestamp check: msg=%u, now=%u, diff=%d (check disabled)\n", msg->timestamp, now, timeDiff);
+  // Skip timestamp validation for offline operation
 
   return true;
 }

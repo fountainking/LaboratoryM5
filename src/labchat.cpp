@@ -192,28 +192,60 @@ void drawMainChat() {
   }
   drawLabChatHeader(subtitle);
 
-  // Message area (shrunk, with bottom margin)
-  M5Cardputer.Display.fillRoundRect(5, 32, 230, 74, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(5, 32, 230, 74, 10, TFT_BLACK);
+  // Message area (with margin for input box)
+  M5Cardputer.Display.fillRoundRect(5, 32, 230, 70, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(5, 32, 230, 70, 10, TFT_BLACK);
 
   // Display messages with wrapping (4 messages visible with 2-line support)
   M5Cardputer.Display.setTextSize(1);
   int messageCount = messageHandler.getQueueCount();
-  int startIndex = max(0, messageCount - 4 - scrollPosition);
-  int endIndex = min(messageCount, startIndex + 4);
 
+  // Filter messages by channel or DM mode
   int lineY = 40;
-  for (int i = startIndex; i < endIndex; i++) {
+  int displayedCount = 0;
+  int skippedBeforeScroll = 0;
+
+  for (int i = 0; i < messageCount; i++) {
     DisplayMessage* msg = messageHandler.getQueuedMessage(i);
     if (!msg) continue;
 
+    // Filter: if in DM mode, only show DMs with target, otherwise show channel messages
+    bool shouldDisplay = false;
+    if (dmTargetID.length() > 0) {
+      // DM mode: show only direct messages with this user
+      shouldDisplay = (msg->type == MSG_DIRECT);
+    } else {
+      // Channel mode: show only broadcasts on current channel
+      shouldDisplay = (msg->type == MSG_BROADCAST && msg->channel == chatCurrentChannel);
+    }
+
+    if (!shouldDisplay) continue;
+
+    // Handle scrolling
+    if (skippedBeforeScroll < scrollPosition) {
+      skippedBeforeScroll++;
+      continue;
+    }
+
+    if (displayedCount >= 4) break;
+
     // Get user color for consistent highlighting
+    // Avoid: white, grey, hot pink, magenta, dark red, brown, yellow, light colors
     uint32_t deviceHash = 0;
     for (int j = 0; j < strlen(msg->deviceID); j++) {
       deviceHash = deviceHash * 31 + msg->deviceID[j];
     }
-    uint16_t colors[] = {0xF800, 0x07E0, 0x001F, 0xF81F, 0xFFE0, 0x07FF};
-    uint16_t userColor = colors[deviceHash % 6];
+    uint16_t colors[] = {
+      0xF800,  // Red
+      0x07E0,  // Green
+      0x001F,  // Blue
+      0x07FF,  // Cyan
+      0xFD20,  // Orange
+      0x780F,  // Purple
+      0x0400,  // Dark Green
+      0x001F   // Navy Blue
+    };
+    uint16_t userColor = colors[deviceHash % 8];
 
     M5Cardputer.Display.setTextColor(userColor);
 
@@ -235,11 +267,13 @@ void drawMainChat() {
       M5Cardputer.Display.drawString(line2.c_str(), 10, lineY);
       lineY += 10;
     }
+
+    displayedCount++;
   }
 
-  // Input area (black background with yellow outline, terminal style)
-  M5Cardputer.Display.fillRoundRect(5, 105, 230, 30, 8, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(5, 105, 230, 30, 8, TFT_YELLOW);
+  // Input area (black background with yellow outline, terminal style, with margins)
+  M5Cardputer.Display.fillRoundRect(5, 107, 230, 23, 8, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(5, 107, 230, 23, 8, TFT_YELLOW);
 
   // Terminal gradient colors (smooth ping-pong)
   uint16_t gradientColors[] = {
@@ -283,7 +317,7 @@ void drawMainChat() {
   }
 
   int xPos = 10;
-  int inputY = 112;  // Adjusted for larger text
+  int inputY = 112;  // Text Y position (5px from top of input box at y=107)
   for (int i = 0; i < displayInput.length(); i++) {
     int actualIndex = (fullInput.length() > maxChars) ? (fullInput.length() - maxChars + i) : i;
     M5Cardputer.Display.setTextSize(2);  // Changed from 1 to 2
@@ -592,20 +626,8 @@ void handleLabChatNavigation(char key) {
             pinInput = "";
           } else {
             if (DevicePIN::verify(pinInput)) {
-              // Try to load existing network
-              if (securityManager.loadFromPreferences()) {
-                if (espNowManager.init(securityManager.getPMK())) {
-                  chatState = CHAT_MAIN;
-                  messageHandler.sendPresence();
-                  lastPresenceBroadcast = millis();
-                } else {
-                  // Init failed, clear corrupt prefs and go to network menu
-                  securityManager.leaveNetwork();
-                  chatState = CHAT_NETWORK_MENU;
-                }
-              } else {
-                chatState = CHAT_NETWORK_MENU;
-              }
+              // Always go to network menu - no auto-connect
+              chatState = CHAT_NETWORK_MENU;
               pinInput = "";
             } else {
               pinInput = "";
@@ -744,10 +766,8 @@ void handleLabChatNavigation(char key) {
           // Switch channels
           chatCurrentChannel = key - '0';
           scrollPosition = 0;
-        } else if (key == 'u' || key == 'U') {
-          chatState = CHAT_USER_LIST;
         } else if (key == ';') { // Up - scroll
-          scrollPosition = min(scrollPosition + 1, max(0, messageHandler.getQueueCount() - 4));
+          scrollPosition++;
         } else if (key == '.') { // Down - scroll
           scrollPosition = max(0, scrollPosition - 1);
         } else if (key >= 32 && key <= 126) {
@@ -782,10 +802,16 @@ void handleLabChatNavigation(char key) {
           // Network info
           chatState = CHAT_NETWORK_INFO;
         } else if (chatSettingsMenuIndex == 2) {
-          // Leave network
+          // Leave network - clear everything and exit to main menu
+          messageHandler.clearQueue();
           securityManager.leaveNetwork();
           espNowManager.deinit();
-          chatState = CHAT_NETWORK_MENU;
+          exitLabChat();
+          currentScreenNumber = 0;
+          currentState = APPS_MENU;
+          extern void drawScreen(bool statusBar);
+          drawScreen(true);
+          return;
         }
       } else if (key == '`') {
         chatState = CHAT_MAIN;
