@@ -281,12 +281,18 @@ void handleSelect() {
       currentScreenNumber = 8;
       drawGamesMenu();
     } else if (currentMainIndex == 4) {
+      // LabCHAT
+      if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
+      currentState = SCREEN_VIEW;
+      currentScreenNumber = 16;
+      drawScreen(false);
+    } else if (currentMainIndex == 5) {
       // Settings
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
       currentState = SCREEN_VIEW;
       currentScreenNumber = 11;
       enterSettingsApp();
-    } else if (currentMainIndex == 5) {
+    } else if (currentMainIndex == 6) {
       // About
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
       currentState = SCREEN_VIEW;
