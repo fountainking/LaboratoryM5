@@ -517,6 +517,7 @@ void drawRenameChannel() {
 // Callback for real-time message display updates
 void onMessageReceived() {
   if (chatActive && chatState == CHAT_MAIN) {
+    scrollPosition = 0; // Auto-scroll to latest message
     drawLabChat();
   }
 }
