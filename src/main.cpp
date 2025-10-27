@@ -22,6 +22,7 @@
 #include "the_book.h"
 #include "music_tools.h"
 #include "chip8.h"
+#include "labchat.h"
 
 Preferences preferences;
 
@@ -31,7 +32,8 @@ AppInfo apps[] = {
   {"Fun", TFT_BLUE, 2},
   {"Transfer", TFT_CYAN, 3},
   {"Terminal", TFT_GREEN, 5},
-  {"Music", TFT_MAGENTA, 12}
+  {"Music", TFT_MAGENTA, 12},
+  {"LabCHAT", TFT_RED, 16}
 };
 
 MainItemInfo mainItems[] = {
@@ -43,7 +45,7 @@ MainItemInfo mainItems[] = {
   {"About", TFT_BLUE, 9}
 };
 
-const int totalApps = 5;
+const int totalApps = 6;
 const int totalMainItems = 6;
 
 MenuState currentState = MAIN_MENU;
@@ -564,6 +566,9 @@ void loop() {
   updateAudioIfPlaying();
 #endif
 
+  // Update LabCHAT
+  updateLabChat();
+
   // Landing page disabled - boot goes straight to main menu
 
   // Normal operation for all other states
@@ -683,6 +688,9 @@ void loop() {
           M5Cardputer.Display.setTextSize(1);
           M5Cardputer.Display.setTextColor(TFT_DARKGREY);
           M5Cardputer.Display.drawString("Coming Soon!", 75, 75);
+        } else if (currentScreenNumber == 16) {
+          // LabCHAT
+          enterLabChat();
         }
       }
 
@@ -2037,6 +2045,14 @@ void loop() {
             drawScreen(false);
             return;
           }
+        }
+        return;
+      }
+
+      // Handle LabCHAT input
+      if (currentState == SCREEN_VIEW && currentScreenNumber == 16 && chatActive) {
+        for (auto key : status.word) {
+          handleLabChatNavigation(key);
         }
         return;
       }
