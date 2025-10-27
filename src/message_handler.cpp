@@ -25,10 +25,21 @@ bool MessageHandler::createMessage(MessageType type, const char* content,
   strncpy(outMsg->deviceID, securityManager.getDeviceID(), 15);
   outMsg->deviceID[15] = '\0';
 
-  // Username (load from preferences or use device ID)
+  // Username (load from preferences or generate User# from device ID)
   Preferences prefs;
   prefs.begin("labchat", true);
-  String username = prefs.getString("username", securityManager.getDeviceID());
+  String defaultUsername = "User";
+  const char* devID = securityManager.getDeviceID();
+  // Extract last 4 chars of device ID to create unique number
+  int userNum = 0;
+  int len = strlen(devID);
+  if (len >= 4) {
+    for (int i = len - 4; i < len; i++) {
+      userNum = userNum * 10 + (devID[i] % 10);
+    }
+  }
+  defaultUsername += String(userNum % 10000); // Keep it 4 digits max
+  String username = prefs.getString("username", defaultUsername);
   prefs.end();
   strncpy(outMsg->username, username.c_str(), 15);
   outMsg->username[15] = '\0';

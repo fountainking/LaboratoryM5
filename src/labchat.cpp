@@ -229,44 +229,73 @@ void drawMainChat() {
 
     if (displayedCount >= 4) break;
 
-    // Get user color for consistent highlighting
-    // Avoid: white, grey, hot pink, magenta, dark red, brown, yellow, light colors
-    uint32_t deviceHash = 0;
-    for (int j = 0; j < strlen(msg->deviceID); j++) {
-      deviceHash = deviceHash * 31 + msg->deviceID[j];
-    }
-    uint16_t colors[] = {
-      0xF800,  // Red
-      0x07E0,  // Green
-      0x001F,  // Blue
+    // Reverse gradient colors (opposite of input)
+    uint16_t gradientColors[] = {
+      0xFFFF,  // White
       0x07FF,  // Cyan
-      0xFD20,  // Orange
+      0x001F,  // Blue
       0x780F,  // Purple
-      0x0400,  // Dark Green
-      0x001F   // Navy Blue
+      0xF800,  // Red
+      0xFD20,  // Orange
+      0xFFE0,  // Yellow
     };
-    uint16_t userColor = colors[deviceHash % 8];
+    int numColors = 7;
 
-    M5Cardputer.Display.setTextColor(userColor);
+    auto getMessageGradientColor = [&](int charIndex) -> uint16_t {
+      int cycleLength = 80;
+      int posInCycle = charIndex % cycleLength;
+      float t;
+
+      if (posInCycle < 40) {
+        t = (float)posInCycle / 40.0f;
+      } else {
+        t = (float)(80 - posInCycle) / 40.0f;
+      }
+
+      float colorPosition = t * (numColors - 1);
+      int colorIndex1 = (int)colorPosition;
+      int colorIndex2 = (colorIndex1 + 1) % numColors;
+      float blend = colorPosition - colorIndex1;
+
+      return interpolateColor(gradientColors[colorIndex1], gradientColors[colorIndex2], blend);
+    };
 
     String fullLine = String(msg->username) + ": " + msg->content;
 
-    // Wrap text if needed (max 35 chars per line)
-    if (fullLine.length() <= 35) {
-      M5Cardputer.Display.drawString(fullLine.c_str(), 10, lineY);
-      lineY += 10;
+    // Draw with gradient, size 2, max 19 chars per line
+    M5Cardputer.Display.setTextSize(2);
+    int maxChars = 19;
+    if (fullLine.length() <= maxChars) {
+      int xPos = 10;
+      for (int c = 0; c < fullLine.length(); c++) {
+        M5Cardputer.Display.setTextColor(getMessageGradientColor(c));
+        M5Cardputer.Display.drawString(String(fullLine[c]).c_str(), xPos, lineY);
+        xPos += 12;
+      }
+      lineY += 18;
     } else {
       // Split into two lines
-      String line1 = fullLine.substring(0, 35);
-      String line2 = fullLine.substring(35);
-      if (line2.length() > 35) {
-        line2 = line2.substring(0, 32) + "...";
+      String line1 = fullLine.substring(0, maxChars);
+      String line2 = fullLine.substring(maxChars);
+      if (line2.length() > maxChars) {
+        line2 = line2.substring(0, maxChars - 3) + "...";
       }
-      M5Cardputer.Display.drawString(line1.c_str(), 10, lineY);
-      lineY += 8;
-      M5Cardputer.Display.drawString(line2.c_str(), 10, lineY);
-      lineY += 10;
+      int xPos = 10;
+      for (int c = 0; c < line1.length(); c++) {
+        M5Cardputer.Display.setTextColor(getMessageGradientColor(c));
+        M5Cardputer.Display.drawString(String(line1[c]).c_str(), xPos, lineY);
+        xPos += 12;
+      }
+      lineY += 16;
+      xPos = 10;
+      for (int c = 0; c < line2.length(); c++) {
+        M5Cardputer.Display.setTextColor(getMessageGradientColor(maxChars + c));
+        M5Cardputer.Display.drawString(String(line2[c]).c_str(), xPos, lineY);
+        xPos += 12;
+      }
+      lineY += 18;
     }
+    M5Cardputer.Display.setTextSize(1);
 
     displayedCount++;
   }
@@ -379,22 +408,22 @@ void drawChatSettings() {
   M5Cardputer.Display.fillScreen(TFT_WHITE);
   drawLabChatHeader("Settings");
 
-  // Settings box
-  M5Cardputer.Display.fillRoundRect(20, 40, 200, 75, 12, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(20, 40, 200, 75, 12, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(21, 41, 198, 73, 11, TFT_BLACK);
+  // Settings box (taller for 4 items)
+  M5Cardputer.Display.fillRoundRect(20, 35, 200, 85, 12, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(20, 35, 200, 85, 12, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(21, 36, 198, 83, 11, TFT_BLACK);
 
-  const char* options[] = {"Change Username", "Network Info", "Leave Network"};
+  const char* options[] = {"Change Username", "Switch Channel", "Network Info", "Leave Network"};
 
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 4; i++) {
     M5Cardputer.Display.setTextSize(1);
     if (i == chatSettingsMenuIndex) {
       M5Cardputer.Display.setTextColor(TFT_WHITE);
-      M5Cardputer.Display.fillRect(30, 48 + (i * 20), 180, 16, TFT_BLACK);
-      M5Cardputer.Display.drawString(options[i], 40, 52 + (i * 20));
+      M5Cardputer.Display.fillRect(30, 43 + (i * 18), 180, 14, TFT_BLACK);
+      M5Cardputer.Display.drawString(options[i], 40, 46 + (i * 18));
     } else {
       M5Cardputer.Display.setTextColor(TFT_BLACK);
-      M5Cardputer.Display.drawString(options[i], 40, 52 + (i * 20));
+      M5Cardputer.Display.drawString(options[i], 40, 46 + (i * 18));
     }
   }
 
@@ -402,28 +431,27 @@ void drawChatSettings() {
 }
 
 void drawChannelSwitch() {
-  // Overlay on main chat
-  drawMainChat();
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  drawLabChatHeader("Switch Channel");
 
-  // Channel selector overlay
-  M5Cardputer.Display.fillRoundRect(60, 45, 120, 50, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(60, 45, 120, 50, 10, TFT_RED);
-  M5Cardputer.Display.drawRoundRect(61, 46, 118, 48, 9, TFT_RED);
+  // Channel selector box
+  M5Cardputer.Display.fillRoundRect(40, 45, 160, 50, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(40, 45, 160, 50, 10, TFT_RED);
+  M5Cardputer.Display.drawRoundRect(41, 46, 158, 48, 9, TFT_RED);
 
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("Switch Channel", 78, 52);
+  M5Cardputer.Display.drawString("Current Channel:", 65, 52);
 
   M5Cardputer.Display.setTextSize(2);
-  if (chatCurrentChannel == 0) {
-    M5Cardputer.Display.drawString("#general", 85, 68);
-  } else {
-    M5Cardputer.Display.drawString(("#ch" + String(chatCurrentChannel)).c_str(), 100, 68);
-  }
+  String channelName = channelNames[chatCurrentChannel];
+  M5Cardputer.Display.drawString(("#" + channelName).c_str(), 80, 68);
 
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString("0-9 or Esc", 95, 82);
+  M5Cardputer.Display.drawString("Press 0-9", 95, 105);
+
+  drawNavHint("`=Back", 100, 118);
 }
 
 void drawDMSelect() {
@@ -763,10 +791,6 @@ void handleLabChatNavigation(char key) {
         } else if (key == 27) { // ESC - exit DM mode
           dmTargetID = "";
           dmTargetUsername = "";
-        } else if (key >= '0' && key <= '9') {
-          // Switch channels
-          chatCurrentChannel = key - '0';
-          scrollPosition = 0;
         } else if (key == ';') { // Up - scroll
           scrollPosition++;
         } else if (key == '.') { // Down - scroll
@@ -788,21 +812,34 @@ void handleLabChatNavigation(char key) {
 
     case CHAT_SETTINGS: {
       if (key == ';') {
-        chatSettingsMenuIndex = (chatSettingsMenuIndex - 1 + 3) % 3;
+        chatSettingsMenuIndex = (chatSettingsMenuIndex - 1 + 4) % 4;
       } else if (key == '.') {
-        chatSettingsMenuIndex = (chatSettingsMenuIndex + 1) % 3;
+        chatSettingsMenuIndex = (chatSettingsMenuIndex + 1) % 4;
       } else if (key == '\n') {
         if (chatSettingsMenuIndex == 0) {
           // Change username
           Preferences prefs;
           prefs.begin("labchat", true);
-          usernameInput = prefs.getString("username", securityManager.getDeviceID());
+          String defaultUsername = "User";
+          const char* devID = securityManager.getDeviceID();
+          int userNum = 0;
+          int len = strlen(devID);
+          if (len >= 4) {
+            for (int i = len - 4; i < len; i++) {
+              userNum = userNum * 10 + (devID[i] % 10);
+            }
+          }
+          defaultUsername += String(userNum % 10000);
+          usernameInput = prefs.getString("username", defaultUsername);
           prefs.end();
           chatState = CHAT_CHANGE_USERNAME;
         } else if (chatSettingsMenuIndex == 1) {
+          // Switch channel
+          chatState = CHAT_CHANNEL_SWITCH;
+        } else if (chatSettingsMenuIndex == 2) {
           // Network info
           chatState = CHAT_NETWORK_INFO;
-        } else if (chatSettingsMenuIndex == 2) {
+        } else if (chatSettingsMenuIndex == 3) {
           // Leave network - clear and go to network menu
           messageHandler.clearQueue();
           securityManager.leaveNetwork();
@@ -811,6 +848,17 @@ void handleLabChatNavigation(char key) {
         }
       } else if (key == '`') {
         chatState = CHAT_NETWORK_MENU;
+      }
+      break;
+    }
+
+    case CHAT_CHANNEL_SWITCH: {
+      if (key >= '0' && key <= '9') {
+        chatCurrentChannel = key - '0';
+        scrollPosition = 0;
+        chatState = CHAT_SETTINGS;
+      } else if (key == '`') {
+        chatState = CHAT_SETTINGS;
       }
       break;
     }
