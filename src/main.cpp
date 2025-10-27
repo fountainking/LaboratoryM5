@@ -574,9 +574,6 @@ void loop() {
   // Normal operation for all other states
   M5Cardputer.update();
 
-  // TESTING: Immediately release Speaker after update in case it re-inits
-  M5Cardputer.Speaker.end();
-
   // Handle background WiFi connection (non-blocking)
 #if DEBUG_ENABLE_WIFI
   handleBackgroundWiFi();
