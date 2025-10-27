@@ -53,6 +53,9 @@ private:
 
   bool verifyMessage(const SecureMessage* msg);
 
+  // Callback for display updates
+  void (*onMessageAddedCallback)();
+
 public:
   MessageHandler();
 
@@ -73,6 +76,9 @@ public:
   bool sendBroadcast(const char* content, uint8_t channel = 0);
   bool sendDirect(const char* targetID, const char* content);
   bool sendPresence(); // Announce presence to network
+
+  // Set callback for real-time display updates
+  void setMessageCallback(void (*callback)()) { onMessageAddedCallback = callback; }
 };
 
 extern MessageHandler messageHandler;

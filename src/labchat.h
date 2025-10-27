@@ -15,7 +15,10 @@ enum LabChatState {
   CHAT_USER_LIST,         // Show connected users
   CHAT_SETTINGS,          // Chat settings (username, leave network)
   CHAT_CHANNEL_SWITCH,    // Channel switcher overlay
-  CHAT_DM_SELECT          // Direct message user selection
+  CHAT_DM_SELECT,         // Direct message user selection
+  CHAT_NETWORK_INFO,      // Network information display
+  CHAT_CHANGE_USERNAME,   // Change username input
+  CHAT_RENAME_CHANNEL     // Rename current channel
 };
 
 // LabCHAT functions
@@ -36,6 +39,9 @@ void drawUserList();
 void drawChatSettings();
 void drawChannelSwitch();
 void drawDMSelect();
+void drawNetworkInfo();
+void drawChangeUsername();
+void drawRenameChannel();
 
 // Helper functions
 void drawLabChatHeader(const char* subtitle = nullptr);
@@ -49,10 +55,13 @@ extern String networkPasswordInput;
 extern String networkNameInput;
 extern String chatInput;
 extern String usernameInput;
+extern String channelNameInput;
 extern int scrollPosition;
 extern int selectedUserIndex;
-extern int currentChannel;
+extern int chatCurrentChannel;
 extern bool chatActive;
 extern unsigned long lastPresenceBroadcast;
+extern String dmTargetID;  // Device ID for DM mode (empty = broadcast)
+extern String dmTargetUsername;  // Username for DM display
 
 #endif

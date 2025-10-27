@@ -12,11 +12,21 @@ String networkPasswordInput = "";
 String networkNameInput = "";
 String chatInput = "";
 String usernameInput = "";
+String channelNameInput = "";
 int scrollPosition = 0;
 int selectedUserIndex = 0;
 int chatCurrentChannel = 0;
 bool chatActive = false;
 unsigned long lastPresenceBroadcast = 0;
+String dmTargetID = "";
+String dmTargetUsername = "";
+
+// Channel names
+String channelNames[10] = {
+  "general", "random", "dev", "music",
+  "games", "tech", "art", "memes",
+  "study", "chill"
+};
 
 // Menu indices
 int networkMenuIndex = 0;
@@ -26,19 +36,15 @@ int chatSettingsMenuIndex = 0;
 bool cursorVisible = true;
 unsigned long lastCursorBlink = 0;
 
-// Forward declarations of shared functions from file_manager.cpp
+// Forward declarations of shared functions
 extern void drawStar(int x, int y, int size, uint16_t color);
 extern void drawNavHint(const char* text, int x, int y);
+extern void drawEmojiIcon(int x, int y, const char* emoji, uint16_t color, int size);
+extern uint16_t interpolateColor(uint16_t color1, uint16_t color2, float t);
 
 // ============================================================================
 // HELPER FUNCTIONS
 // ============================================================================
-
-void drawLightningBolt(int x, int y, int size, uint16_t color) {
-  // Simple lightning bolt shape ⚡
-  M5Cardputer.Display.fillTriangle(x, y, x + size/2, y + size/2, x - size/3, y + size/2, color);
-  M5Cardputer.Display.fillTriangle(x, y + size, x - size/2, y + size/2, x + size/3, y + size/2, color);
-}
 
 void drawLabChatHeader(const char* subtitle) {
   // Calculate header width
@@ -49,20 +55,25 @@ void drawLabChatHeader(const char* subtitle) {
   }
 
   int textWidth = headerText.length() * 6;
-  int totalWidth = 20 + textWidth + 30; // Lightning bolt + text + padding
+  int totalWidth = 20 + textWidth + 30; // Emoji + text + padding
 
-  // Header rectangle (Files aesthetic)
-  M5Cardputer.Display.fillRoundRect(18, 8, totalWidth, 20, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(18, 8, totalWidth, 20, 10, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(19, 9, totalWidth - 2, 18, 9, TFT_BLACK);
+  // Header rectangle (left aligned at x=5)
+  M5Cardputer.Display.fillRoundRect(5, 8, totalWidth, 20, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(5, 8, totalWidth, 20, 10, TFT_BLACK);
 
-  // Lightning bolt icon ⚡ (red/yellow gradient effect)
-  drawLightningBolt(30, 18, 8, TFT_RED);
+  // Strawberry emoji 🍓
+  drawEmojiIcon(11, 11, "\xF0\x9F\x8D\x93", TFT_RED, 1);
 
   // "LabCHAT" text
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString(headerText.c_str(), 48, 14);
+  M5Cardputer.Display.drawString("LabCHAT", 29, 14);
+
+  // Subtitle (no gradient on header)
+  if (subtitle) {
+    M5Cardputer.Display.drawString(" - ", 29 + 42, 14);
+    M5Cardputer.Display.drawString(subtitle, 29 + 42 + 18, 14);
+  }
 }
 
 void drawTextInputBox(const char* prompt, String& input, bool isPassword) {
@@ -171,64 +182,121 @@ void drawJoinNetwork() {
 void drawMainChat() {
   M5Cardputer.Display.fillScreen(TFT_WHITE);
 
-  // Header with channel indicator
-  char subtitle[32];
-  if (chatCurrentChannel == 0) {
-    snprintf(subtitle, 32, "#general [%d]", espNowManager.getPeerCount());
+  // Header with channel name and DM indicator
+  char subtitle[64];
+  if (dmTargetID.length() > 0) {
+    snprintf(subtitle, 64, "DM:%s [%d]", dmTargetUsername.c_str(), espNowManager.getPeerCount());
   } else {
-    snprintf(subtitle, 32, "#ch%d [%d]", chatCurrentChannel, espNowManager.getPeerCount());
+    String channelName = channelNames[chatCurrentChannel];
+    snprintf(subtitle, 64, "#%s [%d]", channelName.c_str(), espNowManager.getPeerCount());
   }
   drawLabChatHeader(subtitle);
 
-  // Message area (rounded rect)
-  M5Cardputer.Display.fillRoundRect(5, 32, 230, 85, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(5, 32, 230, 85, 10, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(6, 33, 228, 83, 9, TFT_BLACK);
+  // Message area (shrunk, with bottom margin)
+  M5Cardputer.Display.fillRoundRect(5, 32, 230, 74, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(5, 32, 230, 74, 10, TFT_BLACK);
 
-  // Display messages (8 lines visible, 10px per line)
+  // Display messages with wrapping (4 messages visible with 2-line support)
   M5Cardputer.Display.setTextSize(1);
   int messageCount = messageHandler.getQueueCount();
-  int startIndex = max(0, messageCount - 8 - scrollPosition);
-  int endIndex = min(messageCount, startIndex + 8);
+  int startIndex = max(0, messageCount - 4 - scrollPosition);
+  int endIndex = min(messageCount, startIndex + 4);
 
+  int lineY = 40;
   for (int i = startIndex; i < endIndex; i++) {
     DisplayMessage* msg = messageHandler.getQueuedMessage(i);
     if (!msg) continue;
 
-    int lineY = 38 + ((i - startIndex) * 10);
+    // Get user color for consistent highlighting
+    uint32_t deviceHash = 0;
+    for (int j = 0; j < strlen(msg->deviceID); j++) {
+      deviceHash = deviceHash * 31 + msg->deviceID[j];
+    }
+    uint16_t colors[] = {0xF800, 0x07E0, 0x001F, 0xF81F, 0xFFE0, 0x07FF};
+    uint16_t userColor = colors[deviceHash % 6];
 
-    // Different colors for own messages
-    if (msg->isOwn) {
-      M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.setTextColor(userColor);
+
+    String fullLine = String(msg->username) + ": " + msg->content;
+
+    // Wrap text if needed (max 35 chars per line)
+    if (fullLine.length() <= 35) {
+      M5Cardputer.Display.drawString(fullLine.c_str(), 10, lineY);
+      lineY += 10;
     } else {
-      M5Cardputer.Display.setTextColor(TFT_BLACK);
+      // Split into two lines
+      String line1 = fullLine.substring(0, 35);
+      String line2 = fullLine.substring(35);
+      if (line2.length() > 35) {
+        line2 = line2.substring(0, 32) + "...";
+      }
+      M5Cardputer.Display.drawString(line1.c_str(), 10, lineY);
+      lineY += 8;
+      M5Cardputer.Display.drawString(line2.c_str(), 10, lineY);
+      lineY += 10;
     }
-
-    // Format: "username: message"
-    String line = String(msg->username) + ": " + msg->content;
-    if (line.length() > 38) {
-      line = line.substring(0, 35) + "...";
-    }
-
-    M5Cardputer.Display.drawString(line.c_str(), 10, lineY);
   }
 
-  // Input area
-  M5Cardputer.Display.fillRoundRect(5, 120, 230, 14, 7, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(5, 120, 230, 14, 7, TFT_BLACK);
+  // Input area (black background with yellow outline, terminal style)
+  M5Cardputer.Display.fillRoundRect(5, 111, 230, 20, 8, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(5, 111, 230, 20, 8, TFT_YELLOW);
 
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  String displayInput = chatInput;
-  if (displayInput.length() > 36) {
-    displayInput = displayInput.substring(displayInput.length() - 36);
+  // Terminal gradient colors (smooth ping-pong)
+  uint16_t gradientColors[] = {
+    0xFFE0,  // Yellow
+    0xFD20,  // Orange
+    0xF800,  // Red
+    0x780F,  // Purple
+    0x001F,  // Blue
+    0x07FF,  // Cyan
+    0xFFFF,  // White
+  };
+  int numColors = 7;
+
+  // Smooth gradient helper (from terminal)
+  auto getInputGradientColor = [&](int charIndex) -> uint16_t {
+    int cycleLength = 80;
+    int posInCycle = charIndex % cycleLength;
+    float t;
+
+    if (posInCycle < 40) {
+      t = (float)posInCycle / 40.0f;
+    } else {
+      t = (float)(80 - posInCycle) / 40.0f;
+    }
+
+    float colorPosition = t * (numColors - 1);
+    int colorIndex1 = (int)colorPosition;
+    int colorIndex2 = (colorIndex1 + 1) % numColors;
+    float blend = colorPosition - colorIndex1;
+
+    return interpolateColor(gradientColors[colorIndex1], gradientColors[colorIndex2], blend);
+  };
+
+  // Draw prompt "> " and input with smooth gradient
+  String fullInput = String("> ") + chatInput;
+  String displayInput = fullInput;
+  int maxChars = 36;
+
+  if (displayInput.length() > maxChars) {
+    displayInput = displayInput.substring(displayInput.length() - maxChars);
   }
-  M5Cardputer.Display.drawString((String("> ") + displayInput).c_str(), 10, 123);
+
+  int xPos = 10;
+  int inputY = 117;
+  for (int i = 0; i < displayInput.length(); i++) {
+    int actualIndex = (fullInput.length() > maxChars) ? (fullInput.length() - maxChars + i) : i;
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(getInputGradientColor(actualIndex));
+    M5Cardputer.Display.drawString(String(displayInput[i]).c_str(), xPos, inputY);
+    xPos += 6;
+  }
 
   // Cursor
   if (cursorVisible) {
-    int cursorX = 10 + ((displayInput.length() + 2) * 6);
+    int cursorX = 10 + (displayInput.length() * 6);
     if (cursorX < 230) {
-      M5Cardputer.Display.drawLine(cursorX, 123, cursorX, 131, TFT_BLACK);
+      M5Cardputer.Display.fillRect(cursorX, inputY, 6, 8, getInputGradientColor(fullInput.length()));
     }
   }
 }
@@ -363,12 +431,67 @@ void drawDMSelect() {
   drawNavHint("Up/Down  Enter=Select  `=Back", 30, 118);
 }
 
+void drawNetworkInfo() {
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  drawLabChatHeader("Network Info");
+
+  M5Cardputer.Display.fillRoundRect(20, 35, 200, 75, 12, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(20, 35, 200, 75, 12, TFT_BLACK);
+
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+
+  String networkName = securityManager.getNetworkName();
+  String deviceID = securityManager.getDeviceID();
+  int peerCount = espNowManager.getPeerCount();
+
+  M5Cardputer.Display.drawString(("Network: " + networkName).c_str(), 30, 45);
+  M5Cardputer.Display.drawString(("Device: " + deviceID).c_str(), 30, 60);
+  M5Cardputer.Display.drawString(("Peers: " + String(peerCount)).c_str(), 30, 75);
+
+  drawNavHint("`=Back", 100, 118);
+}
+
+void drawChangeUsername() {
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  drawLabChatHeader("Username");
+
+  drawTextInputBox("New Username:", usernameInput, false);
+
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.drawString("Max 15 characters", 70, 118);
+}
+
+void drawRenameChannel() {
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  char subtitle[32];
+  snprintf(subtitle, 32, "Rename #%s", channelNames[chatCurrentChannel].c_str());
+  drawLabChatHeader(subtitle);
+
+  drawTextInputBox("Channel Name:", channelNameInput, false);
+
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.drawString("Max 15 characters", 70, 118);
+}
+
 // ============================================================================
 // MAIN FUNCTIONS
 // ============================================================================
 
+// Callback for real-time message display updates
+void onMessageReceived() {
+  if (chatActive && chatState == CHAT_MAIN) {
+    drawLabChat();
+  }
+}
+
 void enterLabChat() {
   chatActive = true;
+
+  // Register callback for real-time display updates
+  messageHandler.setMessageCallback(onMessageReceived);
 
   // Check if device PIN is set
   if (!DevicePIN::isSet()) {
@@ -443,6 +566,15 @@ void drawLabChat() {
       break;
     case CHAT_DM_SELECT:
       drawDMSelect();
+      break;
+    case CHAT_NETWORK_INFO:
+      drawNetworkInfo();
+      break;
+    case CHAT_CHANGE_USERNAME:
+      drawChangeUsername();
+      break;
+    case CHAT_RENAME_CHANNEL:
+      drawRenameChannel();
       break;
   }
 }
@@ -567,35 +699,56 @@ void handleLabChatNavigation(char key) {
     }
 
     case CHAT_MAIN: {
-      if (key == '`') {
-        chatState = CHAT_SETTINGS;
-        chatSettingsMenuIndex = 0;
-      } else if (key >= '0' && key <= '9') {
-        chatCurrentChannel = key - '0';
-        scrollPosition = 0;
-      } else if (key == 'u' || key == 'U') {
-        chatState = CHAT_USER_LIST;
-      } else if (key == 'd' || key == 'D') {
-        if (espNowManager.getPeerCount() > 0) {
-          chatState = CHAT_DM_SELECT;
-          selectedUserIndex = 0;
-        }
-      } else if (key == ';') { // Up - scroll
-        scrollPosition = min(scrollPosition + 1, max(0, messageHandler.getQueueCount() - 8));
-      } else if (key == '.') { // Down - scroll
-        scrollPosition = max(0, scrollPosition - 1);
-      } else if (key == '\n') { // Enter - send
+      // Text input mode - handle typing first
+      if (key == '\n') { // Enter - send message
         if (chatInput.length() > 0) {
-          messageHandler.sendBroadcast(chatInput.c_str(), chatCurrentChannel);
+          if (dmTargetID.length() > 0) {
+            // Send DM
+            messageHandler.sendDirect(dmTargetID.c_str(), chatInput.c_str());
+          } else {
+            // Send broadcast
+            messageHandler.sendBroadcast(chatInput.c_str(), chatCurrentChannel);
+          }
           chatInput = "";
           scrollPosition = 0;
         }
-      } else if (key == 8 || key == 127) {
+      } else if (key == 8 || key == 127) { // Backspace
         if (chatInput.length() > 0) {
           chatInput.remove(chatInput.length() - 1);
         }
-      } else if (chatInput.length() < 165 && key >= 32 && key <= 126) {
+      } else if (chatInput.length() > 0 && key >= 32 && key <= 126) {
+        // Typing mode: add character, ignore hotkeys
         chatInput += key;
+      } else if (chatInput.length() == 0) {
+        // Navigation mode: only process hotkeys when NOT typing
+        if (key == '`') {
+          chatState = CHAT_SETTINGS;
+          chatSettingsMenuIndex = 0;
+        } else if (key == 9) { // Tab - DM hotkey
+          if (espNowManager.getPeerCount() > 0) {
+            chatState = CHAT_DM_SELECT;
+            selectedUserIndex = 0;
+          }
+        } else if (key == '#') { // Rename current channel
+          channelNameInput = channelNames[chatCurrentChannel];
+          chatState = CHAT_RENAME_CHANNEL;
+        } else if (key == 27) { // ESC - exit DM mode
+          dmTargetID = "";
+          dmTargetUsername = "";
+        } else if (key >= '0' && key <= '9') {
+          // Switch channels
+          chatCurrentChannel = key - '0';
+          scrollPosition = 0;
+        } else if (key == 'u' || key == 'U') {
+          chatState = CHAT_USER_LIST;
+        } else if (key == ';') { // Up - scroll
+          scrollPosition = min(scrollPosition + 1, max(0, messageHandler.getQueueCount() - 4));
+        } else if (key == '.') { // Down - scroll
+          scrollPosition = max(0, scrollPosition - 1);
+        } else if (key >= 32 && key <= 126) {
+          // Start typing
+          chatInput += key;
+        }
       }
       break;
     }
@@ -614,9 +767,15 @@ void handleLabChatNavigation(char key) {
         chatSettingsMenuIndex = (chatSettingsMenuIndex + 1) % 3;
       } else if (key == '\n') {
         if (chatSettingsMenuIndex == 0) {
-          // Change username - TODO
+          // Change username
+          Preferences prefs;
+          prefs.begin("labchat", true);
+          usernameInput = prefs.getString("username", securityManager.getDeviceID());
+          prefs.end();
+          chatState = CHAT_CHANGE_USERNAME;
         } else if (chatSettingsMenuIndex == 1) {
-          // Network info - TODO
+          // Network info
+          chatState = CHAT_NETWORK_INFO;
         } else if (chatSettingsMenuIndex == 2) {
           // Leave network
           securityManager.leaveNetwork();
@@ -637,10 +796,61 @@ void handleLabChatNavigation(char key) {
         int peerCount = espNowManager.getPeerCount();
         selectedUserIndex = (selectedUserIndex + 1) % peerCount;
       } else if (key == '\n') {
-        // TODO: Enter DM mode with selected user
+        // Enter DM mode with selected user
+        PeerDevice* peer = espNowManager.getPeer(selectedUserIndex);
+        if (peer) {
+          dmTargetID = String(peer->deviceID);
+          dmTargetUsername = String(peer->username);
+        }
         chatState = CHAT_MAIN;
       } else if (key == '`') {
         chatState = CHAT_MAIN;
+      }
+      break;
+    }
+
+    case CHAT_NETWORK_INFO: {
+      if (key == '`') {
+        chatState = CHAT_SETTINGS;
+      }
+      break;
+    }
+
+    case CHAT_CHANGE_USERNAME: {
+      if (key == '\n') {
+        if (usernameInput.length() > 0 && usernameInput.length() <= 15) {
+          Preferences prefs;
+          prefs.begin("labchat", false);
+          prefs.putString("username", usernameInput);
+          prefs.end();
+          chatState = CHAT_SETTINGS;
+        }
+      } else if (key == 8 || key == 127) {
+        if (usernameInput.length() > 0) {
+          usernameInput.remove(usernameInput.length() - 1);
+        }
+      } else if (key == '`') {
+        chatState = CHAT_SETTINGS;
+      } else if (usernameInput.length() < 15 && key >= 32 && key <= 126) {
+        usernameInput += key;
+      }
+      break;
+    }
+
+    case CHAT_RENAME_CHANNEL: {
+      if (key == '\n') {
+        if (channelNameInput.length() > 0 && channelNameInput.length() <= 15) {
+          channelNames[chatCurrentChannel] = channelNameInput;
+          chatState = CHAT_MAIN;
+        }
+      } else if (key == 8 || key == 127) {
+        if (channelNameInput.length() > 0) {
+          channelNameInput.remove(channelNameInput.length() - 1);
+        }
+      } else if (key == '`') {
+        chatState = CHAT_MAIN;
+      } else if (channelNameInput.length() < 15 && key >= 32 && key <= 126) {
+        channelNameInput += key;
       }
       break;
     }

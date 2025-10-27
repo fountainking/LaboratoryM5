@@ -5,7 +5,7 @@
 
 MessageHandler messageHandler;
 
-MessageHandler::MessageHandler() : queueHead(0), queueTail(0), queueCount(0) {
+MessageHandler::MessageHandler() : queueHead(0), queueTail(0), queueCount(0), onMessageAddedCallback(nullptr) {
   memset(messageQueue, 0, sizeof(messageQueue));
 }
 
@@ -134,6 +134,11 @@ bool MessageHandler::addToQueue(const DisplayMessage& msg) {
   } else {
     // Queue full, move tail forward
     queueTail = (queueTail + 1) % MESSAGE_QUEUE_SIZE;
+  }
+
+  // Trigger display update callback if set
+  if (onMessageAddedCallback) {
+    onMessageAddedCallback();
   }
 
   return true;
