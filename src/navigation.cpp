@@ -285,7 +285,8 @@ void handleSelect() {
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
       currentState = SCREEN_VIEW;
       currentScreenNumber = 16;
-      drawScreen(false);
+      extern void enterLabChat();
+      enterLabChat();
     } else if (currentMainIndex == 5) {
       // Settings
       if (settings.soundEnabled) M5Cardputer.Speaker.tone(1200, 100);
