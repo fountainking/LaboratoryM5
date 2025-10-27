@@ -677,7 +677,7 @@ void handleLabChatNavigation(char key) {
         exitLabChat();
         extern void drawScreen(bool statusBar);
         currentScreenNumber = 0;
-        currentState = APPS_MENU;
+        currentState = MAIN_MENU;
         drawScreen(true);
         return;
       }
@@ -802,19 +802,14 @@ void handleLabChatNavigation(char key) {
           // Network info
           chatState = CHAT_NETWORK_INFO;
         } else if (chatSettingsMenuIndex == 2) {
-          // Leave network - clear everything and exit to main menu
+          // Leave network - clear and go to network menu
           messageHandler.clearQueue();
           securityManager.leaveNetwork();
           espNowManager.deinit();
-          exitLabChat();
-          currentScreenNumber = 0;
-          currentState = APPS_MENU;
-          extern void drawScreen(bool statusBar);
-          drawScreen(true);
-          return;
+          chatState = CHAT_NETWORK_MENU;
         }
       } else if (key == '`') {
-        chatState = CHAT_MAIN;
+        chatState = CHAT_NETWORK_MENU;
       }
       break;
     }
