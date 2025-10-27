@@ -15,7 +15,7 @@ enum MessageType : uint8_t {
 // Protocol version
 #define PROTOCOL_VERSION 1
 
-// Message structure (250 bytes total - ESP-NOW v1.0 limit)
+// Message structure (exactly 250 bytes - ESP-NOW limit)
 struct SecureMessage {
   uint8_t type;           // 1 byte: message type
   uint8_t version;        // 1 byte: protocol version
@@ -25,9 +25,9 @@ struct SecureMessage {
   uint8_t channel;        // 1 byte: channel number (0-9)
   char targetID[16];      // 16 bytes: target device ID (for DM)
   uint16_t msgLen;        // 2 bytes: payload length
-  char payload[165];      // 165 bytes: actual message content
+  char payload[161];      // 161 bytes: actual message content (was 165, reduced to fit 250 byte limit)
   uint8_t hmac[32];       // 32 bytes: HMAC-SHA256
-  // Total: 250 bytes
+  // Total: 1+1+4+16+16+1+16+2+161+32 = 250 bytes exactly
 } __attribute__((packed));
 
 // Display message (for UI)

@@ -1,4 +1,5 @@
 #include "esp_now_manager.h"
+#include <esp_wifi.h>
 
 ESPNowManager espNowManager;
 
@@ -10,14 +11,20 @@ ESPNowManager::ESPNowManager() : initialized(false), peerCount(0),
 }
 
 void ESPNowManager::onDataRecv(const uint8_t* mac, const uint8_t* data, int len) {
+  Serial.printf("ESP-NOW RECEIVE CALLBACK! len=%d\n", len);
+  Serial.printf("  From MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+
   espNowManager.bytesReceived += len;
   espNowManager.messagesReceived++;
 
   // Update peer activity
   espNowManager.updatePeerActivity(mac);
 
+  Serial.println("  Forwarding to message handler...");
   // Forward to message handler
   onMessageReceived(mac, data, len);
+  Serial.println("  Message handler returned");
 }
 
 void ESPNowManager::onDataSent(const uint8_t* mac, esp_now_send_status_t status) {
@@ -29,35 +36,58 @@ void ESPNowManager::onDataSent(const uint8_t* mac, esp_now_send_status_t status)
 bool ESPNowManager::init(const uint8_t* pmk) {
   if (initialized) return true;
 
+  Serial.println("ESPNowManager::init() - Initializing ESP-NOW...");
+
   // Set WiFi mode to STA (ESP-NOW requirement)
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
 
+  // Set WiFi channel explicitly
+  esp_wifi_set_channel(ESP_NOW_CHANNEL, WIFI_SECOND_CHAN_NONE);
+  Serial.printf("  WiFi channel set to %d\n", ESP_NOW_CHANNEL);
+
   // Initialize ESP-NOW
-  if (esp_now_init() != ESP_OK) {
+  Serial.println("  Calling esp_now_init()...");
+  esp_err_t initResult = esp_now_init();
+  if (initResult != ESP_OK) {
+    Serial.printf("  ERROR: esp_now_init() failed with code %d\n", initResult);
     return false;
   }
+  Serial.println("  ESP-NOW initialized successfully");
 
   // Set PMK for encryption
-  if (esp_now_set_pmk(pmk) != ESP_OK) {
+  Serial.println("  Setting PMK...");
+  esp_err_t pmkResult = esp_now_set_pmk(pmk);
+  if (pmkResult != ESP_OK) {
+    Serial.printf("  ERROR: esp_now_set_pmk() failed with code %d\n", pmkResult);
     esp_now_deinit();
     return false;
   }
+  Serial.println("  PMK set successfully");
 
   // Register callbacks
+  Serial.println("  Registering callbacks...");
   esp_now_register_recv_cb(onDataRecv);
   esp_now_register_send_cb(onDataSent);
+  Serial.println("  Callbacks registered");
 
   // Add broadcast peer (unencrypted for discovery)
+  Serial.println("  Adding broadcast peer...");
+  Serial.printf("  Broadcast MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                broadcastMAC[0], broadcastMAC[1], broadcastMAC[2],
+                broadcastMAC[3], broadcastMAC[4], broadcastMAC[5]);
   esp_now_peer_info_t peerInfo = {};
   memcpy(peerInfo.peer_addr, broadcastMAC, 6);
-  peerInfo.channel = ESP_NOW_CHANNEL;
+  peerInfo.channel = 0;  // 0 = use current WiFi channel
   peerInfo.encrypt = false;
 
-  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
+  esp_err_t addPeerResult = esp_now_add_peer(&peerInfo);
+  if (addPeerResult != ESP_OK) {
+    Serial.printf("  ERROR: esp_now_add_peer() BROADCAST failed with code %d\n", addPeerResult);
     esp_now_deinit();
     return false;
   }
+  Serial.println("  Broadcast peer added successfully");
 
   initialized = true;
   return true;
@@ -73,11 +103,19 @@ void ESPNowManager::deinit() {
 }
 
 bool ESPNowManager::addPeer(const uint8_t* mac, const char* deviceID, const char* username) {
-  if (peerCount >= MAX_PEERS) return false;
+  Serial.printf("ESPNowManager::addPeer() called - DeviceID: %s, Username: %s\n", deviceID, username);
+  Serial.printf("  MAC: %02X:%02X:%02X:%02X:%02X:%02X\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+  Serial.printf("  Current peer count: %d/%d\n", peerCount, MAX_PEERS);
+
+  if (peerCount >= MAX_PEERS) {
+    Serial.println("  ERROR: Peer limit reached!");
+    return false;
+  }
 
   // Check if peer already exists
   PeerDevice* existing = findPeer(mac);
   if (existing) {
+    Serial.println("  Peer already exists, updating info");
     // Update existing peer
     strncpy(existing->deviceID, deviceID, 15);
     existing->deviceID[15] = '\0';
@@ -91,12 +129,16 @@ bool ESPNowManager::addPeer(const uint8_t* mac, const char* deviceID, const char
   // Add new peer to ESP-NOW
   esp_now_peer_info_t peerInfo = {};
   memcpy(peerInfo.peer_addr, mac, 6);
-  peerInfo.channel = ESP_NOW_CHANNEL;
+  peerInfo.channel = 0;  // 0 = use current WiFi channel
   peerInfo.encrypt = true;
 
-  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
+  esp_err_t result = esp_now_add_peer(&peerInfo);
+  if (result != ESP_OK) {
+    Serial.printf("  ERROR: esp_now_add_peer() failed with code %d\n", result);
     return false;
   }
+
+  Serial.println("  SUCCESS: Peer added to ESP-NOW");
 
   // Add to our peer list
   memcpy(peers[peerCount].mac, mac, 6);
@@ -170,14 +212,24 @@ void ESPNowManager::cleanupInactivePeers() {
 }
 
 bool ESPNowManager::sendBroadcast(const uint8_t* data, size_t len) {
-  if (!initialized) return false;
+  if (!initialized) {
+    Serial.println("sendBroadcast: ERROR - Not initialized!");
+    return false;
+  }
+
+  Serial.printf("sendBroadcast: Sending %d bytes to broadcast MAC\n", len);
+  Serial.printf("  Broadcast MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
+                broadcastMAC[0], broadcastMAC[1], broadcastMAC[2],
+                broadcastMAC[3], broadcastMAC[4], broadcastMAC[5]);
 
   esp_err_t result = esp_now_send(broadcastMAC, data, len);
   if (result == ESP_OK) {
+    Serial.println("  SUCCESS: Broadcast sent");
     bytesSent += len;
     messagesSent++;
     return true;
   }
+  Serial.printf("  ERROR: esp_now_send failed with code %d\n", result);
   sendFailures++;
   return false;
 }

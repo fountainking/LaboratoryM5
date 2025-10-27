@@ -77,22 +77,33 @@ bool MessageHandler::verifyMessage(const SecureMessage* msg) {
 }
 
 bool MessageHandler::handleReceivedMessage(const uint8_t* mac, const uint8_t* data, int len) {
-  if (len != sizeof(SecureMessage)) return false;
+  Serial.printf("MessageHandler::handleReceivedMessage() - len=%d, expected=%d\n", len, sizeof(SecureMessage));
+
+  if (len != sizeof(SecureMessage)) {
+    Serial.println("  ERROR: Length mismatch!");
+    return false;
+  }
 
   const SecureMessage* msg = (const SecureMessage*)data;
 
   // Verify message
+  Serial.println("  Verifying message...");
   if (!verifyMessage(msg)) {
+    Serial.println("  ERROR: Message verification failed!");
     return false;
   }
+  Serial.println("  Message verified successfully");
 
   // Ignore our own messages
   if (strcmp(msg->deviceID, securityManager.getDeviceID()) == 0) {
+    Serial.println("  Ignoring own message");
     return true;
   }
 
   // Handle presence announcements
   if (msg->type == MSG_PRESENCE) {
+    Serial.printf("  PRESENCE message from %s (%s)\n", msg->username, msg->deviceID);
+    Serial.printf("  MAC: %02X:%02X:%02X:%02X:%02X:%02X\n", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
     espNowManager.addPeer(mac, msg->deviceID, msg->username);
     return true;
   }
@@ -159,10 +170,17 @@ void MessageHandler::clearQueue() {
 }
 
 bool MessageHandler::sendBroadcast(const char* content, uint8_t channel) {
+  Serial.printf("MessageHandler::sendBroadcast() - Content: \"%s\", Channel: %d\n", content, channel);
+
   SecureMessage msg;
   if (!createMessage(MSG_BROADCAST, content, channel, nullptr, &msg)) {
+    Serial.println("  ERROR: createMessage failed!");
     return false;
   }
+
+  Serial.printf("  Message created - Type: %d, DeviceID: %s, Username: %s\n",
+                msg.type, msg.deviceID, msg.username);
+  Serial.printf("  Payload: \"%s\", Length: %d\n", msg.payload, msg.msgLen);
 
   // Add to our own queue for display
   DisplayMessage displayMsg;
