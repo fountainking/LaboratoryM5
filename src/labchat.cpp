@@ -521,7 +521,7 @@ void handleLabChatNavigation(char key) {
         exitLabChat();
         extern void drawScreen(bool statusBar);
         currentScreenNumber = 0;
-        currentState = MAIN_MENU;
+        currentState = APPS_MENU;
         drawScreen(true);
         return;
       }

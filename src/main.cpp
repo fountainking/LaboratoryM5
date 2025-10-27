@@ -32,8 +32,7 @@ AppInfo apps[] = {
   {"Fun", TFT_BLUE, 2},
   {"Transfer", TFT_CYAN, 3},
   {"Terminal", TFT_GREEN, 5},
-  {"Music", TFT_MAGENTA, 12},
-  {"LabCHAT", TFT_RED, 16}
+  {"Music", TFT_MAGENTA, 12}
 };
 
 MainItemInfo mainItems[] = {
@@ -41,12 +40,13 @@ MainItemInfo mainItems[] = {
   {"Join Wi-Fi", TFT_CYAN, 10},
   {"The Book", TFT_ORANGE, 7},
   {"Games", TFT_PURPLE, 8},
+  {"LabCHAT", TFT_RED, 16},
   {"Settings", TFT_DARKGREY, 11},
   {"About", TFT_BLUE, 9}
 };
 
-const int totalApps = 6;
-const int totalMainItems = 6;
+const int totalApps = 5;
+const int totalMainItems = 7;
 
 MenuState currentState = MAIN_MENU;
 int currentMainIndex = 0;
