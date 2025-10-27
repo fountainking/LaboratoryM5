@@ -238,8 +238,8 @@ void drawMainChat() {
   }
 
   // Input area (black background with yellow outline, terminal style)
-  M5Cardputer.Display.fillRoundRect(5, 111, 230, 20, 8, TFT_BLACK);
-  M5Cardputer.Display.drawRoundRect(5, 111, 230, 20, 8, TFT_YELLOW);
+  M5Cardputer.Display.fillRoundRect(5, 105, 230, 30, 8, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(5, 105, 230, 30, 8, TFT_YELLOW);
 
   // Terminal gradient colors (smooth ping-pong)
   uint16_t gradientColors[] = {
@@ -276,27 +276,27 @@ void drawMainChat() {
   // Draw prompt "> " and input with smooth gradient
   String fullInput = String("> ") + chatInput;
   String displayInput = fullInput;
-  int maxChars = 36;
+  int maxChars = 18;  // Reduced for larger text
 
   if (displayInput.length() > maxChars) {
     displayInput = displayInput.substring(displayInput.length() - maxChars);
   }
 
   int xPos = 10;
-  int inputY = 117;
+  int inputY = 112;  // Adjusted for larger text
   for (int i = 0; i < displayInput.length(); i++) {
     int actualIndex = (fullInput.length() > maxChars) ? (fullInput.length() - maxChars + i) : i;
-    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextSize(2);  // Changed from 1 to 2
     M5Cardputer.Display.setTextColor(getInputGradientColor(actualIndex));
     M5Cardputer.Display.drawString(String(displayInput[i]).c_str(), xPos, inputY);
-    xPos += 6;
+    xPos += 12;  // Doubled character spacing
   }
 
   // Cursor
   if (cursorVisible) {
-    int cursorX = 10 + (displayInput.length() * 6);
+    int cursorX = 10 + (displayInput.length() * 12);  // Doubled spacing
     if (cursorX < 230) {
-      M5Cardputer.Display.fillRect(cursorX, inputY, 6, 8, getInputGradientColor(fullInput.length()));
+      M5Cardputer.Display.fillRect(cursorX, inputY, 12, 16, getInputGradientColor(fullInput.length()));  // Doubled cursor size
     }
   }
 }
@@ -594,10 +594,15 @@ void handleLabChatNavigation(char key) {
             if (DevicePIN::verify(pinInput)) {
               // Try to load existing network
               if (securityManager.loadFromPreferences()) {
-                espNowManager.init(securityManager.getPMK());
-                chatState = CHAT_MAIN;
-                messageHandler.sendPresence();
-                lastPresenceBroadcast = millis();
+                if (espNowManager.init(securityManager.getPMK())) {
+                  chatState = CHAT_MAIN;
+                  messageHandler.sendPresence();
+                  lastPresenceBroadcast = millis();
+                } else {
+                  // Init failed, clear corrupt prefs and go to network menu
+                  securityManager.leaveNetwork();
+                  chatState = CHAT_NETWORK_MENU;
+                }
               } else {
                 chatState = CHAT_NETWORK_MENU;
               }

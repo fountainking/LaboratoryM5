@@ -58,18 +58,24 @@ bool MessageHandler::createMessage(MessageType type, const char* content,
 
 bool MessageHandler::verifyMessage(const SecureMessage* msg) {
   // Check version
-  if (msg->version != PROTOCOL_VERSION) return false;
+  if (msg->version != PROTOCOL_VERSION) {
+    Serial.printf("  Version mismatch: got %d, expected %d\n", msg->version, PROTOCOL_VERSION);
+    return false;
+  }
 
   // Verify HMAC
   size_t msgSize = sizeof(SecureMessage) - sizeof(msg->hmac);
   if (!securityManager.verifyHMAC((uint8_t*)msg, msgSize, msg->hmac)) {
+    Serial.println("  HMAC verification failed!");
     return false;
   }
 
   // Check timestamp (reject messages more than 5 minutes old/future)
   uint32_t now = time(nullptr);
   int32_t timeDiff = (int32_t)(msg->timestamp - now);
+  Serial.printf("  Timestamp check: msg=%u, now=%u, diff=%d\n", msg->timestamp, now, timeDiff);
   if (abs(timeDiff) > 300) {
+    Serial.println("  Timestamp out of range (>300 seconds)!");
     return false;
   }
 
