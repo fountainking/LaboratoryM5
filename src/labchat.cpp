@@ -229,7 +229,24 @@ void drawMainChat() {
 
     if (displayedCount >= 4) break;
 
-    // Reverse gradient colors (opposite of input)
+    // Get solid user color from device ID hash
+    uint32_t deviceHash = 0;
+    for (int j = 0; j < strlen(msg->deviceID); j++) {
+      deviceHash = deviceHash * 31 + msg->deviceID[j];
+    }
+    uint16_t userColors[] = {
+      0xF800,  // Red
+      0x07E0,  // Green
+      0x001F,  // Blue
+      0x07FF,  // Cyan
+      0xFD20,  // Orange
+      0x780F,  // Purple
+      0x0400,  // Dark Green
+      0xF81F   // Magenta
+    };
+    uint16_t userColor = userColors[deviceHash % 8];
+
+    // Reverse gradient colors for message content
     uint16_t gradientColors[] = {
       0xFFFF,  // White
       0x07FF,  // Cyan
@@ -260,42 +277,46 @@ void drawMainChat() {
       return interpolateColor(gradientColors[colorIndex1], gradientColors[colorIndex2], blend);
     };
 
-    String fullLine = String(msg->username) + ": " + msg->content;
+    String username = String(msg->username) + ": ";
+    String content = msg->content;
 
-    // Draw with gradient, size 2, max 19 chars per line
-    M5Cardputer.Display.setTextSize(2);
-    int maxChars = 19;
-    if (fullLine.length() <= maxChars) {
-      int xPos = 10;
-      for (int c = 0; c < fullLine.length(); c++) {
+    // Draw username with solid color, size 1
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(userColor);
+    int xPos = 10;
+    M5Cardputer.Display.drawString(username.c_str(), xPos, lineY);
+    xPos += username.length() * 6;
+
+    // Draw message content with gradient, max ~32 chars per line after username
+    int remainingChars = 38 - username.length();
+    if (content.length() <= remainingChars) {
+      for (int c = 0; c < content.length(); c++) {
         M5Cardputer.Display.setTextColor(getMessageGradientColor(c));
-        M5Cardputer.Display.drawString(String(fullLine[c]).c_str(), xPos, lineY);
-        xPos += 12;
+        M5Cardputer.Display.drawString(String(content[c]).c_str(), xPos, lineY);
+        xPos += 6;
       }
-      lineY += 18;
+      lineY += 10;
     } else {
       // Split into two lines
-      String line1 = fullLine.substring(0, maxChars);
-      String line2 = fullLine.substring(maxChars);
-      if (line2.length() > maxChars) {
-        line2 = line2.substring(0, maxChars - 3) + "...";
+      String line1 = content.substring(0, remainingChars);
+      String line2 = content.substring(remainingChars);
+      if (line2.length() > 38) {
+        line2 = line2.substring(0, 35) + "...";
       }
-      int xPos = 10;
       for (int c = 0; c < line1.length(); c++) {
         M5Cardputer.Display.setTextColor(getMessageGradientColor(c));
         M5Cardputer.Display.drawString(String(line1[c]).c_str(), xPos, lineY);
-        xPos += 12;
+        xPos += 6;
       }
-      lineY += 16;
+      lineY += 8;
       xPos = 10;
       for (int c = 0; c < line2.length(); c++) {
-        M5Cardputer.Display.setTextColor(getMessageGradientColor(maxChars + c));
+        M5Cardputer.Display.setTextColor(getMessageGradientColor(remainingChars + c));
         M5Cardputer.Display.drawString(String(line2[c]).c_str(), xPos, lineY);
-        xPos += 12;
+        xPos += 6;
       }
-      lineY += 18;
+      lineY += 10;
     }
-    M5Cardputer.Display.setTextSize(1);
 
     displayedCount++;
   }
