@@ -390,15 +390,12 @@ void exitLabChat() {
 void updateLabChat() {
   if (!chatActive) return;
 
-  // Cursor blink
+  // Cursor blink (don't redraw entire screen, just toggle cursor state)
   if (millis() - lastCursorBlink > 500) {
     cursorVisible = !cursorVisible;
     lastCursorBlink = millis();
-    if (chatState == CHAT_MAIN || chatState == CHAT_SETUP_PIN ||
-        chatState == CHAT_ENTER_PIN || chatState == CHAT_CREATE_NETWORK ||
-        chatState == CHAT_JOIN_NETWORK) {
-      drawLabChat();
-    }
+    // Don't call drawLabChat() here - causes constant flickering
+    // The cursor is drawn as part of the normal draw cycle when input changes
   }
 
   // Broadcast presence every 30 seconds

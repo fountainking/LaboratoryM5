@@ -2051,6 +2051,15 @@ void loop() {
 
       // Handle LabCHAT input
       if (currentState == SCREEN_VIEW && currentScreenNumber == 16 && chatActive) {
+        // Handle Enter key separately
+        if (status.enter) {
+          handleLabChatNavigation('\n');
+        }
+        // Handle Del key
+        if (status.del) {
+          handleLabChatNavigation(127);
+        }
+        // Handle character input
         for (auto key : status.word) {
           handleLabChatNavigation(key);
         }
