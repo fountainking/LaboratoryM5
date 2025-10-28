@@ -229,22 +229,20 @@ void drawMainChat() {
 
     if (displayedCount >= 4) break;
 
-    // Get solid user color from device ID hash
+    // Get solid user color from device ID hash (bright colors for black bg)
     uint32_t deviceHash = 0;
     for (int j = 0; j < strlen(msg->deviceID); j++) {
       deviceHash = deviceHash * 31 + msg->deviceID[j];
     }
     uint16_t userColors[] = {
-      0xF800,  // Red
-      0x07E0,  // Green
-      0x001F,  // Blue
+      0xFFE0,  // Yellow
       0x07FF,  // Cyan
+      0x07E0,  // Green
       0xFD20,  // Orange
-      0x780F,  // Purple
-      0x0400,  // Dark Green
-      0xF81F   // Magenta
+      0xF81F,  // Magenta
+      0xFFFF   // White
     };
-    uint16_t userColor = userColors[deviceHash % 8];
+    uint16_t userColor = userColors[deviceHash % 6];
 
     // Reverse gradient colors for message content
     uint16_t gradientColors[] = {
@@ -280,22 +278,23 @@ void drawMainChat() {
     String username = String(msg->username) + ": ";
     String content = msg->content;
 
-    // Draw username with solid color, size 1
-    M5Cardputer.Display.setTextSize(1);
+    // Draw username with solid color, size 2
+    M5Cardputer.Display.setTextSize(2);
     M5Cardputer.Display.setTextColor(userColor);
     int xPos = 10;
     M5Cardputer.Display.drawString(username.c_str(), xPos, lineY);
-    xPos += username.length() * 6;
+    xPos += username.length() * 12;
 
-    // Draw message content with gradient, max ~32 chars per line after username
-    int remainingChars = 38 - username.length();
+    // Peppermint pattern - alternate red/white per message
+    uint16_t messageColor = (i % 2 == 0) ? TFT_RED : TFT_WHITE;
+
+    // Draw message content in solid color (peppermint), size 1, max ~18 chars after username
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(messageColor);
+    int remainingChars = 32 - (username.length() * 2); // Account for size 2 username
     if (content.length() <= remainingChars) {
-      for (int c = 0; c < content.length(); c++) {
-        M5Cardputer.Display.setTextColor(getMessageGradientColor(c));
-        M5Cardputer.Display.drawString(String(content[c]).c_str(), xPos, lineY);
-        xPos += 6;
-      }
-      lineY += 10;
+      M5Cardputer.Display.drawString(content.c_str(), xPos, lineY + 4);
+      lineY += 18;
     } else {
       // Split into two lines
       String line1 = content.substring(0, remainingChars);
@@ -303,18 +302,9 @@ void drawMainChat() {
       if (line2.length() > 38) {
         line2 = line2.substring(0, 35) + "...";
       }
-      for (int c = 0; c < line1.length(); c++) {
-        M5Cardputer.Display.setTextColor(getMessageGradientColor(c));
-        M5Cardputer.Display.drawString(String(line1[c]).c_str(), xPos, lineY);
-        xPos += 6;
-      }
-      lineY += 8;
-      xPos = 10;
-      for (int c = 0; c < line2.length(); c++) {
-        M5Cardputer.Display.setTextColor(getMessageGradientColor(remainingChars + c));
-        M5Cardputer.Display.drawString(String(line2[c]).c_str(), xPos, lineY);
-        xPos += 6;
-      }
+      M5Cardputer.Display.drawString(line1.c_str(), xPos, lineY + 4);
+      lineY += 16;
+      M5Cardputer.Display.drawString(line2.c_str(), 10, lineY);
       lineY += 10;
     }
 
@@ -460,19 +450,16 @@ void drawChannelSwitch() {
   M5Cardputer.Display.drawRoundRect(40, 45, 160, 50, 10, TFT_RED);
   M5Cardputer.Display.drawRoundRect(41, 46, 158, 48, 9, TFT_RED);
 
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("Current Channel:", 65, 52);
-
   M5Cardputer.Display.setTextSize(2);
   String channelName = channelNames[chatCurrentChannel];
-  M5Cardputer.Display.drawString(("#" + channelName).c_str(), 80, 68);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.drawString(("#" + channelName).c_str(), 70, 60);
 
   M5Cardputer.Display.setTextSize(1);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString("Press 0-9", 95, 105);
+  M5Cardputer.Display.drawString("< Up/Down >", 85, 105);
 
-  drawNavHint("`=Back", 100, 118);
+  drawNavHint("`=Back  Enter=Select", 60, 118);
 }
 
 void drawDMSelect() {
@@ -874,9 +861,13 @@ void handleLabChatNavigation(char key) {
     }
 
     case CHAT_CHANNEL_SWITCH: {
-      if (key >= '0' && key <= '9') {
-        chatCurrentChannel = key - '0';
+      if (key == ';') { // Up
+        chatCurrentChannel = (chatCurrentChannel - 1 + 10) % 10;
         scrollPosition = 0;
+      } else if (key == '.') { // Down
+        chatCurrentChannel = (chatCurrentChannel + 1) % 10;
+        scrollPosition = 0;
+      } else if (key == '\n') { // Enter - confirm
         chatState = CHAT_SETTINGS;
       } else if (key == '`') {
         chatState = CHAT_SETTINGS;
