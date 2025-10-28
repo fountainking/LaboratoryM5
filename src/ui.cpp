@@ -361,16 +361,16 @@ void drawStatusBar(bool inverted) {
   // Message notification indicator (heart icon over battery)
   extern bool hasUnreadMessages;
   if (hasUnreadMessages) {
-    // Draw a small heart icon in top right corner
-    int heartX = 220;
-    int heartY = 7;
-    M5Cardputer.Display.fillCircle(heartX, heartY + 2, 2, TFT_RED);
-    M5Cardputer.Display.fillCircle(heartX + 4, heartY + 2, 2, TFT_RED);
+    // Draw a small heart icon centered on battery
+    int heartX = 205;
+    int heartY = 9;
+    M5Cardputer.Display.fillCircle(heartX, heartY + 2, 2, TFT_BLUE);
+    M5Cardputer.Display.fillCircle(heartX + 4, heartY + 2, 2, TFT_BLUE);
     M5Cardputer.Display.fillTriangle(
       heartX - 2, heartY + 3,
       heartX + 6, heartY + 3,
       heartX + 2, heartY + 9,
-      TFT_RED
+      TFT_BLUE
     );
   }
 

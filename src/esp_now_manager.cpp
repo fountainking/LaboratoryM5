@@ -1,4 +1,5 @@
 #include "esp_now_manager.h"
+#include "message_handler.h"
 #include <esp_wifi.h>
 
 ESPNowManager espNowManager;
@@ -149,6 +150,10 @@ bool ESPNowManager::addPeer(const uint8_t* mac, const char* deviceID, const char
   peers[peerCount].lastSeen = millis();
   peers[peerCount].active = true;
   peerCount++;
+
+  // Announce user arrival (system message)
+  String joinMsg = String(username) + " joined";
+  messageHandler.addSystemMessage(joinMsg.c_str());
 
   return true;
 }

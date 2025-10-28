@@ -77,6 +77,9 @@ public:
   bool sendDirect(const char* targetID, const char* content);
   bool sendPresence(); // Announce presence to network
 
+  // Local system messages (not sent over network)
+  void addSystemMessage(const char* message, uint8_t channel = 0);
+
   // Set callback for real-time display updates
   void setMessageCallback(void (*callback)()) { onMessageAddedCallback = callback; }
 };

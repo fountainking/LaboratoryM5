@@ -21,6 +21,11 @@ unsigned long lastPresenceBroadcast = 0;
 String dmTargetID = "";
 String dmTargetUsername = "";
 bool hasUnreadMessages = false;
+String lastNetworkName = "";  // Track previous network for message persistence
+
+// Interrupt-safe flags for callback → main loop communication
+volatile bool needsRedraw = false;
+volatile bool needsBeep = false;
 
 // Channel names
 String channelNames[10] = {
@@ -211,7 +216,10 @@ void drawMainChat() {
 
     // Filter: if in DM mode, only show DMs with target, otherwise show channel messages
     bool shouldDisplay = false;
-    if (dmTargetID.length() > 0) {
+    if (msg->type == MSG_SYSTEM) {
+      // Always show system messages
+      shouldDisplay = (msg->channel == chatCurrentChannel || dmTargetID.length() == 0);
+    } else if (dmTargetID.length() > 0) {
       // DM mode: show only direct messages with this user
       shouldDisplay = (msg->type == MSG_DIRECT);
     } else {
@@ -235,11 +243,7 @@ void drawMainChat() {
     DisplayMessage* msg = messageHandler.getQueuedMessage(i);
     if (!msg) continue;
 
-    // Get solid user color from device ID hash (fire colors for black bg)
-    uint32_t deviceHash = 0;
-    for (int j = 0; j < strlen(msg->deviceID); j++) {
-      deviceHash = deviceHash * 31 + msg->deviceID[j];
-    }
+    // Get solid user color from sequential peer index (fire colors for black bg)
     uint16_t userColors[] = {
       0xFFE0,  // Yellow
       0xFD20,  // Orange
@@ -247,7 +251,28 @@ void drawMainChat() {
       0x07FF,  // Baby Blue (Cyan)
       0x001F   // Blue
     };
-    uint16_t userColor = userColors[deviceHash % 5];
+
+    // Find peer index for this device to assign unique sequential color
+    int colorIndex = 0;
+    PeerDevice* peer = espNowManager.findPeerByDeviceID(msg->deviceID);
+    if (peer) {
+      // Find the index of this peer in the peer list
+      for (int p = 0; p < espNowManager.getPeerCount(); p++) {
+        PeerDevice* checkPeer = espNowManager.getPeer(p);
+        if (checkPeer && strcmp(checkPeer->deviceID, msg->deviceID) == 0) {
+          colorIndex = p % 5;
+          break;
+        }
+      }
+    } else {
+      // Fallback to hash if peer not found (shouldn't happen)
+      uint32_t deviceHash = 0;
+      for (int j = 0; j < strlen(msg->deviceID); j++) {
+        deviceHash = deviceHash * 31 + msg->deviceID[j];
+      }
+      colorIndex = deviceHash % 5;
+    }
+    uint16_t userColor = userColors[colorIndex];
 
     // Reverse gradient colors for message content
     uint16_t gradientColors[] = {
@@ -279,6 +304,35 @@ void drawMainChat() {
 
       return interpolateColor(gradientColors[colorIndex1], gradientColors[colorIndex2], blend);
     };
+
+    // System messages: display centered with terminal gradient
+    if (msg->type == MSG_SYSTEM) {
+      M5Cardputer.Display.setTextSize(1);
+      String systemMsg = "* " + msg->content + " *";
+      int textWidth = systemMsg.length() * 6;
+      int centerX = 120 - (textWidth / 2);
+
+      // Terminal input gradient - more yellow emphasis
+      uint16_t sysGradientColors[] = {0xFFE0, 0xFFE0, 0xFD20, 0xF800, 0x780F, 0x001F, 0x07FF, 0xFFFF};
+
+      for (int c = 0; c < systemMsg.length(); c++) {
+        int cycleLength = 80;
+        int posInCycle = c % cycleLength;
+        float t = (posInCycle < 40) ? ((float)posInCycle / 40.0f) : ((float)(80 - posInCycle) / 40.0f);
+
+        float colorPosition = t * 7.0f;
+        int colorIndex1 = (int)colorPosition;
+        int colorIndex2 = (colorIndex1 + 1) % 8;
+        float blend = colorPosition - colorIndex1;
+
+        uint16_t color = interpolateColor(sysGradientColors[colorIndex1], sysGradientColors[colorIndex2], blend);
+        M5Cardputer.Display.setTextColor(color);
+        M5Cardputer.Display.drawChar(systemMsg.charAt(c), centerX + (c * 6), lineY);
+      }
+
+      lineY += 10;
+      continue;
+    }
 
     String username = String(msg->username) + ": ";
     String content = msg->content;
@@ -568,14 +622,15 @@ void drawRenameChannel() {
 // ============================================================================
 
 // Callback for real-time message display updates
+// CRITICAL: This runs in ESP-NOW interrupt context - NO blocking operations!
 void onMessageReceived() {
   if (chatActive && chatState == CHAT_MAIN) {
     scrollPosition = 0; // Auto-scroll to latest message
-    drawLabChat();
+    needsRedraw = true; // Set flag for main loop to handle
   } else {
-    // Not in chat - set unread flag and beep
+    // Not in chat - set flags for main loop to handle
     hasUnreadMessages = true;
-    M5Cardputer.Speaker.tone(1000, 100); // 1kHz beep for 100ms
+    needsBeep = true;
   }
 }
 
@@ -602,10 +657,30 @@ void exitLabChat() {
   chatActive = false;
   // Keep ESP-NOW running in background to receive messages
   // Only deinit when explicitly leaving network in settings
+
+  // Clear screen to prevent display artifacts on return to main menu
+  M5Cardputer.Display.fillScreen(TFT_BLACK);
 }
 
 void updateLabChat() {
+  // Handle beep notification FIRST (works even when chat inactive)
+  if (needsBeep) {
+    needsBeep = false;
+    // Descending then ascending chirp - more interesting
+    M5Cardputer.Speaker.tone(1400, 50);
+    delay(60);
+    M5Cardputer.Speaker.tone(1000, 50);
+    delay(60);
+    M5Cardputer.Speaker.tone(1600, 90);
+  }
+
   if (!chatActive) return;
+
+  // Handle redraw flag (only when chat active)
+  if (needsRedraw) {
+    needsRedraw = false;
+    drawLabChat();
+  }
 
   // Cursor blink (don't redraw entire screen, just toggle cursor state)
   if (millis() - lastCursorBlink > 500) {
@@ -754,20 +829,40 @@ void handleLabChatNavigation(char key) {
             networkPasswordInput = "";
           } else if (networkPasswordInput.length() >= 8) {
             // Second step: create network
+            String oldNetwork = String(securityManager.getNetworkName());
             if (securityManager.createNetwork(networkPasswordInput, networkNameInput)) {
+              String newNetwork = String(securityManager.getNetworkName());
+
+              // Only clear messages if switching to a different network
+              if (oldNetwork != newNetwork && oldNetwork.length() > 0) {
+                messageHandler.clearQueue();
+              }
+
+              espNowManager.deinit();
               espNowManager.init(securityManager.getPMK());
               chatState = CHAT_MAIN;
               messageHandler.sendPresence();
               lastPresenceBroadcast = millis();
+              lastNetworkName = newNetwork;
             }
           }
         } else { // JOIN
           if (networkPasswordInput.length() >= 8) {
+            String oldNetwork = String(securityManager.getNetworkName());
             if (securityManager.joinNetwork(networkPasswordInput)) {
+              String newNetwork = String(securityManager.getNetworkName());
+
+              // Only clear messages if switching to a different network
+              if (oldNetwork != newNetwork && oldNetwork.length() > 0) {
+                messageHandler.clearQueue();
+              }
+
+              espNowManager.deinit();
               espNowManager.init(securityManager.getPMK());
               chatState = CHAT_MAIN;
               messageHandler.sendPresence();
               lastPresenceBroadcast = millis();
+              lastNetworkName = newNetwork;
             }
           }
         }

@@ -309,7 +309,7 @@ void drawThemePlaceholder() {
 
 void handleSettingsNavigation(char key) {
   if (settingsState == SETTINGS_MAIN) {
-    if (key == ',') {
+    if (key == ',' || key == ';') {
       if (settingsMenuIndex > 0) {
         settingsMenuIndex--;
         if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 30);
@@ -323,7 +323,7 @@ void handleSettingsNavigation(char key) {
       }
     }
   } else if (settingsState == SETTINGS_TIMEZONE) {
-    if (key == ',') {
+    if (key == ',' || key == ';') {
       if (timezoneSelectIndex > 0) {
         timezoneSelectIndex--;
         if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 30);

@@ -241,6 +241,18 @@ bool MessageHandler::sendPresence() {
   return espNowManager.sendBroadcast((uint8_t*)&msg, sizeof(msg));
 }
 
+void MessageHandler::addSystemMessage(const char* message, uint8_t channel) {
+  DisplayMessage displayMsg;
+  strncpy(displayMsg.deviceID, "SYSTEM", 15);
+  strncpy(displayMsg.username, "System", 15);
+  displayMsg.channel = channel;
+  displayMsg.type = MSG_SYSTEM;
+  displayMsg.timestamp = millis();
+  displayMsg.content = String(message);
+  displayMsg.isOwn = false;
+  addToQueue(displayMsg);
+}
+
 // ESP-NOW callback implementation
 void onMessageReceived(const uint8_t* mac, const uint8_t* data, int len) {
   messageHandler.handleReceivedMessage(mac, data, len);

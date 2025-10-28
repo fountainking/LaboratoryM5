@@ -248,15 +248,15 @@ void drawFileManagerHeader() {
   // Message notification indicator (heart icon in top right)
   extern bool hasUnreadMessages;
   if (hasUnreadMessages) {
-    int heartX = 220;
-    int heartY = 10;
-    M5Cardputer.Display.fillCircle(heartX, heartY + 2, 2, TFT_RED);
-    M5Cardputer.Display.fillCircle(heartX + 4, heartY + 2, 2, TFT_RED);
+    int heartX = 205;
+    int heartY = 12;
+    M5Cardputer.Display.fillCircle(heartX, heartY + 2, 2, TFT_BLUE);
+    M5Cardputer.Display.fillCircle(heartX + 4, heartY + 2, 2, TFT_BLUE);
     M5Cardputer.Display.fillTriangle(
       heartX - 2, heartY + 3,
       heartX + 6, heartY + 3,
       heartX + 2, heartY + 9,
-      TFT_RED
+      TFT_BLUE
     );
   }
 }
