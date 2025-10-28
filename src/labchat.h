@@ -64,4 +64,7 @@ extern unsigned long lastPresenceBroadcast;
 extern String dmTargetID;  // Device ID for DM mode (empty = broadcast)
 extern String dmTargetUsername;  // Username for DM display
 
+// Global notification flag
+extern bool hasUnreadMessages;
+
 #endif

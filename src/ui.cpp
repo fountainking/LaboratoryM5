@@ -358,6 +358,22 @@ void drawStatusBar(bool inverted) {
     M5Cardputer.Display.drawRoundRect(180+i, 5+i, 55-i*2, 18-i*2, 9-i, fgColor);
   }
 
+  // Message notification indicator (heart icon over battery)
+  extern bool hasUnreadMessages;
+  if (hasUnreadMessages) {
+    // Draw a small heart icon in top right corner
+    int heartX = 220;
+    int heartY = 7;
+    M5Cardputer.Display.fillCircle(heartX, heartY + 2, 2, TFT_RED);
+    M5Cardputer.Display.fillCircle(heartX + 4, heartY + 2, 2, TFT_RED);
+    M5Cardputer.Display.fillTriangle(
+      heartX - 2, heartY + 3,
+      heartX + 6, heartY + 3,
+      heartX + 2, heartY + 9,
+      TFT_RED
+    );
+  }
+
   // Background service indicators (colored circles between time and battery)
 #if DEBUG_ENABLE_BG_SERVICES
   ServiceStatus status = getServiceStatus();

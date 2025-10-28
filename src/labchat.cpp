@@ -20,6 +20,7 @@ bool chatActive = false;
 unsigned long lastPresenceBroadcast = 0;
 String dmTargetID = "";
 String dmTargetUsername = "";
+bool hasUnreadMessages = false;
 
 // Channel names
 String channelNames[10] = {
@@ -571,11 +572,15 @@ void onMessageReceived() {
   if (chatActive && chatState == CHAT_MAIN) {
     scrollPosition = 0; // Auto-scroll to latest message
     drawLabChat();
+  } else {
+    // Not in chat - set unread flag
+    hasUnreadMessages = true;
   }
 }
 
 void enterLabChat() {
   chatActive = true;
+  hasUnreadMessages = false; // Clear notification when entering chat
 
   // Register callback for real-time display updates
   messageHandler.setMessageCallback(onMessageReceived);
