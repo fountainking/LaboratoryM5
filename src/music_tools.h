@@ -7,7 +7,8 @@
 enum MusicToolsState {
   TOOLS_MENU,
   GUITAR_TUNER,
-  AUDIO_VISUALIZER
+  AUDIO_VISUALIZER,
+  LAB_BEAT_MACHINE
 };
 
 // Guitar tuner functions

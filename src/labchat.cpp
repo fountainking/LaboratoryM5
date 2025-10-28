@@ -658,8 +658,9 @@ void exitLabChat() {
   // Keep ESP-NOW running in background to receive messages
   // Only deinit when explicitly leaving network in settings
 
-  // Clear screen to prevent display artifacts on return to main menu
-  M5Cardputer.Display.fillScreen(TFT_BLACK);
+  // Clear screen with color matching UI inversion state
+  extern bool uiInverted;
+  M5Cardputer.Display.fillScreen(uiInverted ? TFT_BLACK : TFT_WHITE);
 }
 
 void updateLabChat() {

@@ -1,6 +1,7 @@
 #include "music_tools.h"
 #include "ui.h"
 #include "settings.h"
+#include "lbm.h"
 
 MusicToolsState musicToolsState = TOOLS_MENU;
 int musicToolsMenuIndex = 0;
@@ -150,8 +151,8 @@ void drawMusicToolsMenu() {
   // No title - removed
 
   // Menu items
-  const char* menuItems[] = {"Guitar Tuner", "Equalizer"};
-  const int menuCount = 2;
+  const char* menuItems[] = {"Guitar Tuner", "Equalizer", "Lab Beat Machine"};
+  const int menuCount = 3;
 
   M5Cardputer.Display.setTextSize(1);
   int yPos = 35;  // Lifted up
@@ -163,7 +164,7 @@ void drawMusicToolsMenu() {
       M5Cardputer.Display.setTextColor(TFT_BLACK);
     } else {
       // Use different purple shades
-      uint16_t itemColor = (i == 0) ? 0xF81F : 0xC99F;  // Bright or light purple
+      uint16_t itemColor = (i == 0) ? 0xF81F : (i == 1) ? 0xC99F : 0xA11F;  // Bright, light, medium purple
       M5Cardputer.Display.setTextColor(itemColor);
     }
     M5Cardputer.Display.drawString(menuItems[i], 15, yPos);
@@ -450,11 +451,14 @@ void handleMusicToolsNavigation(char key) {
       }
     } else if (key == '.' || key == '/') {
       // Down
-      if (musicToolsMenuIndex < 1) {  // Now have 2 items
+      if (musicToolsMenuIndex < 2) {  // Now have 3 items
         musicToolsMenuIndex++;
         if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
         drawMusicToolsMenu();
       }
     }
+  } else if (musicToolsState == LAB_BEAT_MACHINE) {
+    // Pass navigation to LBM
+    handleLBMNavigation(key);
   }
 }

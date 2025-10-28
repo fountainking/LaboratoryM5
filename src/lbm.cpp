@@ -1,0 +1,713 @@
+#include "lbm.h"
+#include <M5Cardputer.h>
+#include <AudioOutputI2S.h>
+#include <AudioGeneratorMP3.h>
+#include <AudioFileSourceSD.h>
+#include "audio_manager.h"
+
+// Track colors from mockups
+uint16_t trackColors[LBM_TRACKS] = {
+  0xFDA0,  // Track 1: Orange/tan (kick)
+  0xF800,  // Track 2: Red (snare)
+  0x001F,  // Track 3: Blue (hat)
+  0x051F,  // Track 4: Light blue (tom)
+  0xFFE0,  // Track 5: Yellow (melody 1)
+  0xAFE0,  // Track 6: Yellow-green (melody 2)
+  0x07E0,  // Track 7: Green (melody 3)
+  0x87F0   // Track 8: Light green (melody 4)
+};
+
+const char* trackNames[LBM_TRACKS] = {
+  "kick", "snare", "hat", "tom",
+  "notes", "notes", "notes", "notes"
+};
+
+// Global state
+Pattern currentPattern;
+int currentTrack = 0;
+int cursorX = 0;
+int cursorY = 0;
+bool isPlaying = false;
+unsigned long lastStepTime = 0;
+int playbackStep = 0;
+bool lbmActive = false;
+
+// UI state
+enum LBMUIState {
+  UI_MAIN,       // Main sequencer view
+  UI_BPM_INPUT,  // Typing BPM value
+  UI_SAVE,       // Save dialog
+  UI_EXPORT      // Export dialog
+};
+
+// Navigation items (list-based, spatial)
+enum LBMNavItem {
+  NAV_TRACK = 0,   // Top row left
+  NAV_SOUND,       // Second row left
+  NAV_NUDGE,       // Second row middle
+  NAV_SPEED,       // Second row right
+  NAV_BPM,         // Top row right (tempo)
+  NAV_TAP,         // Top row far right
+  NAV_STEPS,       // Step grid
+  NAV_MODE         // POLY/808/USER button
+};
+
+LBMUIState uiState = UI_MAIN;
+LBMNavItem selectedItem = NAV_SOUND;  // Start on sound
+bool editMode = false;  // Editing sound/nudge/speed
+String bpmInput = "";
+
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
+void enterLBM() {
+  lbmActive = true;
+  clearPattern();
+  currentPattern.bpm = 120;
+  currentPattern.mode = MODE_POLY;
+  strcpy(currentPattern.name, "Pattern1");
+
+  // Initialize speeds to 1x
+  for (int i = 0; i < LBM_TRACKS; i++) {
+    currentPattern.speed[i] = 1.0f;
+  }
+
+  selectedItem = NAV_SOUND;  // Start with sound selected
+  editMode = false;
+  cursorX = 0;
+  cursorY = 0;
+
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  drawLBM();
+}
+
+void exitLBM() {
+  lbmActive = false;
+  isPlaying = false;
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+}
+
+void clearPattern() {
+  for (int t = 0; t < LBM_TRACKS; t++) {
+    currentPattern.nudge[t] = 0;
+    currentPattern.speed[t] = 1.0f;
+    for (int s = 0; s < LBM_STEPS; s++) {
+      currentPattern.steps[t][s] = false;
+      currentPattern.notes[t][s] = 60; // Middle C
+    }
+  }
+}
+
+// ============================================================================
+// DRAWING FUNCTIONS (SELECTIVE UPDATES)
+// ============================================================================
+
+void drawTrackHeader() {
+  // Clear header area (up to steps)
+  M5Cardputer.Display.fillRect(0, 0, 240, 55, TFT_WHITE);
+
+  M5Cardputer.Display.setTextSize(1);
+  int startX = 30;  // Left-align with steps
+
+  // ROW 1: Track, BPM, TAP (Y=18) - 2px margin from row 2
+  int row1Y = 18;
+  int boxY1 = row1Y - 3;
+
+  // Track (with box, enter to engage)
+  String trackLabel = "track: " + String(currentTrack + 1);
+  int trackWidth = trackLabel.length() * 6 + 8;
+  M5Cardputer.Display.fillRoundRect(startX, boxY1, trackWidth, 18, 7, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(startX, boxY1, trackWidth, 18, 7, TFT_BLACK);
+  if (selectedItem == NAV_TRACK) {
+    M5Cardputer.Display.drawRoundRect(startX-1, boxY1-1, trackWidth+2, 20, 7, trackColors[currentTrack]);
+    M5Cardputer.Display.drawRoundRect(startX-2, boxY1-2, trackWidth+4, 22, 7, trackColors[currentTrack]);
+  }
+  M5Cardputer.Display.setTextColor(editMode && selectedItem == NAV_TRACK ? trackColors[currentTrack] : TFT_BLACK);
+  M5Cardputer.Display.drawString(trackLabel.c_str(), startX+4, row1Y);
+
+  // BPM
+  int bpmX = startX + trackWidth + 8;
+  String bpmLabel = String(currentPattern.bpm) + " BPM";
+  M5Cardputer.Display.setTextColor(selectedItem == NAV_BPM ? trackColors[currentTrack] : TFT_BLACK);
+  M5Cardputer.Display.drawString(bpmLabel.c_str(), bpmX, row1Y);
+
+  // TAP
+  int tapX = bpmX + 60;
+  M5Cardputer.Display.fillRoundRect(tapX, boxY1, 40, 18, 7, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(tapX, boxY1, 40, 18, 7, selectedItem == NAV_TAP ? trackColors[currentTrack] : TFT_BLACK);
+  M5Cardputer.Display.setTextColor(selectedItem == NAV_TAP ? trackColors[currentTrack] : TFT_BLACK);
+  M5Cardputer.Display.drawString("TAP", tapX+10, row1Y);
+
+  // ROW 2: Sound, Nudge, Speed (Y=38) - 2px margin to steps
+  int row2Y = 38;
+  int boxY = row2Y - 3;
+
+  // Sound pill
+  String sampleLabel = "< " + String(trackNames[currentTrack]) + " >";
+  int labelWidth = sampleLabel.length() * 6 + 10;
+  M5Cardputer.Display.fillRoundRect(startX, boxY, labelWidth, 18, 9, trackColors[currentTrack]);
+  if (selectedItem == NAV_SOUND) {
+    M5Cardputer.Display.drawRoundRect(startX-1, boxY-1, labelWidth+2, 20, 9, TFT_BLACK);
+    M5Cardputer.Display.drawRoundRect(startX-2, boxY-2, labelWidth+4, 22, 9, TFT_BLACK);
+  }
+  M5Cardputer.Display.setTextColor(TFT_WHITE);
+  M5Cardputer.Display.drawString(sampleLabel.c_str(), startX+5, row2Y);
+
+  // Nudge
+  int nudgeX = startX + labelWidth + 8;
+  String nudgeLabel = "nudge:" + String(currentPattern.nudge[currentTrack]);
+  int nudgeWidth = nudgeLabel.length() * 6 + 8;
+  M5Cardputer.Display.fillRoundRect(nudgeX, boxY, nudgeWidth, 18, 7, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(nudgeX, boxY, nudgeWidth, 18, 7, TFT_BLACK);
+  if (selectedItem == NAV_NUDGE) {
+    M5Cardputer.Display.drawRoundRect(nudgeX-1, boxY-1, nudgeWidth+2, 20, 7, trackColors[currentTrack]);
+    M5Cardputer.Display.drawRoundRect(nudgeX-2, boxY-2, nudgeWidth+4, 22, 7, trackColors[currentTrack]);
+  }
+  M5Cardputer.Display.setTextColor(editMode && selectedItem == NAV_NUDGE ? trackColors[currentTrack] : TFT_BLACK);
+  M5Cardputer.Display.drawString(nudgeLabel.c_str(), nudgeX+4, row2Y);
+
+  // Speed
+  int speedX = nudgeX + nudgeWidth + 8;
+  String speedLabel = String(currentPattern.speed[currentTrack], 1) + "x";
+  int speedWidth = speedLabel.length() * 6 + 8;
+  M5Cardputer.Display.fillRoundRect(speedX, boxY, speedWidth, 18, 7, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(speedX, boxY, speedWidth, 18, 7, TFT_BLACK);
+  if (selectedItem == NAV_SPEED) {
+    M5Cardputer.Display.drawRoundRect(speedX-1, boxY-1, speedWidth+2, 20, 7, trackColors[currentTrack]);
+    M5Cardputer.Display.drawRoundRect(speedX-2, boxY-2, speedWidth+4, 22, 7, trackColors[currentTrack]);
+  }
+  M5Cardputer.Display.setTextColor(editMode && selectedItem == NAV_SPEED ? trackColors[currentTrack] : TFT_BLACK);
+  M5Cardputer.Display.drawString(speedLabel.c_str(), speedX+4, row2Y);
+}
+
+void drawStepGrid() {
+  // Clear step area (start after sound row boxes, end before POLY button)
+  M5Cardputer.Display.fillRect(0, 54, 240, 33, TFT_WHITE);
+
+  // Draw 8x2 grid of steps (16 total)
+  int startX = 30;  // Left-aligned with sound
+  int startY = 56;  // Below controls with margin (1px lower)
+  int stepWidth = 20;
+  int stepHeight = 14;
+  int spacing = 2;
+
+  for (int row = 0; row < 2; row++) {
+    for (int col = 0; col < 8; col++) {
+      int stepIndex = row * 8 + col;
+      int x = startX + col * (stepWidth + spacing);
+      int y = startY + row * (stepHeight + spacing);
+
+      // Fill only when step is toggled ON (active in pattern)
+      uint16_t fillColor = TFT_WHITE;  // Default: white background
+      bool isSelected = (selectedItem == NAV_STEPS && col == cursorX && row == cursorY);
+
+      if (currentPattern.steps[currentTrack][stepIndex]) {
+        fillColor = trackColors[currentTrack];  // Filled = toggled ON
+      }
+
+      // Draw step (rounder corners)
+      M5Cardputer.Display.fillRoundRect(x, y, stepWidth, stepHeight, 7, fillColor);
+
+      // Draw outline (black)
+      M5Cardputer.Display.drawRoundRect(x, y, stepWidth, stepHeight, 7, TFT_BLACK);
+
+      // Draw selection indicator with track color outline
+      if (isSelected) {
+        M5Cardputer.Display.drawRoundRect(x-1, y-1, stepWidth+2, stepHeight+2, 7, trackColors[currentTrack]);
+        M5Cardputer.Display.drawRoundRect(x-2, y-2, stepWidth+4, stepHeight+4, 7, trackColors[currentTrack]);
+      }
+
+      // Draw step number (1-16) in white text
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      String stepNum = String(stepIndex + 1);
+      int textX = x + (stepWidth / 2) - (stepNum.length() * 3);
+      int textY = y + (stepHeight / 2) - 4;
+      M5Cardputer.Display.drawString(stepNum.c_str(), textX, textY);
+
+      // Draw playback indicator if playing
+      if (isPlaying && stepIndex == playbackStep) {
+        M5Cardputer.Display.drawRoundRect(x+1, y+1, stepWidth-2, stepHeight-2, 5, TFT_RED);
+      }
+    }
+  }
+}
+
+void drawSoundBanks() {
+  // Mode button left-aligned with steps (Y=88) - 2px margin from steps
+  M5Cardputer.Display.fillRect(0, 88, 240, 22, TFT_WHITE);
+
+  int btnY = 88;
+  int btnW = 45;
+  int btnH = 18;
+  int startX = 30;  // Left-align with steps
+
+  // Determine mode label
+  const char* modeLabel = "POLY";
+  if (currentPattern.mode == MODE_808) modeLabel = "808";
+  else if (currentPattern.mode == MODE_USER) modeLabel = "USER";
+
+  M5Cardputer.Display.fillRoundRect(startX, btnY, btnW, btnH, 8, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(startX, btnY, btnW, btnH, 8, TFT_BLACK);
+
+  // Highlight if selected
+  if (selectedItem == NAV_MODE) {
+    M5Cardputer.Display.drawRoundRect(startX-1, btnY-1, btnW+2, btnH+2, 8, trackColors[currentTrack]);
+    M5Cardputer.Display.drawRoundRect(startX-2, btnY-2, btnW+4, btnH+4, 8, trackColors[currentTrack]);
+  }
+
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.drawString(modeLabel, startX+10, btnY + 5);
+}
+
+void drawControls() {
+  // Help text at bottom, centered (Y=115)
+  M5Cardputer.Display.fillRect(0, 115, 240, 15, TFT_WHITE);
+  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.setTextSize(1);
+  String helpText = "space=play, esc=back, s=save";
+  int textWidth = helpText.length() * 6;
+  int centerX = (240 - textWidth) / 2;
+  M5Cardputer.Display.drawString(helpText.c_str(), centerX, 117);
+}
+
+void drawBPMInput() {
+  // Draw BPM input overlay
+  M5Cardputer.Display.fillRoundRect(50, 45, 140, 40, 10, TFT_WHITE);
+  M5Cardputer.Display.drawRoundRect(50, 45, 140, 40, 10, TFT_BLACK);
+
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.drawString("BPM:", 60, 50);
+  M5Cardputer.Display.drawString(bpmInput.c_str(), 60, 65);
+
+  // Cursor
+  int cursorX = 60 + bpmInput.length() * 6;
+  M5Cardputer.Display.drawString("_", cursorX, 65);
+}
+
+void drawLBM() {
+  if (uiState == UI_MAIN) {
+    drawTrackHeader();
+    drawStepGrid();
+    drawSoundBanks();
+    drawControls();
+  } else if (uiState == UI_BPM_INPUT) {
+    drawBPMInput();
+  }
+}
+
+// ============================================================================
+// AUDIO SYNTHESIS (POLY MODE)
+// ============================================================================
+
+void playPOLYSound(TrackType track, uint8_t note) {
+  switch(track) {
+    case TRACK_KICK:
+      // Kick: 100Hz → 40Hz sweep
+      for (int i = 0; i < 8; i++) {
+        int freq = 100 - (i * 8);
+        M5Cardputer.Speaker.tone(freq, 10);
+        delay(10);
+      }
+      M5Cardputer.Speaker.end();
+      break;
+
+    case TRACK_SNARE:
+      // Snare: Rapid noise simulation
+      for (int i = 0; i < 6; i++) {
+        M5Cardputer.Speaker.tone(random(8000, 12000), 8);
+        delay(8);
+      }
+      M5Cardputer.Speaker.end();
+      break;
+
+    case TRACK_HAT:
+      // Hi-hat: Short high burst
+      M5Cardputer.Speaker.tone(10000, 30);
+      M5Cardputer.Speaker.end();
+      break;
+
+    case TRACK_TOM:
+      // Tom: 200Hz decay
+      for (int i = 0; i < 10; i++) {
+        M5Cardputer.Speaker.tone(200 - (i * 5), 10);
+        delay(10);
+      }
+      M5Cardputer.Speaker.end();
+      break;
+
+    default:
+      // Melody tracks: MIDI note to frequency
+      float freq = 440.0 * pow(2.0, (note - 69) / 12.0);
+      M5Cardputer.Speaker.tone((int)freq, 100);
+      delay(100);
+      M5Cardputer.Speaker.end();
+      break;
+  }
+}
+
+void playMP3Sample(const char* path) {
+  // Play short MP3 sample (for 808/USER modes)
+  // Use the shared audio system for samples
+  if (SD.exists(path)) {
+    startMusicPlayback(path);
+
+    // Wait for sample to start
+    unsigned long startTime = millis();
+    while (millis() - startTime < 500 && isMusicPlaying()) {
+      updateMusicPlayback();
+      delay(1);
+    }
+
+    stopMusicPlayback();
+  }
+}
+
+void play808Sound(TrackType track, uint8_t note) {
+  const char* samplePath = nullptr;
+
+  switch(track) {
+    case TRACK_KICK:   samplePath = "/mp3/lbm/808/kick.mp3";   break;
+    case TRACK_SNARE:  samplePath = "/mp3/lbm/808/snare.mp3";  break;
+    case TRACK_HAT:    samplePath = "/mp3/lbm/808/hat.mp3";    break;
+    case TRACK_TOM:    samplePath = "/mp3/lbm/808/tom.mp3";    break;
+    default:
+      // Melody tracks use POLY mode for now
+      playPOLYSound(track, note);
+      return;
+  }
+
+  if (samplePath) {
+    playMP3Sample(samplePath);
+  }
+}
+
+void playUSERSound(TrackType track, uint8_t note) {
+  const char* samplePath = nullptr;
+
+  switch(track) {
+    case TRACK_KICK:   samplePath = "/mp3/lbm/user/kick.mp3";   break;
+    case TRACK_SNARE:  samplePath = "/mp3/lbm/user/snare.mp3";  break;
+    case TRACK_HAT:    samplePath = "/mp3/lbm/user/hat.mp3";    break;
+    case TRACK_TOM:    samplePath = "/mp3/lbm/user/tom.mp3";    break;
+    default:
+      // Melody tracks use POLY mode for now
+      playPOLYSound(track, note);
+      return;
+  }
+
+  if (samplePath) {
+    playMP3Sample(samplePath);
+  }
+}
+
+void triggerTrack(int track) {
+  if (currentPattern.mode == MODE_POLY) {
+    playPOLYSound((TrackType)track, currentPattern.notes[track][0]);
+  } else if (currentPattern.mode == MODE_808) {
+    play808Sound((TrackType)track, currentPattern.notes[track][0]);
+  } else if (currentPattern.mode == MODE_USER) {
+    playUSERSound((TrackType)track, currentPattern.notes[track][0]);
+  }
+}
+
+void playStep(int track, int step) {
+  if (currentPattern.steps[track][step]) {
+    if (currentPattern.mode == MODE_POLY) {
+      playPOLYSound((TrackType)track, currentPattern.notes[track][step]);
+    } else if (currentPattern.mode == MODE_808) {
+      play808Sound((TrackType)track, currentPattern.notes[track][step]);
+    } else if (currentPattern.mode == MODE_USER) {
+      playUSERSound((TrackType)track, currentPattern.notes[track][step]);
+    }
+  }
+}
+
+// ============================================================================
+// PLAYBACK ENGINE
+// ============================================================================
+
+void updateLBM() {
+  if (!lbmActive) return;
+
+  // Handle playback timing
+  if (isPlaying) {
+    unsigned long stepDuration = (60000 / currentPattern.bpm) / 4; // Quarter note in ms
+
+    if (millis() - lastStepTime >= stepDuration) {
+      lastStepTime = millis();
+
+      // Play all active tracks at this step
+      for (int t = 0; t < LBM_TRACKS; t++) {
+        playStep(t, playbackStep);
+      }
+
+      // Advance playback
+      playbackStep = (playbackStep + 1) % LBM_STEPS;
+
+      // Redraw only the step grid (selective update)
+      drawStepGrid();
+    }
+  }
+}
+
+// ============================================================================
+// INPUT HANDLING
+// ============================================================================
+
+void handleLBMNavigation(char key) {
+  if (uiState == UI_BPM_INPUT) {
+    // BPM input mode
+    if (key >= '0' && key <= '9') {
+      bpmInput += key;
+      drawBPMInput();
+    } else if (key == '\b' && bpmInput.length() > 0) {
+      bpmInput.remove(bpmInput.length() - 1);
+      drawBPMInput();
+    } else if (key == '\n') {
+      // Apply BPM
+      int newBPM = bpmInput.toInt();
+      if (newBPM >= LBM_MIN_BPM && newBPM <= LBM_MAX_BPM) {
+        currentPattern.bpm = newBPM;
+      }
+      bpmInput = "";
+      uiState = UI_MAIN;
+      drawLBM();
+    } else if (key == 27) { // ESC
+      bpmInput = "";
+      uiState = UI_MAIN;
+      drawLBM();
+    }
+    return;
+  }
+
+  // Main sequencer controls
+  if (key == 27 || key == '`') { // ESC or backtick
+    isPlaying = false;
+    editMode = false;  // Cancel any edit mode
+  }
+  else if (key == ' ') {
+    // Play/pause
+    isPlaying = !isPlaying;
+    if (isPlaying) {
+      playbackStep = 0;
+      lastStepTime = millis();
+    }
+    drawStepGrid();
+  }
+  // UP ARROW - Spatial navigation
+  else if (key == ';') {
+    if (editMode) return;  // No navigation in edit mode
+
+    if (selectedItem == NAV_STEPS) {
+      // From steps, go up to sound/nudge/speed depending on X position
+      if (cursorY > 0) {
+        cursorY--;  // Move between step rows first
+        drawStepGrid();
+      } else {
+        // At top row of steps - go to controls above
+        if (cursorX <= 2) selectedItem = NAV_SOUND;
+        else if (cursorX <= 5) selectedItem = NAV_NUDGE;
+        else selectedItem = NAV_SPEED;
+        drawLBM();
+      }
+    } else if (selectedItem == NAV_SOUND || selectedItem == NAV_NUDGE || selectedItem == NAV_SPEED) {
+      selectedItem = NAV_TRACK;
+      drawLBM();
+    } else if (selectedItem == NAV_BPM || selectedItem == NAV_TAP) {
+      selectedItem = NAV_TRACK;
+      drawLBM();
+    } else if (selectedItem == NAV_MODE) {
+      selectedItem = NAV_STEPS;
+      cursorY = 1;  // Go to bottom row
+      drawLBM();
+    }
+  }
+  // DOWN ARROW - Spatial navigation
+  else if (key == '.') {
+    if (editMode) return;  // No navigation in edit mode
+
+    if (selectedItem == NAV_TRACK) {
+      selectedItem = NAV_SOUND;
+      drawLBM();
+    } else if (selectedItem == NAV_SOUND || selectedItem == NAV_NUDGE || selectedItem == NAV_SPEED || selectedItem == NAV_BPM || selectedItem == NAV_TAP) {
+      selectedItem = NAV_STEPS;
+      cursorY = 0;  // Start at top row
+      drawLBM();
+    } else if (selectedItem == NAV_STEPS) {
+      // Move down between step rows
+      if (cursorY < 1) {
+        cursorY++;
+        drawStepGrid();
+      } else {
+        // At bottom row - go to mode button
+        selectedItem = NAV_MODE;
+        drawLBM();
+      }
+    }
+  }
+  // LEFT ARROW - Spatial navigation / Edit
+  else if (key == ',') {
+    if (editMode) {
+      // Edit mode - adjust values
+      if (selectedItem == NAV_TRACK) {
+        currentTrack = (currentTrack - 1 + LBM_TRACKS) % LBM_TRACKS;
+        drawLBM();
+      } else if (selectedItem == NAV_SOUND) {
+        // TODO: Cycle through available sounds
+        drawTrackHeader();
+      } else if (selectedItem == NAV_NUDGE) {
+        if (currentPattern.nudge[currentTrack] > 0) {
+          currentPattern.nudge[currentTrack]--;
+          drawTrackHeader();
+        }
+      } else if (selectedItem == NAV_SPEED) {
+        if (currentPattern.speed[currentTrack] > 0.5f) {
+          currentPattern.speed[currentTrack] -= 0.5f;
+          drawTrackHeader();
+        }
+      }
+    } else {
+      // Navigation mode
+      if (selectedItem == NAV_NUDGE) {
+        selectedItem = NAV_SOUND;
+        drawLBM();
+      } else if (selectedItem == NAV_SPEED) {
+        selectedItem = NAV_NUDGE;
+        drawLBM();
+      } else if (selectedItem == NAV_TAP) {
+        selectedItem = NAV_BPM;
+        drawLBM();
+      } else if (selectedItem == NAV_STEPS) {
+        if (cursorX > 0) {
+          cursorX--;
+          drawStepGrid();
+        }
+      }
+    }
+  }
+  // RIGHT ARROW - Spatial navigation / Edit
+  else if (key == '/') {
+    if (editMode) {
+      // Edit mode - adjust values
+      if (selectedItem == NAV_TRACK) {
+        currentTrack = (currentTrack + 1) % LBM_TRACKS;
+        drawLBM();
+      } else if (selectedItem == NAV_SOUND) {
+        // TODO: Cycle through available sounds
+        drawTrackHeader();
+      } else if (selectedItem == NAV_NUDGE) {
+        if (currentPattern.nudge[currentTrack] < 4) {
+          currentPattern.nudge[currentTrack]++;
+          drawTrackHeader();
+        }
+      } else if (selectedItem == NAV_SPEED) {
+        if (currentPattern.speed[currentTrack] < 2.0f) {
+          currentPattern.speed[currentTrack] += 0.5f;
+          drawTrackHeader();
+        }
+      }
+    } else {
+      // Navigation mode
+      if (selectedItem == NAV_TRACK) {
+        selectedItem = NAV_BPM;
+        drawLBM();
+      } else if (selectedItem == NAV_SOUND) {
+        selectedItem = NAV_NUDGE;
+        drawLBM();
+      } else if (selectedItem == NAV_NUDGE) {
+        selectedItem = NAV_SPEED;
+        drawLBM();
+      } else if (selectedItem == NAV_BPM) {
+        selectedItem = NAV_TAP;
+        drawLBM();
+      } else if (selectedItem == NAV_STEPS) {
+        if (cursorX < 7) {
+          cursorX++;
+          drawStepGrid();
+        }
+      }
+    }
+  }
+  // ENTER - Toggle/Engage/Confirm
+  else if (key == '\n') {
+    if (selectedItem == NAV_TRACK || selectedItem == NAV_SOUND || selectedItem == NAV_NUDGE || selectedItem == NAV_SPEED) {
+      // Toggle edit mode
+      editMode = !editMode;
+      drawTrackHeader();
+    } else if (selectedItem == NAV_STEPS) {
+      // Toggle step
+      int stepIndex = cursorY * 8 + cursorX;
+      currentPattern.steps[currentTrack][stepIndex] = !currentPattern.steps[currentTrack][stepIndex];
+
+      // Auto-advance cursor
+      if (cursorX < 7) {
+        cursorX++;
+      } else if (cursorY == 0) {
+        cursorX = 0;
+        cursorY = 1;
+      } else {
+        cursorX = 0;
+        cursorY = 0;
+      }
+      drawStepGrid();
+    } else if (selectedItem == NAV_BPM) {
+      // Enter BPM input mode
+      uiState = UI_BPM_INPUT;
+      bpmInput = String(currentPattern.bpm);
+      drawBPMInput();
+    } else if (selectedItem == NAV_TAP) {
+      // TODO: Implement tap tempo
+    } else if (selectedItem == NAV_MODE) {
+      // Cycle through modes: POLY → 808 → USER → POLY
+      if (currentPattern.mode == MODE_POLY) {
+        currentPattern.mode = MODE_808;
+      } else if (currentPattern.mode == MODE_808) {
+        currentPattern.mode = MODE_USER;
+      } else {
+        currentPattern.mode = MODE_POLY;
+      }
+      drawSoundBanks();
+    }
+  }
+  else if (key == 'b') {
+    // Enter BPM input mode
+    uiState = UI_BPM_INPUT;
+    bpmInput = String(currentPattern.bpm);
+    drawBPMInput();
+  }
+  else if (key == '+') {
+    // Increase BPM
+    if (currentPattern.bpm < LBM_MAX_BPM) {
+      currentPattern.bpm += 5;
+      drawControls();
+    }
+  }
+  else if (key == '-') {
+    // Decrease BPM
+    if (currentPattern.bpm > LBM_MIN_BPM) {
+      currentPattern.bpm -= 5;
+      drawControls();
+    }
+  }
+  else if (key >= '1' && key <= '8') {
+    // Live trigger tracks
+    int track = key - '1';
+    triggerTrack(track);
+  }
+}
+
+// ============================================================================
+// SAVE/LOAD
+// ============================================================================
+
+void savePattern(const char* filename) {
+  // TODO: Implement pattern save to SD
+}
+
+void loadPattern(const char* filename) {
+  // TODO: Implement pattern load from SD
+}

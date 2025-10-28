@@ -23,6 +23,7 @@
 #include "music_tools.h"
 #include "chip8.h"
 #include "labchat.h"
+#include "lbm.h"
 
 Preferences preferences;
 
@@ -671,6 +672,8 @@ void loop() {
             drawGuitarTuner();
           } else if (musicToolsState == AUDIO_VISUALIZER) {
             drawAudioVisualizer();
+          } else if (musicToolsState == LAB_BEAT_MACHINE) {
+            drawLBM();
           }
         } else if (currentScreenNumber == 14) {
           // CHIP-8
@@ -1975,7 +1978,15 @@ void loop() {
             // Audio Test
             safeBeep(1200, 100);
             startAudioVisualizer();
+          } else if (musicToolsMenuIndex == 2) {
+            // Lab Beat Machine
+            safeBeep(1200, 100);
+            musicToolsState = LAB_BEAT_MACHINE;
+            enterLBM();
           }
+        } else if (status.enter && musicToolsState == LAB_BEAT_MACHINE) {
+          // Pass Enter key to LBM as special character
+          handleLBMNavigation('\n');
         }
 
         for (auto key : status.word) {
@@ -1989,6 +2000,12 @@ void loop() {
             } else if (musicToolsState == AUDIO_VISUALIZER) {
               // Stop visualizer and back to tools menu
               stopAudioVisualizer();
+              safeBeep(600, 100);
+              musicToolsState = TOOLS_MENU;
+              drawMusicToolsMenu();
+            } else if (musicToolsState == LAB_BEAT_MACHINE) {
+              // Exit LBM and back to tools menu
+              exitLBM();
               safeBeep(600, 100);
               musicToolsState = TOOLS_MENU;
               drawMusicToolsMenu();
@@ -2271,6 +2288,10 @@ void loop() {
 
   if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == AUDIO_VISUALIZER) {
     updateAudioVisualizer();
+  }
+
+  if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == LAB_BEAT_MACHINE) {
+    updateLBM();
   }
 
   // Update audio playback (centralized - handles both radio and music!)
