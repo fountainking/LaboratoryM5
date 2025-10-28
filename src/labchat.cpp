@@ -200,10 +200,9 @@ void drawMainChat() {
   M5Cardputer.Display.setTextSize(1);
   int messageCount = messageHandler.getQueueCount();
 
-  // Filter messages by channel or DM mode
-  int lineY = 40;
-  int displayedCount = 0;
-  int skippedBeforeScroll = 0;
+  // Filter messages by channel or DM mode - build filtered list first
+  int filteredIndices[MESSAGE_QUEUE_SIZE];
+  int filteredCount = 0;
 
   for (int i = 0; i < messageCount; i++) {
     DisplayMessage* msg = messageHandler.getQueuedMessage(i);
@@ -219,30 +218,35 @@ void drawMainChat() {
       shouldDisplay = (msg->type == MSG_BROADCAST && msg->channel == chatCurrentChannel);
     }
 
-    if (!shouldDisplay) continue;
-
-    // Handle scrolling
-    if (skippedBeforeScroll < scrollPosition) {
-      skippedBeforeScroll++;
-      continue;
+    if (shouldDisplay) {
+      filteredIndices[filteredCount++] = i;
     }
+  }
 
-    if (displayedCount >= 4) break;
+  // Display last 4 messages (newest at bottom), accounting for scroll
+  int lineY = 40;
+  int displayedCount = 0;
+  int startIndex = max(0, filteredCount - 4 - scrollPosition);
+  int endIndex = min(filteredCount, startIndex + 4);
 
-    // Get solid user color from device ID hash (bright colors for black bg)
+  for (int idx = startIndex; idx < endIndex; idx++) {
+    int i = filteredIndices[idx];
+    DisplayMessage* msg = messageHandler.getQueuedMessage(i);
+    if (!msg) continue;
+
+    // Get solid user color from device ID hash (fire colors for black bg)
     uint32_t deviceHash = 0;
     for (int j = 0; j < strlen(msg->deviceID); j++) {
       deviceHash = deviceHash * 31 + msg->deviceID[j];
     }
     uint16_t userColors[] = {
       0xFFE0,  // Yellow
-      0x07FF,  // Cyan
-      0x07E0,  // Green
       0xFD20,  // Orange
-      0xF81F,  // Magenta
-      0xFFFF   // White
+      0xF800,  // Red
+      0x07FF,  // Baby Blue (Cyan)
+      0x001F   // Blue
     };
-    uint16_t userColor = userColors[deviceHash % 6];
+    uint16_t userColor = userColors[deviceHash % 5];
 
     // Reverse gradient colors for message content
     uint16_t gradientColors[] = {
