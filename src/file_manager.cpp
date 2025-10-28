@@ -244,6 +244,21 @@ void drawFileManagerHeader() {
   // Show current path after FILES
   M5Cardputer.Display.drawString("-", 83, 14);
   M5Cardputer.Display.drawString(displayPath.c_str(), 93, 14);
+
+  // Message notification indicator (heart icon in top right)
+  extern bool hasUnreadMessages;
+  if (hasUnreadMessages) {
+    int heartX = 220;
+    int heartY = 10;
+    M5Cardputer.Display.fillCircle(heartX, heartY + 2, 2, TFT_RED);
+    M5Cardputer.Display.fillCircle(heartX + 4, heartY + 2, 2, TFT_RED);
+    M5Cardputer.Display.fillTriangle(
+      heartX - 2, heartY + 3,
+      heartX + 6, heartY + 3,
+      heartX + 2, heartY + 9,
+      TFT_RED
+    );
+  }
 }
 
 

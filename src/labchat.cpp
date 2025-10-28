@@ -573,8 +573,9 @@ void onMessageReceived() {
     scrollPosition = 0; // Auto-scroll to latest message
     drawLabChat();
   } else {
-    // Not in chat - set unread flag
+    // Not in chat - set unread flag and beep
     hasUnreadMessages = true;
+    M5Cardputer.Speaker.tone(1000, 100); // 1kHz beep for 100ms
   }
 }
 
