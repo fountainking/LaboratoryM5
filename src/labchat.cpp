@@ -599,7 +599,8 @@ void enterLabChat() {
 
 void exitLabChat() {
   chatActive = false;
-  espNowManager.deinit();
+  // Keep ESP-NOW running in background to receive messages
+  // Only deinit when explicitly leaving network in settings
 }
 
 void updateLabChat() {
