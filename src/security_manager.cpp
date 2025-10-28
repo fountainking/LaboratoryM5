@@ -115,9 +115,8 @@ bool SecurityManager::createNetwork(String password, String name) {
   if (name.length() == 0 || name.length() > NETWORK_NAME_SIZE - 1) return false;
 
   generateDeviceID();
-  // Use fixed password for all networks - any password joins same network
-  deriveKeysFromPassword("LabChatUniversal2024");
-  strncpy(networkName, "LabChat", NETWORK_NAME_SIZE - 1);
+  deriveKeysFromPassword(password);
+  strncpy(networkName, name.c_str(), NETWORK_NAME_SIZE - 1);
   networkName[NETWORK_NAME_SIZE - 1] = '\0';
 
   initialized = true;
@@ -129,10 +128,18 @@ bool SecurityManager::joinNetwork(String password) {
   if (password.length() < 8) return false;
 
   generateDeviceID();
-  // Use fixed password for all networks - any password joins same network
-  deriveKeysFromPassword("LabChatUniversal2024");
-  strncpy(networkName, "LabChat", NETWORK_NAME_SIZE - 1);
-  networkName[NETWORK_NAME_SIZE - 1] = '\0';
+  deriveKeysFromPassword(password);
+
+  // Generate network name from password hash (first 8 chars)
+  mbedtls_sha256_context ctx;
+  uint8_t hash[32];
+  mbedtls_sha256_init(&ctx);
+  mbedtls_sha256_starts(&ctx, 0);
+  mbedtls_sha256_update(&ctx, (const unsigned char*)password.c_str(), password.length());
+  mbedtls_sha256_finish(&ctx, hash);
+  mbedtls_sha256_free(&ctx);
+
+  snprintf(networkName, NETWORK_NAME_SIZE, "NET%02X%02X%02X", hash[0], hash[1], hash[2]);
 
   initialized = true;
   saveToPreferences();

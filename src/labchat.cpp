@@ -278,23 +278,23 @@ void drawMainChat() {
     String username = String(msg->username) + ": ";
     String content = msg->content;
 
-    // Draw username with solid color, size 2
-    M5Cardputer.Display.setTextSize(2);
+    // Draw username with solid color, size 1
+    M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(userColor);
     int xPos = 10;
     M5Cardputer.Display.drawString(username.c_str(), xPos, lineY);
-    xPos += username.length() * 12;
+    xPos += username.length() * 6;
 
     // Peppermint pattern - alternate red/white per message
     uint16_t messageColor = (i % 2 == 0) ? TFT_RED : TFT_WHITE;
 
-    // Draw message content in solid color (peppermint), size 1, max ~18 chars after username
+    // Draw message content in solid color (peppermint), size 1
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(messageColor);
-    int remainingChars = 32 - (username.length() * 2); // Account for size 2 username
+    int remainingChars = 38 - username.length();
     if (content.length() <= remainingChars) {
-      M5Cardputer.Display.drawString(content.c_str(), xPos, lineY + 4);
-      lineY += 18;
+      M5Cardputer.Display.drawString(content.c_str(), xPos, lineY);
+      lineY += 10;
     } else {
       // Split into two lines
       String line1 = content.substring(0, remainingChars);
@@ -302,8 +302,8 @@ void drawMainChat() {
       if (line2.length() > 38) {
         line2 = line2.substring(0, 35) + "...";
       }
-      M5Cardputer.Display.drawString(line1.c_str(), xPos, lineY + 4);
-      lineY += 16;
+      M5Cardputer.Display.drawString(line1.c_str(), xPos, lineY);
+      lineY += 8;
       M5Cardputer.Display.drawString(line2.c_str(), 10, lineY);
       lineY += 10;
     }
@@ -424,21 +424,33 @@ void drawChatSettings() {
   M5Cardputer.Display.drawRoundRect(20, 35, 200, 85, 12, TFT_BLACK);
   M5Cardputer.Display.drawRoundRect(21, 36, 198, 83, 11, TFT_BLACK);
 
-  const char* options[] = {"Change Username", "Switch Channel", "Network Info", "Leave Network"};
+  const char* options[] = {"Change Username", "Switch Channel: ", "Network Info", "Leave Network"};
 
   for (int i = 0; i < 4; i++) {
     M5Cardputer.Display.setTextSize(1);
     if (i == chatSettingsMenuIndex) {
       M5Cardputer.Display.setTextColor(TFT_WHITE);
       M5Cardputer.Display.fillRect(30, 43 + (i * 18), 180, 14, TFT_BLACK);
-      M5Cardputer.Display.drawString(options[i], 40, 46 + (i * 18));
+      if (i == 1) {
+        // Switch Channel - show current channel number
+        String channelText = String(options[i]) + String(chatCurrentChannel);
+        M5Cardputer.Display.drawString(channelText.c_str(), 40, 46 + (i * 18));
+      } else {
+        M5Cardputer.Display.drawString(options[i], 40, 46 + (i * 18));
+      }
     } else {
       M5Cardputer.Display.setTextColor(TFT_BLACK);
-      M5Cardputer.Display.drawString(options[i], 40, 46 + (i * 18));
+      if (i == 1) {
+        // Switch Channel - show current channel number
+        String channelText = String(options[i]) + String(chatCurrentChannel);
+        M5Cardputer.Display.drawString(channelText.c_str(), 40, 46 + (i * 18));
+      } else {
+        M5Cardputer.Display.drawString(options[i], 40, 46 + (i * 18));
+      }
     }
   }
 
-  drawNavHint("Up/Down  Enter=Select  `=Back", 30, 118);
+  drawNavHint("Up/Down  Enter/Left/Right  `=Back", 20, 118);
 }
 
 void drawChannelSwitch() {
@@ -823,6 +835,14 @@ void handleLabChatNavigation(char key) {
         chatSettingsMenuIndex = (chatSettingsMenuIndex - 1 + 4) % 4;
       } else if (key == '.') {
         chatSettingsMenuIndex = (chatSettingsMenuIndex + 1) % 4;
+      } else if (key == ',' && chatSettingsMenuIndex == 1) {
+        // Left arrow - decrement channel
+        chatCurrentChannel = (chatCurrentChannel - 1 + 10) % 10;
+        scrollPosition = 0;
+      } else if (key == '/' && chatSettingsMenuIndex == 1) {
+        // Right arrow - increment channel
+        chatCurrentChannel = (chatCurrentChannel + 1) % 10;
+        scrollPosition = 0;
       } else if (key == '\n') {
         if (chatSettingsMenuIndex == 0) {
           // Change username
@@ -842,8 +862,8 @@ void handleLabChatNavigation(char key) {
           prefs.end();
           chatState = CHAT_CHANGE_USERNAME;
         } else if (chatSettingsMenuIndex == 1) {
-          // Switch channel
-          chatState = CHAT_CHANNEL_SWITCH;
+          // Switch channel - just go back to main (channel already changed with arrows)
+          chatState = CHAT_MAIN;
         } else if (chatSettingsMenuIndex == 2) {
           // Network info
           chatState = CHAT_NETWORK_INFO;
