@@ -25,10 +25,8 @@ enum TrackType {
 
 // Sound modes
 enum SoundMode {
-  MODE_POLY = 0,    // Polyphonic system beeps
-  MODE_808 = 1,     // 808 samples from SD
-  MODE_BEATBOX = 2, // User-recorded samples
-  MODE_USER = 3     // User-selected MP3s
+  MODE_808 = 0,     // 808 samples embedded
+  MODE_USER = 1     // User samples from SD
 };
 
 // Pattern data structure
@@ -38,6 +36,7 @@ struct Pattern {
   uint8_t nudge[LBM_TRACKS];          // Timing nudge (0-4)
   float speed[LBM_TRACKS];            // Speed multiplier (0.5, 1.0, 2.0)
   int bpm;                            // Tempo
+  uint8_t volume;                     // Volume (0-10)
   SoundMode mode;                     // Sound mode
   char name[32];                      // Pattern name
 };

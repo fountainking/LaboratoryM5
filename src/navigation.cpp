@@ -419,6 +419,10 @@ void handleBack() {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = MAIN_MENU;
     drawScreen(uiInverted);
+  } else if (currentState == MAIN_MENU) {
+    if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
+    currentState = APPS_MENU;
+    drawScreen(uiInverted);
   } else if (currentState == WIFI_SCAN) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = MAIN_MENU;

@@ -5,6 +5,15 @@
 #include <AudioFileSourceSD.h>
 #include "audio_manager.h"
 
+// Embedded 808 samples
+#include "samples/sample_808_kick.h"
+#include "samples/sample_808_snare.h"
+#include "samples/sample_808_hat.h"
+#include "samples/sample_808_tom.h"
+
+// Access to screensaver timer (from main.cpp)
+extern unsigned long lastActivityTime;
+
 // Track colors from mockups
 uint16_t trackColors[LBM_TRACKS] = {
   0xFDA0,  // Track 1: Orange/tan (kick)
@@ -65,7 +74,8 @@ void enterLBM() {
   lbmActive = true;
   clearPattern();
   currentPattern.bpm = 120;
-  currentPattern.mode = MODE_POLY;
+  currentPattern.volume = 8;  // Default volume (0-10)
+  currentPattern.mode = MODE_808;
   strcpy(currentPattern.name, "Pattern1");
 
   // Initialize speeds to 1x
@@ -244,9 +254,7 @@ void drawSoundBanks() {
   int startX = 30;  // Left-align with steps
 
   // Determine mode label
-  const char* modeLabel = "POLY";
-  if (currentPattern.mode == MODE_808) modeLabel = "808";
-  else if (currentPattern.mode == MODE_USER) modeLabel = "USER";
+  const char* modeLabel = (currentPattern.mode == MODE_808) ? "808" : "USER";
 
   M5Cardputer.Display.fillRoundRect(startX, btnY, btnW, btnH, 8, TFT_WHITE);
   M5Cardputer.Display.drawRoundRect(startX, btnY, btnW, btnH, 8, TFT_BLACK);
@@ -349,39 +357,173 @@ void playPOLYSound(TrackType track, uint8_t note) {
   }
 }
 
-void playMP3Sample(const char* path) {
-  // Play short MP3 sample (for 808/USER modes)
-  // Use the shared audio system for samples
-  if (SD.exists(path)) {
-    startMusicPlayback(path);
+// Static buffer for WAV playback (reused across samples)
+static int16_t* sampleBuffer = nullptr;
+static size_t sampleBufferSize = 0;
 
-    // Wait for sample to start
-    unsigned long startTime = millis();
-    while (millis() - startTime < 500 && isMusicPlaying()) {
-      updateMusicPlayback();
-      delay(1);
+void playMP3Sample(const char* basePath) {
+  // Play short audio sample (WAV or MP3) for 808/USER modes
+  // Try WAV first, then MP3
+  String path = String(basePath);
+
+  Serial.printf("Trying to play: %s\n", path.c_str());
+
+  // Check if path already has extension
+  if (!path.endsWith(".wav") && !path.endsWith(".mp3")) {
+    Serial.println("No valid extension!");
+    return;
+  }
+
+  // Try the path as-is first
+  if (!SD.exists(path.c_str())) {
+    Serial.printf("File not found: %s, trying alternate extension...\n", path.c_str());
+
+    // If WAV doesn't exist, try MP3
+    if (path.endsWith(".wav")) {
+      path.replace(".wav", ".mp3");
+    }
+    // If MP3 doesn't exist, try WAV
+    else if (path.endsWith(".mp3")) {
+      path.replace(".mp3", ".wav");
     }
 
-    stopMusicPlayback();
+    Serial.printf("Now trying: %s\n", path.c_str());
+  }
+
+  // Play if file exists
+  if (SD.exists(path.c_str())) {
+    Serial.printf("Found file: %s\n", path.c_str());
+
+    // For WAV files, load and play entire sample
+    if (path.endsWith(".wav")) {
+      File audioFile = SD.open(path.c_str());
+      if (audioFile) {
+        size_t fileSize = audioFile.size();
+        Serial.printf("File size: %d bytes\n", fileSize);
+
+        // Read WAV header
+        audioFile.seek(22);
+        uint16_t numChannels = 0;
+        audioFile.read((uint8_t*)&numChannels, 2);
+        Serial.printf("Channels: %d\n", numChannels);
+
+        audioFile.seek(24);
+        uint32_t sampleRate = 0;
+        audioFile.read((uint8_t*)&sampleRate, 4);
+        Serial.printf("Sample rate: %d Hz\n", sampleRate);
+
+        audioFile.seek(34);
+        uint16_t bitsPerSample = 0;
+        audioFile.read((uint8_t*)&bitsPerSample, 2);
+        Serial.printf("Bits per sample: %d\n", bitsPerSample);
+
+        // Skip to audio data (skip 44-byte header)
+        audioFile.seek(44);
+
+        // Calculate audio data size (limit to 64KB)
+        size_t dataSize = fileSize - 44;
+        if (dataSize > 65536) dataSize = 65536;
+
+        // Allocate or reuse static buffer
+        if (sampleBuffer == nullptr || sampleBufferSize < dataSize) {
+          if (sampleBuffer != nullptr) {
+            free(sampleBuffer);
+          }
+          sampleBuffer = (int16_t*)malloc(dataSize);
+          sampleBufferSize = dataSize;
+          Serial.printf("Allocated buffer: %d bytes\n", dataSize);
+        }
+
+        if (sampleBuffer) {
+          size_t bytesRead = audioFile.read((uint8_t*)sampleBuffer, dataSize);
+          Serial.printf("Read %d bytes\n", bytesRead);
+
+          if (bytesRead > 0) {
+            // Convert 24-bit to 16-bit if needed
+            size_t numSamples;
+            if (bitsPerSample == 24) {
+              // Convert 24-bit to 16-bit (take upper 16 bits of each 24-bit sample)
+              uint8_t* rawData = (uint8_t*)sampleBuffer;
+              numSamples = bytesRead / 3;  // 3 bytes per 24-bit sample
+
+              for (size_t i = 0; i < numSamples; i++) {
+                // Read 3 bytes (24-bit sample, little-endian)
+                int32_t sample24 = (rawData[i*3] << 8) | (rawData[i*3+1] << 16) | (rawData[i*3+2] << 24);
+                // Convert to 16-bit by taking upper 16 bits
+                sampleBuffer[i] = (int16_t)(sample24 >> 16);
+              }
+              Serial.printf("Converted %d samples from 24-bit to 16-bit\n", numSamples);
+            } else {
+              // Already 16-bit
+              numSamples = bytesRead / 2;
+            }
+
+            // Play using M5Unified speaker (blocking - wait for current sample to finish)
+            while (M5Cardputer.Speaker.isPlaying()) {
+              delay(1);
+            }
+
+            Serial.println("Playing...");
+            M5Cardputer.Speaker.playRaw(sampleBuffer, numSamples, sampleRate, false, 1, 0);
+          }
+        } else {
+          Serial.println("Failed to allocate buffer!");
+        }
+
+        audioFile.close();
+      } else {
+        Serial.println("Failed to open file!");
+      }
+    } else {
+      // MP3 not supported for samples - fallback to POLY
+      // (MP3 playback is too slow for real-time triggering)
+    }
+  } else {
+    Serial.printf("File not found: %s\n", path.c_str());
   }
 }
 
 void play808Sound(TrackType track, uint8_t note) {
-  const char* samplePath = nullptr;
+  // Play embedded 808 samples from PROGMEM
+  const int16_t* sampleData = nullptr;
+  uint32_t sampleLength = 0;
+  uint32_t sampleRate = 0;
 
   switch(track) {
-    case TRACK_KICK:   samplePath = "/mp3/lbm/808/kick.mp3";   break;
-    case TRACK_SNARE:  samplePath = "/mp3/lbm/808/snare.mp3";  break;
-    case TRACK_HAT:    samplePath = "/mp3/lbm/808/hat.mp3";    break;
-    case TRACK_TOM:    samplePath = "/mp3/lbm/808/tom.mp3";    break;
+    case TRACK_KICK:
+      sampleData = sample_808_kick_data;
+      sampleLength = sample_808_kick_length;
+      sampleRate = sample_808_kick_rate;
+      break;
+    case TRACK_SNARE:
+      sampleData = sample_808_snare_data;
+      sampleLength = sample_808_snare_length;
+      sampleRate = sample_808_snare_rate;
+      break;
+    case TRACK_HAT:
+      sampleData = sample_808_hat_data;
+      sampleLength = sample_808_hat_length;
+      sampleRate = sample_808_hat_rate;
+      break;
+    case TRACK_TOM:
+      sampleData = sample_808_tom_data;
+      sampleLength = sample_808_tom_length;
+      sampleRate = sample_808_tom_rate;
+      break;
     default:
       // Melody tracks use POLY mode for now
       playPOLYSound(track, note);
       return;
   }
 
-  if (samplePath) {
-    playMP3Sample(samplePath);
+  if (sampleData) {
+    // Stop any current playback and start immediately (no latency)
+    M5Cardputer.Speaker.stop();
+
+    // Play directly from PROGMEM - M5Unified supports this
+    // Volume range: 0-10 from pattern, convert to 0-255 for speaker
+    uint8_t speakerVol = (currentPattern.volume * 255) / 10;
+    M5Cardputer.Speaker.playRaw(sampleData, sampleLength, sampleRate, false, 1, speakerVol);
   }
 }
 
@@ -389,10 +531,10 @@ void playUSERSound(TrackType track, uint8_t note) {
   const char* samplePath = nullptr;
 
   switch(track) {
-    case TRACK_KICK:   samplePath = "/mp3/lbm/user/kick.mp3";   break;
-    case TRACK_SNARE:  samplePath = "/mp3/lbm/user/snare.mp3";  break;
-    case TRACK_HAT:    samplePath = "/mp3/lbm/user/hat.mp3";    break;
-    case TRACK_TOM:    samplePath = "/mp3/lbm/user/tom.mp3";    break;
+    case TRACK_KICK:   samplePath = "/mp3s/lbm/user/kick.wav";   break;
+    case TRACK_SNARE:  samplePath = "/mp3s/lbm/user/snare.wav";  break;
+    case TRACK_HAT:    samplePath = "/mp3s/lbm/user/hat.wav";    break;
+    case TRACK_TOM:    samplePath = "/mp3s/lbm/user/tom.wav";    break;
     default:
       // Melody tracks use POLY mode for now
       playPOLYSound(track, note);
@@ -405,22 +547,18 @@ void playUSERSound(TrackType track, uint8_t note) {
 }
 
 void triggerTrack(int track) {
-  if (currentPattern.mode == MODE_POLY) {
-    playPOLYSound((TrackType)track, currentPattern.notes[track][0]);
-  } else if (currentPattern.mode == MODE_808) {
+  if (currentPattern.mode == MODE_808) {
     play808Sound((TrackType)track, currentPattern.notes[track][0]);
-  } else if (currentPattern.mode == MODE_USER) {
+  } else {
     playUSERSound((TrackType)track, currentPattern.notes[track][0]);
   }
 }
 
 void playStep(int track, int step) {
   if (currentPattern.steps[track][step]) {
-    if (currentPattern.mode == MODE_POLY) {
-      playPOLYSound((TrackType)track, currentPattern.notes[track][step]);
-    } else if (currentPattern.mode == MODE_808) {
+    if (currentPattern.mode == MODE_808) {
       play808Sound((TrackType)track, currentPattern.notes[track][step]);
-    } else if (currentPattern.mode == MODE_USER) {
+    } else {
       playUSERSound((TrackType)track, currentPattern.notes[track][step]);
     }
   }
@@ -435,6 +573,9 @@ void updateLBM() {
 
   // Handle playback timing
   if (isPlaying) {
+    // Prevent screensaver during playback
+    lastActivityTime = millis();
+
     unsigned long stepDuration = (60000 / currentPattern.bpm) / 4; // Quarter note in ms
 
     if (millis() - lastStepTime >= stepDuration) {
@@ -662,13 +803,11 @@ void handleLBMNavigation(char key) {
     } else if (selectedItem == NAV_TAP) {
       // TODO: Implement tap tempo
     } else if (selectedItem == NAV_MODE) {
-      // Cycle through modes: POLY → 808 → USER → POLY
-      if (currentPattern.mode == MODE_POLY) {
-        currentPattern.mode = MODE_808;
-      } else if (currentPattern.mode == MODE_808) {
+      // Toggle between 808 and USER
+      if (currentPattern.mode == MODE_808) {
         currentPattern.mode = MODE_USER;
       } else {
-        currentPattern.mode = MODE_POLY;
+        currentPattern.mode = MODE_808;
       }
       drawSoundBanks();
     }
@@ -679,18 +818,26 @@ void handleLBMNavigation(char key) {
     bpmInput = String(currentPattern.bpm);
     drawBPMInput();
   }
-  else if (key == '+') {
-    // Increase BPM
-    if (currentPattern.bpm < LBM_MAX_BPM) {
-      currentPattern.bpm += 5;
-      drawControls();
+  else if (key == '+' || key == '=') {
+    // Increase volume
+    if (currentPattern.volume < 10) {
+      currentPattern.volume++;
+      // Show volume indicator
+      M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_BLACK);
+      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.drawString("VOL: " + String(currentPattern.volume), 10, 5);
     }
   }
-  else if (key == '-') {
-    // Decrease BPM
-    if (currentPattern.bpm > LBM_MIN_BPM) {
-      currentPattern.bpm -= 5;
-      drawControls();
+  else if (key == '-' || key == '_') {
+    // Decrease volume
+    if (currentPattern.volume > 0) {
+      currentPattern.volume--;
+      // Show volume indicator
+      M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_BLACK);
+      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.drawString("VOL: " + String(currentPattern.volume), 10, 5);
     }
   }
   else if (key >= '1' && key <= '8') {
