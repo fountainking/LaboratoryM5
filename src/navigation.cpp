@@ -377,7 +377,7 @@ void handleBack() {
   extern bool uiInverted;  // Use global inversion state
 
   // ALWAYS reset speaker volume first to prevent loud beeps
-  M5Cardputer.Speaker.setVolume(80);
+  M5Cardputer.Speaker.setVolume(40);
 
   if (currentState == SCREEN_VIEW) {
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);

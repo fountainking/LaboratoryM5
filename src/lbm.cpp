@@ -521,8 +521,8 @@ void play808Sound(TrackType track, uint8_t note) {
     M5Cardputer.Speaker.stop();
 
     // Play directly from PROGMEM - M5Unified supports this
-    // Volume range: 0-10 from pattern, convert to 0-255 for speaker
-    uint8_t speakerVol = (currentPattern.volume * 255) / 10;
+    // Volume range: 0-10 from pattern, convert to 0-255 for speaker (boosted 1.25x)
+    uint8_t speakerVol = min(255, (currentPattern.volume * 320) / 10);
     M5Cardputer.Speaker.playRaw(sampleData, sampleLength, sampleRate, false, 1, speakerVol);
   }
 }

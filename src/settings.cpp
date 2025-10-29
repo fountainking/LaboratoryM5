@@ -132,7 +132,7 @@ void loadSettings() {
   if (!settings.soundEnabled) {
     M5Cardputer.Speaker.setVolume(0); // Mute speaker if sound is off
   } else {
-    M5Cardputer.Speaker.setVolume(80); // Set lower volume if sound is on
+    M5Cardputer.Speaker.setVolume(40); // Set lower volume if sound is on
   }
 
   // Find timezone index
@@ -169,7 +169,7 @@ void toggleSound() {
 
   // Control speaker volume based on setting
   if (settings.soundEnabled) {
-    M5Cardputer.Speaker.setVolume(80); // Lower volume
+    M5Cardputer.Speaker.setVolume(40); // Lower volume
     delay(50); // Give speaker time to be ready
     M5Cardputer.Speaker.tone(1000, 150); // Play confirmation sound
     delay(150);

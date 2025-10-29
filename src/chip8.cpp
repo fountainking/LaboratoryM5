@@ -492,18 +492,14 @@ void scanForROMs() {
     if (!file.isDirectory()) {
       String name = file.name();
 
-      // Skip hidden files (starting with .)
-      if (name.startsWith(".")) {
+      // Skip hidden files and index files
+      if (name.startsWith(".") || name == "index.txt" || name.endsWith("index.txt")) {
         file = root.openNextFile();
         continue;
       }
 
-      // Filter out index files and only include .ch8 files
-      if ((name.endsWith(".ch8") || name.endsWith(".CH8")) &&
-          !name.endsWith("index.txt") &&
-          name != "index.txt") {
-        romFiles[numRoms++] = String("/roms/chip8/") + name;
-      }
+      // Accept any file (with or without extension) - most CHIP-8 ROMs have no extension
+      romFiles[numRoms++] = String("/roms/chip8/") + name;
     }
     file = root.openNextFile();
   }
@@ -556,8 +552,10 @@ void drawChip8ROMBrowser() {
     M5Cardputer.Display.drawString("No ROMs!", 60, 50);
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(TFT_WHITE);
-    M5Cardputer.Display.drawString("Place .ch8 files in:", 50, 75);
+    M5Cardputer.Display.drawString("Place ROM files in:", 50, 75);
     M5Cardputer.Display.drawString("/roms/chip8/", 60, 90);
+    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.drawString("(any file type)", 60, 105);
     return;
   }
 
