@@ -44,7 +44,6 @@ bool lbmActive = false;
 // UI state
 enum LBMUIState {
   UI_MAIN,       // Main sequencer view
-  UI_BPM_INPUT,  // Typing BPM value
   UI_SAVE,       // Save dialog
   UI_EXPORT      // Export dialog
 };
@@ -64,6 +63,7 @@ enum LBMNavItem {
 LBMUIState uiState = UI_MAIN;
 LBMNavItem selectedItem = NAV_SOUND;  // Start on sound
 bool editMode = false;  // Editing sound/nudge/speed
+bool bpmEditMode = false;  // Editing BPM directly
 String bpmInput = "";
 
 // ============================================================================
@@ -85,6 +85,7 @@ void enterLBM() {
 
   selectedItem = NAV_SOUND;  // Start with sound selected
   editMode = false;
+  bpmEditMode = false;
   cursorX = 0;
   cursorY = 0;
 
@@ -136,10 +137,16 @@ void drawTrackHeader() {
   M5Cardputer.Display.setTextColor(editMode && selectedItem == NAV_TRACK ? trackColors[currentTrack] : TFT_BLACK);
   M5Cardputer.Display.drawString(trackLabel.c_str(), startX+4, row1Y);
 
-  // BPM
+  // BPM (show input buffer when editing)
   int bpmX = startX + trackWidth + 8;
-  String bpmLabel = String(currentPattern.bpm) + " BPM";
-  M5Cardputer.Display.setTextColor(selectedItem == NAV_BPM ? trackColors[currentTrack] : TFT_BLACK);
+  String bpmLabel;
+  if (bpmEditMode) {
+    bpmLabel = bpmInput + "_";  // Show typing cursor
+    M5Cardputer.Display.setTextColor(TFT_RED);  // Red when editing
+  } else {
+    bpmLabel = String(currentPattern.bpm) + " BPM";
+    M5Cardputer.Display.setTextColor(selectedItem == NAV_BPM ? trackColors[currentTrack] : TFT_BLACK);
+  }
   M5Cardputer.Display.drawString(bpmLabel.c_str(), bpmX, row1Y);
 
   // TAP
@@ -281,20 +288,6 @@ void drawControls() {
   M5Cardputer.Display.drawString(helpText.c_str(), centerX, 117);
 }
 
-void drawBPMInput() {
-  // Draw BPM input overlay
-  M5Cardputer.Display.fillRoundRect(50, 45, 140, 40, 10, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(50, 45, 140, 40, 10, TFT_BLACK);
-
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.setTextSize(1);
-  M5Cardputer.Display.drawString("BPM:", 60, 50);
-  M5Cardputer.Display.drawString(bpmInput.c_str(), 60, 65);
-
-  // Cursor
-  int cursorX = 60 + bpmInput.length() * 6;
-  M5Cardputer.Display.drawString("_", cursorX, 65);
-}
 
 void drawLBM() {
   if (uiState == UI_MAIN) {
@@ -302,8 +295,6 @@ void drawLBM() {
     drawStepGrid();
     drawSoundBanks();
     drawControls();
-  } else if (uiState == UI_BPM_INPUT) {
-    drawBPMInput();
   }
 }
 
@@ -521,8 +512,14 @@ void play808Sound(TrackType track, uint8_t note) {
     M5Cardputer.Speaker.stop();
 
     // Play directly from PROGMEM - M5Unified supports this
-    // Volume range: 0-10 from pattern, convert to 0-255 for speaker (boosted 1.25x)
-    uint8_t speakerVol = min(255, (currentPattern.volume * 320) / 10);
+    // Volume range: 0-10 from pattern, convert to 0-255 for speaker
+    // Kick gets extra 1.6x boost (384/10 = 38.4 per level)
+    uint8_t speakerVol;
+    if (track == TRACK_KICK) {
+      speakerVol = min(255, (currentPattern.volume * 384) / 10);  // Kick: 1.6x boost
+    } else {
+      speakerVol = min(255, (currentPattern.volume * 320) / 10);  // Others: 1.25x boost
+    }
     M5Cardputer.Speaker.playRaw(sampleData, sampleLength, sampleRate, false, 1, speakerVol);
   }
 }
@@ -600,27 +597,35 @@ void updateLBM() {
 // ============================================================================
 
 void handleLBMNavigation(char key) {
-  if (uiState == UI_BPM_INPUT) {
-    // BPM input mode
+  // BPM edit mode - handle typing
+  if (bpmEditMode) {
     if (key >= '0' && key <= '9') {
-      bpmInput += key;
-      drawBPMInput();
-    } else if (key == '\b' && bpmInput.length() > 0) {
-      bpmInput.remove(bpmInput.length() - 1);
-      drawBPMInput();
+      // Limit to 3 digits max
+      if (bpmInput.length() < 3) {
+        bpmInput += key;
+        drawTrackHeader();
+      }
+    } else if (key == '\b') {
+      // Backspace - delete last character
+      if (bpmInput.length() > 0) {
+        bpmInput.remove(bpmInput.length() - 1);
+        drawTrackHeader();
+      }
     } else if (key == '\n') {
-      // Apply BPM
-      int newBPM = bpmInput.toInt();
-      if (newBPM >= LBM_MIN_BPM && newBPM <= LBM_MAX_BPM) {
-        currentPattern.bpm = newBPM;
+      // Apply BPM (only if input is valid)
+      if (bpmInput.length() > 0) {
+        int newBPM = bpmInput.toInt();
+        if (newBPM >= LBM_MIN_BPM && newBPM <= LBM_MAX_BPM) {
+          currentPattern.bpm = newBPM;
+        }
       }
       bpmInput = "";
-      uiState = UI_MAIN;
-      drawLBM();
-    } else if (key == 27) { // ESC
+      bpmEditMode = false;
+      drawTrackHeader();
+    } else if (key == 27) { // ESC - cancel without changing
       bpmInput = "";
-      uiState = UI_MAIN;
-      drawLBM();
+      bpmEditMode = false;
+      drawTrackHeader();
     }
     return;
   }
@@ -796,10 +801,10 @@ void handleLBMNavigation(char key) {
       }
       drawStepGrid();
     } else if (selectedItem == NAV_BPM) {
-      // Enter BPM input mode
-      uiState = UI_BPM_INPUT;
-      bpmInput = String(currentPattern.bpm);
-      drawBPMInput();
+      // Enter BPM edit mode (inline) - start with empty input
+      bpmEditMode = true;
+      bpmInput = "";
+      drawTrackHeader();
     } else if (selectedItem == NAV_TAP) {
       // TODO: Implement tap tempo
     } else if (selectedItem == NAV_MODE) {
@@ -813,10 +818,11 @@ void handleLBMNavigation(char key) {
     }
   }
   else if (key == 'b') {
-    // Enter BPM input mode
-    uiState = UI_BPM_INPUT;
-    bpmInput = String(currentPattern.bpm);
-    drawBPMInput();
+    // Quick BPM edit shortcut - start with empty input
+    selectedItem = NAV_BPM;
+    bpmEditMode = true;
+    bpmInput = "";
+    drawLBM();
   }
   else if (key == '+' || key == '=') {
     // Increase volume
