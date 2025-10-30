@@ -15,6 +15,7 @@ String usernameInput = "";
 String channelNameInput = "";
 int scrollPosition = 0;
 int selectedUserIndex = 0;
+int selectedEmojiIndex = 0;
 int chatCurrentChannel = 0;
 bool chatActive = false;
 unsigned long lastPresenceBroadcast = 0;
@@ -47,6 +48,68 @@ extern void drawStar(int x, int y, int size, uint16_t color);
 extern void drawNavHint(const char* text, int x, int y);
 extern void drawEmojiIcon(int x, int y, const char* emoji, uint16_t color, int size);
 extern uint16_t interpolateColor(uint16_t color1, uint16_t color2, float t);
+
+// Helper to render text with embedded emojis
+// Returns the x position after rendering
+int drawTextWithEmojis(const char* text, int startX, int y, uint16_t textColor) {
+  int xPos = startX;
+  int len = strlen(text);
+  int i = 0;
+
+  while (i < len) {
+    // Check for emoji UTF-8 sequences
+    bool isEmoji = false;
+    const char* emojiBytes = &text[i];
+
+    // 4-byte emojis
+    if (i + 3 < len) {
+      if (memcmp(emojiBytes, "\xF0\x9F\x8D\x93", 4) == 0 ||  // 🍓 Strawberry
+          memcmp(emojiBytes, "\xF0\x9F\x8D\x8D", 4) == 0 ||  // 🍍 Pineapple
+          memcmp(emojiBytes, "\xF0\x9F\x8D\xB0", 4) == 0 ||  // 🍰 Cake
+          memcmp(emojiBytes, "\xF0\x9F\x8D\x89", 4) == 0 ||  // 🍉 Watermelon
+          memcmp(emojiBytes, "\xF0\x9F\x90\x9A", 4) == 0 ||  // 🐚 Shell
+          memcmp(emojiBytes, "\xF0\x9F\x8D\xAC", 4) == 0 ||  // 🍬 Peppermint
+          memcmp(emojiBytes, "\xF0\x9F\x94\xA5", 4) == 0 ||  // 🔥 Fire
+          memcmp(emojiBytes, "\xF0\x9F\x92\x80", 4) == 0 ||  // 💀 Skull
+          memcmp(emojiBytes, "\xF0\x9F\x9A\x80", 4) == 0 ||  // 🚀 Rocket
+          memcmp(emojiBytes, "\xF0\x9F\x8E\xB5", 4) == 0 ||  // 🎵 Music
+          memcmp(emojiBytes, "\xF0\x9F\x91\xBE", 4) == 0 ||  // 👾 Invader
+          memcmp(emojiBytes, "\xF0\x9F\x8E\xAE", 4) == 0 ||  // 🎮 Game
+          memcmp(emojiBytes, "\xF0\x9F\x8C\x99", 4) == 0 ||  // 🌙 Moon
+          memcmp(emojiBytes, "\xF0\x9F\x92\x8E", 4) == 0) {  // 💎 Diamond
+        // Draw emoji at 1x scale in chat
+        drawEmojiIcon(xPos, y, emojiBytes, textColor, 1);
+        xPos += 8; // 8 pixels * 1 scale = 8 pixels
+        i += 4;
+        isEmoji = true;
+      }
+    }
+
+    // 3-byte emojis
+    if (!isEmoji && i + 2 < len) {
+      if (memcmp(emojiBytes, "\xE2\xAD\x90", 3) == 0 ||  // ⭐ Star
+          memcmp(emojiBytes, "\xE2\x98\x95", 3) == 0 ||  // ☕ Coffee
+          memcmp(emojiBytes, "\xE2\x9A\xA1", 3) == 0 ||  // ⚡ Lightning
+          memcmp(emojiBytes, "\xE2\x9D\xA4", 3) == 0) {  // ❤️ Heart
+        drawEmojiIcon(xPos, y, emojiBytes, textColor, 1);
+        xPos += 8;
+        i += 3;
+        isEmoji = true;
+      }
+    }
+
+    // Regular ASCII character
+    if (!isEmoji) {
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.setTextColor(textColor);
+      M5Cardputer.Display.drawChar(text[i], xPos, y);
+      xPos += 6;
+      i++;
+    }
+  }
+
+  return xPos;
+}
 
 // ============================================================================
 // HELPER FUNCTIONS
@@ -347,27 +410,103 @@ void drawMainChat() {
     // Peppermint pattern - alternate red/white per message
     uint16_t messageColor = (i % 2 == 0) ? TFT_RED : TFT_WHITE;
 
-    // Draw message content in solid color (peppermint), size 1
+    // Draw message content with emoji support at 1x scale
     M5Cardputer.Display.setTextSize(1);
     M5Cardputer.Display.setTextColor(messageColor);
-    int remainingChars = 38 - username.length();
-    if (content.length() <= remainingChars) {
-      M5Cardputer.Display.drawString(content.c_str(), xPos, lineY);
+
+    // Calculate remaining space (in pixels, not chars, since emojis are slightly larger)
+    int remainingPixels = 220 - (xPos - 10); // Message area is ~220px wide
+
+    // Simple rendering - just draw and let it wrap naturally
+    // Check if content fits on one line (rough estimate)
+    int contentWidth = 0;
+    const char* contentStr = content.c_str();
+    int contentLen = strlen(contentStr);
+
+    // Estimate width: regular chars = 6px, emojis = 8px
+    for (int c = 0; c < contentLen;) {
+      bool isEmoji = false;
+      if (c + 3 < contentLen) {
+        const char* check = &contentStr[c];
+        if (memcmp(check, "\xF0\x9F\x8D\x93", 4) == 0 || memcmp(check, "\xF0\x9F\x8D\x8D", 4) == 0 ||
+            memcmp(check, "\xF0\x9F\x8D\xB0", 4) == 0 || memcmp(check, "\xF0\x9F\x8D\x89", 4) == 0 ||
+            memcmp(check, "\xF0\x9F\x90\x9A", 4) == 0 || memcmp(check, "\xF0\x9F\x8D\xAC", 4) == 0 ||
+            memcmp(check, "\xF0\x9F\x94\xA5", 4) == 0 || memcmp(check, "\xF0\x9F\x92\x80", 4) == 0 ||
+            memcmp(check, "\xF0\x9F\x9A\x80", 4) == 0 || memcmp(check, "\xF0\x9F\x8E\xB5", 4) == 0 ||
+            memcmp(check, "\xF0\x9F\x91\xBE", 4) == 0 || memcmp(check, "\xF0\x9F\x8E\xAE", 4) == 0 ||
+            memcmp(check, "\xF0\x9F\x8C\x99", 4) == 0 || memcmp(check, "\xF0\x9F\x92\x8E", 4) == 0) {
+          contentWidth += 8;
+          c += 4;
+          isEmoji = true;
+        }
+      }
+      if (!isEmoji && c + 2 < contentLen) {
+        const char* check = &contentStr[c];
+        if (memcmp(check, "\xE2\xAD\x90", 3) == 0 || memcmp(check, "\xE2\x98\x95", 3) == 0 ||
+            memcmp(check, "\xE2\x9A\xA1", 3) == 0 || memcmp(check, "\xE2\x9D\xA4", 3) == 0) {
+          contentWidth += 8;
+          c += 3;
+          isEmoji = true;
+        }
+      }
+      if (!isEmoji) {
+        contentWidth += 6;
+        c++;
+      }
+    }
+
+    if (contentWidth <= remainingPixels) {
+      // Single line
+      drawTextWithEmojis(content.c_str(), xPos, lineY, messageColor);
       lineY += 10;
     } else {
-      // Split into two lines
-      String line1 = content.substring(0, remainingChars);
-      String line2 = content.substring(remainingChars);
-      if (line2.length() > 38) {
-        line2 = line2.substring(0, 35) + "...";
+      // Two lines - split at first space after halfway point
+      int splitIdx = contentLen / 2;
+      for (int s = splitIdx; s < contentLen && s < splitIdx + 10; s++) {
+        if (contentStr[s] == ' ') {
+          splitIdx = s;
+          break;
+        }
       }
-      M5Cardputer.Display.drawString(line1.c_str(), xPos, lineY);
+
+      String line1 = content.substring(0, splitIdx);
+      String line2 = content.substring(splitIdx);
+
+      drawTextWithEmojis(line1.c_str(), xPos, lineY, messageColor);
       lineY += 8;
-      M5Cardputer.Display.drawString(line2.c_str(), 10, lineY);
+      drawTextWithEmojis(line2.c_str(), 10, lineY, messageColor);
       lineY += 10;
     }
 
     displayedCount++;
+  }
+
+  // Show emoji hint in center if no messages
+  if (filteredCount == 0) {
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+    M5Cardputer.Display.drawString("\\ = symbols", 85, 65);
+
+    // Draw 12 symbols underneath at 1x scale (full row)
+    const char* emojis[] = {
+      "\xF0\x9F\x8D\x93",  // 🍓 Strawberry
+      "\xF0\x9F\x8D\x8D",  // 🍍 Pineapple
+      "\xF0\x9F\x8D\xB0",  // 🍰 Cake
+      "\xF0\x9F\x8D\x89",  // Pill
+      "\xF0\x9F\x90\x9A",  // Atom
+      "\xE2\xAD\x90",      // Radioactive
+      "\xF0\x9F\x8D\xAC",  // 🍬 Peppermint
+      "\xF0\x9F\x94\xA5",  // Biohazard
+      "\xF0\x9F\x92\x80",  // Syringe
+      "\xF0\x9F\x9A\x80",  // 🚀 Rocket
+      "\xE2\x9A\xA1",      // DNA
+      "\xF0\x9F\x8E\xB5"   // Flask
+    };
+    int startX = 20;
+    int y = 78;
+    for (int i = 0; i < 12; i++) {
+      drawEmojiIcon(startX + (i * 18), y, emojis[i], TFT_DARKGREY, 1);
+    }
   }
 
   // Input area (black background with yellow outline, terminal style, with margins)
@@ -617,6 +756,65 @@ void drawRenameChannel() {
   M5Cardputer.Display.drawString("Max 15 characters", 70, 118);
 }
 
+void drawEmojiPicker() {
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  drawLabChatHeader("Symbols");
+
+  // All 18 symbols - 3 rows of 6
+  const char* emojis[] = {
+    // Row 1
+    "\xF0\x9F\x8D\x93",  // 🍓 Strawberry
+    "\xF0\x9F\x8D\x8D",  // 🍍 Pineapple
+    "\xF0\x9F\x8D\xB0",  // 🍰 Cake
+    "\xF0\x9F\x8D\x89",  // Pill
+    "\xF0\x9F\x90\x9A",  // Atom
+    "\xE2\xAD\x90",      // Radioactive
+    // Row 2
+    "\xF0\x9F\x8D\xAC",  // 🍬 Peppermint
+    "\xF0\x9F\x94\xA5",  // Biohazard
+    "\xF0\x9F\x92\x80",  // Syringe
+    "\xF0\x9F\x9A\x80",  // 🚀 Rocket
+    "\xE2\x9A\xA1",      // DNA
+    "\xF0\x9F\x8E\xB5",  // Flask
+    // Row 3
+    "\xE2\x98\x95",      // ☕ Coffee
+    "\xF0\x9F\x91\xBE",  // 👾 Invader
+    "\xF0\x9F\x8E\xAE",  // Target
+    "\xF0\x9F\x8C\x99",  // 🌙 Moon
+    "\xE2\x9D\xA4",      // ❤️ Heart
+    "\xF0\x9F\x92\x8E"   // 💎 Diamond
+  };
+  int emojiCount = 18;
+
+  // Picker box (taller for 3 rows)
+  M5Cardputer.Display.fillRoundRect(10, 35, 220, 75, 12, TFT_BLACK);
+  M5Cardputer.Display.drawRoundRect(10, 35, 220, 75, 12, TFT_ORANGE);
+
+  // Draw emojis in 3 rows of 6 (2x scale)
+  int startX = 20;
+  int startY = 42;
+  int spacingX = 34;
+  int spacingY = 20;
+
+  for (int i = 0; i < emojiCount; i++) {
+    int row = i / 6;
+    int col = i % 6;
+    int x = startX + (col * spacingX);
+    int y = startY + (row * spacingY);
+
+    // Highlight selected emoji
+    if (i == selectedEmojiIndex) {
+      M5Cardputer.Display.fillRoundRect(x - 3, y - 3, 22, 22, 6, TFT_ORANGE);
+    }
+
+    // Draw emoji icon at 2x scale in picker
+    drawEmojiIcon(x, y, emojis[i], TFT_WHITE, 2);
+  }
+
+  // Nav hints
+  drawNavHint("Arrows=Nav  Enter=Add  `=Back", 35, 118);
+}
+
 // ============================================================================
 // MAIN FUNCTIONS
 // ============================================================================
@@ -745,6 +943,9 @@ void drawLabChat() {
       break;
     case CHAT_RENAME_CHANNEL:
       drawRenameChannel();
+      break;
+    case CHAT_EMOJI_PICKER:
+      drawEmojiPicker();
       break;
   }
 }
@@ -902,6 +1103,45 @@ void handleLabChatNavigation(char key) {
       } else if (chatInput.length() > 0 && key >= 32 && key <= 126) {
         // Typing mode: add character, ignore hotkeys
         chatInput += key;
+
+        // Check for emoji shortcuts after adding character
+        if (chatInput.endsWith(":sb")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 3) + "\xF0\x9F\x8D\x93"; // 🍓 Strawberry
+        } else if (chatInput.endsWith(":pine")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 5) + "\xF0\x9F\x8D\x8D"; // 🍍 Pineapple
+        } else if (chatInput.endsWith(":cake")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 5) + "\xF0\x9F\x8D\xB0"; // 🍰 Cake
+        } else if (chatInput.endsWith(":pill")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 5) + "\xF0\x9F\x8D\x89"; // Pill
+        } else if (chatInput.endsWith(":atom")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 5) + "\xF0\x9F\x90\x9A"; // Atom
+        } else if (chatInput.endsWith(":rad")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 4) + "\xE2\xAD\x90"; // Radioactive
+        } else if (chatInput.endsWith(":mint")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 5) + "\xF0\x9F\x8D\xAC"; // 🍬 Peppermint
+        } else if (chatInput.endsWith(":bio")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 4) + "\xF0\x9F\x94\xA5"; // Biohazard
+        } else if (chatInput.endsWith(":syringe")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 8) + "\xF0\x9F\x92\x80"; // Syringe
+        } else if (chatInput.endsWith(":rocket")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 7) + "\xF0\x9F\x9A\x80"; // 🚀 Rocket
+        } else if (chatInput.endsWith(":dna")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 4) + "\xE2\x9A\xA1"; // DNA
+        } else if (chatInput.endsWith(":flask")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 6) + "\xF0\x9F\x8E\xB5"; // Flask
+        } else if (chatInput.endsWith(":coffee")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 7) + "\xE2\x98\x95"; // ☕ Coffee
+        } else if (chatInput.endsWith(":alien")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 6) + "\xF0\x9F\x91\xBE"; // 👾 Invader
+        } else if (chatInput.endsWith(":target")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 7) + "\xF0\x9F\x8E\xAE"; // Target
+        } else if (chatInput.endsWith(":moon")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 5) + "\xF0\x9F\x8C\x99"; // 🌙 Moon
+        } else if (chatInput.endsWith(":heart")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 6) + "\xE2\x9D\xA4"; // ❤️ Heart
+        } else if (chatInput.endsWith(":gem")) {
+          chatInput = chatInput.substring(0, chatInput.length() - 4) + "\xF0\x9F\x92\x8E"; // 💎 Diamond
+        }
       } else if (chatInput.length() == 0) {
         // Navigation mode: only process hotkeys when NOT typing
         if (key == '`') {
@@ -912,16 +1152,15 @@ void handleLabChatNavigation(char key) {
             chatState = CHAT_DM_SELECT;
             selectedUserIndex = 0;
           }
+        } else if (key == '\\') { // Backslash - emoji picker
+          chatState = CHAT_EMOJI_PICKER;
+          selectedEmojiIndex = 0;
         } else if (key == '#') { // Rename current channel
           channelNameInput = channelNames[chatCurrentChannel];
           chatState = CHAT_RENAME_CHANNEL;
         } else if (key == 27) { // ESC - exit DM mode
           dmTargetID = "";
           dmTargetUsername = "";
-        } else if (key == ';') { // Up - scroll
-          scrollPosition++;
-        } else if (key == '.') { // Down - scroll
-          scrollPosition = max(0, scrollPosition - 1);
         } else if (key >= 32 && key <= 126) {
           // Start typing
           chatInput += key;
@@ -1065,6 +1304,32 @@ void handleLabChatNavigation(char key) {
         chatState = CHAT_MAIN;
       } else if (channelNameInput.length() < 15 && key >= 32 && key <= 126) {
         channelNameInput += key;
+      }
+      break;
+    }
+
+    case CHAT_EMOJI_PICKER: {
+      // All 18 emojis (same as in drawEmojiPicker)
+      const char* emojis[] = {
+        "\xF0\x9F\x8D\x93", "\xF0\x9F\x8D\x8D", "\xF0\x9F\x8D\xB0", "\xF0\x9F\x8D\x89", "\xF0\x9F\x90\x9A", "\xE2\xAD\x90",
+        "\xF0\x9F\x8D\xAC", "\xF0\x9F\x94\xA5", "\xF0\x9F\x92\x80", "\xF0\x9F\x9A\x80", "\xE2\x9A\xA1", "\xF0\x9F\x8E\xB5",
+        "\xE2\x98\x95", "\xF0\x9F\x91\xBE", "\xF0\x9F\x8E\xAE", "\xF0\x9F\x8C\x99", "\xE2\x9D\xA4", "\xF0\x9F\x92\x8E"
+      };
+      int emojiCount = 18;
+
+      if (key == ',') { // Left
+        if (selectedEmojiIndex % 6 > 0) selectedEmojiIndex--;
+      } else if (key == '/') { // Right
+        if (selectedEmojiIndex % 6 < 5) selectedEmojiIndex++;
+      } else if (key == ';') { // Up
+        if (selectedEmojiIndex >= 6) selectedEmojiIndex -= 6;
+      } else if (key == '.') { // Down
+        if (selectedEmojiIndex < 12) selectedEmojiIndex += 6;
+      } else if (key == '\n') { // Enter - add emoji to chat input
+        chatInput += String(emojis[selectedEmojiIndex]);
+        chatState = CHAT_MAIN;
+      } else if (key == '`') { // Back
+        chatState = CHAT_MAIN;
       }
       break;
     }

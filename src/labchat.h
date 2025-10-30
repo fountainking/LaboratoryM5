@@ -18,7 +18,8 @@ enum LabChatState {
   CHAT_DM_SELECT,         // Direct message user selection
   CHAT_NETWORK_INFO,      // Network information display
   CHAT_CHANGE_USERNAME,   // Change username input
-  CHAT_RENAME_CHANNEL     // Rename current channel
+  CHAT_RENAME_CHANNEL,    // Rename current channel
+  CHAT_EMOJI_PICKER       // Emoji picker overlay
 };
 
 // LabCHAT functions
@@ -42,6 +43,7 @@ void drawDMSelect();
 void drawNetworkInfo();
 void drawChangeUsername();
 void drawRenameChannel();
+void drawEmojiPicker();
 
 // Helper functions
 void drawLabChatHeader(const char* subtitle = nullptr);
@@ -58,6 +60,7 @@ extern String usernameInput;
 extern String channelNameInput;
 extern int scrollPosition;
 extern int selectedUserIndex;
+extern int selectedEmojiIndex;
 extern int chatCurrentChannel;
 extern bool chatActive;
 extern unsigned long lastPresenceBroadcast;

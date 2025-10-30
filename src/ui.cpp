@@ -1,6 +1,7 @@
 #include "ui.h"
 #include "navigation.h"
 #include "background_services.h"
+#include "settings.h"
 #include <WiFi.h>
 
 // Draw a simple emoji icon at position with optional scaling
@@ -33,6 +34,426 @@ void drawEmojiIcon(int x, int y, const char* emojiBytes, uint16_t color, int sca
     M5Cardputer.Display.fillCircle(x + offsetX, y + offsetY, centerRadius, TFT_BROWN);
     return;
   }
+
+  // Smiling Face 😊: F0 9F 98 8A
+  if (memcmp(emojiBytes, "\xF0\x9F\x98\x8A", 4) == 0) {
+    int faceX = x + 4 * scale;
+    int faceY = y + 4 * scale;
+    int faceRadius = 3 * scale;
+    M5Cardputer.Display.fillCircle(faceX, faceY, faceRadius, TFT_YELLOW);
+    // Eyes
+    M5Cardputer.Display.fillCircle(faceX - 1 * scale, faceY - 1 * scale, scale, TFT_BLACK);
+    M5Cardputer.Display.fillCircle(faceX + 1 * scale, faceY - 1 * scale, scale, TFT_BLACK);
+    // Smile
+    M5Cardputer.Display.drawLine(faceX - 1 * scale, faceY + 1 * scale, faceX + 1 * scale, faceY + 1 * scale, TFT_BLACK);
+    return;
+  }
+
+  // Red Heart ❤️: E2 9D A4 (with optional FE0F variant)
+  if (memcmp(emojiBytes, "\xE2\x9D\xA4", 3) == 0) {
+    int heartX = x + 4 * scale;
+    int heartY = y + 4 * scale;
+    // Draw two circles for top of heart
+    M5Cardputer.Display.fillCircle(heartX - 1 * scale, heartY, 2 * scale, TFT_RED);
+    M5Cardputer.Display.fillCircle(heartX + 1 * scale, heartY, 2 * scale, TFT_RED);
+    // Draw triangle for bottom
+    M5Cardputer.Display.fillTriangle(
+      heartX - 3 * scale, heartY,
+      heartX + 3 * scale, heartY,
+      heartX, heartY + 4 * scale,
+      TFT_RED
+    );
+    return;
+  }
+
+  // Thumbs Up 👍: F0 9F 91 8D
+  if (memcmp(emojiBytes, "\xF0\x9F\x91\x8D", 4) == 0) {
+    int thumbX = x + 4 * scale;
+    int thumbY = y + 5 * scale;
+    // Thumb (vertical rectangle)
+    M5Cardputer.Display.fillRect(thumbX - 1 * scale, thumbY - 3 * scale, 2 * scale, 4 * scale, TFT_ORANGE);
+    // Fist (horizontal rectangle)
+    M5Cardputer.Display.fillRect(thumbX - 2 * scale, thumbY, 4 * scale, 2 * scale, TFT_ORANGE);
+    return;
+  }
+
+  // Face with Tears of Joy 😂: F0 9F 98 82
+  if (memcmp(emojiBytes, "\xF0\x9F\x98\x82", 4) == 0) {
+    int faceX = x + 4 * scale;
+    int faceY = y + 4 * scale;
+    int faceRadius = 3 * scale;
+    M5Cardputer.Display.fillCircle(faceX, faceY, faceRadius, TFT_YELLOW);
+    // Squinting eyes (lines)
+    M5Cardputer.Display.drawLine(faceX - 2 * scale, faceY - 1 * scale, faceX, faceY - 1 * scale, TFT_BLACK);
+    M5Cardputer.Display.drawLine(faceX, faceY - 1 * scale, faceX + 2 * scale, faceY - 1 * scale, TFT_BLACK);
+    // Wide smile
+    M5Cardputer.Display.drawCircle(faceX, faceY + 1 * scale, 2 * scale, TFT_BLACK);
+    // Tears
+    M5Cardputer.Display.fillCircle(faceX - 3 * scale, faceY - 1 * scale, scale, TFT_CYAN);
+    M5Cardputer.Display.fillCircle(faceX + 3 * scale, faceY - 1 * scale, scale, TFT_CYAN);
+    return;
+  }
+
+  // Fire 🔥: F0 9F 94 A5
+  if (memcmp(emojiBytes, "\xF0\x9F\x94\xA5", 4) == 0) {
+    int fireX = x + 4 * scale;
+    int fireY = y + 6 * scale;
+    // Outer flame (orange)
+    M5Cardputer.Display.fillTriangle(
+      fireX, fireY - 5 * scale,
+      fireX - 3 * scale, fireY,
+      fireX + 3 * scale, fireY,
+      TFT_ORANGE
+    );
+    // Inner flame (yellow)
+    M5Cardputer.Display.fillTriangle(
+      fireX, fireY - 3 * scale,
+      fireX - 1 * scale, fireY - 1 * scale,
+      fireX + 1 * scale, fireY - 1 * scale,
+      TFT_YELLOW
+    );
+    return;
+  }
+
+  // Sparkles ✨: E2 9C A8
+  if (memcmp(emojiBytes, "\xE2\x9C\xA8", 3) == 0) {
+    int sparkleX = x + 4 * scale;
+    int sparkleY = y + 4 * scale;
+    // Draw a star shape with lines
+    M5Cardputer.Display.drawLine(sparkleX, sparkleY - 3 * scale, sparkleX, sparkleY + 3 * scale, TFT_YELLOW);
+    M5Cardputer.Display.drawLine(sparkleX - 3 * scale, sparkleY, sparkleX + 3 * scale, sparkleY, TFT_YELLOW);
+    M5Cardputer.Display.drawLine(sparkleX - 2 * scale, sparkleY - 2 * scale, sparkleX + 2 * scale, sparkleY + 2 * scale, TFT_YELLOW);
+    M5Cardputer.Display.drawLine(sparkleX - 2 * scale, sparkleY + 2 * scale, sparkleX + 2 * scale, sparkleY - 2 * scale, TFT_YELLOW);
+    return;
+  }
+
+  // Skull 💀: F0 9F 92 80
+  if (memcmp(emojiBytes, "\xF0\x9F\x92\x80", 4) == 0) {
+    int skullX = x + 4 * scale;
+    int skullY = y + 4 * scale;
+    // Head
+    M5Cardputer.Display.fillCircle(skullX, skullY, 3 * scale, TFT_WHITE);
+    // Eye sockets
+    M5Cardputer.Display.fillCircle(skullX - 1 * scale, skullY - 1 * scale, scale, TFT_BLACK);
+    M5Cardputer.Display.fillCircle(skullX + 1 * scale, skullY - 1 * scale, scale, TFT_BLACK);
+    // Nose
+    M5Cardputer.Display.fillRect(skullX - scale/2, skullY, scale, scale, TFT_BLACK);
+    // Jaw
+    M5Cardputer.Display.fillRect(skullX - 2 * scale, skullY + 2 * scale, 4 * scale, scale, TFT_WHITE);
+    return;
+  }
+
+  // Eyes 👀: F0 9F 91 80
+  if (memcmp(emojiBytes, "\xF0\x9F\x91\x80", 4) == 0) {
+    int eyeX = x + 3 * scale;
+    int eyeY = y + 4 * scale;
+    // Left eye
+    M5Cardputer.Display.fillCircle(eyeX, eyeY, 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.fillCircle(eyeX, eyeY, scale, TFT_BLACK);
+    // Right eye
+    M5Cardputer.Display.fillCircle(eyeX + 4 * scale, eyeY, 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.fillCircle(eyeX + 4 * scale, eyeY, scale, TFT_BLACK);
+    return;
+  }
+
+  // Pineapple 🍍: F0 9F 8D 8D
+  if (memcmp(emojiBytes, "\xF0\x9F\x8D\x8D", 4) == 0) {
+    int pineX = x + 4 * scale;
+    int pineY = y + 5 * scale;
+    // 3-pointed star leaves FIRST (Nova Corps style - draws behind body)
+    M5Cardputer.Display.fillTriangle(
+      pineX, pineY - 5 * scale,           // Top point
+      pineX - 2 * scale, pineY - 2 * scale,  // Bottom left
+      pineX + 2 * scale, pineY - 2 * scale,  // Bottom right
+      TFT_GREEN
+    );
+    // Body (yellow oval) - draws on top
+    M5Cardputer.Display.fillCircle(pineX, pineY, 3 * scale, TFT_YELLOW);
+    return;
+  }
+
+  // Robot 🤖: F0 9F A4 96
+  if (memcmp(emojiBytes, "\xF0\x9F\xA4\x96", 4) == 0) {
+    int robotX = x + 4 * scale;
+    int robotY = y + 4 * scale;
+    // Head
+    M5Cardputer.Display.fillRect(robotX - 2 * scale, robotY - 2 * scale, 4 * scale, 4 * scale, TFT_LIGHTGREY);
+    // Eyes
+    M5Cardputer.Display.fillCircle(robotX - 1 * scale, robotY - 1 * scale, scale, TFT_RED);
+    M5Cardputer.Display.fillCircle(robotX + 1 * scale, robotY - 1 * scale, scale, TFT_RED);
+    // Antenna
+    M5Cardputer.Display.drawLine(robotX, robotY - 2 * scale, robotX, robotY - 4 * scale, TFT_LIGHTGREY);
+    M5Cardputer.Display.fillCircle(robotX, robotY - 4 * scale, scale, TFT_RED);
+    // Mouth
+    M5Cardputer.Display.drawLine(robotX - 1 * scale, robotY + 1 * scale, robotX + 1 * scale, robotY + 1 * scale, TFT_BLACK);
+    return;
+  }
+
+  // Ant 🐜: F0 9F 90 9C
+  if (memcmp(emojiBytes, "\xF0\x9F\x90\x9C", 4) == 0) {
+    int antX = x + 4 * scale;
+    int antY = y + 4 * scale;
+    // Body (three circles)
+    M5Cardputer.Display.fillCircle(antX - 2 * scale, antY, 1 * scale, TFT_MAROON);
+    M5Cardputer.Display.fillCircle(antX, antY, 2 * scale, TFT_MAROON);
+    M5Cardputer.Display.fillCircle(antX + 2 * scale, antY, 1 * scale, TFT_MAROON);
+    // Legs
+    M5Cardputer.Display.drawLine(antX - 1 * scale, antY, antX - 2 * scale, antY + 2 * scale, TFT_MAROON);
+    M5Cardputer.Display.drawLine(antX + 1 * scale, antY, antX + 2 * scale, antY + 2 * scale, TFT_MAROON);
+    return;
+  }
+
+  // Coffee ☕️: E2 98 95
+  if (memcmp(emojiBytes, "\xE2\x98\x95", 3) == 0) {
+    int cupX = x + 4 * scale;
+    int cupY = y + 5 * scale;
+    // Cup body
+    M5Cardputer.Display.fillRect(cupX - 2 * scale, cupY - 2 * scale, 4 * scale, 4 * scale, TFT_WHITE);
+    // Coffee inside
+    M5Cardputer.Display.fillRect(cupX - 1 * scale, cupY - 1 * scale, 2 * scale, 2 * scale, TFT_BROWN);
+    // Handle
+    M5Cardputer.Display.drawLine(cupX + 2 * scale, cupY, cupX + 3 * scale, cupY, TFT_WHITE);
+    // Steam
+    M5Cardputer.Display.drawLine(cupX - 1 * scale, cupY - 3 * scale, cupX - 1 * scale, cupY - 4 * scale, TFT_LIGHTGREY);
+    M5Cardputer.Display.drawLine(cupX + 1 * scale, cupY - 3 * scale, cupX + 1 * scale, cupY - 4 * scale, TFT_LIGHTGREY);
+    return;
+  }
+
+  // Radioactive: E2 AD 90 - trefoil symbol
+  if (memcmp(emojiBytes, "\xE2\xAD\x90", 3) == 0) {
+    int radX = x + 4 * scale;
+    int radY = y + 4 * scale;
+    // Center circle
+    M5Cardputer.Display.fillCircle(radX, radY, scale, TFT_YELLOW);
+    // Three blades at 120° angles
+    for (int i = 0; i < 3; i++) {
+      float angle = (i * 2.0944f) - 1.5708f; // 120° spacing, start at top
+      int x1 = radX + (int)(2 * scale * cos(angle));
+      int y1 = radY + (int)(2 * scale * sin(angle));
+      int x2 = radX + (int)(3 * scale * cos(angle - 0.5f));
+      int y2 = radY + (int)(3 * scale * sin(angle - 0.5f));
+      int x3 = radX + (int)(3 * scale * cos(angle + 0.5f));
+      int y3 = radY + (int)(3 * scale * sin(angle + 0.5f));
+      M5Cardputer.Display.fillTriangle(x1, y1, x2, y2, x3, y3, TFT_YELLOW);
+    }
+    return;
+  }
+
+  // Cake 🍰: F0 9F 8D B0
+  if (memcmp(emojiBytes, "\xF0\x9F\x8D\xB0", 4) == 0) {
+    int cakeX = x + 4 * scale;
+    int cakeY = y + 5 * scale;
+    // Bottom layer (pink)
+    M5Cardputer.Display.fillRect(cakeX - 3 * scale, cakeY, 6 * scale, 2 * scale, TFT_PINK);
+    // Top layer (pink)
+    M5Cardputer.Display.fillRect(cakeX - 2 * scale, cakeY - 2 * scale, 4 * scale, 2 * scale, TFT_PINK);
+    // Frosting/cherry on top (red)
+    M5Cardputer.Display.fillCircle(cakeX, cakeY - 2 * scale, scale, TFT_RED);
+    return;
+  }
+
+  // Pill/Capsule: F0 9F 8D 89 - half red, half white
+  if (memcmp(emojiBytes, "\xF0\x9F\x8D\x89", 4) == 0) {
+    int pillX = x + 4 * scale;
+    int pillY = y + 4 * scale;
+    // Capsule outline
+    M5Cardputer.Display.drawCircle(pillX - 2 * scale, pillY, 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.drawCircle(pillX + 2 * scale, pillY, 2 * scale, TFT_RED);
+    M5Cardputer.Display.drawLine(pillX - 2 * scale, pillY - 2 * scale, pillX + 2 * scale, pillY - 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.drawLine(pillX - 2 * scale, pillY + 2 * scale, pillX + 2 * scale, pillY + 2 * scale, TFT_WHITE);
+    // Fill left half white
+    M5Cardputer.Display.fillCircle(pillX - 2 * scale, pillY, scale, TFT_WHITE);
+    M5Cardputer.Display.fillRect(pillX - 2 * scale, pillY - scale, 2 * scale, 2 * scale, TFT_WHITE);
+    // Fill right half red
+    M5Cardputer.Display.fillCircle(pillX + 2 * scale, pillY, scale, TFT_RED);
+    M5Cardputer.Display.fillRect(pillX, pillY - scale, 2 * scale, 2 * scale, TFT_RED);
+    return;
+  }
+
+  // Eggplant 🍆: F0 9F 8D 86
+  if (memcmp(emojiBytes, "\xF0\x9F\x8D\x86", 4) == 0) {
+    int eggX = x + 4 * scale;
+    int eggY = y + 5 * scale;
+    // Purple body
+    M5Cardputer.Display.fillCircle(eggX, eggY, 3 * scale, TFT_PURPLE);
+    M5Cardputer.Display.fillRect(eggX - 2 * scale, eggY - 1 * scale, 4 * scale, 2 * scale, TFT_PURPLE);
+    // Green stem/leaves
+    M5Cardputer.Display.fillRect(eggX - 1 * scale, eggY - 4 * scale, 2 * scale, 2 * scale, TFT_GREEN);
+    return;
+  }
+
+  // Atom: F0 9F 90 9A - nucleus with electron orbits
+  if (memcmp(emojiBytes, "\xF0\x9F\x90\x9A", 4) == 0) {
+    int atomX = x + 4 * scale;
+    int atomY = y + 4 * scale;
+    // Nucleus (red)
+    M5Cardputer.Display.fillCircle(atomX, atomY, scale, TFT_RED);
+    // Electron orbits (cyan ellipses)
+    M5Cardputer.Display.drawCircle(atomX, atomY, 3 * scale, TFT_CYAN);
+    M5Cardputer.Display.drawEllipse(atomX, atomY, 3 * scale, scale, TFT_CYAN);
+    M5Cardputer.Display.drawEllipse(atomX, atomY, scale, 3 * scale, TFT_CYAN);
+    // Electrons (white dots)
+    M5Cardputer.Display.fillCircle(atomX + 3 * scale, atomY, scale, TFT_WHITE);
+    M5Cardputer.Display.fillCircle(atomX, atomY - 3 * scale, scale, TFT_WHITE);
+    return;
+  }
+
+  // Peppermint 🍬: F0 9F 8D AC - red and white swirl
+  if (memcmp(emojiBytes, "\xF0\x9F\x8D\xAC", 4) == 0) {
+    int candyX = x + 4 * scale;
+    int candyY = y + 4 * scale;
+    // White circle base
+    M5Cardputer.Display.fillCircle(candyX, candyY, 3 * scale, TFT_WHITE);
+    // Red swirl stripes
+    M5Cardputer.Display.drawLine(candyX - 2 * scale, candyY - 2 * scale, candyX + 2 * scale, candyY + 2 * scale, TFT_RED);
+    M5Cardputer.Display.drawLine(candyX - 2 * scale, candyY + 2 * scale, candyX + 2 * scale, candyY - 2 * scale, TFT_RED);
+    M5Cardputer.Display.drawCircle(candyX, candyY, 2 * scale, TFT_RED);
+    return;
+  }
+
+  // Biohazard: F0 9F 94 A5 - three crescents
+  if (memcmp(emojiBytes, "\xF0\x9F\x94\xA5", 4) == 0) {
+    int bioX = x + 4 * scale;
+    int bioY = y + 4 * scale;
+    // Center circle
+    M5Cardputer.Display.fillCircle(bioX, bioY, scale, TFT_ORANGE);
+    // Three crescents at 120° angles
+    for (int i = 0; i < 3; i++) {
+      float angle = (i * 2.0944f); // 120° spacing
+      int cx = bioX + (int)(2 * scale * cos(angle));
+      int cy = bioY + (int)(2 * scale * sin(angle));
+      M5Cardputer.Display.fillCircle(cx, cy, 2 * scale, TFT_ORANGE);
+      M5Cardputer.Display.fillCircle(cx + (int)(scale * cos(angle)), cy + (int)(scale * sin(angle)), scale, TFT_BLACK);
+    }
+    return;
+  }
+
+  // Syringe: F0 9F 92 80 - needle with plunger
+  if (memcmp(emojiBytes, "\xF0\x9F\x92\x80", 4) == 0) {
+    int syrX = x + 4 * scale;
+    int syrY = y + 4 * scale;
+    // Barrel (white)
+    M5Cardputer.Display.fillRect(syrX - 2 * scale, syrY - scale, 4 * scale, 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.drawRect(syrX - 2 * scale, syrY - scale, 4 * scale, 2 * scale, TFT_DARKGREY);
+    // Needle (grey)
+    M5Cardputer.Display.fillTriangle(syrX + 2 * scale, syrY - scale, syrX + 2 * scale, syrY + scale, syrX + 4 * scale, syrY, TFT_DARKGREY);
+    // Plunger (cyan)
+    M5Cardputer.Display.fillRect(syrX - 3 * scale, syrY - scale/2, scale, scale, TFT_CYAN);
+    return;
+  }
+
+  // Rocket 🚀: F0 9F 9A 80 - red rocket
+  if (memcmp(emojiBytes, "\xF0\x9F\x9A\x80", 4) == 0) {
+    int rocketX = x + 4 * scale;
+    int rocketY = y + 5 * scale;
+    // Body (red)
+    M5Cardputer.Display.fillRect(rocketX - 1 * scale, rocketY - 2 * scale, 2 * scale, 4 * scale, TFT_RED);
+    // Nose cone (red triangle)
+    M5Cardputer.Display.fillTriangle(rocketX, rocketY - 4 * scale, rocketX - 1 * scale, rocketY - 2 * scale, rocketX + 1 * scale, rocketY - 2 * scale, TFT_RED);
+    // Window (white)
+    M5Cardputer.Display.fillCircle(rocketX, rocketY, scale, TFT_WHITE);
+    // Fins
+    M5Cardputer.Display.fillTriangle(rocketX - 1 * scale, rocketY + 2 * scale, rocketX - 2 * scale, rocketY + 3 * scale, rocketX - 1 * scale, rocketY + 1 * scale, TFT_ORANGE);
+    M5Cardputer.Display.fillTriangle(rocketX + 1 * scale, rocketY + 2 * scale, rocketX + 2 * scale, rocketY + 3 * scale, rocketX + 1 * scale, rocketY + 1 * scale, TFT_ORANGE);
+    return;
+  }
+
+  // DNA Helix: E2 9A A1 - double helix spiral
+  if (memcmp(emojiBytes, "\xE2\x9A\xA1", 3) == 0) {
+    int dnaX = x + 4 * scale;
+    int dnaY = y + 4 * scale;
+    // Draw helix strands (two sine waves)
+    for (int i = -3 * scale; i <= 3 * scale; i++) {
+      int offset1 = (int)(scale * sin(i * 0.5f));
+      int offset2 = (int)(scale * sin(i * 0.5f + 3.14159f));
+      M5Cardputer.Display.drawPixel(dnaX + offset1, dnaY + i, TFT_CYAN);
+      M5Cardputer.Display.drawPixel(dnaX + offset2, dnaY + i, TFT_MAGENTA);
+      // Connection rungs every few pixels
+      if (i % (2 * scale) == 0) {
+        M5Cardputer.Display.drawLine(dnaX + offset1, dnaY + i, dnaX + offset2, dnaY + i, TFT_WHITE);
+      }
+    }
+    return;
+  }
+
+  // Beaker/Flask: F0 9F 8E B5 - lab glassware
+  if (memcmp(emojiBytes, "\xF0\x9F\x8E\xB5", 4) == 0) {
+    int beakerX = x + 4 * scale;
+    int beakerY = y + 5 * scale;
+    // Flask body (trapezoid)
+    M5Cardputer.Display.drawLine(beakerX - 2 * scale, beakerY - 2 * scale, beakerX - 3 * scale, beakerY + 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.drawLine(beakerX + 2 * scale, beakerY - 2 * scale, beakerX + 3 * scale, beakerY + 2 * scale, TFT_WHITE);
+    M5Cardputer.Display.drawLine(beakerX - 3 * scale, beakerY + 2 * scale, beakerX + 3 * scale, beakerY + 2 * scale, TFT_WHITE);
+    // Liquid inside (cyan)
+    M5Cardputer.Display.fillTriangle(beakerX - 2 * scale, beakerY, beakerX + 2 * scale, beakerY, beakerX, beakerY + 2 * scale, TFT_CYAN);
+    // Opening
+    M5Cardputer.Display.drawLine(beakerX - 2 * scale, beakerY - 2 * scale, beakerX + 2 * scale, beakerY - 2 * scale, TFT_WHITE);
+    return;
+  }
+
+  // Space Invader 👾: F0 9F 91 BE - purple alien
+  if (memcmp(emojiBytes, "\xF0\x9F\x91\xBE", 4) == 0) {
+    int alienX = x + 4 * scale;
+    int alienY = y + 4 * scale;
+    // Body (purple)
+    M5Cardputer.Display.fillRect(alienX - 2 * scale, alienY - 1 * scale, 4 * scale, 3 * scale, TFT_PURPLE);
+    // Head bumps
+    M5Cardputer.Display.fillRect(alienX - 3 * scale, alienY, scale, scale, TFT_PURPLE);
+    M5Cardputer.Display.fillRect(alienX + 2 * scale, alienY, scale, scale, TFT_PURPLE);
+    // Eyes (white)
+    M5Cardputer.Display.fillRect(alienX - 1 * scale, alienY, scale, scale, TFT_WHITE);
+    M5Cardputer.Display.fillRect(alienX, alienY, scale, scale, TFT_WHITE);
+    return;
+  }
+
+  // Target/Crosshair: F0 9F 8E AE - concentric circles with cross
+  if (memcmp(emojiBytes, "\xF0\x9F\x8E\xAE", 4) == 0) {
+    int targetX = x + 4 * scale;
+    int targetY = y + 4 * scale;
+    // Concentric circles (red)
+    M5Cardputer.Display.drawCircle(targetX, targetY, 3 * scale, TFT_RED);
+    M5Cardputer.Display.drawCircle(targetX, targetY, 2 * scale, TFT_RED);
+    M5Cardputer.Display.drawCircle(targetX, targetY, scale, TFT_RED);
+    // Crosshair (white)
+    M5Cardputer.Display.drawLine(targetX - 4 * scale, targetY, targetX + 4 * scale, targetY, TFT_WHITE);
+    M5Cardputer.Display.drawLine(targetX, targetY - 4 * scale, targetX, targetY + 4 * scale, TFT_WHITE);
+    return;
+  }
+
+  // Crescent Moon 🌙: F0 9F 8C 99 - yellow crescent
+  if (memcmp(emojiBytes, "\xF0\x9F\x8C\x99", 4) == 0) {
+    int moonX = x + 4 * scale;
+    int moonY = y + 4 * scale;
+    // Outer circle (yellow)
+    M5Cardputer.Display.fillCircle(moonX, moonY, 3 * scale, TFT_YELLOW);
+    // Cut out crescent (works on black background)
+    M5Cardputer.Display.fillCircle(moonX + 1 * scale, moonY - 1 * scale, 3 * scale, TFT_BLACK);
+    return;
+  }
+
+  // Heart ❤️: E2 9D A4 - red heart
+  if (memcmp(emojiBytes, "\xE2\x9D\xA4", 3) == 0) {
+    int heartX = x + 4 * scale;
+    int heartY = y + 4 * scale;
+    // Two circles for top bumps
+    M5Cardputer.Display.fillCircle(heartX - 1 * scale, heartY - 1 * scale, 2 * scale, TFT_RED);
+    M5Cardputer.Display.fillCircle(heartX + 1 * scale, heartY - 1 * scale, 2 * scale, TFT_RED);
+    // Bottom triangle
+    M5Cardputer.Display.fillTriangle(heartX - 3 * scale, heartY, heartX + 3 * scale, heartY, heartX, heartY + 3 * scale, TFT_RED);
+    return;
+  }
+
+  // Diamond 💎: F0 9F 92 8E - cyan diamond
+  if (memcmp(emojiBytes, "\xF0\x9F\x92\x8E", 4) == 0) {
+    int gemX = x + 4 * scale;
+    int gemY = y + 4 * scale;
+    // Top triangle (cyan)
+    M5Cardputer.Display.fillTriangle(gemX - 2 * scale, gemY, gemX + 2 * scale, gemY, gemX, gemY - 2 * scale, TFT_CYAN);
+    // Bottom triangle (cyan)
+    M5Cardputer.Display.fillTriangle(gemX - 2 * scale, gemY, gemX + 2 * scale, gemY, gemX, gemY + 3 * scale, TFT_CYAN);
+    return;
+  }
+
   // Default: draw a small square for unknown emoji
   M5Cardputer.Display.fillRect(x + 2 * scale, y + 2 * scale, 5 * scale, 5 * scale, color);
 }
@@ -486,6 +907,18 @@ void drawScreen(bool inverted) {
     drawIndicatorDots(currentMainIndex, totalMainItems, inverted);
     // Draw static star (will be overwritten during navigation animations)
     drawStillStar();
+
+    // Draw device name - right-aligned with card edge
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.setTextColor(fgColor);
+    String deviceName = settings.deviceName;
+    if (deviceName.length() > 20) {
+      deviceName = deviceName.substring(0, 20);
+    }
+    // Right-align with card's right edge (cardX=20 + cardW=200 = 220)
+    int textWidth = deviceName.length() * 6;
+    int xPos = 220 - textWidth;  // Text end aligns with card right edge
+    M5Cardputer.Display.drawString(deviceName.c_str(), xPos, 114);
   }
 }
 
@@ -610,16 +1043,6 @@ void drawWiFiScan() {
       }
 
       yPos += 18;  // More spacing for size 2
-    }
-
-    // Show scroll indicators if there are more networks
-    if (startIndex > 0) {
-      // Up arrow
-      M5Cardputer.Display.fillTriangle(120, 48, 115, 52, 125, 52, TFT_DARKGREY);
-    }
-    if (endIndex < totalItems) {
-      // Down arrow
-      M5Cardputer.Display.fillTriangle(120, 100, 115, 96, 125, 96, TFT_DARKGREY);
     }
 
     // Show "Scanning..." if we have saved networks but no scanned networks yet
