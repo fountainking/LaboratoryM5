@@ -55,7 +55,6 @@ enum LBMNavItem {
   NAV_NUDGE,       // Second row middle
   NAV_SPEED,       // Second row right
   NAV_BPM,         // Top row right (tempo)
-  NAV_TAP,         // Top row far right
   NAV_STEPS,       // Step grid
   NAV_MODE         // POLY/808/USER button
 };
@@ -148,13 +147,6 @@ void drawTrackHeader() {
     M5Cardputer.Display.setTextColor(selectedItem == NAV_BPM ? trackColors[currentTrack] : TFT_BLACK);
   }
   M5Cardputer.Display.drawString(bpmLabel.c_str(), bpmX, row1Y);
-
-  // TAP
-  int tapX = bpmX + 60;
-  M5Cardputer.Display.fillRoundRect(tapX, boxY1, 40, 18, 7, TFT_WHITE);
-  M5Cardputer.Display.drawRoundRect(tapX, boxY1, 40, 18, 7, selectedItem == NAV_TAP ? trackColors[currentTrack] : TFT_BLACK);
-  M5Cardputer.Display.setTextColor(selectedItem == NAV_TAP ? trackColors[currentTrack] : TFT_BLACK);
-  M5Cardputer.Display.drawString("TAP", tapX+10, row1Y);
 
   // ROW 2: Sound, Nudge, Speed (Y=38) - 2px margin to steps
   int row2Y = 38;
@@ -663,7 +655,7 @@ void handleLBMNavigation(char key) {
     } else if (selectedItem == NAV_SOUND || selectedItem == NAV_NUDGE || selectedItem == NAV_SPEED) {
       selectedItem = NAV_TRACK;
       drawLBM();
-    } else if (selectedItem == NAV_BPM || selectedItem == NAV_TAP) {
+    } else if (selectedItem == NAV_BPM) {
       selectedItem = NAV_TRACK;
       drawLBM();
     } else if (selectedItem == NAV_MODE) {
@@ -679,7 +671,7 @@ void handleLBMNavigation(char key) {
     if (selectedItem == NAV_TRACK) {
       selectedItem = NAV_SOUND;
       drawLBM();
-    } else if (selectedItem == NAV_SOUND || selectedItem == NAV_NUDGE || selectedItem == NAV_SPEED || selectedItem == NAV_BPM || selectedItem == NAV_TAP) {
+    } else if (selectedItem == NAV_SOUND || selectedItem == NAV_NUDGE || selectedItem == NAV_SPEED || selectedItem == NAV_BPM) {
       selectedItem = NAV_STEPS;
       cursorY = 0;  // Start at top row
       drawLBM();
@@ -724,9 +716,6 @@ void handleLBMNavigation(char key) {
       } else if (selectedItem == NAV_SPEED) {
         selectedItem = NAV_NUDGE;
         drawLBM();
-      } else if (selectedItem == NAV_TAP) {
-        selectedItem = NAV_BPM;
-        drawLBM();
       } else if (selectedItem == NAV_STEPS) {
         if (cursorX > 0) {
           cursorX--;
@@ -767,9 +756,6 @@ void handleLBMNavigation(char key) {
       } else if (selectedItem == NAV_NUDGE) {
         selectedItem = NAV_SPEED;
         drawLBM();
-      } else if (selectedItem == NAV_BPM) {
-        selectedItem = NAV_TAP;
-        drawLBM();
       } else if (selectedItem == NAV_STEPS) {
         if (cursorX < 7) {
           cursorX++;
@@ -805,8 +791,6 @@ void handleLBMNavigation(char key) {
       bpmEditMode = true;
       bpmInput = "";
       drawTrackHeader();
-    } else if (selectedItem == NAV_TAP) {
-      // TODO: Implement tap tempo
     } else if (selectedItem == NAV_MODE) {
       // Toggle between 808 and USER
       if (currentPattern.mode == MODE_808) {

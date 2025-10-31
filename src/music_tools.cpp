@@ -2,6 +2,7 @@
 #include "ui.h"
 #include "settings.h"
 #include "lbm.h"
+#include "tap_tempo.h"
 
 MusicToolsState musicToolsState = TOOLS_MENU;
 int musicToolsMenuIndex = 0;
@@ -151,8 +152,8 @@ void drawMusicToolsMenu() {
   // No title - removed
 
   // Menu items
-  const char* menuItems[] = {"Guitar Tuner", "Equalizer", "Lab Beat Machine"};
-  const int menuCount = 3;
+  const char* menuItems[] = {"Guitar Tuner", "Equalizer", "Lab Beat Machine", "Tap Tempo"};
+  const int menuCount = 4;
 
   M5Cardputer.Display.setTextSize(1);
   int yPos = 35;  // Lifted up
@@ -451,7 +452,7 @@ void handleMusicToolsNavigation(char key) {
       }
     } else if (key == '.' || key == '/') {
       // Down
-      if (musicToolsMenuIndex < 2) {  // Now have 3 items
+      if (musicToolsMenuIndex < 3) {  // Now have 4 items
         musicToolsMenuIndex++;
         if (settings.soundEnabled) M5Cardputer.Speaker.tone(1000, 50);
         drawMusicToolsMenu();
@@ -460,5 +461,8 @@ void handleMusicToolsNavigation(char key) {
   } else if (musicToolsState == LAB_BEAT_MACHINE) {
     // Pass navigation to LBM
     handleLBMNavigation(key);
+  } else if (musicToolsState == TAP_TEMPO) {
+    // Pass navigation to Tap Tempo
+    handleTapTempoNavigation(key);
   }
 }

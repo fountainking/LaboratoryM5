@@ -24,6 +24,7 @@
 #include "chip8.h"
 #include "labchat.h"
 #include "lbm.h"
+#include "tap_tempo.h"
 
 Preferences preferences;
 
@@ -1869,14 +1870,24 @@ void loop() {
               toggleDimMode();
               drawSettingsMenu();
             } else if (settingsMenuIndex == 2) {
+              // Device name editor
+              settingsState = SETTINGS_DEVICE_NAME;
+              drawDeviceNameInput();
+            } else if (settingsMenuIndex == 3) {
               // Timezone selector
               settingsState = SETTINGS_TIMEZONE;
               drawTimezoneSelector();
-            } else if (settingsMenuIndex == 3) {
+            } else if (settingsMenuIndex == 4) {
               // Theme placeholder
               settingsState = SETTINGS_THEME;
               drawThemePlaceholder();
             }
+          } else if (settingsState == SETTINGS_DEVICE_NAME) {
+            // Save device name
+            saveSettings();
+            safeBeep(1000, 50);
+            settingsState = SETTINGS_MAIN;
+            drawSettingsMenu();
           } else if (settingsState == SETTINGS_TIMEZONE) {
             // Select timezone
             if (String(timezones[timezoneSelectIndex].tzString) == "AUTO") {
@@ -1894,6 +1905,30 @@ void loop() {
             settingsState = SETTINGS_MAIN;
             drawSettingsMenu();
           }
+        }
+
+        // Handle device name text input
+        if (settingsState == SETTINGS_DEVICE_NAME) {
+          for (auto key : status.word) {
+            if (key == '`') {
+              // ESC - back to main menu (page 1)
+              safeBeep(400, 50);
+              currentState = MAIN_MENU;
+              drawScreen(false);
+              return;
+            } else if (key >= 32 && key <= 126 && settings.deviceName.length() < 25) {
+              settings.deviceName += (char)key;
+              drawDeviceNameInput();
+            }
+          }
+
+          if (status.del) {
+            if (settings.deviceName.length() > 0) {
+              settings.deviceName.remove(settings.deviceName.length() - 1);
+              drawDeviceNameInput();
+            }
+          }
+          return;
         }
 
         for (auto key : status.word) {
@@ -1983,6 +2018,11 @@ void loop() {
             safeBeep(1200, 100);
             musicToolsState = LAB_BEAT_MACHINE;
             enterLBM();
+          } else if (musicToolsMenuIndex == 3) {
+            // Tap Tempo
+            safeBeep(1200, 100);
+            musicToolsState = TAP_TEMPO;
+            enterTapTempo();
           }
         } else if (status.enter && musicToolsState == LAB_BEAT_MACHINE) {
           // Pass Enter key to LBM as special character
@@ -2006,6 +2046,12 @@ void loop() {
             } else if (musicToolsState == LAB_BEAT_MACHINE) {
               // Exit LBM and back to tools menu
               exitLBM();
+              safeBeep(600, 100);
+              musicToolsState = TOOLS_MENU;
+              drawMusicToolsMenu();
+            } else if (musicToolsState == TAP_TEMPO) {
+              // Exit Tap Tempo and back to tools menu
+              exitTapTempo();
               safeBeep(600, 100);
               musicToolsState = TOOLS_MENU;
               drawMusicToolsMenu();
@@ -2088,18 +2134,18 @@ void loop() {
             drawWiFiPassword();
           }
         }
-        
+
         if (status.del) {
           if (inputPassword.length() > 0) {
             inputPassword.remove(inputPassword.length() - 1);
             drawWiFiPassword();
           }
         }
-        
+
         if (status.enter) {
           handleSelect();
         }
-        
+
         for (auto key : status.word) {
           if (key == '`') {
             handleBack();
@@ -2181,7 +2227,7 @@ void loop() {
       }
     }
   }
-  
+
   // Cursor blink for password screen
   if (currentState == WIFI_PASSWORD) {
     static unsigned long lastBlink = 0;
@@ -2294,6 +2340,10 @@ void loop() {
     updateLBM();
   }
 
+  if (currentState == SCREEN_VIEW && currentScreenNumber == 13 && musicToolsState == TAP_TEMPO) {
+    updateTapTempo();
+  }
+
   // Update audio playback (centralized - handles both radio and music!)
   // This runs ALWAYS to ensure audio continues across all screens/apps/screensaver
 #if DEBUG_ENABLE_AUDIO
@@ -2322,8 +2372,8 @@ void loop() {
       // Handle CHIP-8 game input FIRST for instant response
       handleChip8Input();
 
-      // Run multiple cycles per frame for proper speed (ULTRA FAST!)
-      for (int i = 0; i < 200; i++) {
+      // Run 10 cycles per frame (~600 Hz at 60fps)
+      for (int i = 0; i < 10; i++) {
         chip8.cycle();
       }
 
