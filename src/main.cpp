@@ -2076,22 +2076,29 @@ void loop() {
         return;
       }
 
-      // Handle Roadmap (About) page input
+      // Handle Credits (About) page input
       if (currentState == SCREEN_VIEW && currentScreenNumber == 9) {
+        // Update scrolling animation
+        updateCreditsScroll();
+
         for (auto key : status.word) {
-          if (key == ';' || key == ',') {
-            // ; or , - Scroll up
-            scrollRoadmapUp();
-          } else if (key == '.' || key == '/') {
-            // . or / - Scroll down
-            scrollRoadmapDown();
-          } else if (key == '`') {
+          if (key == '`') {
             // Back to main menu
             safeBeep(600, 100);
             currentState = MAIN_MENU;
             drawScreen(false);
             return;
           }
+        }
+
+        // ENTER key - launch captive portal
+        if (status.enter) {
+          safeBeep(1200, 100);
+          startCaptivePortal("LaboratoryM5");
+          currentState = SCREEN_VIEW;
+          currentScreenNumber = 2;  // WiFi Fun screen shows portal status
+          drawScreen(false);
+          return;
         }
         return;
       }

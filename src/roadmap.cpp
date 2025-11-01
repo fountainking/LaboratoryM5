@@ -1,9 +1,12 @@
 #include "roadmap.h"
 #include "config.h"
+#include "captive_portal.h"
 #include <M5Cardputer.h>
 
-// Roadmap scroll state
-int roadmapScrollOffset = 0;
+// Credits scroll state
+float creditsScrollOffset = 0.0;
+unsigned long lastScrollTime = 0;
+const float SCROLL_SPEED = 0.5;  // Pixels per frame
 
 // Roadmap item structure
 struct RoadmapItem {
@@ -104,85 +107,118 @@ RoadmapItem roadmapItems[] = {
 const int totalRoadmapItems = sizeof(roadmapItems) / sizeof(roadmapItems[0]);
 
 void enterRoadmap() {
-  roadmapScrollOffset = 0;
+  creditsScrollOffset = 135.0;  // Start from bottom of screen
+  lastScrollTime = millis();
   drawRoadmap();
 }
 
 void drawRoadmap() {
-  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  M5Cardputer.Display.fillScreen(TFT_BLACK);
 
-  // Draw title
-  M5Cardputer.Display.setTextSize(2);
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("ROADMAP", 70, 5);
+  // Star Wars-style credits window (trapezoid perspective)
+  // Credits scroll from bottom to top with perspective scaling
 
-  // Draw scrollable list
-  M5Cardputer.Display.setTextSize(1);
-  int yPos = 25;
-  const int lineHeight = 10;
-  const int maxVisible = 10;  // Show 10 lines at a time
+  const char* credits[] = {
+    "",
+    "",
+    "",
+    "LABORATORY M5",
+    "",
+    "Created by",
+    "",
+    "JAMES",
+    "",
+    "",
+    "A portable hacking",
+    "& creative tool",
+    "",
+    "Built with ESP32-S3",
+    "",
+    "2025",
+    "",
+    "",
+    ""
+  };
+  const int numLines = sizeof(credits) / sizeof(credits[0]);
 
-  int startIndex = roadmapScrollOffset;
-  int endIndex = min(startIndex + maxVisible, totalRoadmapItems);
+  // Draw credits with perspective (larger at bottom, smaller at top)
+  for (int i = 0; i < numLines; i++) {
+    // Calculate Y position for this line
+    float lineY = creditsScrollOffset + (i * 18);
 
-  for (int i = startIndex; i < endIndex; i++) {
-    RoadmapItem& item = roadmapItems[i];
+    // Only draw if on screen
+    if (lineY > 10 && lineY < 100) {
+      // Perspective scale: bigger near bottom (lineY ~100), smaller near top (lineY ~10)
+      float scale = 1.0 + ((lineY - 55) / 100.0);  // Range: 0.5 to 1.5
+      scale = constrain(scale, 0.6, 2.0);
 
-    // Check if this is a section header (all caps, no brackets)
-    bool isHeader = (strlen(item.text) > 0 &&
-                     item.text[0] != '[' &&
-                     item.text[0] != ' ' &&
-                     strcmp(item.text, "") != 0);
+      // Fade effect: fade out near top
+      uint8_t alpha = 255;
+      if (lineY < 30) {
+        alpha = map((int)lineY, 10, 30, 0, 255);
+      }
 
-    // Check if empty line
-    bool isEmpty = (strlen(item.text) == 0);
+      // Yellow color with alpha (Star Wars style)
+      uint16_t color = TFT_YELLOW;
+      if (alpha < 128) {
+        color = TFT_ORANGE;  // Darker when fading
+      }
 
-    if (isEmpty) {
-      // Just add spacing
-      yPos += lineHeight / 2;
-    } else if (isHeader) {
-      // Draw section header in bold/colored
-      M5Cardputer.Display.setTextColor(TFT_BLUE);
-      M5Cardputer.Display.drawString(item.text, 10, yPos);
-      M5Cardputer.Display.setTextColor(TFT_BLACK);
-      yPos += lineHeight;
-    } else {
-      // Draw checkbox item
-      uint16_t textColor = item.completed ? TFT_DARKGREY : TFT_BLACK;
-      M5Cardputer.Display.setTextColor(textColor);
-      M5Cardputer.Display.drawString(item.text, 15, yPos);
-      yPos += lineHeight;
+      M5Cardputer.Display.setTextColor(color);
+
+      // Text size based on scale
+      if (scale > 1.5) {
+        M5Cardputer.Display.setTextSize(3);
+      } else if (scale > 1.0) {
+        M5Cardputer.Display.setTextSize(2);
+      } else {
+        M5Cardputer.Display.setTextSize(1);
+      }
+
+      // Center the text (approximate width calculation)
+      String line = credits[i];
+      int charWidth = (scale > 1.5) ? 18 : (scale > 1.0) ? 12 : 6;
+      int textWidth = line.length() * charWidth;
+      int textX = (240 - textWidth) / 2;
+
+      M5Cardputer.Display.drawString(line, textX, (int)lineY);
     }
   }
 
-  // Draw scroll indicators
-  if (roadmapScrollOffset > 0) {
-    // Up arrow
-    M5Cardputer.Display.fillTriangle(120, 27, 115, 31, 125, 31, TFT_DARKGREY);
-  }
+  // Draw bottom button area (dark grey bar)
+  M5Cardputer.Display.fillRect(0, 100, 240, 35, 0x2104);  // Dark grey
 
-  if (endIndex < totalRoadmapItems) {
-    // Down arrow
-    M5Cardputer.Display.fillTriangle(120, 128, 115, 124, 125, 124, TFT_DARKGREY);
-  }
-
-  // Draw controls
+  // Portal button
+  M5Cardputer.Display.fillRoundRect(45, 105, 150, 20, 8, TFT_RED);
+  M5Cardputer.Display.drawRoundRect(45, 105, 150, 20, 8, TFT_WHITE);
   M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_WHITE);
+  M5Cardputer.Display.drawString("LAUNCH PORTAL (ENTER)", 55, 110);
+
+  // Back button hint
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
-  M5Cardputer.Display.drawString("Fn+,/. = Scroll  ` = Back", 30, 120);
+  M5Cardputer.Display.drawString("` = Back", 90, 120);
+}
+
+void updateCreditsScroll() {
+  unsigned long now = millis();
+  if (now - lastScrollTime > 30) {  // ~30 FPS
+    creditsScrollOffset -= SCROLL_SPEED;
+
+    // Loop credits when they scroll off top
+    if (creditsScrollOffset < -200) {
+      creditsScrollOffset = 135.0;
+    }
+
+    lastScrollTime = now;
+    drawRoadmap();
+  }
 }
 
 void scrollRoadmapUp() {
-  if (roadmapScrollOffset > 0) {
-    roadmapScrollOffset--;
-    drawRoadmap();
-  }
+  // Not used in credits mode
 }
 
 void scrollRoadmapDown() {
-  const int maxVisible = 10;
-  if (roadmapScrollOffset < totalRoadmapItems - maxVisible) {
-    roadmapScrollOffset++;
-    drawRoadmap();
-  }
+  // Not used in credits mode
 }

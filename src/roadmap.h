@@ -3,12 +3,14 @@
 
 #include <Arduino.h>
 
-// Roadmap state
-extern int roadmapScrollOffset;
+// Credits state
+extern float creditsScrollOffset;
+extern unsigned long lastScrollTime;
 
-// Roadmap functions
+// Credits functions (About screen)
 void enterRoadmap();
 void drawRoadmap();
+void updateCreditsScroll();
 void scrollRoadmapUp();
 void scrollRoadmapDown();
 
