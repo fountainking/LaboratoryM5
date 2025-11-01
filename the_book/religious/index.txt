@@ -3,50 +3,15 @@
 Category: Religious
 ---------------------------------------
 
-**INDEX**
-
-Category: Religious
----------------------------------------
-
-COMPLETE KJV
-BIBLE|bible/Complete_KJV_Bible.txt|0|Category:
-Religious › Bible
-BIBLE
-INTRODUCTION|bible_introduction.txt|0|The
-Bible - Introduction
-BUDDHISM
-BASICS|buddhism_basics.txt|0|Buddhism -
-Core Teachings
-DHAMMAPADA|other/Dhammapada.txt|0|Category:
-Religious › Other
-COMPLETE
-QURAN|quran/Complete_Quran.txt|0|Category:
-Religious › Quran
-QURAN
-INTRODUCTION|quran_introduction.txt|0|The
-Quran - Introduction
-THE DHAMMAPADA|the_dhammapada.txt|0|•
-PROJECT GUTENBERG EBOOK 2017 *** THE
-THE KING JAMES
-BIBLE|the_king_james_bible.txt|0|•
-NAZARETH THE KING OF THE JEWS. 19:20
-TORAH
-INTRODUCTION|torah_introduction.txt|0|The
-Torah - Introduction
+BIBLE INTRODUCTION|bible_introduction.txt|0|**BIBLE INTRODUCTION**
+BUDDHISM BASICS|buddhism_basics.txt|0|Buddhism - Core Teachings
+COMPLETE KJV BIBLE|bible/Complete_KJV_Bible.txt|0|**COMPLETE KJV BIBLE**
+COMPLETE QURAN|quran/Complete_Quran.txt|0|Category: Religious › Quran
+DHAMMAPADA|other/Dhammapada.txt|0|Category: Religious › Other
+QURAN INTRODUCTION|quran_introduction.txt|0|**QURAN INTRODUCTION**
+THE DHAMMAPADA|the_dhammapada.txt|0|• • PROJECT GUTENBERG EBOOK 2017 ***
+THE KING JAMES BIBLE|the_king_james_bible.txt|0|**THE KING JAMES BIBLE**
+TORAH INTRODUCTION|torah_introduction.txt|0|**TORAH INTRODUCTION**
 
 =======================================
-**RELATED ARTICLES:**
-
-• Buddhism Basics
-• Quran Introduction
-• The Dhammapada
-• Torah Introduction
-• The King James Bible
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~58
-Category: Religious
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 9

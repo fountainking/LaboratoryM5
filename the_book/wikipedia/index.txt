@@ -3,3388 +3,1453 @@
 Category: Wikipedia
 ---------------------------------------
 
-**INDEX**
-
-Category: Wikipedia
----------------------------------------
-
-3D PRINTING|3d_printing.txt|0|3D
-printing, also called additive
-5G|5g.txt|0|5G is the fifth generation
-of cellular
-AGE OF
-EXPLORATION|Age_of_Exploration.txt|0|COMPREHENSIVE
-OVERVIEW
-ANCIENT
-CHINA|Ancient_China.txt|0|COMPREHENSIVE
-OVERVIEW
-ANCIENT
-ROME|Ancient_Rome.txt|0|COMPREHENSIVE
-OVERVIEW
-ASTROBIOLOGY|Astrobiology.txt|0|COMPREHENSIVE
-OVERVIEW
-ASTRONOMY
-BASICS|Astronomy_Basics.txt|0|COMPREHENSIVE
-OVERVIEW
-BIOMASS
-ENERGY|Biomass_Energy.txt|0|COMPREHENSIVE
-OVERVIEW
-BLACK
-HOLES|Black_Holes.txt|0|COMPREHENSIVE
-OVERVIEW
-CALCULUS
-HISTORY|Calculus_History.txt|0|COMPREHENSIVE
-OVERVIEW
-CLIMATE
-SCIENCE|Climate_Science.txt|0|COMPREHENSIVE
-OVERVIEW
-COMPUTER
-HISTORY|Computer_History.txt|0|COMPREHENSIVE
-OVERVIEW
-CONSERVATION
-BIOLOGY|Conservation_Biology.txt|0|COMPREHENSIVE
-OVERVIEW
-COSMOLOGY|Cosmology.txt|0|COMPREHENSIVE
-OVERVIEW
-EARTHQUAKES|Earthquakes.txt|0|COMPREHENSIVE
-OVERVIEW
-ECOLOGY|Ecology.txt|0|COMPREHENSIVE
-OVERVIEW
-EVOLUTION
-THEORY|Evolution_Theory.txt|0|COMPREHENSIVE
-OVERVIEW
-GALAXIES|Galaxies.txt|0|COMPREHENSIVE
-OVERVIEW
-GENETICS
-BASICS|Genetics_Basics.txt|0|COMPREHENSIVE
-OVERVIEW
-GEOLOGY
-BASICS|Geology_Basics.txt|0|COMPREHENSIVE
-OVERVIEW
-GLACIOLOGY|Glaciology.txt|0|COMPREHENSIVE
-OVERVIEW
-HYDROELECTRIC
-POWER|Hydroelectric_Power.txt|0|COMPREHENSIVE
-OVERVIEW
-HYDROLOGY|Hydrology.txt|0|COMPREHENSIVE
-OVERVIEW
-INTERNET
-HISTORY|Internet_History.txt|0|COMPREHENSIVE
-OVERVIEW
-LINEAR
-ALGEBRA|Linear_Algebra.txt|0|COMPREHENSIVE
-OVERVIEW
-LOGIC
-BASICS|Logic_Basics.txt|0|COMPREHENSIVE
-OVERVIEW
-MATHEMATICS
-HISTORY|Mathematics_History.txt|0|COMPREHENSIVE
-OVERVIEW
-MEDIEVAL
-EUROPE|Medieval_Europe.txt|0|COMPREHENSIVE
-OVERVIEW
-METEOROLOGY|Meteorology.txt|0|COMPREHENSIVE
-OVERVIEW
-MINERAL
-FORMATION|Mineral_Formation.txt|0|COMPREHENSIVE
-OVERVIEW
-MOLECULAR
-BIOLOGY|Molecular_Biology.txt|0|COMPREHENSIVE
-OVERVIEW
-NUCLEAR
-ENERGY|Nuclear_Energy.txt|0|COMPREHENSIVE
-OVERVIEW
-OCEANOGRAPHY|Oceanography.txt|0|COMPREHENSIVE
-OVERVIEW
-PLATE
-TECTONICS|Plate_Tectonics.txt|0|COMPREHENSIVE
-OVERVIEW
-PROBABILITY
-THEORY|Probability_Theory.txt|0|COMPREHENSIVE
-OVERVIEW
-RENAISSANCE
-PERIOD|Renaissance_Period.txt|0|COMPREHENSIVE
-OVERVIEW
-ROCK
-CYCLE|Rock_Cycle.txt|0|COMPREHENSIVE
-OVERVIEW
-SOIL
-SCIENCE|Soil_Science.txt|0|COMPREHENSIVE
-OVERVIEW
-SOLAR
-ENERGY|Solar_Energy.txt|0|COMPREHENSIVE
-OVERVIEW
-SPACE
-EXPLORATION|Space_Exploration.txt|0|COMPREHENSIVE
-OVERVIEW
-STARS
-FORMATION|Stars_Formation.txt|0|COMPREHENSIVE
-OVERVIEW
-STATISTICS
-BASICS|Statistics_Basics.txt|0|COMPREHENSIVE
-OVERVIEW
-TELEPHONE
-HISTORY|Telephone_History.txt|0|COMPREHENSIVE
-OVERVIEW
-TELEVISION
-HISTORY|Television_History.txt|0|COMPREHENSIVE
-OVERVIEW
-TIDAL
-ENERGY|Tidal_Energy.txt|0|COMPREHENSIVE
-OVERVIEW
-VOLCANISM|Volcanism.txt|0|COMPREHENSIVE
-OVERVIEW
-WAVE
-ENERGY|Wave_Energy.txt|0|COMPREHENSIVE
-OVERVIEW
-WIND
-POWER|Wind_Power.txt|0|COMPREHENSIVE
-OVERVIEW
-ABRAHAM
-LINCOLN|abraham_lincoln.txt|0|Abraham
-Lincoln was the 16th president
-ACCELERATION|acceleration.txt|0|In
-mechanics, acceleration is the rate
-ACID|acid.txt|0|An acid is a molecule
-or ion capable of
-ADA LOVELACE|ada_lovelace.txt|0|Augusta
-Ada King, Countess of Lovelace,
-ADDICTION|addiction.txt|0|Addiction is
-a neuropsychological
-ADDITION|addition.txt|0|Addition,
-usually denoted with the plus
-ADOLF HITLER|adolf_hitler.txt|0|Adolf
-Hitler was an Austrian-born
-AFRICA|africa.txt|0|Africa is the
-world's second-largest
-AGILE SOFTWARE
-DEVELOPMENT|agile_software_development.txt|0|AGILE
-SOFTWARE DEVELOPMENT
-ALAN TURING|alan_turing.txt|0|Alan
-Mathison Turing was an English
-ALBERT
-EINSTEIN|albert_einstein.txt|0|Albert
-Einstein was a German-born
-ALEXANDER THE
-GREAT|alexander_the_great.txt|0|Alexander
-III of Macedon, most commonly
-ALGEBRA|algebra.txt|0|Algebra is a
-branch of mathematics that
-ALGORITHM|algorithm.txt|0|In
-mathematics and computer science, an
-ALZHEIMERS
-DISEASE|alzheimers_disease.txt|0|Alzheimer's
-disease (AD) is a
-AMAZON
-RAINFOREST|amazon_rainforest.txt|0|The
-Amazon rainforest, also called the
-AMAZON RIVER|amazon_river.txt|0|The
-Amazon River in South America is
-AMERICAN CIVIL
-WAR|american_civil_war.txt|0|The
-American Civil War was a civil war
-AMERICAN
-REVOLUTION|american_revolution.txt|0|The
-American Revolution (17651783) was
-ANCIENT
-EGYPT|ancient_egypt.txt|0|COMPREHENSIVE
-OVERVIEW
-ANCIENT
-GREECE|ancient_greece.txt|0|COMPREHENSIVE
-OVERVIEW
-ANDROID OPERATING
-SYSTEM|android_operating_system.txt|0|ANDROID
-OPERATING SYSTEM
-ANESTHESIA|anesthesia.txt|0|Anesthesia
-or anaesthesia is a state of
-ANGLE|angle.txt|0|In geometry, an angle
-is formed by two
-AFRICAN
-ELEPHANT|animals/african_elephant.txt|0|Category:
-Wikipedia › Animals
-ALBATROSS|animals/albatross.txt|0|Category:
-Wikipedia › Animals
-ALLIGATOR|animals/alligator.txt|0|Category:
-Wikipedia › Animals
-ALPACA|animals/alpaca.txt|0|Category:
-Wikipedia › Animals
-ANT|animals/ant.txt|0|Category:
-Wikipedia › Animals
-ASIAN
-ELEPHANT|animals/asian_elephant.txt|0|Category:
-Wikipedia › Animals
-BASS|animals/bass.txt|0|Category:
-Wikipedia › Animals
-BAT|animals/bat.txt|0|Category:
-Wikipedia › Animals
-BATOMORPHI|animals/batomorphi.txt|0|Category:
-Wikipedia › Animals
-BEAR|animals/bear.txt|0|Category:
-Wikipedia › Animals
-BEAVER|animals/beaver.txt|0|Category:
-Wikipedia › Animals
-BEE|animals/bee.txt|0|Category:
-Wikipedia › Animals
-BEETLE|animals/beetle.txt|0|Category:
-Wikipedia › Animals
-BISON|animals/bison.txt|0|Category:
-Wikipedia › Animals
-BLUE
-WHALE|animals/blue_whale.txt|0|Category:
-Wikipedia › Animals
-BUFFALO|animals/buffalo.txt|0|Category:
-Wikipedia › Animals
-BUTTERFLY|animals/butterfly.txt|0|Category:
-Wikipedia › Animals
-CAMEL|animals/camel.txt|0|Category:
-Wikipedia › Animals
-CAT|animals/cat.txt|0|Category:
-Wikipedia › Animals
-CATTLE|animals/cattle.txt|0|Category:
-Wikipedia › Animals
-CENTIPEDE|animals/centipede.txt|0|Category:
-Wikipedia › Animals
-CHEETAH|animals/cheetah.txt|0|Category:
-Wikipedia › Animals
-CHICKEN|animals/chicken.txt|0|Category:
-Wikipedia › Animals
-CHIMPANZEE|animals/chimpanzee.txt|0|Category:
-Wikipedia › Animals
-COBRA|animals/cobra.txt|0|Category:
-Wikipedia › Animals
-COCCINELLIDAE|animals/coccinellidae.txt|0|Category:
-Wikipedia › Animals
-COYOTE|animals/coyote.txt|0|Category:
-Wikipedia › Animals
-CRICKET|animals/cricket.txt|0|Category:
-Wikipedia › Animals
-CROCODILE|animals/crocodile.txt|0|Category:
-Wikipedia › Animals
-CROW|animals/crow.txt|0|Category:
-Wikipedia › Animals
-DEER|animals/deer.txt|0|Category:
-Wikipedia › Animals
-DOG|animals/dog.txt|0|Category:
-Wikipedia › Animals
-DOLPHIN|animals/dolphin.txt|0|Category:
-Wikipedia › Animals
-DRAGONFLY|animals/dragonfly.txt|0|Category:
-Wikipedia › Animals
-DUCK|animals/duck.txt|0|Category:
-Wikipedia › Animals
-EAGLE|animals/eagle.txt|0|Category:
-Wikipedia › Animals
-EEL|animals/eel.txt|0|Category:
-Wikipedia › Animals
-ELEPHANT|animals/elephant.txt|0|Category:
-Wikipedia › Animals
-ELK|animals/elk.txt|0|Category:
-Wikipedia › Animals
-EMU|animals/emu.txt|0|Category:
-Wikipedia › Animals
-FALCON|animals/falcon.txt|0|Category:
-Wikipedia › Animals
-FLY|animals/fly.txt|0|Category:
-Wikipedia › Animals
-FOX|animals/fox.txt|0|Category:
-Wikipedia › Animals
-FROG|animals/frog.txt|0|Category:
-Wikipedia › Animals
-GECKO|animals/gecko.txt|0|Category:
-Wikipedia › Animals
-GIANT
-PANDA|animals/giant_panda.txt|0|Category:
-Wikipedia › Animals
-GIRAFFE|animals/giraffe.txt|0|Category:
-Wikipedia › Animals
-GOAT|animals/goat.txt|0|Category:
-Wikipedia › Animals
-GOLDFISH|animals/goldfish.txt|0|Category:
-Wikipedia › Animals
-GOOSE|animals/goose.txt|0|Category:
-Wikipedia › Animals
-GORILLA|animals/gorilla.txt|0|Category:
-Wikipedia › Animals
-GRASSHOPPER|animals/grasshopper.txt|0|Category:
-Wikipedia › Animals
-GREAT WHITE
-SHARK|animals/great_white_shark.txt|0|Category:
-Wikipedia › Animals
-GRIZZLY
-BEAR|animals/grizzly_bear.txt|0|Category:
-Wikipedia › Animals
-GULL|animals/gull.txt|0|Category:
-Wikipedia › Animals
-HARE|animals/hare.txt|0|Category:
-Wikipedia › Animals
-HAWK|animals/hawk.txt|0|Category:
-Wikipedia › Animals
-HIPPOPOTAMUS|animals/hippopotamus.txt|0|Category:
-Wikipedia › Animals
-HORSE|animals/horse.txt|0|Category:
-Wikipedia › Animals
-HUMMINGBIRD|animals/hummingbird.txt|0|Category:
-Wikipedia › Animals
-HUMPBACK
-WHALE|animals/humpback_whale.txt|0|Category:
-Wikipedia › Animals
-IGUANA|animals/iguana.txt|0|Category:
-Wikipedia › Animals
-JAGUAR|animals/jaguar.txt|0|Category:
-Wikipedia › Animals
-KANGAROO|animals/kangaroo.txt|0|Category:
-Wikipedia › Animals
-KOALA|animals/koala.txt|0|Category:
-Wikipedia › Animals
-KOMODO
-DRAGON|animals/komodo_dragon.txt|0|Category:
-Wikipedia › Animals
-LEOPARD|animals/leopard.txt|0|Category:
-Wikipedia › Animals
-LION|animals/lion.txt|0|Category:
-Wikipedia › Animals
-LIZARD|animals/lizard.txt|0|Category:
-Wikipedia › Animals
-LLAMA|animals/llama.txt|0|Category:
-Wikipedia › Animals
-MILLIPEDE|animals/millipede.txt|0|Category:
-Wikipedia › Animals
-MONKEY|animals/monkey.txt|0|Category:
-Wikipedia › Animals
-MOOSE|animals/moose.txt|0|Category:
-Wikipedia › Animals
-MOSQUITO|animals/mosquito.txt|0|Category:
-Wikipedia › Animals
-MOTH|animals/moth.txt|0|Category:
-Wikipedia › Animals
-MOUSE|animals/mouse.txt|0|Category:
-Wikipedia › Animals
-NEWT|animals/newt.txt|0|Category:
-Wikipedia › Animals
-OPOSSUM|animals/opossum.txt|0|Category:
-Wikipedia › Animals
-ORANGUTAN|animals/orangutan.txt|0|Category:
-Wikipedia › Animals
-OSTRICH|animals/ostrich.txt|0|Category:
-Wikipedia › Animals
-OTTER|animals/otter.txt|0|Category:
-Wikipedia › Animals
-OWL|animals/owl.txt|0|Category:
-Wikipedia › Animals
-PARROT|animals/parrot.txt|0|Category:
-Wikipedia › Animals
-PELICAN|animals/pelican.txt|0|Category:
-Wikipedia › Animals
-PENGUIN|animals/penguin.txt|0|Category:
-Wikipedia › Animals
-PIG|animals/pig.txt|0|Category:
-Wikipedia › Animals
-PIRANHA|animals/piranha.txt|0|Category:
-Wikipedia › Animals
-PLATYPUS|animals/platypus.txt|0|Category:
-Wikipedia › Animals
-POLAR
-BEAR|animals/polar_bear.txt|0|Category:
-Wikipedia › Animals
-PORPOISE|animals/porpoise.txt|0|Category:
-Wikipedia › Animals
-PYTHON|animals/python.txt|0|Category:
-Wikipedia › Animals
-RABBIT|animals/rabbit.txt|0|Category:
-Wikipedia › Animals
-RACCOON|animals/raccoon.txt|0|Category:
-Wikipedia › Animals
-RAT|animals/rat.txt|0|Category:
-Wikipedia › Animals
-RATTLESNAKE|animals/rattlesnake.txt|0|Category:
-Wikipedia › Animals
-RAVEN|animals/raven.txt|0|Category:
-Wikipedia › Animals
-REINDEER|animals/reindeer.txt|0|Category:
-Wikipedia › Animals
-RHINOCEROS|animals/rhinoceros.txt|0|Category:
-Wikipedia › Animals
-ROBIN|animals/robin.txt|0|Category:
-Wikipedia › Animals
-SALAMANDER|animals/salamander.txt|0|Category:
-Wikipedia › Animals
-SALMON|animals/salmon.txt|0|Category:
-Wikipedia › Animals
-SCORPION|animals/scorpion.txt|0|Category:
-Wikipedia › Animals
-SEA
-LION|animals/sea_lion.txt|0|Category:
-Wikipedia › Animals
-SEAL|animals/seal.txt|0|Category:
-Wikipedia › Animals
-SHARK|animals/shark.txt|0|Category:
-Wikipedia › Animals
-SHEEP|animals/sheep.txt|0|Category:
-Wikipedia › Animals
-SNAKE|animals/snake.txt|0|Category:
-Wikipedia › Animals
-SPARROW|animals/sparrow.txt|0|Category:
-Wikipedia › Animals
-SPIDER|animals/spider.txt|0|Category:
-Wikipedia › Animals
-SQUIRREL|animals/squirrel.txt|0|Category:
-Wikipedia › Animals
-SWAN|animals/swan.txt|0|Category:
-Wikipedia › Animals
-SWORDFISH|animals/swordfish.txt|0|Category:
-Wikipedia › Animals
-TIGER|animals/tiger.txt|0|Category:
-Wikipedia › Animals
-TOAD|animals/toad.txt|0|Category:
-Wikipedia › Animals
-TORTOISE|animals/tortoise.txt|0|Category:
-Wikipedia › Animals
-TROUT|animals/trout.txt|0|Category:
-Wikipedia › Animals
-TUNA|animals/tuna.txt|0|Category:
-Wikipedia › Animals
-TURTLE|animals/turtle.txt|0|Category:
-Wikipedia › Animals
-WALRUS|animals/walrus.txt|0|Category:
-Wikipedia › Animals
-WASP|animals/wasp.txt|0|Category:
-Wikipedia › Animals
-WHALE|animals/whale.txt|0|Category:
-Wikipedia › Animals
-WOLF|animals/wolf.txt|0|Category:
-Wikipedia › Animals
-WOODPECKER|animals/woodpecker.txt|0|Category:
-Wikipedia › Animals
-ZEBRA|animals/zebra.txt|0|Category:
-Wikipedia › Animals
-ANTARCTICA|antarctica.txt|0|Antarctica
-is Earth's southernmost and
-ANTIBIOTIC|antibiotic.txt|0|An
-antibiotic is a type of
-ANTIMICROBIAL
-RESISTANCE|antimicrobial_resistance.txt|0|ANTIMICROBIAL
-RESISTANCE
-ANXIETY|anxiety.txt|0|Anxiety is an
-emotion characterized by
-APACHE
-GROOVY|apache_groovy.txt|0|Java-syntax-compatible
-object-oriented
-APPLICATION
-SOFTWARE|application_software.txt|0|Application
-software is software that
-ARCTIC OCEAN|arctic_ocean.txt|0|The
-Arctic Ocean is the smallest and
-AREA|area.txt|0|Area is the measure of
-a region's size
-ARGENTINA|argentina.txt|0|Argentina,
-officially the Argentine
-ARISTOTLE|aristotle.txt|0|Aristotle was
-an ancient Greek
-ARITHMETIC|arithmetic.txt|0|Arithmetic
-is an elementary branch of
-ARTIFICIAL
-HEART|artificial_heart.txt|0|An
-artificial heart is a device that
-ARTIFICIAL
-INTELLIGENCE|artificial_intelligence.txt|0|ARTIFICIAL
-INTELLIGENCE
-ASIA|asia.txt|0|Asia is the largest
-continent in the
-ASSEMBLY
-LANGUAGE|assembly_language.txt|0|In
-computing, assembly language, often
-ASTHMA|asthma.txt|0|Asthma is a common
-long-term
-ASTRONOMY|astronomy.txt|0|Astronomy is
-a natural science that
-ATLANTIC OCEAN|atlantic_ocean.txt|0|The
-Atlantic Ocean is the second
-ATOM|atom.txt|0|Atoms are the basic
-particles of the
-**Atomic Bombings Of Hiroshima
-And|atomic_bombings_of_hiroshima_and_nagasaki.txt|0|**ATOMIC
-BOMBINGS OF HIROSHIMA AND
-**Attention Deficit
-Hyperactivity|attention_deficit_hyperactivity_disorder.txt|0|**ATTENTION
-DEFICIT HYPERACTIVITY
-AUSTRALIA|australia.txt|0|Australia,
-officially the Commonwealth
-AUTISM|autism.txt|0|Autism, also known
-as autism spectrum
-AUTOMATION|automation.txt|0|Automation
-describes a wide range of
-AVALANCHE|avalanche.txt|0|An avalanche
-is a rapid flow of snow
-AZTECS|aztecs.txt|0|The Aztecs were a
-Mesoamerican
-B F SKINNER|b_f_skinner.txt|0|Burrhus
-Frederic Skinner was an
-BACTERIA|bacteria.txt|0|Bacteria are
-ubiquitous, mostly
-BASE CHEMISTRY|base_chemistry.txt|0|In
-chemistry, there are three
-BASIC|basic.txt|0|BASIC is a family of
-general-purpose,
-BATTERY|battery.txt|0|Battery or
-batterie most often refers
-BEIJING|beijing.txt|0|Beijing,
-previously romanized as
-BENJAMIN
-FRANKLIN|benjamin_franklin.txt|0|Benjamin
-Franklin was an American
-BERLIN WALL|berlin_wall.txt|0|The
-Berlin Wall, officially the
-BIG BANG|big_bang.txt|0|The Big Bang is
-a physical theory that
-BIG DATA|big_data.txt|0|Big data
-primarily refers to data sets
-BILL GATES|bill_gates.txt|0|William
-Henry Gates III is an American
-BINOMIAL
-THEOREM|binomial_theorem.txt|0|In
-elementary algebra, the binomial
-BIODIVERSITY|biodiversity.txt|0|COMPREHENSIVE
-OVERVIEW
-BIOLOGY|biology.txt|0|Biology is the
-scientific study of life
-BIOPSY|biopsy.txt|0|A biopsy is a
-medical test commonly
-BIOTECHNOLOGY|biotechnology.txt|0|Biotechnology
-is a multidisciplinary
-BIPOLAR
-DISORDER|bipolar_disorder.txt|0|Bipolar
-disorder (BD), previously known
-BIRTH CONTROL|birth_control.txt|0|Birth
-control, also known as
-BITCOIN|bitcoin.txt|0|Bitcoin is the
-first decentralized
-BLACK HOLE|black_hole.txt|0|A black
-hole is an astronomical body so
-BLOCKCHAIN|blockchain.txt|0|A
-blockchain is a distributed ledger
-BLOOD|blood.txt|0|Blood is a body fluid
-in the
-BLOOD TEST|blood_test.txt|0|A blood
-test is a laboratory analysis
-BLOOD
-TRANSFUSION|blood_transfusion.txt|0|Blood
-transfusion is the process of
-BLUETOOTH|bluetooth.txt|0|Bluetooth is
-a short-range wireless
-BONE|bone.txt|0|A bone is a rigid organ
-that
-BRAIN|brain.txt|0|The brain is an organ
-that serves as
-BRAZIL|brazil.txt|0|Brazil, officially
-the Federative
-BREASTFEEDING|breastfeeding.txt|0|Breastfeeding,
-also known as nursing,
-BRITISH EMPIRE|british_empire.txt|0|The
-British Empire comprised the
-C|c.txt|0|C++ is a high-level,
-general-purpose
-C PROGRAMMING
-LANGUAGE|c_programming_language.txt|0|C
-PROGRAMMING LANGUAGE
-C SHARP PROGRAMMING
-LANGUAGE|c_sharp_programming_language.txt|0|C
-SHARP PROGRAMMING LANGUAGE
-CAIRO|cairo.txt|0|Cairo is the capital
-and largest city
-CALCULUS|calculus.txt|0|Calculus is the
-mathematical study of
-CAMERA|camera.txt|0|A camera is an
-instrument used to
-CANADA|canada.txt|0|Canada is a country
-in North America.
-CANCER|cancer.txt|0|Cancer is a group
-of diseases involving
-CAPACITOR|capacitor.txt|0|In
-electronics, a capacitor is a device
-CARBOHYDRATE|carbohydrate.txt|0|A
-carbohydrate is a sugar (saccharide)
-CARDIOPULMONARY
-RESUSCITATION|cardiopulmonary_resuscitation.txt|0|CARDIOPULMONARY
-RESUSCITATION
-CARDIOVASCULAR
-DISEASE|cardiovascular_disease.txt|0|CARDIOVASCULAR
-DISEASE
-CARL JUNG|carl_jung.txt|0|Carl Gustav
-Jung was a Swiss
-CELL
-BIOLOGY|cell_biology.txt|0|COMPREHENSIVE
-OVERVIEW
-CENTRAL PROCESSING
-UNIT|central_processing_unit.txt|0|CENTRAL
-PROCESSING UNIT
-CHARLES
-DARWIN|charles_darwin.txt|0|Charles
-Robert Darwin was an English
-CHARLES
-DICKENS|charles_dickens.txt|0|Charles
-John Huffam Dickens was an
-CHEMICAL
-ELEMENT|chemical_element.txt|0|A
-chemical element is a species of atom
-CHEMICAL
-REACTION|chemical_reaction.txt|0|A
-chemical reaction is a process that
-ACID|chemistry/acid.txt|0|Category:
-Wikipedia › Chemistry
-ALUMINIUM|chemistry/aluminium.txt|0|Category:
-Wikipedia › Chemistry
-AMMONIA|chemistry/ammonia.txt|0|Category:
-Wikipedia › Chemistry
-ANALYTICAL
-CHEMISTRY|chemistry/analytical_chemistry.txt|0|Category:
-Wikipedia › Chemistry
-BASE
-CHEMISTRY|chemistry/base_chemistry.txt|0|Category:
-Wikipedia › Chemistry
-BIOCHEMISTRY|chemistry/biochemistry.txt|0|Category:
-Wikipedia › Chemistry
-CALCIUM|chemistry/calcium.txt|0|Category:
-Wikipedia › Chemistry
-CARBOHYDRATE|chemistry/carbohydrate.txt|0|Category:
-Wikipedia › Chemistry
-CARBON|chemistry/carbon.txt|0|Category:
-Wikipedia › Chemistry
-CARBON
-DIOXIDE|chemistry/carbon_dioxide.txt|0|Category:
-Wikipedia › Chemistry
-CATALYSIS|chemistry/catalysis.txt|0|Category:
-Wikipedia › Chemistry
-CHEMICAL
-BOND|chemistry/chemical_bond.txt|0|Category:
-Wikipedia › Chemistry
-CHEMICAL
-COMPOUND|chemistry/chemical_compound.txt|0|Category:
-Wikipedia › Chemistry
-CHEMICAL
-ELEMENT|chemistry/chemical_element.txt|0|Category:
-Wikipedia › Chemistry
-CHEMICAL
-REACTION|chemistry/chemical_reaction.txt|0|Category:
-Wikipedia › Chemistry
-CHLORINE|chemistry/chlorine.txt|0|Category:
-Wikipedia › Chemistry
-COPPER|chemistry/copper.txt|0|Category:
-Wikipedia › Chemistry
-COVALENT
-BOND|chemistry/covalent_bond.txt|0|Category:
-Wikipedia › Chemistry
-ENZYME|chemistry/enzyme.txt|0|Category:
-Wikipedia › Chemistry
-ETHANOL|chemistry/ethanol.txt|0|Category:
-Wikipedia › Chemistry
-FLUORINE|chemistry/fluorine.txt|0|Category:
-Wikipedia › Chemistry
-GOLD|chemistry/gold.txt|0|Category:
-Wikipedia › Chemistry
-HELIUM|chemistry/helium.txt|0|Category:
-Wikipedia › Chemistry
-HYDROGEN|chemistry/hydrogen.txt|0|Category:
-Wikipedia › Chemistry
-HYDROGEN
-BOND|chemistry/hydrogen_bond.txt|0|Category:
-Wikipedia › Chemistry
-INORGANIC
-CHEMISTRY|chemistry/inorganic_chemistry.txt|0|Category:
-Wikipedia › Chemistry
-IONIC
-BONDING|chemistry/ionic_bonding.txt|0|Category:
-Wikipedia › Chemistry
-IRON|chemistry/iron.txt|0|Category:
-Wikipedia › Chemistry
-LEAD|chemistry/lead.txt|0|Category:
-Wikipedia › Chemistry
-LIPID|chemistry/lipid.txt|0|Category:
-Wikipedia › Chemistry
-MAGNESIUM|chemistry/magnesium.txt|0|Category:
-Wikipedia › Chemistry
-MERCURY
-ELEMENT|chemistry/mercury_element.txt|0|Category:
-Wikipedia › Chemistry
-METALLIC
-BONDING|chemistry/metallic_bonding.txt|0|Category:
-Wikipedia › Chemistry
-METHANE|chemistry/methane.txt|0|Category:
-Wikipedia › Chemistry
-NITROGEN|chemistry/nitrogen.txt|0|Category:
-Wikipedia › Chemistry
-NUCLEIC
-ACID|chemistry/nucleic_acid.txt|0|Category:
-Wikipedia › Chemistry
-ORGANIC
-CHEMISTRY|chemistry/organic_chemistry.txt|0|Category:
-Wikipedia › Chemistry
-OXYGEN|chemistry/oxygen.txt|0|Category:
-Wikipedia › Chemistry
-PERIODIC
-TABLE|chemistry/periodic_table.txt|0|Category:
-Wikipedia › Chemistry
-PH|chemistry/ph.txt|0|Category:
-Wikipedia › Chemistry
-PHOSPHORUS|chemistry/phosphorus.txt|0|Category:
-Wikipedia › Chemistry
-PHYSICAL
-CHEMISTRY|chemistry/physical_chemistry.txt|0|Category:
-Wikipedia › Chemistry
-POLYMER|chemistry/polymer.txt|0|Category:
-Wikipedia › Chemistry
-POTASSIUM|chemistry/potassium.txt|0|Category:
-Wikipedia › Chemistry
-PROTEIN|chemistry/protein.txt|0|Category:
-Wikipedia › Chemistry
-REDOX|chemistry/redox.txt|0|Category:
-Wikipedia › Chemistry
-REDUCTION|chemistry/reduction.txt|0|Category:
-Wikipedia › Chemistry
-SALT
-CHEMISTRY|chemistry/salt_chemistry.txt|0|Category:
-Wikipedia › Chemistry
-SILICON|chemistry/silicon.txt|0|Category:
-Wikipedia › Chemistry
-SILVER|chemistry/silver.txt|0|Category:
-Wikipedia › Chemistry
-SODIUM|chemistry/sodium.txt|0|Category:
-Wikipedia › Chemistry
-SULFUR|chemistry/sulfur.txt|0|Category:
-Wikipedia › Chemistry
-URANIUM|chemistry/uranium.txt|0|Category:
-Wikipedia › Chemistry
-VITAMIN|chemistry/vitamin.txt|0|Category:
-Wikipedia › Chemistry
-WATER|chemistry/water.txt|0|Category:
-Wikipedia › Chemistry
-ZINC|chemistry/zinc.txt|0|Category:
-Wikipedia › Chemistry
-CHEMISTRY|chemistry.txt|0|Chemistry is
-the scientific study of
-CHEMOTHERAPY|chemotherapy.txt|0|Chemotherapy
-is the type of cancer
-CHICKENPOX|chickenpox.txt|0|Chickenpox,
-also known as varicella, is
-CHILDBIRTH|childbirth.txt|0|Childbirth,
-also known as labour,
-CHINA|china.txt|0|China, officially the
-People's Republic
-CHOLERA|cholera.txt|0|Cholera is an
-infection of the small
-**Chronic Obstructive
-Pulmonary|chronic_obstructive_pulmonary_disease.txt|0|**CHRONIC
-OBSTRUCTIVE PULMONARY
-CIRCLE|circle.txt|0|A circle is a shape
-consisting of all
-CIRCUIT|circuit.txt|0|Circuit may refer
-to:
-CIVIL RIGHTS
-MOVEMENT|civil_rights_movement.txt|0|CIVIL
-RIGHTS MOVEMENT
-CLEOPATRA|cleopatra.txt|0|Cleopatra VII
-Thea Philopator was Queen
-CLIMATE
-CHANGE|climate_change.txt|0|Present-day
-climate change includes
-CLOJURE|clojure.txt|0|Clojure is a
-dynamic and functional
-CLONING|cloning.txt|0|Cloning is the
-process of producing
-CLOUD
-COMPUTING|cloud_computing.txt|0|Cloud
-computing is "a paradigm for
-COBOL|cobol.txt|0|COBOL is a compiled
-English-like
-COLD WAR|cold_war.txt|0|COMPREHENSIVE
-OVERVIEW
-COMBINATION|combination.txt|0|In
-mathematics, a combination is a
-COMPILER|compiler.txt|0|In computing, a
-compiler is software
-COMPLEX NUMBER|complex_number.txt|0|In
-mathematics, a complex number is an
-COMPUTER|computer.txt|0|A computer is a
-machine that can be
-COMPUTER
-SECURITY|computer_security.txt|0|Computer
-security is a subdiscipline
-COMPUTER
-VISION|computer_vision.txt|0|Computer
-vision tasks include methods
-CONE|cone.txt|0|In geometry, a cone is
-a
-CONFUCIUS|confucius.txt|0|Confucius,
-born Kong Qiu (), was a
-CONSTANT
-MATHEMATICS|constant_mathematics.txt|0|Constant
-(mathematics)
-CONTACT LENS|contact_lens.txt|0|Contact
-lenses, or simply contacts, are
-CONTINENT|continent.txt|0|A continent
-is any of several large
-CONTINUOUS
-INTEGRATION|continuous_integration.txt|0|CONTINUOUS
-INTEGRATION
-CORAL REEF|coral_reef.txt|0|A coral
-reef is an underwater ecosystem
-COVID 19|covid_19.txt|0|Coronavirus
-disease 2019 (COVID-19) is
-CRISPR|crispr.txt|0|CRISPR is a family
-of DNA sequences
-CRUSADES|crusades.txt|0|The Crusades
-were a series of military
-CRYPTOCURRENCY|cryptocurrency.txt|0|A
-cryptocurrency is a digital currency
-CRYPTOGRAPHY|cryptography.txt|0|Cryptography,
-or cryptology, is the
-CSS|css.txt|0|Cascading Style Sheets
-(CSS) is a style
-CT SCAN|ct_scan.txt|0|A computed
-tomography scan, formerly
-CUBAN MISSILE
-CRISIS|cuban_missile_crisis.txt|0|The
-Cuban Missile Crisis, also known as
-CUBE|cube.txt|0|A cube is a
-three-dimensional solid
-CYLINDER|cylinder.txt|0|A cylinder has
-traditionally been a
-DALAI LAMA|dalai_lama.txt|0|The Dalai
-Lama is the head of the Gelug
-DART PROGRAMMING
-LANGUAGE|dart_programming_language.txt|0|DART
-PROGRAMMING LANGUAGE
-DATA STRUCTURE|data_structure.txt|0|In
-computer science, a data structure
-DATABASE|database.txt|0|In computing, a
-database is an
-DECIMAL|decimal.txt|0|The decimal
-numeral system is the
-DEEP LEARNING|deep_learning.txt|0|In
-machine learning, deep learning
-DENNIS
-RITCHIE|dennis_ritchie.txt|0|Dennis
-MacAlistair Ritchie was an
-DEPRESSION
-MOOD|depression_mood.txt|0|Depression
-is a mental state of low
-DERIVATIVE|derivative.txt|0|In
-mathematics, the derivative is a
-DESERT|desert.txt|0|A desert is a
-landscape where little
-DEVOPS|devops.txt|0|DevOps is the
-integration and
-DIABETES|diabetes.txt|0|Diabetes
-mellitus, commonly known as
-DIALYSIS|dialysis.txt|0|Dialysis may
-refer to:Dialysis
-DIET NUTRITION|diet_nutrition.txt|0|In
-nutrition, diet is the sum of food
-DIFFERENTIAL
-EQUATION|differential_equation.txt|0|DIFFERENTIAL
-EQUATION
-DIODE|diode.txt|0|A diode is a
-two-terminal electronic
-DISEASE|disease.txt|0|A disease is a
-particular abnormal
-DISSOLUTION OF THE SOVIET
-UNION|dissolution_of_the_soviet_union.txt|0|DISSOLUTION
-OF THE SOVIET UNION
-DIVISION|division.txt|0|Division may
-refer to:
-DNA|dna.txt|0|Deoxyribonucleic acid is
-a polymer
-DOCKER
-SOFTWARE|docker_software.txt|0|Docker
-is a set of platform as a
-DROUGHT|drought.txt|0|A drought is a
-period of
-E MATHEMATICAL
-CONSTANT|e_mathematical_constant.txt|0|E
-MATHEMATICAL CONSTANT
-EAR|ear.txt|0|In vertebrates, an ear is
-the organ
-EARTH|earth.txt|0|Earth is the third
-planet from the Sun
-EARTHQUAKE|earthquake.txt|0|An
-earthquake, also called a quake,
-EATING
-DISORDER|eating_disorder.txt|0|An
-eating disorder is a mental disorder
-EBOLA|ebola.txt|0|Ebola, also known as
-Ebola virus
-ECOSYSTEM|ecosystem.txt|0|An ecosystem
-is a system formed by
-EGYPT|egypt.txt|0|Egypt, officially the
-Arab Republic of
-ELECTRIC MOTOR|electric_motor.txt|0|An
-electric motor is a machine that
-ELECTRICITY|electricity.txt|0|Electricity
-is the set of physical
-ELECTROMAGNETISM|electromagnetism.txt|0|In
-physics, electromagnetism is an
-ELECTRON|electron.txt|0|The electron is
-a subatomic particle
-ELECTRONICS|electronics.txt|0|Electronics
-is a scientific and
-ELIXIR PROGRAMMING
-LANGUAGE|elixir_programming_language.txt|0|ELIXIR
-PROGRAMMING LANGUAGE
-ELON MUSK|elon_musk.txt|0|Elon Reeve
-Musk is a businessman and
-EMAIL|email.txt|0|Electronic mail is a
-method of
-EMERGENCY
-MEDICINE|emergency_medicine.txt|0|Emergency
-medicine is the medical
-ENCRYPTION|encryption.txt|0|In
-cryptography, encryption is the
-ENERGY|energy.txt|0|Energy is the
-quantitative property
-ENGINE|engine.txt|0|An engine or motor
-is a machine
-AEROSPACE
-ENGINEERING|engineering/aerospace_engineering.txt|0|AEROSPACE
-ENGINEERING
-AIRPORT|engineering/airport.txt|0|Category:
-Wikipedia › Engineering
-AQUEDUCT|engineering/aqueduct.txt|0|Category:
-Wikipedia › Engineering
-AUTOMOTIVE
-ENGINEERING|engineering/automotive_engineering.txt|0|AUTOMOTIVE
-ENGINEERING
-BIOMEDICAL
-ENGINEERING|engineering/biomedical_engineering.txt|0|BIOMEDICAL
-ENGINEERING
-BRIDGE|engineering/bridge.txt|0|Category:
-Wikipedia › Engineering
-CANAL|engineering/canal.txt|0|Category:
-Wikipedia › Engineering
-CHEMICAL
-ENGINEERING|engineering/chemical_engineering.txt|0|Category:
-Wikipedia › Engineering
-CIRCUIT|engineering/circuit.txt|0|Category:
-Wikipedia › Engineering
-CIVIL
-ENGINEERING|engineering/civil_engineering.txt|0|Category:
-Wikipedia › Engineering
-COMPUTER
-ENGINEERING|engineering/computer_engineering.txt|0|Category:
-Wikipedia › Engineering
-DAM|engineering/dam.txt|0|Category:
-Wikipedia › Engineering
-ELECTRICAL
-ENGINEERING|engineering/electrical_engineering.txt|0|ELECTRICAL
-ENGINEERING
-ENGINE|engineering/engine.txt|0|Category:
-Wikipedia › Engineering
-ENVIRONMENTAL
-ENGINEERING|engineering/environmental_engineering.txt|0|ENVIRONMENTAL
-ENGINEERING
-GEAR|engineering/gear.txt|0|Category:
-Wikipedia › Engineering
-GENERATOR|engineering/generator.txt|0|Category:
-Wikipedia › Engineering
-INDUSTRIAL
-ENGINEERING|engineering/industrial_engineering.txt|0|INDUSTRIAL
-ENGINEERING
-INTEGRATED
-CIRCUIT|engineering/integrated_circuit.txt|0|Category:
-Wikipedia › Engineering
-JET
-ENGINE|engineering/jet_engine.txt|0|Category:
-Wikipedia › Engineering
-LEVER|engineering/lever.txt|0|Category:
-Wikipedia › Engineering
-MECHANICAL
-ENGINEERING|engineering/mechanical_engineering.txt|0|MECHANICAL
-ENGINEERING
-MICROPROCESSOR|engineering/microprocessor.txt|0|Category:
-Wikipedia › Engineering
-PIPELINE|engineering/pipeline.txt|0|Category:
-Wikipedia › Engineering
-PORT|engineering/port.txt|0|Category:
-Wikipedia › Engineering
-PROPELLER|engineering/propeller.txt|0|Category:
-Wikipedia › Engineering
-PULLEY|engineering/pulley.txt|0|Category:
-Wikipedia › Engineering
-PUMP|engineering/pump.txt|0|Category:
-Wikipedia › Engineering
-RAIL
-TRANSPORT|engineering/rail_transport.txt|0|Category:
-Wikipedia › Engineering
-ROAD|engineering/road.txt|0|Category:
-Wikipedia › Engineering
-SEMICONDUCTOR|engineering/semiconductor.txt|0|Category:
-Wikipedia › Engineering
-SKYSCRAPER|engineering/skyscraper.txt|0|Category:
-Wikipedia › Engineering
-SOFTWARE
-ENGINEERING|engineering/software_engineering.txt|0|Category:
-Wikipedia › Engineering
-SPRING
-DEVICE|engineering/spring_device.txt|0|Category:
-Wikipedia › Engineering
-STRUCTURAL
-ENGINEERING|engineering/structural_engineering.txt|0|STRUCTURAL
-ENGINEERING
-TRANSFORMER|engineering/transformer.txt|0|Category:
-Wikipedia › Engineering
-TUNNEL|engineering/tunnel.txt|0|Category:
-Wikipedia › Engineering
-TURBINE|engineering/turbine.txt|0|Category:
-Wikipedia › Engineering
-WHEEL|engineering/wheel.txt|0|Category:
-Wikipedia › Engineering
-ENGINEERING|engineering.txt|0|Engineering
-is the practice of using
-EQUATION|equation.txt|0|In mathematics,
-an equation is a
-ERLANG PROGRAMMING
-LANGUAGE|erlang_programming_language.txt|0|ERLANG
-PROGRAMMING LANGUAGE
-ERNEST
-HEMINGWAY|ernest_hemingway.txt|0|Ernest
-Miller Hemingway ; July 21, 1899
-ETHEREUM|ethereum.txt|0|Ethereum is a
-decentralized blockchain
-EUROPE|europe.txt|0|Europe is a
-continent located entirely
-EVOLUTION|evolution.txt|0|Evolution is
-the change in the
-EXERCISE|exercise.txt|0|Exercise or
-working out is physical
-EXPONENTIATION|exponentiation.txt|0|In
-mathematics, exponentiation, denoted
-EYE|eye.txt|0|An eye is a sensory organ
-that allows
-F SHARP PROGRAMMING
-LANGUAGE|f_sharp_programming_language.txt|0|F
-SHARP PROGRAMMING LANGUAGE
-FACTORIAL|factorial.txt|0|In
-mathematics, the factorial of a
-FALL OF THE BERLIN
-WALL|fall_of_the_berlin_wall.txt|0|FALL
-OF THE BERLIN WALL
-FAT|fat.txt|0|In nutrition, biology,
-and chemistry,
-FIBER|fiber.txt|0|Fiber is a natural or
-artificial
-FIBONACCI
-SEQUENCE|fibonacci_sequence.txt|0|In
-mathematics, the Fibonacci sequence
-FIREWALL
-COMPUTING|firewall_computing.txt|0|In
-computing, a firewall is a network
-FIRST AID|first_aid.txt|0|First aid is
-the first and immediate
-FLOOD|flood.txt|0|A flood is an
-overflow of water that
-FORCE|force.txt|0|In physics, a force
-is an action that
-FOREST|forest.txt|0|A forest is an
-ecosystem characterized
-FORTRAN|fortran.txt|0|Fortran is a
-third-generation,
-FOSSIL FUEL|fossil_fuel.txt|0|A fossil
-fuel is a flammable carbon
-FRACTION|fraction.txt|0|A fraction
-represents a part of a whole
-FRANCE|france.txt|0|France, officially
-the French Republic,
-FRENCH
-REVOLUTION|french_revolution.txt|0|The
-French Revolution was a period of
-FUNCTION
-MATHEMATICS|function_mathematics.txt|0|Function
-(mathematics)
-FUNCTIONAL
-PROGRAMMING|functional_programming.txt|0|FUNCTIONAL
-PROGRAMMING
-FYODOR
-DOSTOEVSKY|fyodor_dostoevsky.txt|0|Fyodor
-Mikhailovich Dostoevsky was a
-GALAXY|galaxy.txt|0|A galaxy is a
-system of stars, stellar
-GALILEO
-GALILEI|galileo_galilei.txt|0|Galileo
-di Vincenzo Bonaiuti de'
-GASTROINTESTINAL
-TRACT|gastrointestinal_tract.txt|0|GASTROINTESTINAL
-TRACT
-GENETIC
-ENGINEERING|genetic_engineering.txt|0|Genetic
-engineering, also called
-GENETICS|genetics.txt|0|Genetics is the
-study of genes, genetic
-GENGHIS KHAN|genghis_khan.txt|0|Genghis
-Khan, also known as Chinggis
-AFGHANISTAN|geography/afghanistan.txt|0|Category:
-Wikipedia › Geography
-ALBANIA|geography/albania.txt|0|Category:
-Wikipedia › Geography
-ALGERIA|geography/algeria.txt|0|Category:
-Wikipedia › Geography
-AMAZON
-RAINFOREST|geography/amazon_rainforest.txt|0|Category:
-Wikipedia › Geography
-AMAZON
-RIVER|geography/amazon_river.txt|0|Category:
-Wikipedia › Geography
-AMSTERDAM|geography/amsterdam.txt|0|Category:
-Wikipedia › Geography
-ANDORRA|geography/andorra.txt|0|Category:
-Wikipedia › Geography
-ANGOLA|geography/angola.txt|0|Category:
-Wikipedia › Geography
-ARABIAN
-DESERT|geography/arabian_desert.txt|0|Category:
-Wikipedia › Geography
-ARCTIC
-OCEAN|geography/arctic_ocean.txt|0|Category:
-Wikipedia › Geography
-ARGENTINA|geography/argentina.txt|0|Category:
-Wikipedia › Geography
-ARMENIA|geography/armenia.txt|0|Category:
-Wikipedia › Geography
-ATHENS|geography/athens.txt|0|Category:
-Wikipedia › Geography
-ATLANTIC
-OCEAN|geography/atlantic_ocean.txt|0|Category:
-Wikipedia › Geography
-AUSTRALIA|geography/australia.txt|0|Category:
-Wikipedia › Geography
-AUSTRIA|geography/austria.txt|0|Category:
-Wikipedia › Geography
-AZERBAIJAN|geography/azerbaijan.txt|0|Category:
-Wikipedia › Geography
-BAHRAIN|geography/bahrain.txt|0|Category:
-Wikipedia › Geography
-BANGKOK|geography/bangkok.txt|0|Category:
-Wikipedia › Geography
-BANGLADESH|geography/bangladesh.txt|0|Category:
-Wikipedia › Geography
-BARBADOS|geography/barbados.txt|0|Category:
-Wikipedia › Geography
-BEIJING|geography/beijing.txt|0|Category:
-Wikipedia › Geography
-BELARUS|geography/belarus.txt|0|Category:
-Wikipedia › Geography
-BELGIUM|geography/belgium.txt|0|Category:
-Wikipedia › Geography
-BELIZE|geography/belize.txt|0|Category:
-Wikipedia › Geography
-BENGALURU|geography/bengaluru.txt|0|Category:
-Wikipedia › Geography
-BENIN|geography/benin.txt|0|Category:
-Wikipedia › Geography
-BERLIN|geography/berlin.txt|0|Category:
-Wikipedia › Geography
-BHUTAN|geography/bhutan.txt|0|Category:
-Wikipedia › Geography
-BOLIVIA|geography/bolivia.txt|0|Category:
-Wikipedia › Geography
-BOSNIA AND
-HERZEGOVINA|geography/bosnia_and_herzegovina.txt|0|BOSNIA
-AND HERZEGOVINA
-BOTSWANA|geography/botswana.txt|0|Category:
-Wikipedia › Geography
-BRAZIL|geography/brazil.txt|0|Category:
-Wikipedia › Geography
-BRUNEI|geography/brunei.txt|0|Category:
-Wikipedia › Geography
-BRUSSELS|geography/brussels.txt|0|Category:
-Wikipedia › Geography
-BUENOS
-AIRES|geography/buenos_aires.txt|0|Category:
-Wikipedia › Geography
-BULGARIA|geography/bulgaria.txt|0|Category:
-Wikipedia › Geography
-BURKINA
-FASO|geography/burkina_faso.txt|0|Category:
-Wikipedia › Geography
-BURUNDI|geography/burundi.txt|0|Category:
-Wikipedia › Geography
-CAIRO|geography/cairo.txt|0|Category:
-Wikipedia › Geography
-CAMBODIA|geography/cambodia.txt|0|Category:
-Wikipedia › Geography
-CAMEROON|geography/cameroon.txt|0|Category:
-Wikipedia › Geography
-CANADA|geography/canada.txt|0|Category:
-Wikipedia › Geography
-CAPE
-VERDE|geography/cape_verde.txt|0|Category:
-Wikipedia › Geography
-CARIBBEAN
-SEA|geography/caribbean_sea.txt|0|Category:
-Wikipedia › Geography
-CENTRAL AFRICAN
-REPUBLIC|geography/central_african_republic.txt|0|CENTRAL
-AFRICAN REPUBLIC
-CHAD|geography/chad.txt|0|Category:
-Wikipedia › Geography
-CHICAGO|geography/chicago.txt|0|Category:
-Wikipedia › Geography
-CHILE|geography/chile.txt|0|Category:
-Wikipedia › Geography
-CHINA|geography/china.txt|0|Category:
-Wikipedia › Geography
-COLOMBIA|geography/colombia.txt|0|Category:
-Wikipedia › Geography
-COMOROS|geography/comoros.txt|0|Category:
-Wikipedia › Geography
-CONGO
-BASIN|geography/congo_basin.txt|0|Category:
-Wikipedia › Geography
-CONGO
-RIVER|geography/congo_river.txt|0|Category:
-Wikipedia › Geography
-COSTA
-RICA|geography/costa_rica.txt|0|Category:
-Wikipedia › Geography
-CROATIA|geography/croatia.txt|0|Category:
-Wikipedia › Geography
-CUBA|geography/cuba.txt|0|Category:
-Wikipedia › Geography
-CYPRUS|geography/cyprus.txt|0|Category:
-Wikipedia › Geography
-CZECH
-REPUBLIC|geography/czech_republic.txt|0|Category:
-Wikipedia › Geography
-DALLAS|geography/dallas.txt|0|Category:
-Wikipedia › Geography
-DELHI|geography/delhi.txt|0|Category:
-Wikipedia › Geography
-DEMOCRATIC REPUBLIC OF THE
-CONGO|geography/democratic_republic_of_the_congo.txt|0|DEMOCRATIC
-REPUBLIC OF THE CONGO
-DENALI|geography/denali.txt|0|Category:
-Wikipedia › Geography
-DENMARK|geography/denmark.txt|0|Category:
-Wikipedia › Geography
-DJIBOUTI|geography/djibouti.txt|0|Category:
-Wikipedia › Geography
-DOMINICA|geography/dominica.txt|0|Category:
-Wikipedia › Geography
-DOMINICAN
-REPUBLIC|geography/dominican_republic.txt|0|Category:
-Wikipedia › Geography
-DUBLIN|geography/dublin.txt|0|Category:
-Wikipedia › Geography
-ECUADOR|geography/ecuador.txt|0|Category:
-Wikipedia › Geography
-EGYPT|geography/egypt.txt|0|Category:
-Wikipedia › Geography
-EL
-SALVADOR|geography/el_salvador.txt|0|Category:
-Wikipedia › Geography
-EQUATORIAL
-GUINEA|geography/equatorial_guinea.txt|0|Category:
-Wikipedia › Geography
-ERITREA|geography/eritrea.txt|0|Category:
-Wikipedia › Geography
-ESTONIA|geography/estonia.txt|0|Category:
-Wikipedia › Geography
-ETHIOPIA|geography/ethiopia.txt|0|Category:
-Wikipedia › Geography
-FIJI|geography/fiji.txt|0|Category:
-Wikipedia › Geography
-FINLAND|geography/finland.txt|0|Category:
-Wikipedia › Geography
-FRANCE|geography/france.txt|0|Category:
-Wikipedia › Geography
-GABON|geography/gabon.txt|0|Category:
-Wikipedia › Geography
-GEORGIA
-COUNTRY|geography/georgia_country.txt|0|Category:
-Wikipedia › Geography
-GERMANY|geography/germany.txt|0|Category:
-Wikipedia › Geography
-GHANA|geography/ghana.txt|0|Category:
-Wikipedia › Geography
-GOBI
-DESERT|geography/gobi_desert.txt|0|Category:
-Wikipedia › Geography
-GRAND
-CANYON|geography/grand_canyon.txt|0|Category:
-Wikipedia › Geography
-GREAT BARRIER
-REEF|geography/great_barrier_reef.txt|0|Category:
-Wikipedia › Geography
-GREECE|geography/greece.txt|0|Category:
-Wikipedia › Geography
-GRENADA|geography/grenada.txt|0|Category:
-Wikipedia › Geography
-GUATEMALA|geography/guatemala.txt|0|Category:
-Wikipedia › Geography
-GUINEA|geography/guinea.txt|0|Category:
-Wikipedia › Geography
-GUINEA
-BISSAU|geography/guinea_bissau.txt|0|Category:
-Wikipedia › Geography
-GUYANA|geography/guyana.txt|0|Category:
-Wikipedia › Geography
-HAITI|geography/haiti.txt|0|Category:
-Wikipedia › Geography
-HONDURAS|geography/honduras.txt|0|Category:
-Wikipedia › Geography
-HONG
-KONG|geography/hong_kong.txt|0|Category:
-Wikipedia › Geography
-HOUSTON|geography/houston.txt|0|Category:
-Wikipedia › Geography
-HUNGARY|geography/hungary.txt|0|Category:
-Wikipedia › Geography
-ICELAND|geography/iceland.txt|0|Category:
-Wikipedia › Geography
-INDIA|geography/india.txt|0|Category:
-Wikipedia › Geography
-INDIAN
-OCEAN|geography/indian_ocean.txt|0|Category:
-Wikipedia › Geography
-INDONESIA|geography/indonesia.txt|0|Category:
-Wikipedia › Geography
-IRAN|geography/iran.txt|0|Category:
-Wikipedia › Geography
-IRAQ|geography/iraq.txt|0|Category:
-Wikipedia › Geography
-IRELAND|geography/ireland.txt|0|Category:
-Wikipedia › Geography
-ISRAEL|geography/israel.txt|0|Category:
-Wikipedia › Geography
-ITALY|geography/italy.txt|0|Category:
-Wikipedia › Geography
-JAMAICA|geography/jamaica.txt|0|Category:
-Wikipedia › Geography
-JAPAN|geography/japan.txt|0|Category:
-Wikipedia › Geography
-JOHANNESBURG|geography/johannesburg.txt|0|Category:
-Wikipedia › Geography
-JORDAN|geography/jordan.txt|0|Category:
-Wikipedia › Geography
-K2|geography/k2.txt|0|Category:
-Wikipedia › Geography
-KALAHARI
-DESERT|geography/kalahari_desert.txt|0|Category:
-Wikipedia › Geography
-KAZAKHSTAN|geography/kazakhstan.txt|0|Category:
-Wikipedia › Geography
-KENYA|geography/kenya.txt|0|Category:
-Wikipedia › Geography
-KIRIBATI|geography/kiribati.txt|0|Category:
-Wikipedia › Geography
-KUWAIT|geography/kuwait.txt|0|Category:
-Wikipedia › Geography
-KYRGYZSTAN|geography/kyrgyzstan.txt|0|Category:
-Wikipedia › Geography
-LAGOS|geography/lagos.txt|0|Category:
-Wikipedia › Geography
-LAOS|geography/laos.txt|0|Category:
-Wikipedia › Geography
-LATVIA|geography/latvia.txt|0|Category:
-Wikipedia › Geography
-LEBANON|geography/lebanon.txt|0|Category:
-Wikipedia › Geography
-LESOTHO|geography/lesotho.txt|0|Category:
-Wikipedia › Geography
-LIBERIA|geography/liberia.txt|0|Category:
-Wikipedia › Geography
-LIBYA|geography/libya.txt|0|Category:
-Wikipedia › Geography
-LIECHTENSTEIN|geography/liechtenstein.txt|0|Category:
-Wikipedia › Geography
-LISBON|geography/lisbon.txt|0|Category:
-Wikipedia › Geography
-LITHUANIA|geography/lithuania.txt|0|Category:
-Wikipedia › Geography
-LONDON|geography/london.txt|0|Category:
-Wikipedia › Geography
-LOS
-ANGELES|geography/los_angeles.txt|0|Category:
-Wikipedia › Geography
-LUXEMBOURG|geography/luxembourg.txt|0|Category:
-Wikipedia › Geography
-MADAGASCAR|geography/madagascar.txt|0|Category:
-Wikipedia › Geography
-MADRID|geography/madrid.txt|0|Category:
-Wikipedia › Geography
-MALAWI|geography/malawi.txt|0|Category:
-Wikipedia › Geography
-MALAYSIA|geography/malaysia.txt|0|Category:
-Wikipedia › Geography
-MALDIVES|geography/maldives.txt|0|Category:
-Wikipedia › Geography
-MALI|geography/mali.txt|0|Category:
-Wikipedia › Geography
-MALTA|geography/malta.txt|0|Category:
-Wikipedia › Geography
-MARSHALL
-ISLANDS|geography/marshall_islands.txt|0|Category:
-Wikipedia › Geography
-MAURITANIA|geography/mauritania.txt|0|Category:
-Wikipedia › Geography
-MAURITIUS|geography/mauritius.txt|0|Category:
-Wikipedia › Geography
-MEDITERRANEAN
-SEA|geography/mediterranean_sea.txt|0|Category:
-Wikipedia › Geography
-MELBOURNE|geography/melbourne.txt|0|Category:
-Wikipedia › Geography
-MEXICO|geography/mexico.txt|0|Category:
-Wikipedia › Geography
-MEXICO
-CITY|geography/mexico_city.txt|0|Category:
-Wikipedia › Geography
-MICRONESIA|geography/micronesia.txt|0|Category:
-Wikipedia › Geography
-MISSISSIPPI
-RIVER|geography/mississippi_river.txt|0|Category:
-Wikipedia › Geography
-MOLDOVA|geography/moldova.txt|0|Category:
-Wikipedia › Geography
-MONACO|geography/monaco.txt|0|Category:
-Wikipedia › Geography
-MONGOLIA|geography/mongolia.txt|0|Category:
-Wikipedia › Geography
-MONT
-BLANC|geography/mont_blanc.txt|0|Category:
-Wikipedia › Geography
-MONTENEGRO|geography/montenegro.txt|0|Category:
-Wikipedia › Geography
-MOROCCO|geography/morocco.txt|0|Category:
-Wikipedia › Geography
-MOSCOW|geography/moscow.txt|0|Category:
-Wikipedia › Geography
-MOUNT
-EVEREST|geography/mount_everest.txt|0|Category:
-Wikipedia › Geography
-MOUNT
-FUJI|geography/mount_fuji.txt|0|Category:
-Wikipedia › Geography
-MOUNT
-KILIMANJARO|geography/mount_kilimanjaro.txt|0|Category:
-Wikipedia › Geography
-MOUNT
-VESUVIUS|geography/mount_vesuvius.txt|0|Category:
-Wikipedia › Geography
-MOZAMBIQUE|geography/mozambique.txt|0|Category:
-Wikipedia › Geography
-MUMBAI|geography/mumbai.txt|0|Category:
-Wikipedia › Geography
-MYANMAR|geography/myanmar.txt|0|Category:
-Wikipedia › Geography
-NAIROBI|geography/nairobi.txt|0|Category:
-Wikipedia › Geography
-NAMIBIA|geography/namibia.txt|0|Category:
-Wikipedia › Geography
-NAURU|geography/nauru.txt|0|Category:
-Wikipedia › Geography
-NEPAL|geography/nepal.txt|0|Category:
-Wikipedia › Geography
-NETHERLANDS|geography/netherlands.txt|0|Category:
-Wikipedia › Geography
-NEW YORK
-CITY|geography/new_york_city.txt|0|Category:
-Wikipedia › Geography
-NEW
-ZEALAND|geography/new_zealand.txt|0|Category:
-Wikipedia › Geography
-NIAGARA
-FALLS|geography/niagara_falls.txt|0|Category:
-Wikipedia › Geography
-NICARAGUA|geography/nicaragua.txt|0|Category:
-Wikipedia › Geography
-NIGER|geography/niger.txt|0|Category:
-Wikipedia › Geography
-NIGERIA|geography/nigeria.txt|0|Category:
-Wikipedia › Geography
-NILE|geography/nile.txt|0|Category:
-Wikipedia › Geography
-NORTH
-KOREA|geography/north_korea.txt|0|Category:
-Wikipedia › Geography
-NORTH
-MACEDONIA|geography/north_macedonia.txt|0|Category:
-Wikipedia › Geography
-NORWAY|geography/norway.txt|0|Category:
-Wikipedia › Geography
-OMAN|geography/oman.txt|0|Category:
-Wikipedia › Geography
-PACIFIC
-OCEAN|geography/pacific_ocean.txt|0|Category:
-Wikipedia › Geography
-PAKISTAN|geography/pakistan.txt|0|Category:
-Wikipedia › Geography
-PALAU|geography/palau.txt|0|Category:
-Wikipedia › Geography
-PALESTINE|geography/palestine.txt|0|Category:
-Wikipedia › Geography
-PANAMA|geography/panama.txt|0|Category:
-Wikipedia › Geography
-PAPUA NEW
-GUINEA|geography/papua_new_guinea.txt|0|Category:
-Wikipedia › Geography
-PARAGUAY|geography/paraguay.txt|0|Category:
-Wikipedia › Geography
-PARIS|geography/paris.txt|0|Category:
-Wikipedia › Geography
-PERU|geography/peru.txt|0|Category:
-Wikipedia › Geography
-PHILADELPHIA|geography/philadelphia.txt|0|Category:
-Wikipedia › Geography
-PHILIPPINES|geography/philippines.txt|0|Category:
-Wikipedia › Geography
-PHOENIX
-ARIZONA|geography/phoenix_arizona.txt|0|Category:
-Wikipedia › Geography
-POLAND|geography/poland.txt|0|Category:
-Wikipedia › Geography
-PORTUGAL|geography/portugal.txt|0|Category:
-Wikipedia › Geography
-QATAR|geography/qatar.txt|0|Category:
-Wikipedia › Geography
-RED
-SEA|geography/red_sea.txt|0|Category:
-Wikipedia › Geography
-REPUBLIC OF THE
-CONGO|geography/republic_of_the_congo.txt|0|REPUBLIC
-OF THE CONGO
-RIO DE
-JANEIRO|geography/rio_de_janeiro.txt|0|Category:
-Wikipedia › Geography
-ROMANIA|geography/romania.txt|0|Category:
-Wikipedia › Geography
-ROME|geography/rome.txt|0|Category:
-Wikipedia › Geography
-RUSSIA|geography/russia.txt|0|Category:
-Wikipedia › Geography
-RWANDA|geography/rwanda.txt|0|Category:
-Wikipedia › Geography
-SAHARA|geography/sahara.txt|0|Category:
-Wikipedia › Geography
-SAINT KITTS AND
-NEVIS|geography/saint_kitts_and_nevis.txt|0|SAINT
-KITTS AND NEVIS
-SAINT
-LUCIA|geography/saint_lucia.txt|0|Category:
-Wikipedia › Geography
-SAINT
-PETERSBURG|geography/saint_petersburg.txt|0|Category:
-Wikipedia › Geography
-SAINT VINCENT AND THE
-GRENADINES|geography/saint_vincent_and_the_grenadines.txt|0|SAINT
-VINCENT AND THE GRENADINES
-SAMOA|geography/samoa.txt|0|Category:
-Wikipedia › Geography
-SAN
-ANTONIO|geography/san_antonio.txt|0|Category:
-Wikipedia › Geography
-SAN
-DIEGO|geography/san_diego.txt|0|Category:
-Wikipedia › Geography
-SAN JOSE
-CALIFORNIA|geography/san_jose_california.txt|0|Category:
-Wikipedia › Geography
-SAN
-MARINO|geography/san_marino.txt|0|Category:
-Wikipedia › Geography
-SAUDI
-ARABIA|geography/saudi_arabia.txt|0|Category:
-Wikipedia › Geography
-SENEGAL|geography/senegal.txt|0|Category:
-Wikipedia › Geography
-SEOUL|geography/seoul.txt|0|Category:
-Wikipedia › Geography
-SERBIA|geography/serbia.txt|0|Category:
-Wikipedia › Geography
-SEYCHELLES|geography/seychelles.txt|0|Category:
-Wikipedia › Geography
-SHANGHAI|geography/shanghai.txt|0|Category:
-Wikipedia › Geography
-SIERRA
-LEONE|geography/sierra_leone.txt|0|Category:
-Wikipedia › Geography
-SINGAPORE|geography/singapore.txt|0|Category:
-Wikipedia › Geography
-SLOVAKIA|geography/slovakia.txt|0|Category:
-Wikipedia › Geography
-SLOVENIA|geography/slovenia.txt|0|Category:
-Wikipedia › Geography
-SOLOMON
-ISLANDS|geography/solomon_islands.txt|0|Category:
-Wikipedia › Geography
-SOMALIA|geography/somalia.txt|0|Category:
-Wikipedia › Geography
-SOUTH
-AFRICA|geography/south_africa.txt|0|Category:
-Wikipedia › Geography
-SOUTH
-KOREA|geography/south_korea.txt|0|Category:
-Wikipedia › Geography
-SOUTH
-SUDAN|geography/south_sudan.txt|0|Category:
-Wikipedia › Geography
-SOUTHERN
-OCEAN|geography/southern_ocean.txt|0|Category:
-Wikipedia › Geography
-SPAIN|geography/spain.txt|0|Category:
-Wikipedia › Geography
-SRI
-LANKA|geography/sri_lanka.txt|0|Category:
-Wikipedia › Geography
-SUDAN|geography/sudan.txt|0|Category:
-Wikipedia › Geography
-SURINAME|geography/suriname.txt|0|Category:
-Wikipedia › Geography
-SWEDEN|geography/sweden.txt|0|Category:
-Wikipedia › Geography
-SWITZERLAND|geography/switzerland.txt|0|Category:
-Wikipedia › Geography
-SYDNEY|geography/sydney.txt|0|Category:
-Wikipedia › Geography
-SYRIA|geography/syria.txt|0|Category:
-Wikipedia › Geography
-SÃO TOMÉ AND
-PRÍNCIPE|geography/são_tomé_and_príncipe.txt|0|SÃO
-TOMÉ AND PRÍNCIPE
-TAIGA|geography/taiga.txt|0|Category:
-Wikipedia › Geography
-TAIWAN|geography/taiwan.txt|0|Category:
-Wikipedia › Geography
-TAJIKISTAN|geography/tajikistan.txt|0|Category:
-Wikipedia › Geography
-TANZANIA|geography/tanzania.txt|0|Category:
-Wikipedia › Geography
-THAILAND|geography/thailand.txt|0|Category:
-Wikipedia › Geography
-THE
-BAHAMAS|geography/the_bahamas.txt|0|Category:
-Wikipedia › Geography
-THE
-GAMBIA|geography/the_gambia.txt|0|Category:
-Wikipedia › Geography
-TIMOR
-LESTE|geography/timor_leste.txt|0|Category:
-Wikipedia › Geography
-TOGO|geography/togo.txt|0|Category:
-Wikipedia › Geography
-TOKYO|geography/tokyo.txt|0|Category:
-Wikipedia › Geography
-TONGA|geography/tonga.txt|0|Category:
-Wikipedia › Geography
-TORONTO|geography/toronto.txt|0|Category:
-Wikipedia › Geography
-TRINIDAD AND
-TOBAGO|geography/trinidad_and_tobago.txt|0|Category:
-Wikipedia › Geography
-TUNISIA|geography/tunisia.txt|0|Category:
-Wikipedia › Geography
-TURKEY|geography/turkey.txt|0|Category:
-Wikipedia › Geography
-TURKMENISTAN|geography/turkmenistan.txt|0|Category:
-Wikipedia › Geography
-TUVALU|geography/tuvalu.txt|0|Category:
-Wikipedia › Geography
-UGANDA|geography/uganda.txt|0|Category:
-Wikipedia › Geography
-UKRAINE|geography/ukraine.txt|0|Category:
-Wikipedia › Geography
-UNITED ARAB
-EMIRATES|geography/united_arab_emirates.txt|0|Category:
-Wikipedia › Geography
-UNITED
-KINGDOM|geography/united_kingdom.txt|0|Category:
-Wikipedia › Geography
-UNITED
-STATES|geography/united_states.txt|0|Category:
-Wikipedia › Geography
-URUGUAY|geography/uruguay.txt|0|Category:
-Wikipedia › Geography
-UZBEKISTAN|geography/uzbekistan.txt|0|Category:
-Wikipedia › Geography
-VANCOUVER|geography/vancouver.txt|0|Category:
-Wikipedia › Geography
-VANUATU|geography/vanuatu.txt|0|Category:
-Wikipedia › Geography
-VATICAN
-CITY|geography/vatican_city.txt|0|Category:
-Wikipedia › Geography
-VENEZUELA|geography/venezuela.txt|0|Category:
-Wikipedia › Geography
-VICTORIA
-FALLS|geography/victoria_falls.txt|0|Category:
-Wikipedia › Geography
-VIENNA|geography/vienna.txt|0|Category:
-Wikipedia › Geography
-VIETNAM|geography/vietnam.txt|0|Category:
-Wikipedia › Geography
-YANGTZE|geography/yangtze.txt|0|Category:
-Wikipedia › Geography
-YELLOWSTONE NATIONAL
-PARK|geography/yellowstone_national_park.txt|0|YELLOWSTONE
-NATIONAL PARK
-YEMEN|geography/yemen.txt|0|Category:
-Wikipedia › Geography
-ZAMBIA|geography/zambia.txt|0|Category:
-Wikipedia › Geography
-ZIMBABWE|geography/zimbabwe.txt|0|Category:
-Wikipedia › Geography
-GEOLOGY|geology.txt|0|Geology is a
-branch of natural science
-GEOMETRY|geometry.txt|0|Geometry is a
-branch of mathematics
-GEORGE
-WASHINGTON|george_washington.txt|0|George
-Washington was a Founding Father
-GEOTHERMAL
-ENERGY|geothermal_energy.txt|0|COMPREHENSIVE
-OVERVIEW
-GERIATRICS|geriatrics.txt|0|Geriatrics,
-or geriatric medicine, is a
-GERMANY|germany.txt|0|Germany,
-officially the Federal
-GIT|git.txt|0|Git is a distributed
-version control
-GITHUB|github.txt|0|GitHub is a
-proprietary developer
-GLASSES|glasses.txt|0|Glasses, also
-known as eyeglasses,
-GO PROGRAMMING
-LANGUAGE|go_programming_language.txt|0|GO
-PROGRAMMING LANGUAGE
-GOLDEN RATIO|golden_ratio.txt|0|In
-mathematics, two quantities are in
-GRACE HOPPER|grace_hopper.txt|0|Grace
-Brewster Hopper was an American
-GRAND CANYON|grand_canyon.txt|0|The
-Grand Canyon is a steep-sided
-GRAPH THEORY|graph_theory.txt|0|In
-mathematics and computer science,
-GRAPHICS PROCESSING
-UNIT|graphics_processing_unit.txt|0|GRAPHICS
-PROCESSING UNIT
-GRAPHQL|graphql.txt|0|GraphQL is a data
-query and
-GRASSLAND|grassland.txt|0|A grassland
-is an area where the
-GRAVITY|gravity.txt|0|In physics,
-gravity, also known as
-GREAT BARRIER
-REEF|great_barrier_reef.txt|0|The Great
-Barrier Reef is the world's
-GREAT
-DEPRESSION|great_depression.txt|0|The
-Great Depression was a severe
-GREECE|greece.txt|0|Greece, officially
-the Hellenic
-GREENHOUSE
-EFFECT|greenhouse_effect.txt|0|The
-greenhouse effect occurs when
-GUIDO VAN
-ROSSUM|guido_van_rossum.txt|0|Guido van
-Rossum is a Dutch programmer.
-GULF WAR|gulf_war.txt|0|The Gulf War
-was an armed conflict
-HARD DISK DRIVE|hard_disk_drive.txt|0|A
-hard disk drive (HDD), hard disk,
-HASKELL|haskell.txt|0|Haskell is a
-general-purpose,
-HDMI|hdmi.txt|0|HDMI is a brand of
-proprietary digital
-ANTIBIOTIC|health/antibiotic.txt|0|Category:
-Wikipedia › Health
-CANCER|health/cancer.txt|0|Category:
-Wikipedia › Health
-CARDIOPULMONARY
-RESUSCITATION|health/cardiopulmonary_resuscitation.txt|0|CARDIOPULMONARY
-RESUSCITATION
-CARDIOVASCULAR
-DISEASE|health/cardiovascular_disease.txt|0|CARDIOVASCULAR
-DISEASE
-DEHYDRATION|health/dehydration.txt|0|Category:
-Wikipedia › Health
-DIABETES|health/diabetes.txt|0|Category:
-Wikipedia › Health
-FIRST
-AID|health/first_aid.txt|0|Category:
-Wikipedia › Health
-HEAT
-STROKE|health/heat_stroke.txt|0|Category:
-Wikipedia › Health
-HYPOTHERMIA|health/hypothermia.txt|0|Category:
-Wikipedia › Health
-IMMUNE
-SYSTEM|health/immune_system.txt|0|Category:
-Wikipedia › Health
-MEDICINE|health/medicine.txt|0|Category:
-Wikipedia › Health
-NUTRITION|health/nutrition.txt|0|Category:
-Wikipedia › Health
-VACCINE|health/vaccine.txt|0|Category:
-Wikipedia › Health
-HEALTH|health.txt|0|Health has a
-variety of definitions,
-HEARING AID|hearing_aid.txt|0|A hearing
-aid is a device designed to
-HEART|heart.txt|0|The heart is a
-muscular organ found in
-HEPATITIS|hepatitis.txt|0|Hepatitis is
-inflammation of the liver
-HEXAGON|hexagon.txt|0|In geometry, a
-hexagon is a six-sided
-HIGGS BOSON|higgs_boson.txt|0|The Higgs
-boson, sometimes called the
-AMERICAN CIVIL
-WAR|history/american_civil_war.txt|0|Category:
-Wikipedia › History
-AMERICAN
-REVOLUTION|history/american_revolution.txt|0|Category:
-Wikipedia › History
-ANCIENT
-EGYPT|history/ancient_egypt.txt|0|Category:
-Wikipedia › History
-ANCIENT
-GREECE|history/ancient_greece.txt|0|Category:
-Wikipedia › History
-ANCIENT
-ROME|history/ancient_rome.txt|0|Category:
-Wikipedia › History
-**Atomic Bombings Of Hiroshima
-And|history/atomic_bombings_of_hiroshima_and_nagasaki.txt|0|**ATOMIC
-BOMBINGS OF HIROSHIMA AND
-COLD
-WAR|history/cold_war.txt|0|Category:
-Wikipedia › History
-FRENCH
-REVOLUTION|history/french_revolution.txt|0|Category:
-Wikipedia › History
-INDUSTRIAL
-REVOLUTION|history/industrial_revolution.txt|0|INDUSTRIAL
-REVOLUTION
-MAYA
-CIVILIZATION|history/maya_civilization.txt|0|Category:
-Wikipedia › History
-MESOPOTAMIA|history/mesopotamia.txt|0|Category:
-Wikipedia › History
-MIDDLE
-AGES|history/middle_ages.txt|0|Category:
-Wikipedia › History
-RENAISSANCE|history/renaissance.txt|0|Category:
-Wikipedia › History
-THE
-HOLOCAUST|history/the_holocaust.txt|0|Category:
-Wikipedia › History
-VIKING
-AGE|history/viking_age.txt|0|Category:
-Wikipedia › History
-WORLD WAR
-I|history/world_war_i.txt|0|Category:
-Wikipedia › History
-WORLD WAR
-II|history/world_war_ii.txt|0|Category:
-Wikipedia › History
-HIVAIDS|hivaids.txt|0|The human
-immunodeficiency virus (HIV)
-HOMER|homer.txt|0|Homer was an ancient
-Greek poet who is
-HTML|html.txt|0|Hypertext Markup
-Language (HTML) is the
-HTTP|http.txt|0|HTTP is an application
-layer protocol
-HUMAN BODY|human_body.txt|0|The human
-body is the entire structure
-HYDROELECTRICITY|hydroelectricity.txt|0|Hydroelectricity,
-or hydroelectric
-HYPERTENSION|hypertension.txt|0|Hypertension,
-also known as high blood
-IMMUNE SYSTEM|immune_system.txt|0|The
-immune system is a network of
-IMMUNOTHERAPY|immunotherapy.txt|0|Immunotherapy,
-also known as biological
-INCA EMPIRE|inca_empire.txt|0|The Inca
-Empire, officially known as
-INDIA|india.txt|0|India, officially the
-Republic of
-INDIAN OCEAN|indian_ocean.txt|0|The
-Indian Ocean is the third-largest
-INDUCTOR|inductor.txt|0|An inductor,
-also called a coil, choke,
-INDUSTRIAL
-REVOLUTION|industrial_revolution.txt|0|INDUSTRIAL
-REVOLUTION
-INFECTION|infection.txt|0|An infection
-is the invasion of tissues
-INFLUENZA|influenza.txt|0|Influenza,
-commonly known as the flu,
-INNOVATION|innovation.txt|0|Innovation
-is the practical
-INORGANIC
-CHEMISTRY|inorganic_chemistry.txt|0|Inorganic
-chemistry deals with
-INTEGER|integer.txt|0|An integer is the
-number zero (0), a
-INTEGRAL|integral.txt|0|In mathematics,
-an integral is the
-INTEGRATED
-CIRCUIT|integrated_circuit.txt|0|An
-integrated circuit (IC), also known
-INTERNAL COMBUSTION
-ENGINE|internal_combustion_engine.txt|0|INTERNAL
-COMBUSTION ENGINE
-INTERNET|internet.txt|0|The Internet is
-the global system of
-INTERNET OF
-THINGS|internet_of_things.txt|0|The
-Internet of Things (IoT) describes
-INTERNET PROTOCOL
-SUITE|internet_protocol_suite.txt|0|INTERNET
-PROTOCOL SUITE
-INTERPRETER
-COMPUTING|interpreter_computing.txt|0|INTERPRETER
-COMPUTING
-INVENTION|invention.txt|0|An invention
-is a unique or novel
-IOS|ios.txt|0|iOS is a mobile operating
-system
-IRAQ WAR|iraq_war.txt|0|The Iraq War,
-also referred to as the
-IRRATIONAL
-NUMBER|irrational_number.txt|0|In
-mathematics, the irrational numbers
-ISAAC NEWTON|isaac_newton.txt|0|Sir
-Isaac Newton was an English
-ISLAND|island.txt|0|An island or isle
-is a piece of land,
-ISRAEL|israel.txt|0|Israel, officially
-the State of Israel,
-ITALY|italy.txt|0|Italy, officially the
-Italian Republic,
-IVAN PAVLOV|ivan_pavlov.txt|0|Ivan
-Petrovich Pavlov was a Russian and
-JANE AUSTEN|jane_austen.txt|0|Jane
-Austen was an English novelist
-JAPAN|japan.txt|0|Japan is an island
-country in East
-JAVA PROGRAMMING
-LANGUAGE|java_programming_language.txt|0|JAVA
-PROGRAMMING LANGUAGE
-JAVASCRIPT|javascript.txt|0|JavaScript
-(JS) is a programming
-JEFF BEZOS|jeff_bezos.txt|0|Jeffrey
-Preston Bezos is an American
-JERUSALEM|jerusalem.txt|0|Jerusalem is
-a city in the Southern
-JESUS|jesus.txt|0|Jesus, also referred
-to as Jesus
-JET ENGINE|jet_engine.txt|0|A jet
-engine is a type of reaction
-JOHANN SEBASTIAN
-BACH|johann_sebastian_bach.txt|0|JOHANN
-SEBASTIAN BACH
-JOHN CALVIN|john_calvin.txt|0|John
-Calvin was a French theologian,
-JOSEPH
-STALIN|joseph_stalin.txt|0|Joseph
-Vissarionovich Stalin was a
-JULIA PROGRAMMING
-LANGUAGE|julia_programming_language.txt|0|JULIA
-PROGRAMMING LANGUAGE
-JULIUS CAESAR|julius_caesar.txt|0|Gaius
-Julius Caesar was a Roman general
-JUNGLE|jungle.txt|0|A jungle is land
-covered with dense
-KARL MARX|karl_marx.txt|0|Karl Marx was
-a German philosopher,
-KENYA|kenya.txt|0|Kenya, officially the
-Republic of
-KIDNEY|kidney.txt|0|In humans, the
-kidneys are two
-KOREAN WAR|korean_war.txt|0|The Korean
-War was an armed conflict on
-KOTLIN PROGRAMMING
-LANGUAGE|kotlin_programming_language.txt|0|KOTLIN
-PROGRAMMING LANGUAGE
-KUBERNETES|kubernetes.txt|0|Kubernetes,
-also known as K8s is an
-LAKE|lake.txt|0|A lake is often a
-naturally occurring,
-LANDSLIDE|landslide.txt|0|Landslides,
-also known as landslips,
-LAPTOP|laptop.txt|0|A laptop computer
-or notebook computer,
-LARRY PAGE|larry_page.txt|0|Lawrence
-Edward Page is an American
-LASER|laser.txt|0|A laser is a device
-that emits light
-LENS|lens.txt|0|A lens is a
-transmissive optical device
-LEO TOLSTOY|leo_tolstoy.txt|0|Count Lev
-Nikolayevich Tolstoy, usually
-LEONARDO DA
-VINCI|leonardo_da_vinci.txt|0|Leonardo
-di ser Piero da Vinci was an
-LIGHT|light.txt|0|Light, visible light,
-or visible
-LIGHT EMITTING
-DIODE|light_emitting_diode.txt|0|A
-light-emitting diode (LED) is a
-LIMIT
-MATHEMATICS|limit_mathematics.txt|0|In
-mathematics, a limit is the value
-LINEAR
-EQUATION|linear_equation.txt|0|In
-mathematics, a linear equation is an
-LINUS
-TORVALDS|linus_torvalds.txt|0|Linus
-Benedict Torvalds is a Finnish
-LINUX|linux.txt|0|Linux is a family of
-open source
-LISP PROGRAMMING
-LANGUAGE|lisp_programming_language.txt|0|LISP
-PROGRAMMING LANGUAGE
-LIVER|liver.txt|0|The liver is a major
-metabolic organ
-LOGARITHM|logarithm.txt|0|In
-mathematics, the logarithm of a
-LOGIC|logic.txt|0|Logic is the study of
-correct
-LONDON|london.txt|0|London is the
-capital and largest city
-LUA|lua.txt|0|Lua is a lightweight,
-high-level,
-LUDWIG VAN
-BEETHOVEN|ludwig_van_beethoven.txt|0|Ludwig
-van Beethoven was a German
-LUNG|lung.txt|0|The lungs are the
-primary organs of the
-MACHINE
-LEARNING|machine_learning.txt|0|Machine
-learning (ML) is a field of
-MACOS|macos.txt|0|macOS is a
-proprietary Unix-like
-MAGNETIC RESONANCE
-IMAGING|magnetic_resonance_imaging.txt|0|MAGNETIC
-RESONANCE IMAGING
-MAGNETISM|magnetism.txt|0|Magnetism is
-the class of physical
-MAHATMA
-GANDHI|mahatma_gandhi.txt|0|Mohandas
-Karamchand Gandhi was an
-MALARIA|malaria.txt|0|Malaria is a
-mosquito-borne infectious
-MALCOLM X|malcolm_x.txt|0|MalcolmX was
-an African American
-MANHATTAN
-PROJECT|manhattan_project.txt|0|The
-Manhattan Project was a research
-MAO ZEDONG|mao_zedong.txt|0|Mao Zedong
-was a Chinese politician,
-MARIE CURIE|marie_curie.txt|0|Maria
-Salomea Skodowska-Curie, known as
-MARK TWAIN|mark_twain.txt|0|Samuel
-Langhorne Clemens, known by the
-MARK
-ZUCKERBERG|mark_zuckerberg.txt|0|Mark
-Elliot Zuckerberg is an American
-MARTIN
-LUTHER|martin_luther.txt|0|Martin
-Luther was a German priest,
-MARTIN LUTHER KING
-JR|martin_luther_king_jr.txt|0|MARTIN
-LUTHER KING JR
-ABSTRACT
-ALGEBRA|mathematics/abstract_algebra.txt|0|Category:
-Wikipedia › Mathematics
-ALGEBRA|mathematics/algebra.txt|0|Category:
-Wikipedia › Mathematics
-ALGORITHM|mathematics/algorithm.txt|0|Category:
-Wikipedia › Mathematics
-ARITHMETIC|mathematics/arithmetic.txt|0|Category:
-Wikipedia › Mathematics
-CALCULUS|mathematics/calculus.txt|0|Category:
-Wikipedia › Mathematics
-CIRCLE|mathematics/circle.txt|0|Category:
-Wikipedia › Mathematics
-COMPLEX
-NUMBER|mathematics/complex_number.txt|0|Category:
-Wikipedia › Mathematics
-CONE|mathematics/cone.txt|0|Category:
-Wikipedia › Mathematics
-CRYPTOGRAPHY|mathematics/cryptography.txt|0|Category:
-Wikipedia › Mathematics
-CUBE|mathematics/cube.txt|0|Category:
-Wikipedia › Mathematics
-CYLINDER|mathematics/cylinder.txt|0|Category:
-Wikipedia › Mathematics
-DIFFERENTIAL
-EQUATION|mathematics/differential_equation.txt|0|DIFFERENTIAL
-EQUATION
-E MATHEMATICAL
-CONSTANT|mathematics/e_mathematical_constant.txt|0|E
-MATHEMATICAL CONSTANT
-EUCLIDEAN
-GEOMETRY|mathematics/euclidean_geometry.txt|0|Category:
-Wikipedia › Mathematics
-FIBONACCI
-SEQUENCE|mathematics/fibonacci_sequence.txt|0|Category:
-Wikipedia › Mathematics
-FRACTAL|mathematics/fractal.txt|0|Category:
-Wikipedia › Mathematics
-GAME
-THEORY|mathematics/game_theory.txt|0|Category:
-Wikipedia › Mathematics
-GEOMETRY|mathematics/geometry.txt|0|Category:
-Wikipedia › Mathematics
-GOLDEN
-RATIO|mathematics/golden_ratio.txt|0|Category:
-Wikipedia › Mathematics
-GRAPH
-THEORY|mathematics/graph_theory.txt|0|Category:
-Wikipedia › Mathematics
-HEXAGON|mathematics/hexagon.txt|0|Category:
-Wikipedia › Mathematics
-INFINITY|mathematics/infinity.txt|0|Category:
-Wikipedia › Mathematics
-LINEAR
-ALGEBRA|mathematics/linear_algebra.txt|0|Category:
-Wikipedia › Mathematics
-LOGIC|mathematics/logic.txt|0|Category:
-Wikipedia › Mathematics
-NUMBER
-THEORY|mathematics/number_theory.txt|0|Category:
-Wikipedia › Mathematics
-PARTIAL DIFFERENTIAL
-EQUATION|mathematics/partial_differential_equation.txt|0|PARTIAL
-DIFFERENTIAL EQUATION
-PENTAGON|mathematics/pentagon.txt|0|Category:
-Wikipedia › Mathematics
-PI|mathematics/pi.txt|0|Category:
-Wikipedia › Mathematics
-PRIME
-NUMBER|mathematics/prime_number.txt|0|Category:
-Wikipedia › Mathematics
-PROBABILITY|mathematics/probability.txt|0|Category:
-Wikipedia › Mathematics
-PYRAMID
-GEOMETRY|mathematics/pyramid_geometry.txt|0|Category:
-Wikipedia › Mathematics
-PYTHAGOREAN
-THEOREM|mathematics/pythagorean_theorem.txt|0|Category:
-Wikipedia › Mathematics
-RECTANGLE|mathematics/rectangle.txt|0|Category:
-Wikipedia › Mathematics
-SET
-THEORY|mathematics/set_theory.txt|0|Category:
-Wikipedia › Mathematics
-SPHERE|mathematics/sphere.txt|0|Category:
-Wikipedia › Mathematics
-SQUARE|mathematics/square.txt|0|Category:
-Wikipedia › Mathematics
-STATISTICS|mathematics/statistics.txt|0|Category:
-Wikipedia › Mathematics
-TOPOLOGY|mathematics/topology.txt|0|Category:
-Wikipedia › Mathematics
-TRIANGLE|mathematics/triangle.txt|0|Category:
-Wikipedia › Mathematics
-TRIGONOMETRY|mathematics/trigonometry.txt|0|Category:
-Wikipedia › Mathematics
-MATHEMATICS|mathematics.txt|0|Mathematics
-is a field of study that
-MATLAB|matlab.txt|0|MATLAB is a
-proprietary multi-paradigm
-MATRIX
-MATHEMATICS|matrix_mathematics.txt|0|In
-mathematics, a matrix is a
-MAYA
-CIVILIZATION|maya_civilization.txt|0|The
-Maya civilization was a
-MEASLES|measles.txt|0|Measles is a
-highly contagious,
-MEDICINE|medicine.txt|0|Medicine is the
-science and practice of
-MEDITATION|meditation.txt|0|Meditation
-is a practice in which an
-MENINGITIS|meningitis.txt|0|Meningitis
-is acute or chronic
-MENTAL
-HEALTH|mental_health.txt|0|Mental
-health encompasses emotional,
-MESOPOTAMIA|mesopotamia.txt|0|Mesopotamia
-is a historical region of
-MEXICO|mexico.txt|0|Mexico, officially
-the United Mexican
-MICHELANGELO|michelangelo.txt|0|Michelangelo
-di Lodovico Buonarroti
-MICROSCOPE|microscope.txt|0|A
-microscope is a laboratory instrument
-MICROSERVICES|microservices.txt|0|In
-software engineering, a microservice
-MICROSOFT
-WINDOWS|microsoft_windows.txt|0|Windows
-is a product line of
-MIDDLE AGES|middle_ages.txt|0|In the
-history of Europe, the Middle
-MINERAL
-NUTRIENT|mineral_nutrient.txt|0|In the
-context of nutrition, a mineral
-MISSISSIPPI
-RIVER|mississippi_river.txt|0|The
-Mississippi River is the primary
-MODEM|modem.txt|0|A
-modulator-demodulator, commonly
-MOLECULE|molecule.txt|0|A molecule is a
-group of two or more
-MOMENTUM|momentum.txt|0|In Newtonian
-mechanics, momentum is the
-MONGODB|mongodb.txt|0|MongoDB is a
-source-available,
-MONGOL EMPIRE|mongol_empire.txt|0|The
-Mongol Empire was the largest
-MOON LANDING|moon_landing.txt|0|A Moon
-landing or lunar landing is the
-MOSCOW|moscow.txt|0|Moscow is the
-capital and largest city
-MOSES|moses.txt|0|In Abrahamic
-religions, Moses was the
-MOTHER TERESA|mother_teresa.txt|0|Mary
-Teresa Bojaxhiu, better known as
-MOTHERBOARD|motherboard.txt|0|A
-motherboard, also called a mainboard,
-MOTION|motion.txt|0|In physics, motion
-is when an object
-MOUNT EVEREST|mount_everest.txt|0|Mount
-Everest is Earth's highest
-MOUNTAIN|mountain.txt|0|A mountain is
-an elevated portion of
-MUHAMMAD|muhammad.txt|0|Muhammad was an
-Arab religious,
-MULTIPLE
-SCLEROSIS|multiple_sclerosis.txt|0|Multiple
-sclerosis (MS) is an
-MULTIPLICATION|multiplication.txt|0|Multiplication
-is one of the four
-MUMPS|mumps.txt|0|Mumps is a highly
-contagious viral
-MUSCLE|muscle.txt|0|Muscle is a soft
-tissue, one of the
-MYSQL|mysql.txt|0|MySQL is an
-open-source relational
-NANOTECHNOLOGY|nanotechnology.txt|0|Nanotechnology
-is the manipulation of
-NAPOLEON|napoleon.txt|0|Napoleon
-Bonaparte, later known by his
-NATURAL LANGUAGE
-PROCESSING|natural_language_processing.txt|0|NATURAL
-LANGUAGE PROCESSING
-NATURAL NUMBER|natural_number.txt|0|In
-mathematics, the natural numbers are
-NATURAL
-SELECTION|natural_selection.txt|0|Natural
-selection is the differential
-NELSON
-MANDELA|nelson_mandela.txt|0|Nelson
-Rolihlahla Mandela was a South
-NERVOUS SYSTEM|nervous_system.txt|0|In
-biology, the nervous system is the
-NEURAL NETWORK|neural_network.txt|0|A
-neural network is a group of
-NEUTRON|neutron.txt|0|The neutron is a
-subatomic particle,
-NEUTRON STAR|neutron_star.txt|0|A
-neutron star is the gravitationally
-NEW DEAL|new_deal.txt|0|The New Deal
-was a series of
-NEW YORK CITY|new_york_city.txt|0|New
-York, often called New York City
-NIAGARA
-FALLS|niagara_falls.txt|0|Niagara Falls
-is a group of three
-NIGERIA|nigeria.txt|0|Nigeria,
-officially the Federal
-NIKOLA TESLA|nikola_tesla.txt|0|Nikola
-Tesla was a Serbian-American
-NILE|nile.txt|0|The Nile is an
-important river in
-NORMANDY
-LANDINGS|normandy_landings.txt|0|The
-Normandy landings were the landing
-NORTH AMERICA|north_america.txt|0|North
-America is a continent in the
-NOSE|nose.txt|0|A nose is a sensory
-organ and
-NUCLEAR
-FISSION|nuclear_fission.txt|0|Nuclear
-fission is a reaction in which
-NUCLEAR
-FUSION|nuclear_fusion.txt|0|Nuclear
-fusion is a reaction in which
-NUCLEAR
-PHYSICS|nuclear_physics.txt|0|Nuclear
-physics is the field of physics
-NUCLEAR
-POWER|nuclear_power.txt|0|Nuclear power
-is the use of nuclear
-NUMBER
-THEORY|number_theory.txt|0|COMPREHENSIVE
-OVERVIEW
-NUTRITION|nutrition.txt|0|Nutrition is
-the biochemical and
-OBESITY|obesity.txt|0|Obesity is a
-medical condition,
-OBJECT ORIENTED
-PROGRAMMING|object_oriented_programming.txt|0|OBJECT
-ORIENTED PROGRAMMING
-OBJECTIVE
-C|objective_c.txt|0|Objective-C is a
-high-level
-OCEAN|ocean.txt|0|The ocean is the body
-of salt water
-OPERATING
-SYSTEM|operating_system.txt|0|An
-operating system (OS) is system
-OPTICS|optics.txt|0|Optics is the
-branch of physics that
-ORGAN
-TRANSPLANTATION|organ_transplantation.txt|0|ORGAN
-TRANSPLANTATION
-ORGANIC
-CHEMISTRY|organic_chemistry.txt|0|Organic
-chemistry is a subdiscipline
-OTTOMAN EMPIRE|ottoman_empire.txt|0|The
-Ottoman Empire, also called the
-OZONE LAYER|ozone_layer.txt|0|The ozone
-layer or ozone shield is a
-PABLO PICASSO|pablo_picasso.txt|0|Pablo
-Diego Jos Francisco de Paula Juan
-PACEMAKER|pacemaker.txt|0|A pacemaker,
-also known as an
-PACIFIC OCEAN|pacific_ocean.txt|0|The
-Pacific Ocean is the largest and
-PARALLEL
-GEOMETRY|parallel_geometry.txt|0|In
-geometry, parallel lines are
-PARIS|paris.txt|0|Paris is the capital
-and largest city
-PARKINSONS
-DISEASE|parkinsons_disease.txt|0|Parkinson's
-disease (PD), or simply
-PARTICLE
-PHYSICS|particle_physics.txt|0|Particle
-physics or high-energy physics
-PASCAL PROGRAMMING
-LANGUAGE|pascal_programming_language.txt|0|PASCAL
-PROGRAMMING LANGUAGE
-PASCALS
-TRIANGLE|pascals_triangle.txt|0|In
-mathematics, Pascal's triangle is an
-PEARL HARBOR|pearl_harbor.txt|0|Pearl
-Harbor is an American lagoon
-PEDIATRICS|pediatrics.txt|0|Pediatrics,
-also spelled paediatrics,
-PENTAGON|pentagon.txt|0|In geometry, a
-pentagon is any
-ABRAHAM
-LINCOLN|people/abraham_lincoln.txt|0|Category:
-Wikipedia › People
-ALBERT
-EINSTEIN|people/albert_einstein.txt|0|Category:
-Wikipedia › People
-CHARLES
-DARWIN|people/charles_darwin.txt|0|Category:
-Wikipedia › People
-GALILEO
-GALILEI|people/galileo_galilei.txt|0|Category:
-Wikipedia › People
-GEORGE
-WASHINGTON|people/george_washington.txt|0|Category:
-Wikipedia › People
-ISAAC
-NEWTON|people/isaac_newton.txt|0|Category:
-Wikipedia › People
-JULIUS
-CAESAR|people/julius_caesar.txt|0|Category:
-Wikipedia › People
-LEONARDO DA
-VINCI|people/leonardo_da_vinci.txt|0|Category:
-Wikipedia › People
-MAHATMA
-GANDHI|people/mahatma_gandhi.txt|0|Category:
-Wikipedia › People
-MARIE
-CURIE|people/marie_curie.txt|0|Category:
-Wikipedia › People
-MARTIN LUTHER KING
-JR|people/martin_luther_king_jr.txt|0|MARTIN
-LUTHER KING JR
-NAPOLEON|people/napoleon.txt|0|Category:
-Wikipedia › People
-NELSON
-MANDELA|people/nelson_mandela.txt|0|Category:
-Wikipedia › People
-NIKOLA
-TESLA|people/nikola_tesla.txt|0|Category:
-Wikipedia › People
-STEPHEN
-HAWKING|people/stephen_hawking.txt|0|Category:
-Wikipedia › People
-THOMAS
-EDISON|people/thomas_edison.txt|0|Category:
-Wikipedia › People
-WILLIAM
-SHAKESPEARE|people/william_shakespeare.txt|0|Category:
-Wikipedia › People
-WINSTON
-CHURCHILL|people/winston_churchill.txt|0|Category:
-Wikipedia › People
-PERCENTAGE|percentage.txt|0|In
-mathematics, a percentage, percent,
-PERIMETER|perimeter.txt|0|A perimeter
-is the length of a closed
-PERIODIC TABLE|periodic_table.txt|0|The
-periodic table, also known as the
-PERL|perl.txt|0|Perl is a high-level,
-general-purpose,
-PERMUTATION|permutation.txt|0|In
-mathematics, a permutation of a set
-PERPENDICULAR|perpendicular.txt|0|In
-geometry, two geometric objects are
-PH|ph.txt|0|In chemistry, pH (/ is a
-logarithmic
-AESTHETICS|philosophy/aesthetics.txt|0|Category:
-Wikipedia › Philosophy
-ANCIENT GREEK
-PHILOSOPHY|philosophy/ancient_greek_philosophy.txt|0|ANCIENT
-GREEK PHILOSOPHY
-ARISTOTLE|philosophy/aristotle.txt|0|Category:
-Wikipedia › Philosophy
-BARUCH
-SPINOZA|philosophy/baruch_spinoza.txt|0|Category:
-Wikipedia › Philosophy
-CONFUCIUS|philosophy/confucius.txt|0|Category:
-Wikipedia › Philosophy
-CONTEMPORARY
-PHILOSOPHY|philosophy/contemporary_philosophy.txt|0|CONTEMPORARY
-PHILOSOPHY
-DAVID
-HUME|philosophy/david_hume.txt|0|Category:
-Wikipedia › Philosophy
-EASTERN
-PHILOSOPHY|philosophy/eastern_philosophy.txt|0|Category:
-Wikipedia › Philosophy
-EPISTEMOLOGY|philosophy/epistemology.txt|0|Category:
-Wikipedia › Philosophy
-ETHICS|philosophy/ethics.txt|0|Category:
-Wikipedia › Philosophy
-EXISTENTIALISM|philosophy/existentialism.txt|0|Category:
-Wikipedia › Philosophy
-FRIEDRICH
-NIETZSCHE|philosophy/friedrich_nietzsche.txt|0|Category:
-Wikipedia › Philosophy
-GEORG WILHELM FRIEDRICH
-HEGEL|philosophy/georg_wilhelm_friedrich_hegel.txt|0|GEORG
-WILHELM FRIEDRICH HEGEL
-IMMANUEL
-KANT|philosophy/immanuel_kant.txt|0|Category:
-Wikipedia › Philosophy
-JEAN PAUL
-SARTRE|philosophy/jean_paul_sartre.txt|0|Category:
-Wikipedia › Philosophy
-JOHN
-LOCKE|philosophy/john_locke.txt|0|Category:
-Wikipedia › Philosophy
-KARL
-MARX|philosophy/karl_marx.txt|0|Category:
-Wikipedia › Philosophy
-LAOZI|philosophy/laozi.txt|0|Category:
-Wikipedia › Philosophy
-LOGIC|philosophy/logic.txt|0|Category:
-Wikipedia › Philosophy
-MEDIEVAL
-PHILOSOPHY|philosophy/medieval_philosophy.txt|0|Category:
-Wikipedia › Philosophy
-METAPHYSICS|philosophy/metaphysics.txt|0|Category:
-Wikipedia › Philosophy
-MODERN
-PHILOSOPHY|philosophy/modern_philosophy.txt|0|Category:
-Wikipedia › Philosophy
-NIHILISM|philosophy/nihilism.txt|0|Category:
-Wikipedia › Philosophy
-PHENOMENOLOGY|philosophy/phenomenology.txt|0|Category:
-Wikipedia › Philosophy
-PHILOSOPHY|philosophy/philosophy.txt|0|Category:
-Wikipedia › Philosophy
-PHILOSOPHY OF
-LANGUAGE|philosophy/philosophy_of_language.txt|0|PHILOSOPHY
-OF LANGUAGE
-PHILOSOPHY OF
-MIND|philosophy/philosophy_of_mind.txt|0|Category:
-Wikipedia › Philosophy
-PHILOSOPHY OF
-SCIENCE|philosophy/philosophy_of_science.txt|0|PHILOSOPHY
-OF SCIENCE
-PLATO|philosophy/plato.txt|0|Category:
-Wikipedia › Philosophy
-POLITICAL
-PHILOSOPHY|philosophy/political_philosophy.txt|0|Category:
-Wikipedia › Philosophy
-POSTMODERNISM|philosophy/postmodernism.txt|0|Category:
-Wikipedia › Philosophy
-PRAGMATISM|philosophy/pragmatism.txt|0|Category:
-Wikipedia › Philosophy
-RENÉ
-DESCARTES|philosophy/rené_descartes.txt|0|Category:
-Wikipedia › Philosophy
-SOCRATES|philosophy/socrates.txt|0|Category:
-Wikipedia › Philosophy
-STOICISM|philosophy/stoicism.txt|0|Category:
-Wikipedia › Philosophy
-STRUCTURALISM|philosophy/structuralism.txt|0|Category:
-Wikipedia › Philosophy
-THE
-BUDDHA|philosophy/the_buddha.txt|0|Category:
-Wikipedia › Philosophy
-THOMAS
-AQUINAS|philosophy/thomas_aquinas.txt|0|Category:
-Wikipedia › Philosophy
-UTILITARIANISM|philosophy/utilitarianism.txt|0|Category:
-Wikipedia › Philosophy
-WESTERN
-PHILOSOPHY|philosophy/western_philosophy.txt|0|Category:
-Wikipedia › Philosophy
-PHILOSOPHY|philosophy.txt|0|Philosophy
-is a systematic study of
-PHOTON|photon.txt|0|A photon is an
-elementary particle that
-PHOTOSYNTHESIS|photosynthesis.txt|0|COMPREHENSIVE
-OVERVIEW
-PHP|php.txt|0|PHP is a general-purpose
-scripting
-PHYSICAL
-FITNESS|physical_fitness.txt|0|Physical
-fitness is a state of health
-ABSOLUTE
-ZERO|physics/absolute_zero.txt|0|Category:
-Wikipedia › Physics
-ACCELERATION|physics/acceleration.txt|0|Category:
-Wikipedia › Physics
-ACOUSTICS|physics/acoustics.txt|0|Category:
-Wikipedia › Physics
-ASTROPHYSICS|physics/astrophysics.txt|0|Category:
-Wikipedia › Physics
-ATOM|physics/atom.txt|0|Category:
-Wikipedia › Physics
-ATOMIC
-PHYSICS|physics/atomic_physics.txt|0|Category:
-Wikipedia › Physics
-BLACK
-HOLE|physics/black_hole.txt|0|Category:
-Wikipedia › Physics
-CLASSICAL
-MECHANICS|physics/classical_mechanics.txt|0|Category:
-Wikipedia › Physics
-CONSERVATION OF
-ENERGY|physics/conservation_of_energy.txt|0|CONSERVATION
-OF ENERGY
-COSMOLOGY|physics/cosmology.txt|0|Category:
-Wikipedia › Physics
-DARK
-ENERGY|physics/dark_energy.txt|0|Category:
-Wikipedia › Physics
-DARK
-MATTER|physics/dark_matter.txt|0|Category:
-Wikipedia › Physics
-ELECTRICITY|physics/electricity.txt|0|Category:
-Wikipedia › Physics
-ELECTROMAGNETISM|physics/electromagnetism.txt|0|Category:
-Wikipedia › Physics
-ELECTRON|physics/electron.txt|0|Category:
-Wikipedia › Physics
-ENERGY|physics/energy.txt|0|Category:
-Wikipedia › Physics
-ENTROPY|physics/entropy.txt|0|Category:
-Wikipedia › Physics
-FORCE|physics/force.txt|0|Category:
-Wikipedia › Physics
-GENERAL
-RELATIVITY|physics/general_relativity.txt|0|Category:
-Wikipedia › Physics
-GRAVITY|physics/gravity.txt|0|Category:
-Wikipedia › Physics
-HIGGS
-BOSON|physics/higgs_boson.txt|0|Category:
-Wikipedia › Physics
-LEPTON|physics/lepton.txt|0|Category:
-Wikipedia › Physics
-LIGHT|physics/light.txt|0|Category:
-Wikipedia › Physics
-MAGNETISM|physics/magnetism.txt|0|Category:
-Wikipedia › Physics
-MASS|physics/mass.txt|0|Category:
-Wikipedia › Physics
-MAXWELLS
-EQUATIONS|physics/maxwells_equations.txt|0|Category:
-Wikipedia › Physics
-MOLECULE|physics/molecule.txt|0|Category:
-Wikipedia › Physics
-MOMENTUM|physics/momentum.txt|0|Category:
-Wikipedia › Physics
-NEUTRON|physics/neutron.txt|0|Category:
-Wikipedia › Physics
-NEWTONS LAWS OF
-MOTION|physics/newtons_laws_of_motion.txt|0|NEWTONS
-LAWS OF MOTION
-NUCLEAR
-PHYSICS|physics/nuclear_physics.txt|0|Category:
-Wikipedia › Physics
-OPTICS|physics/optics.txt|0|Category:
-Wikipedia › Physics
-PARTICLE
-PHYSICS|physics/particle_physics.txt|0|Category:
-Wikipedia › Physics
-PHOTON|physics/photon.txt|0|Category:
-Wikipedia › Physics
-PROTON|physics/proton.txt|0|Category:
-Wikipedia › Physics
-QUANTUM
-MECHANICS|physics/quantum_mechanics.txt|0|Category:
-Wikipedia › Physics
-QUARK|physics/quark.txt|0|Category:
-Wikipedia › Physics
-RELATIVITY|physics/relativity.txt|0|Category:
-Wikipedia › Physics
-SCHRÖDINGER
-EQUATION|physics/schrödinger_equation.txt|0|Category:
-Wikipedia › Physics
-SOUND|physics/sound.txt|0|Category:
-Wikipedia › Physics
-SPECIAL
-RELATIVITY|physics/special_relativity.txt|0|Category:
-Wikipedia › Physics
-SPEED OF
-LIGHT|physics/speed_of_light.txt|0|Category:
-Wikipedia › Physics
-STANDARD
-MODEL|physics/standard_model.txt|0|Category:
-Wikipedia › Physics
-STRING
-THEORY|physics/string_theory.txt|0|Category:
-Wikipedia › Physics
-STRONG
-INTERACTION|physics/strong_interaction.txt|0|Category:
-Wikipedia › Physics
-THERMODYNAMICS|physics/thermodynamics.txt|0|Category:
-Wikipedia › Physics
-VELOCITY|physics/velocity.txt|0|Category:
-Wikipedia › Physics
-WAVE|physics/wave.txt|0|Category:
-Wikipedia › Physics
-WEAK
-INTERACTION|physics/weak_interaction.txt|0|Category:
-Wikipedia › Physics
-WORMHOLE|physics/wormhole.txt|0|Category:
-Wikipedia › Physics
-PHYSICS|physics.txt|0|Physics is the
-scientific study of
-PI|pi.txt|0|The number is a
-mathematical constant,
-PLANET|planet.txt|0|A planet is a
-large, rounded
-ALGAE|plants/algae.txt|0|Category:
-Wikipedia › Plants
-APPLE|plants/apple.txt|0|Category:
-Wikipedia › Plants
-ARECACEAE|plants/arecaceae.txt|0|Category:
-Wikipedia › Plants
-ASH|plants/ash.txt|0|Category:
-Wikipedia › Plants
-BAMBOO|plants/bamboo.txt|0|Category:
-Wikipedia › Plants
-BANANA|plants/banana.txt|0|Category:
-Wikipedia › Plants
-BARLEY|plants/barley.txt|0|Category:
-Wikipedia › Plants
-BIRCH|plants/birch.txt|0|Category:
-Wikipedia › Plants
-BLUEBERRY|plants/blueberry.txt|0|Category:
-Wikipedia › Plants
-CACTUS|plants/cactus.txt|0|Category:
-Wikipedia › Plants
-CARROT|plants/carrot.txt|0|Category:
-Wikipedia › Plants
-CEDAR|plants/cedar.txt|0|Category:
-Wikipedia › Plants
-COCONUT|plants/coconut.txt|0|Category:
-Wikipedia › Plants
-COMMON
-SUNFLOWER|plants/common_sunflower.txt|0|Category:
-Wikipedia › Plants
-DAISY|plants/daisy.txt|0|Category:
-Wikipedia › Plants
-ELM|plants/elm.txt|0|Category:
-Wikipedia › Plants
-FERN|plants/fern.txt|0|Category:
-Wikipedia › Plants
-GARLIC|plants/garlic.txt|0|Category:
-Wikipedia › Plants
-GRAPE|plants/grape.txt|0|Category:
-Wikipedia › Plants
-KELP|plants/kelp.txt|0|Category:
-Wikipedia › Plants
-LEMON|plants/lemon.txt|0|Category:
-Wikipedia › Plants
-LETTUCE|plants/lettuce.txt|0|Category:
-Wikipedia › Plants
-LILIUM|plants/lilium.txt|0|Category:
-Wikipedia › Plants
-MAIZE|plants/maize.txt|0|Category:
-Wikipedia › Plants
-MAPLE|plants/maple.txt|0|Category:
-Wikipedia › Plants
-MOSS|plants/moss.txt|0|Category:
-Wikipedia › Plants
-MUSHROOM|plants/mushroom.txt|0|Category:
-Wikipedia › Plants
-OAK|plants/oak.txt|0|Category:
-Wikipedia › Plants
-OAT|plants/oat.txt|0|Category:
-Wikipedia › Plants
-ONION|plants/onion.txt|0|Category:
-Wikipedia › Plants
-ORANGE|plants/orange.txt|0|Category:
-Wikipedia › Plants
-ORCHID|plants/orchid.txt|0|Category:
-Wikipedia › Plants
-PINE|plants/pine.txt|0|Category:
-Wikipedia › Plants
-POTATO|plants/potato.txt|0|Category:
-Wikipedia › Plants
-RICE|plants/rice.txt|0|Category:
-Wikipedia › Plants
-ROSE|plants/rose.txt|0|Category:
-Wikipedia › Plants
-SEAWEED|plants/seaweed.txt|0|Category:
-Wikipedia › Plants
-SEQUOIA|plants/sequoia.txt|0|Category:
-Wikipedia › Plants
-SEQUOIOIDEAE|plants/sequoioideae.txt|0|Category:
-Wikipedia › Plants
-SOYBEAN|plants/soybean.txt|0|Category:
-Wikipedia › Plants
-STRAWBERRY|plants/strawberry.txt|0|Category:
-Wikipedia › Plants
-SUCCULENT
-PLANT|plants/succulent_plant.txt|0|Category:
-Wikipedia › Plants
-TOMATO|plants/tomato.txt|0|Category:
-Wikipedia › Plants
-TULIP|plants/tulip.txt|0|Category:
-Wikipedia › Plants
-VENUS
-FLYTRAP|plants/venus_flytrap.txt|0|Category:
-Wikipedia › Plants
-WHEAT|plants/wheat.txt|0|Category:
-Wikipedia › Plants
-WILLOW|plants/willow.txt|0|Category:
-Wikipedia › Plants
-PLASMA
-PHYSICS|plasma_physics.txt|0|Plasma is
-a state of matter that
-PLATO|plato.txt|0|Plato was an ancient
-Greek philosopher
-PNEUMONIA|pneumonia.txt|0|Pneumonia is
-an inflammatory condition
-POLYNOMIAL|polynomial.txt|0|In
-mathematics, a polynomial is a
-POST TRAUMATIC STRESS
-DISORDER|post_traumatic_stress_disorder.txt|0|POST
-TRAUMATIC STRESS DISORDER
-POSTGRESQL|postgresql.txt|0|PostgreSQL
-also known as Postgres, is a
-PREGNANCY|pregnancy.txt|0|Pregnancy is
-the time during which one
-PRIME NUMBER|prime_number.txt|0|A prime
-number is a natural number
-PRINTING PRESS|printing_press.txt|0|A
-printing press is a mechanical device
-PROBABILITY|probability.txt|0|Probability
-is a branch of mathematics
-ALGORITHM|programming/algorithm.txt|0|Category:
-Wikipedia › Programming
-ANDROID OPERATING
-SYSTEM|programming/android_operating_system.txt|0|ANDROID
-OPERATING SYSTEM
-ARTIFICIAL
-INTELLIGENCE|programming/artificial_intelligence.txt|0|ARTIFICIAL
-INTELLIGENCE
-BLOCKCHAIN|programming/blockchain.txt|0|Category:
-Wikipedia › Programming
-C|programming/c.txt|0|Category:
-Wikipedia › Programming
-C PROGRAMMING
-LANGUAGE|programming/c_programming_language.txt|0|C
-PROGRAMMING LANGUAGE
-C SHARP PROGRAMMING
-LANGUAGE|programming/c_sharp_programming_language.txt|0|C
-SHARP PROGRAMMING LANGUAGE
-CLOUD
-COMPUTING|programming/cloud_computing.txt|0|Category:
-Wikipedia › Programming
-COMPUTER
-NETWORK|programming/computer_network.txt|0|Category:
-Wikipedia › Programming
-COMPUTER
-SECURITY|programming/computer_security.txt|0|Category:
-Wikipedia › Programming
-CRYPTOCURRENCY|programming/cryptocurrency.txt|0|Category:
-Wikipedia › Programming
-DATA
-STRUCTURE|programming/data_structure.txt|0|Category:
-Wikipedia › Programming
-DATABASE|programming/database.txt|0|Category:
-Wikipedia › Programming
-DOCKER
-SOFTWARE|programming/docker_software.txt|0|Category:
-Wikipedia › Programming
-GIT|programming/git.txt|0|Category:
-Wikipedia › Programming
-GO PROGRAMMING
-LANGUAGE|programming/go_programming_language.txt|0|GO
-PROGRAMMING LANGUAGE
-HASKELL|programming/haskell.txt|0|Category:
-Wikipedia › Programming
-INTERNET|programming/internet.txt|0|Category:
-Wikipedia › Programming
-JAVA PROGRAMMING
-LANGUAGE|programming/java_programming_language.txt|0|JAVA
-PROGRAMMING LANGUAGE
-JAVASCRIPT|programming/javascript.txt|0|Category:
-Wikipedia › Programming
-KOTLIN PROGRAMMING
-LANGUAGE|programming/kotlin_programming_language.txt|0|KOTLIN
-PROGRAMMING LANGUAGE
-KUBERNETES|programming/kubernetes.txt|0|Category:
-Wikipedia › Programming
-LINUX|programming/linux.txt|0|Category:
-Wikipedia › Programming
-LISP PROGRAMMING
-LANGUAGE|programming/lisp_programming_language.txt|0|LISP
-PROGRAMMING LANGUAGE
-MACHINE
-LEARNING|programming/machine_learning.txt|0|Category:
-Wikipedia › Programming
-MACOS|programming/macos.txt|0|Category:
-Wikipedia › Programming
-MATLAB|programming/matlab.txt|0|Category:
-Wikipedia › Programming
-MICROSOFT
-WINDOWS|programming/microsoft_windows.txt|0|Category:
-Wikipedia › Programming
-OPERATING
-SYSTEM|programming/operating_system.txt|0|Category:
-Wikipedia › Programming
-PERL|programming/perl.txt|0|Category:
-Wikipedia › Programming
-PHP|programming/php.txt|0|Category:
-Wikipedia › Programming
-PYTHON PROGRAMMING
-LANGUAGE|programming/python_programming_language.txt|0|PYTHON
-PROGRAMMING LANGUAGE
-R PROGRAMMING
-LANGUAGE|programming/r_programming_language.txt|0|R
-PROGRAMMING LANGUAGE
-RUBY PROGRAMMING
-LANGUAGE|programming/ruby_programming_language.txt|0|RUBY
-PROGRAMMING LANGUAGE
-RUST PROGRAMMING
-LANGUAGE|programming/rust_programming_language.txt|0|RUST
-PROGRAMMING LANGUAGE
-SCALA PROGRAMMING
-LANGUAGE|programming/scala_programming_language.txt|0|SCALA
-PROGRAMMING LANGUAGE
-SQL|programming/sql.txt|0|Category:
-Wikipedia › Programming
-SWIFT PROGRAMMING
-LANGUAGE|programming/swift_programming_language.txt|0|SWIFT
-PROGRAMMING LANGUAGE
-TYPESCRIPT|programming/typescript.txt|0|Category:
-Wikipedia › Programming
-UNIX|programming/unix.txt|0|Category:
-Wikipedia › Programming
-PROHIBITION|prohibition.txt|0|Prohibition
-is the act or practice of
-PROLOG|prolog.txt|0|Prolog is a logic
-programming language
-PROPORTIONALITY|proportionality.txt|0|Proportionality,
-proportion or
-PROSTHESIS|prosthesis.txt|0|In
-medicine, a prosthesis, or a
-PROTEIN|protein.txt|0|Proteins are
-large biomolecules and
-PROTON|proton.txt|0|A proton is a
-stable subatomic
-PSYCHIATRY|psychiatry.txt|0|Psychiatry
-is the medical specialty
-PSYCHOLOGY|psychology.txt|0|Psychology
-is the scientific study of
-PYRAMID
-GEOMETRY|pyramid_geometry.txt|0|A
-pyramid is a polyhedron formed by
-PYTHAGOREAN
-THEOREM|pythagorean_theorem.txt|0|In
-mathematics, the Pythagorean theorem
-PYTHON PROGRAMMING
-LANGUAGE|python_programming_language.txt|0|PYTHON
-PROGRAMMING LANGUAGE
-QUADRATIC
-EQUATION|quadratic_equation.txt|0|In
-mathematics, a quadratic equation is
-QUANTUM
-COMPUTING|quantum_computing.txt|0|A
-quantum computer is a computer that
-QUANTUM
-MECHANICS|quantum_mechanics.txt|0|Quantum
-mechanics is the fundamental
-QUARK|quark.txt|0|A quark is a type of
-elementary
-QUEEN
-VICTORIA|queen_victoria.txt|0|Victoria
-was Queen of the United
-R PROGRAMMING
-LANGUAGE|r_programming_language.txt|0|R
-PROGRAMMING LANGUAGE
-RADIATION
-THERAPY|radiation_therapy.txt|0|Radiation
-therapy or radiotherapy is a
-RADIO|radio.txt|0|Radio is the
-technology of
-RADIOACTIVE
-DECAY|radioactive_decay.txt|0|Radioactive
-decay is the process by
-RANDOM ACCESS
-MEMORY|random_access_memory.txt|0|Random-access
-memory is a form of
-RATIO|ratio.txt|0|In mathematics, a
-ratio shows how many
-RATIONAL
-NUMBER|rational_number.txt|0|In
-mathematics, a rational number is a
-REAL NUMBER|real_number.txt|0|In
-mathematics, a real number is a
-RECTANGLE|rectangle.txt|0|In Euclidean
-plane geometry, a
-REDIS|redis.txt|0|Redis is an in-memory
-keyvalue
-RELATIVITY|relativity.txt|0|Relativity
-may refer to:
-RENAISSANCE|renaissance.txt|0|The
-Renaissance is a period of history
-RENEWABLE
-ENERGY|renewable_energy.txt|0|Renewable
-energy is energy made from
-RESISTOR|resistor.txt|0|A resistor is a
-passive two-terminal
-RESPIRATION
-PHYSIOLOGY|respiration_physiology.txt|0|RESPIRATION
-PHYSIOLOGY
-REST|rest.txt|0|REST is a software
-architectural style
-RICHARD
-STALLMAN|richard_stallman.txt|0|Richard
-Matthew Stallman, also known by
-RIO DE JANEIRO|rio_de_janeiro.txt|0|Rio
-de Janeiro, or simply Rio, is the
-RIVER|river.txt|0|A river is a natural
-stream of fresh
-RNA|rna.txt|0|Ribonucleic acid (RNA) is
-a polymeric
-ROARING
-TWENTIES|roaring_twenties.txt|0|The
-Roaring Twenties, sometimes
-ROBOT|robot.txt|0|A robot is a
-machineespecially one
-ROCKET|rocket.txt|0|A rocket is a
-vehicle that uses jet
-ROMAN EMPIRE|roman_empire.txt|0|The
-Roman Empire ruled the
-ROME|rome.txt|0|Rome is the capital
-city and most
-ROOT
-DISAMBIGUATION|root_disambiguation.txt|0|Root
-(disambiguation)
-ROUTER
-COMPUTING|router_computing.txt|0|A
-router is a computer and networking
-RUBY PROGRAMMING
-LANGUAGE|ruby_programming_language.txt|0|RUBY
-PROGRAMMING LANGUAGE
-RUSSIA|russia.txt|0|Russia, or the
-Russian Federation, is a
-RUST PROGRAMMING
-LANGUAGE|rust_programming_language.txt|0|RUST
-PROGRAMMING LANGUAGE
-SAHARA|sahara.txt|0|The Sahara is a
-desert spanning across
-SATELLITE|satellite.txt|0|A satellite
-or an artificial satellite
-SAUDI ARABIA|saudi_arabia.txt|0|Saudi
-Arabia, officially the Kingdom of
-SAVANNA|savanna.txt|0|A savanna or
-savannah is a mixed
-SCALA PROGRAMMING
-LANGUAGE|scala_programming_language.txt|0|SCALA
-PROGRAMMING LANGUAGE
-SCHIZOPHRENIA|schizophrenia.txt|0|Schizophrenia
-is a mental disorder
-ASTRONOMY|science/astronomy.txt|0|Category:
-Wikipedia › Science
-ATOM|science/atom.txt|0|Category:
-Wikipedia › Science
-BIG
-BANG|science/big_bang.txt|0|Category:
-Wikipedia › Science
-BIOLOGY|science/biology.txt|0|Category:
-Wikipedia › Science
-BLACK
-HOLE|science/black_hole.txt|0|Category:
-Wikipedia › Science
-CELL
-BIOLOGY|science/cell_biology.txt|0|Category:
-Wikipedia › Science
-CHEMISTRY|science/chemistry.txt|0|Category:
-Wikipedia › Science
-CLIMATE
-CHANGE|science/climate_change.txt|0|Category:
-Wikipedia › Science
-DNA|science/dna.txt|0|Category:
-Wikipedia › Science
-ELECTROMAGNETISM|science/electromagnetism.txt|0|Category:
-Wikipedia › Science
-EVOLUTION|science/evolution.txt|0|Category:
-Wikipedia › Science
-GENETICS|science/genetics.txt|0|Category:
-Wikipedia › Science
-GEOLOGY|science/geology.txt|0|Category:
-Wikipedia › Science
-GRAVITY|science/gravity.txt|0|Category:
-Wikipedia › Science
-INORGANIC
-CHEMISTRY|science/inorganic_chemistry.txt|0|Category:
-Wikipedia › Science
-MOLECULE|science/molecule.txt|0|Category:
-Wikipedia › Science
-NUCLEAR
-PHYSICS|science/nuclear_physics.txt|0|Category:
-Wikipedia › Science
-ORGANIC
-CHEMISTRY|science/organic_chemistry.txt|0|Category:
-Wikipedia › Science
-PERIODIC
-TABLE|science/periodic_table.txt|0|Category:
-Wikipedia › Science
-PHOTOSYNTHESIS|science/photosynthesis.txt|0|Category:
-Wikipedia › Science
-PHYSICS|science/physics.txt|0|Category:
-Wikipedia › Science
-QUANTUM
-MECHANICS|science/quantum_mechanics.txt|0|Category:
-Wikipedia › Science
-RELATIVITY|science/relativity.txt|0|Category:
-Wikipedia › Science
-SOLAR
-SYSTEM|science/solar_system.txt|0|Category:
-Wikipedia › Science
-THERMODYNAMICS|science/thermodynamics.txt|0|Category:
-Wikipedia › Science
-SCRUM SOFTWARE
-DEVELOPMENT|scrum_software_development.txt|0|SCRUM
-SOFTWARE DEVELOPMENT
-SEARCH ENGINE|search_engine.txt|0|A
-search engine is a software system
-SEMICONDUCTOR|semiconductor.txt|0|A
-semiconductor is a material with
-SEPSIS|sepsis.txt|0|Sepsis is a
-potentially
-SEPTEMBER 11
-ATTACKS|september_11_attacks.txt|0|The
-September 11 attacks, also known as
-SEQUENCE|sequence.txt|0|In mathematics,
-a sequence is an
-SERGEY BRIN|sergey_brin.txt|0|Sergey
-Mikhailovich Brin is an American
-SERIES
-MATHEMATICS|series_mathematics.txt|0|In
-mathematics, a series is, roughly
-SERVER
-COMPUTING|server_computing.txt|0|A
-server is a computer that provides
-SET
-THEORY|set_theory.txt|0|COMPREHENSIVE
-OVERVIEW
-SEXUALLY TRANSMITTED
-INFECTION|sexually_transmitted_infection.txt|0|SEXUALLY
-TRANSMITTED INFECTION
-SIGMUND
-FREUD|sigmund_freud.txt|0|Sigmund Freud
-was an Austrian
-SKIN|skin.txt|0|Skin is the layer of
-usually soft,
-SLAVERY|slavery.txt|0|Slavery is the
-ownership of a person as
-SLEEP|sleep.txt|0|Sleep is a state of
-reduced mental and
-SMARTPHONE|smartphone.txt|0|A
-smartphone is a mobile device that
-SOCIAL MEDIA|social_media.txt|0|Social
-media are new media technologies
-SOCRATES|socrates.txt|0|Socrates was an
-ancient Greek
-SOFTWARE|software.txt|0|Software
-consists of computer programs
-SOLAR PANEL|solar_panel.txt|0|A solar
-panel is a device that converts
-SOLAR
-SYSTEM|solar_system.txt|0|COMPREHENSIVE
-OVERVIEW
-SOLID STATE
-DRIVE|solid_state_drive.txt|0|A
-solid-state drive (SSD) is a type of
-SOUND|sound.txt|0|In physics, sound is
-a vibration that
-SOUTH AFRICA|south_africa.txt|0|South
-Africa, officially the Republic
-SOUTH AMERICA|south_america.txt|0|South
-America is a continent entirely
-SPACE
-RACE|space_race.txt|0|COMPREHENSIVE
-OVERVIEW
-SPAIN|spain.txt|0|Spain, officially the
-Kingdom of Spain,
-SPANISH EMPIRE|spanish_empire.txt|0|The
-Spanish Empire, sometimes referred
-SPHERE|sphere.txt|0|A sphere is a
-surface analogous to the
-SQL|sql.txt|0|Structured Query Language
-(SQL) is a
-SQUARE|square.txt|0|In geometry, a
-square is a regular
-STANDARD MODEL|standard_model.txt|0|The
-Standard Model of particle physics
-STAR|star.txt|0|A star is a luminous
-spheroid of plasma
-STATISTICS|statistics.txt|0|Statistics
-is the discipline that
-STEAM ENGINE|steam_engine.txt|0|A steam
-engine is a heat engine that
-STEM CELL|stem_cell.txt|0|In
-multicellular organisms, stem cells
-STEPHEN
-HAWKING|stephen_hawking.txt|0|Stephen
-William Hawking was an English
-STEVE JOBS|steve_jobs.txt|0|Steven Paul
-Jobs was an American
-STOMACH|stomach.txt|0|The stomach is a
-muscular, hollow organ
-STRESS
-BIOLOGY|stress_biology.txt|0|Stress,
-whether physiological,
-STROKE|stroke.txt|0|Stroke is a medical
-condition in which
-SUBTRACTION|subtraction.txt|0|Subtraction
-is one of the four
-SUPERCONDUCTIVITY|superconductivity.txt|0|Superconductivity
-is a set of physical
-SUPERNOVA|supernova.txt|0|A supernova
-is a powerful and luminous
-SURFACE AREA|surface_area.txt|0|The
-surface area of a solid object is a
-SURGERY|surgery.txt|0|Surgery is a
-medical specialty that
-SWIFT PROGRAMMING
-LANGUAGE|swift_programming_language.txt|0|SWIFT
-PROGRAMMING LANGUAGE
-SYDNEY|sydney.txt|0|Sydney is the
-capital city of the state
-TABLET COMPUTER|tablet_computer.txt|0|A
-tablet computer, commonly shortened
-3D
-PRINTING|technology/3d_printing.txt|0|Category:
-Wikipedia › Technology
-ARTIFICIAL
-INTELLIGENCE|technology/artificial_intelligence.txt|0|ARTIFICIAL
-INTELLIGENCE
-BIOTECHNOLOGY|technology/biotechnology.txt|0|Category:
-Wikipedia › Technology
-COMPUTER|technology/computer.txt|0|Category:
-Wikipedia › Technology
-ELECTRICITY|technology/electricity.txt|0|Category:
-Wikipedia › Technology
-INTERNET|technology/internet.txt|0|Category:
-Wikipedia › Technology
-NANOTECHNOLOGY|technology/nanotechnology.txt|0|Category:
-Wikipedia › Technology
-ROCKET|technology/rocket.txt|0|Category:
-Wikipedia › Technology
-SATELLITE|technology/satellite.txt|0|Category:
-Wikipedia › Technology
-SMARTPHONE|technology/smartphone.txt|0|Category:
-Wikipedia › Technology
-TECHNOLOGY|technology.txt|0|Technology
-is the application of
-TELEPHONE|telephone.txt|0|A telephone,
-commonly shortened to
-TELESCOPE|telescope.txt|0|A telescope
-is a device used to observe
-TELEVISION|television.txt|0|Television
-(TV) is a telecommunication
-THE BUDDHA|the_buddha.txt|0|Siddhartha
-Gautama, most commonly
-THE HOLOCAUST|the_holocaust.txt|0|The
-Holocaust, known in Hebrew as the
-THERMODYNAMICS|thermodynamics.txt|0|Thermodynamics
-is a branch of physics
-THOMAS
-EDISON|thomas_edison.txt|0|Thomas Alva
-Edison was an American
-THOMAS
-JEFFERSON|thomas_jefferson.txt|0|Thomas
-Jefferson was an American
-TIM BERNERS
-LEE|tim_berners_lee.txt|0|Sir Timothy
-John Berners-Lee, also
-TOKYO|tokyo.txt|0|Tokyo, officially the
-Tokyo Metropolis,
-TOPOLOGY|topology.txt|0|Topology is the
-branch of mathematics
-TORNADO|tornado.txt|0|A tornado is a
-rotating column of air
-TRANSISTOR|transistor.txt|0|A
-transistor is a semiconductor device
-TRIANGLE|triangle.txt|0|A triangle is a
-polygon with three
-TRIGONOMETRY|trigonometry.txt|0|Trigonometry
-is a branch of mathematics
-TROPICAL
-CYCLONE|tropical_cyclone.txt|0|A
-tropical cyclone is a rapidly
-TSUNAMI|tsunami.txt|0|A tsunami is a
-series of waves in a
-TUBERCULOSIS|tuberculosis.txt|0|Tuberculosis
-(TB), also known
-TUNDRA|tundra.txt|0|In physical
-geography, a tundra is a
-TURKEY|turkey.txt|0|Turkey, officially
-the Republic of
-TYPESCRIPT|typescript.txt|0|TypeScript
-(TS) is a high-level
-ULTRASOUND|ultrasound.txt|0|Ultrasound
-is sound with frequencies
-UNITED KINGDOM|united_kingdom.txt|0|The
-United Kingdom of Great Britain and
-UNITED STATES|united_states.txt|0|The
-United States of America (USA),
-UNIVERSE|universe.txt|0|The universe is
-all of space and time
-UNIX|unix.txt|0|Unix is a family of
-multitasking,
-USB|usb.txt|0|Universal Serial Bus
-(USB) is an
-VACCINE|vaccine.txt|0|A vaccine is a
-biological preparation
-VARIABLE
-MATHEMATICS|variable_mathematics.txt|0|Variable
-(mathematics)
-VECTOR MATHEMATICS AND
-PHYSICS|vector_mathematics_and_physics.txt|0|VECTOR
-MATHEMATICS AND PHYSICS
-VELOCITY|velocity.txt|0|Velocity is a
-measurement of speed in a
-VERSION
-CONTROL|version_control.txt|0|Version
-control is the software
-VICTORIA
-FALLS|victoria_falls.txt|0|Victoria
-Falls is a waterfall on the
-VIETNAM WAR|vietnam_war.txt|0|The
-Vietnam War was an armed conflict
-VIKING AGE|viking_age.txt|0|The Viking
-Age was the period during
-VINCENT VAN
-GOGH|vincent_van_gogh.txt|0|Vincent
-Willem van Gogh was a Dutch
-VIRTUAL
-MACHINE|virtual_machine.txt|0|In
-computing, a virtual machine (VM) is
-VIRUS|virus.txt|0|A virus is a
-submicroscopic infectious
-VITAMIN|vitamin.txt|0|Vitamins are
-organic molecules that are
-VLADIMIR
-LENIN|vladimir_lenin.txt|0|Vladimir
-Ilyich Ulyanov, better known
-VOLCANO|volcano.txt|0|A volcano is
-commonly defined as a vent
-VOLUME|volume.txt|0|Volume is a measure
-of regions in
-WAR IN
-AFGHANISTAN|war_in_afghanistan.txt|0|War
-in Afghanistan, Afghan war, or
-WATER|water.txt|0|Water is an inorganic
-compound with the
-WAVE|wave.txt|0|In physics,
-mathematics, engineering,
-WEB BROWSER|web_browser.txt|0|A web
-browser, often shortened to
-WEBSOCKET|websocket.txt|0|WebSocket is
-a computer communications
-WETLAND|wetland.txt|0|A wetland is a
-distinct semi-aquatic
-WHEELCHAIR|wheelchair.txt|0|A
-wheelchair is a mobilized form of
-WI FI|wi_fi.txt|0|Wi-Fi is a family of
-wireless network
-WILDFIRE|wildfire.txt|0|A wildfire,
-forest fire, or a bushfire
-WILLIAM
-SHAKESPEARE|william_shakespeare.txt|0|William
-Shakespeare was an English
-WIND TURBINE|wind_turbine.txt|0|A wind
-turbine is a device that
-WINSTON
-CHURCHILL|winston_churchill.txt|0|Sir
-Winston Leonard Spencer Churchill
-WOLFGANG AMADEUS
-MOZART|wolfgang_amadeus_mozart.txt|0|WOLFGANG
-AMADEUS MOZART
-WOMENS
-SUFFRAGE|womens_suffrage.txt|0|Women's
-suffrage is the right of women
-WORLD WAR
-I|world_war_i.txt|0|COMPREHENSIVE
-OVERVIEW
-WORLD WAR
-II|world_war_ii.txt|0|COMPREHENSIVE
-OVERVIEW
-WORLD WIDE WEB|world_wide_web.txt|0|The
-World Wide Web is an information
-X RAY|x_ray.txt|0|An X-ray (also known
-in many languages
-YOGA|yoga.txt|0|Yoga is a group of
-physical, mental,
+3D PRINTING|3d_printing.txt|0|3D printing, also called additive
+3D PRINTING|technology/3d_printing.txt|0|Category: Wikipedia › Technology
+5G|5g.txt|0|5G is the fifth generation of cellular
+ABRAHAM LINCOLN|abraham_lincoln.txt|0|Abraham Lincoln was the 16th president
+ABRAHAM LINCOLN|people/abraham_lincoln.txt|0|Category: Wikipedia › People
+ABSOLUTE ZERO|physics/absolute_zero.txt|0|Category: Wikipedia › Physics
+ABSTRACT ALGEBRA|mathematics/abstract_algebra.txt|0|Category: Wikipedia › Mathematics
+ACCELERATION|acceleration.txt|0|In mechanics, acceleration is the rate
+ACCELERATION|physics/acceleration.txt|0|Category: Wikipedia › Physics
+ACID|acid.txt|0|An acid is a molecule or ion capable of
+ACID|chemistry/acid.txt|0|Category: Wikipedia › Chemistry
+ACOUSTICS|physics/acoustics.txt|0|Category: Wikipedia › Physics
+ADA LOVELACE|ada_lovelace.txt|0|Augusta Ada King, Countess of Lovelace,
+ADDICTION|addiction.txt|0|Addiction is a neuropsychological
+ADDITION|addition.txt|0|Addition, usually denoted with the plus
+ADOLF HITLER|adolf_hitler.txt|0|Adolf Hitler was an Austrian-born
+AEROSPACE ENGINEERING|engineering/aerospace_engineering.txt|0|**AEROSPACE ENGINEERING**
+AESTHETICS|philosophy/aesthetics.txt|0|Category: Wikipedia › Philosophy
+AFGHANISTAN|geography/afghanistan.txt|0|Category: Wikipedia › Geography
+AFRICAN ELEPHANT|animals/african_elephant.txt|0|Category: Wikipedia › Animals
+AFRICA|africa.txt|0|Africa is the world's second-largest
+AGE OF EXPLORATION|Age_of_Exploration.txt|0|**AGE OF EXPLORATION**
+AGILE SOFTWARE DEVELOPMENT|agile_software_development.txt|0|**AGILE SOFTWARE DEVELOPMENT**
+AIRPORT|engineering/airport.txt|0|Category: Wikipedia › Engineering
+ALAN TURING|alan_turing.txt|0|Alan Mathison Turing was an English
+ALBANIA|geography/albania.txt|0|Category: Wikipedia › Geography
+ALBATROSS|animals/albatross.txt|0|Category: Wikipedia › Animals
+ALBERT EINSTEIN|albert_einstein.txt|0|Albert Einstein was a German-born
+ALBERT EINSTEIN|people/albert_einstein.txt|0|Category: Wikipedia › People
+ALEXANDER THE GREAT|alexander_the_great.txt|0|**ALEXANDER THE GREAT**
+ALGAE|plants/algae.txt|0|Category: Wikipedia › Plants
+ALGEBRA|algebra.txt|0|Algebra is a branch of mathematics that
+ALGEBRA|mathematics/algebra.txt|0|Category: Wikipedia › Mathematics
+ALGERIA|geography/algeria.txt|0|Category: Wikipedia › Geography
+ALGORITHM|algorithm.txt|0|In mathematics and computer science, an
+ALGORITHM|mathematics/algorithm.txt|0|Category: Wikipedia › Mathematics
+ALGORITHM|programming/algorithm.txt|0|Category: Wikipedia › Programming
+ALLIGATOR|animals/alligator.txt|0|Category: Wikipedia › Animals
+ALPACA|animals/alpaca.txt|0|Category: Wikipedia › Animals
+ALUMINIUM|chemistry/aluminium.txt|0|Category: Wikipedia › Chemistry
+ALZHEIMERS DISEASE|alzheimers_disease.txt|0|**ALZHEIMERS DISEASE**
+AMAZON RAINFOREST|amazon_rainforest.txt|0|**AMAZON RAINFOREST**
+AMAZON RAINFOREST|geography/amazon_rainforest.txt|0|**AMAZON RAINFOREST**
+AMAZON RIVER|amazon_river.txt|0|The Amazon River in South America is
+AMAZON RIVER|geography/amazon_river.txt|0|Category: Wikipedia › Geography
+AMERICAN CIVIL WAR|american_civil_war.txt|0|**AMERICAN CIVIL WAR**
+AMERICAN CIVIL WAR|history/american_civil_war.txt|0|**AMERICAN CIVIL WAR**
+AMERICAN REVOLUTION|american_revolution.txt|0|**AMERICAN REVOLUTION**
+AMERICAN REVOLUTION|history/american_revolution.txt|0|**AMERICAN REVOLUTION**
+AMMONIA|chemistry/ammonia.txt|0|Category: Wikipedia › Chemistry
+AMSTERDAM|geography/amsterdam.txt|0|Category: Wikipedia › Geography
+ANALYTICAL CHEMISTRY|chemistry/analytical_chemistry.txt|0|**ANALYTICAL CHEMISTRY**
+ANCIENT CHINA|Ancient_China.txt|0|**COMPREHENSIVE OVERVIEW**
+ANCIENT EGYPT|ancient_egypt.txt|0|**COMPREHENSIVE OVERVIEW**
+ANCIENT EGYPT|history/ancient_egypt.txt|0|Category: Wikipedia › History
+ANCIENT GREECE|ancient_greece.txt|0|**COMPREHENSIVE OVERVIEW**
+ANCIENT GREECE|history/ancient_greece.txt|0|Category: Wikipedia › History
+ANCIENT GREEK PHILOSOPHY|philosophy/ancient_greek_philosophy.txt|0|**ANCIENT GREEK PHILOSOPHY**
+ANCIENT ROME|Ancient_Rome.txt|0|**COMPREHENSIVE OVERVIEW**
+ANCIENT ROME|history/ancient_rome.txt|0|Category: Wikipedia › History
+ANDORRA|geography/andorra.txt|0|Category: Wikipedia › Geography
+ANDROID OPERATING SYSTEM|android_operating_system.txt|0|**ANDROID OPERATING SYSTEM**
+ANDROID OPERATING SYSTEM|programming/android_operating_system.txt|0|**ANDROID OPERATING SYSTEM**
+ANESTHESIA|anesthesia.txt|0|Anesthesia or anaesthesia is a state of
+ANGLE|angle.txt|0|In geometry, an angle is formed by two
+ANGOLA|geography/angola.txt|0|Category: Wikipedia › Geography
+ANTARCTICA|antarctica.txt|0|Antarctica is Earth's southernmost and
+ANTIBIOTIC|antibiotic.txt|0|An antibiotic is a type of
+ANTIBIOTIC|health/antibiotic.txt|0|Category: Wikipedia › Health
+ANTIMICROBIAL RESISTANCE|antimicrobial_resistance.txt|0|**ANTIMICROBIAL RESISTANCE**
+ANT|animals/ant.txt|0|Category: Wikipedia › Animals
+ANXIETY|anxiety.txt|0|Anxiety is an emotion characterized by
+APACHE GROOVY|apache_groovy.txt|0|Java-syntax-compatible object-oriented
+APPLE|plants/apple.txt|0|Category: Wikipedia › Plants
+APPLICATION SOFTWARE|application_software.txt|0|**APPLICATION SOFTWARE**
+AQUEDUCT|engineering/aqueduct.txt|0|Category: Wikipedia › Engineering
+ARABIAN DESERT|geography/arabian_desert.txt|0|Category: Wikipedia › Geography
+ARCTIC OCEAN|arctic_ocean.txt|0|The Arctic Ocean is the smallest and
+ARCTIC OCEAN|geography/arctic_ocean.txt|0|Category: Wikipedia › Geography
+AREA|area.txt|0|Area is the measure of a region's size
+ARECACEAE|plants/arecaceae.txt|0|Category: Wikipedia › Plants
+ARGENTINA|argentina.txt|0|Argentina, officially the Argentine
+ARGENTINA|geography/argentina.txt|0|Category: Wikipedia › Geography
+ARISTOTLE|aristotle.txt|0|Aristotle was an ancient Greek
+ARISTOTLE|philosophy/aristotle.txt|0|Category: Wikipedia › Philosophy
+ARITHMETIC|arithmetic.txt|0|Arithmetic is an elementary branch of
+ARITHMETIC|mathematics/arithmetic.txt|0|Category: Wikipedia › Mathematics
+ARMENIA|geography/armenia.txt|0|Category: Wikipedia › Geography
+ARTIFICIAL HEART|artificial_heart.txt|0|An artificial heart is a device that
+ARTIFICIAL INTELLIGENCE|artificial_intelligence.txt|0|**ARTIFICIAL INTELLIGENCE**
+ARTIFICIAL INTELLIGENCE|programming/artificial_intelligence.txt|0|**ARTIFICIAL INTELLIGENCE**
+ARTIFICIAL INTELLIGENCE|technology/artificial_intelligence.txt|0|**ARTIFICIAL INTELLIGENCE**
+ASH|plants/ash.txt|0|Category: Wikipedia › Plants
+ASIAN ELEPHANT|animals/asian_elephant.txt|0|Category: Wikipedia › Animals
+ASIA|asia.txt|0|Asia is the largest continent in the
+ASSEMBLY LANGUAGE|assembly_language.txt|0|**ASSEMBLY LANGUAGE**
+ASTHMA|asthma.txt|0|Asthma is a common long-term
+ASTROBIOLOGY|Astrobiology.txt|0|**COMPREHENSIVE OVERVIEW**
+ASTRONOMY BASICS|Astronomy_Basics.txt|0|**COMPREHENSIVE OVERVIEW**
+ASTRONOMY|astronomy.txt|0|Astronomy is a natural science that
+ASTRONOMY|science/astronomy.txt|0|Category: Wikipedia › Science
+ASTROPHYSICS|physics/astrophysics.txt|0|Category: Wikipedia › Physics
+ATHENS|geography/athens.txt|0|Category: Wikipedia › Geography
+ATLANTIC OCEAN|atlantic_ocean.txt|0|The Atlantic Ocean is the second
+ATLANTIC OCEAN|geography/atlantic_ocean.txt|0|Category: Wikipedia › Geography
+ATOMIC BOMBINGS OF HIROSHIMA AND|atomic_bombings_of_hiroshima_and_nagasaki.txt|0|**ATOMIC BOMBINGS OF HIROSHIMA AND
+ATOMIC BOMBINGS OF HIROSHIMA AND|history/atomic_bombings_of_hiroshima_and_nagasaki.txt|0|**ATOMIC BOMBINGS OF HIROSHIMA AND
+ATOMIC PHYSICS|physics/atomic_physics.txt|0|Category: Wikipedia › Physics
+ATOM|atom.txt|0|Atoms are the basic particles of the
+ATOM|physics/atom.txt|0|Category: Wikipedia › Physics
+ATOM|science/atom.txt|0|Category: Wikipedia › Science
+ATTENTION DEFICIT HYPERACTIVITY|attention_deficit_hyperactivity_disorder.txt|0|**ATTENTION DEFICIT HYPERACTIVITY
+AUSTRALIA|australia.txt|0|Australia, officially the Commonwealth
+AUSTRALIA|geography/australia.txt|0|Category: Wikipedia › Geography
+AUSTRIA|geography/austria.txt|0|Category: Wikipedia › Geography
+AUTISM|autism.txt|0|Autism, also known as autism spectrum
+AUTOMATION|automation.txt|0|Automation describes a wide range of
+AUTOMOTIVE ENGINEERING|engineering/automotive_engineering.txt|0|**AUTOMOTIVE ENGINEERING**
+AVALANCHE|avalanche.txt|0|An avalanche is a rapid flow of snow
+AZERBAIJAN|geography/azerbaijan.txt|0|Category: Wikipedia › Geography
+AZTECS|aztecs.txt|0|The Aztecs were a Mesoamerican
+B F SKINNER|b_f_skinner.txt|0|Burrhus Frederic Skinner was an
+BACTERIA|bacteria.txt|0|Bacteria are ubiquitous, mostly
+BAHRAIN|geography/bahrain.txt|0|Category: Wikipedia › Geography
+BAMBOO|plants/bamboo.txt|0|Category: Wikipedia › Plants
+BANANA|plants/banana.txt|0|Category: Wikipedia › Plants
+BANGKOK|geography/bangkok.txt|0|Category: Wikipedia › Geography
+BANGLADESH|geography/bangladesh.txt|0|Category: Wikipedia › Geography
+BARBADOS|geography/barbados.txt|0|Category: Wikipedia › Geography
+BARLEY|plants/barley.txt|0|Category: Wikipedia › Plants
+BARUCH SPINOZA|philosophy/baruch_spinoza.txt|0|Category: Wikipedia › Philosophy
+BASE CHEMISTRY|base_chemistry.txt|0|In chemistry, there are three
+BASE CHEMISTRY|chemistry/base_chemistry.txt|0|Category: Wikipedia › Chemistry
+BASIC|basic.txt|0|BASIC is a family of general-purpose,
+BASS|animals/bass.txt|0|Category: Wikipedia › Animals
+BATOMORPHI|animals/batomorphi.txt|0|Category: Wikipedia › Animals
+BATTERY|battery.txt|0|Battery or batterie most often refers
+BAT|animals/bat.txt|0|Category: Wikipedia › Animals
+BEAR|animals/bear.txt|0|Category: Wikipedia › Animals
+BEAVER|animals/beaver.txt|0|Category: Wikipedia › Animals
+BEETLE|animals/beetle.txt|0|Category: Wikipedia › Animals
+BEE|animals/bee.txt|0|Category: Wikipedia › Animals
+BEIJING|beijing.txt|0|Beijing, previously romanized as
+BEIJING|geography/beijing.txt|0|Category: Wikipedia › Geography
+BELARUS|geography/belarus.txt|0|Category: Wikipedia › Geography
+BELGIUM|geography/belgium.txt|0|Category: Wikipedia › Geography
+BELIZE|geography/belize.txt|0|Category: Wikipedia › Geography
+BENGALURU|geography/bengaluru.txt|0|Category: Wikipedia › Geography
+BENIN|geography/benin.txt|0|Category: Wikipedia › Geography
+BENJAMIN FRANKLIN|benjamin_franklin.txt|0|**BENJAMIN FRANKLIN**
+BERLIN WALL|berlin_wall.txt|0|The Berlin Wall, officially the
+BERLIN|geography/berlin.txt|0|Category: Wikipedia › Geography
+BHUTAN|geography/bhutan.txt|0|Category: Wikipedia › Geography
+BIG BANG|big_bang.txt|0|The Big Bang is a physical theory that
+BIG BANG|science/big_bang.txt|0|Category: Wikipedia › Science
+BIG DATA|big_data.txt|0|Big data primarily refers to data sets
+BILL GATES|bill_gates.txt|0|William Henry Gates III is an American
+BINOMIAL THEOREM|binomial_theorem.txt|0|In elementary algebra, the binomial
+BIOCHEMISTRY|chemistry/biochemistry.txt|0|Category: Wikipedia › Chemistry
+BIODIVERSITY|biodiversity.txt|0|**COMPREHENSIVE OVERVIEW**
+BIOLOGY|biology.txt|0|Biology is the scientific study of life
+BIOLOGY|science/biology.txt|0|Category: Wikipedia › Science
+BIOMASS ENERGY|Biomass_Energy.txt|0|**COMPREHENSIVE OVERVIEW**
+BIOMEDICAL ENGINEERING|engineering/biomedical_engineering.txt|0|**BIOMEDICAL ENGINEERING**
+BIOPSY|biopsy.txt|0|A biopsy is a medical test commonly
+BIOTECHNOLOGY|biotechnology.txt|0|Biotechnology is a multidisciplinary
+BIOTECHNOLOGY|technology/biotechnology.txt|0|Category: Wikipedia › Technology
+BIPOLAR DISORDER|bipolar_disorder.txt|0|Bipolar disorder (BD), previously known
+BIRCH|plants/birch.txt|0|Category: Wikipedia › Plants
+BIRTH CONTROL|birth_control.txt|0|Birth control, also known as
+BISON|animals/bison.txt|0|Category: Wikipedia › Animals
+BITCOIN|bitcoin.txt|0|Bitcoin is the first decentralized
+BLACK HOLES|Black_Holes.txt|0|**COMPREHENSIVE OVERVIEW**
+BLACK HOLE|black_hole.txt|0|A black hole is an astronomical body so
+BLACK HOLE|physics/black_hole.txt|0|Category: Wikipedia › Physics
+BLACK HOLE|science/black_hole.txt|0|Category: Wikipedia › Science
+BLOCKCHAIN|blockchain.txt|0|A blockchain is a distributed ledger
+BLOCKCHAIN|programming/blockchain.txt|0|Category: Wikipedia › Programming
+BLOOD TEST|blood_test.txt|0|A blood test is a laboratory analysis
+BLOOD TRANSFUSION|blood_transfusion.txt|0|**BLOOD TRANSFUSION**
+BLOOD|blood.txt|0|Blood is a body fluid in the
+BLUE WHALE|animals/blue_whale.txt|0|Category: Wikipedia › Animals
+BLUEBERRY|plants/blueberry.txt|0|Category: Wikipedia › Plants
+BLUETOOTH|bluetooth.txt|0|Bluetooth is a short-range wireless
+BOLIVIA|geography/bolivia.txt|0|Category: Wikipedia › Geography
+BONE|bone.txt|0|A bone is a rigid organ that
+BOSNIA AND HERZEGOVINA|geography/bosnia_and_herzegovina.txt|0|**BOSNIA AND HERZEGOVINA**
+BOTSWANA|geography/botswana.txt|0|Category: Wikipedia › Geography
+BRAIN|brain.txt|0|The brain is an organ that serves as
+BRAZIL|brazil.txt|0|Brazil, officially the Federative
+BRAZIL|geography/brazil.txt|0|Category: Wikipedia › Geography
+BREASTFEEDING|breastfeeding.txt|0|Breastfeeding, also known as nursing,
+BRIDGE|engineering/bridge.txt|0|Category: Wikipedia › Engineering
+BRITISH EMPIRE|british_empire.txt|0|The British Empire comprised the
+BRUNEI|geography/brunei.txt|0|Category: Wikipedia › Geography
+BRUSSELS|geography/brussels.txt|0|Category: Wikipedia › Geography
+BUENOS AIRES|geography/buenos_aires.txt|0|Category: Wikipedia › Geography
+BUFFALO|animals/buffalo.txt|0|Category: Wikipedia › Animals
+BULGARIA|geography/bulgaria.txt|0|Category: Wikipedia › Geography
+BURKINA FASO|geography/burkina_faso.txt|0|Category: Wikipedia › Geography
+BURUNDI|geography/burundi.txt|0|Category: Wikipedia › Geography
+BUTTERFLY|animals/butterfly.txt|0|Category: Wikipedia › Animals
+C PROGRAMMING LANGUAGE|c_programming_language.txt|0|**C PROGRAMMING LANGUAGE**
+C PROGRAMMING LANGUAGE|programming/c_programming_language.txt|0|**C PROGRAMMING LANGUAGE**
+C SHARP PROGRAMMING LANGUAGE|c_sharp_programming_language.txt|0|**C SHARP PROGRAMMING LANGUAGE**
+C SHARP PROGRAMMING LANGUAGE|programming/c_sharp_programming_language.txt|0|**C SHARP PROGRAMMING LANGUAGE**
+CACTUS|plants/cactus.txt|0|Category: Wikipedia › Plants
+CAIRO|cairo.txt|0|Cairo is the capital and largest city
+CAIRO|geography/cairo.txt|0|Category: Wikipedia › Geography
+CALCIUM|chemistry/calcium.txt|0|Category: Wikipedia › Chemistry
+CALCULUS HISTORY|Calculus_History.txt|0|**COMPREHENSIVE OVERVIEW**
+CALCULUS|calculus.txt|0|Calculus is the mathematical study of
+CALCULUS|mathematics/calculus.txt|0|Category: Wikipedia › Mathematics
+CAMBODIA|geography/cambodia.txt|0|Category: Wikipedia › Geography
+CAMEL|animals/camel.txt|0|Category: Wikipedia › Animals
+CAMERA|camera.txt|0|A camera is an instrument used to
+CAMEROON|geography/cameroon.txt|0|Category: Wikipedia › Geography
+CANADA|canada.txt|0|Canada is a country in North America.
+CANADA|geography/canada.txt|0|Category: Wikipedia › Geography
+CANAL|engineering/canal.txt|0|Category: Wikipedia › Engineering
+CANCER|cancer.txt|0|Cancer is a group of diseases involving
+CANCER|health/cancer.txt|0|Category: Wikipedia › Health
+CAPACITOR|capacitor.txt|0|In electronics, a capacitor is a device
+CAPE VERDE|geography/cape_verde.txt|0|Category: Wikipedia › Geography
+CARBOHYDRATE|carbohydrate.txt|0|A carbohydrate is a sugar (saccharide)
+CARBOHYDRATE|chemistry/carbohydrate.txt|0|Category: Wikipedia › Chemistry
+CARBON DIOXIDE|chemistry/carbon_dioxide.txt|0|Category: Wikipedia › Chemistry
+CARBON|chemistry/carbon.txt|0|Category: Wikipedia › Chemistry
+CARDIOPULMONARY RESUSCITATION|cardiopulmonary_resuscitation.txt|0|**CARDIOPULMONARY RESUSCITATION**
+CARDIOPULMONARY RESUSCITATION|health/cardiopulmonary_resuscitation.txt|0|**CARDIOPULMONARY RESUSCITATION**
+CARDIOVASCULAR DISEASE|cardiovascular_disease.txt|0|**CARDIOVASCULAR DISEASE**
+CARDIOVASCULAR DISEASE|health/cardiovascular_disease.txt|0|**CARDIOVASCULAR DISEASE**
+CARIBBEAN SEA|geography/caribbean_sea.txt|0|Category: Wikipedia › Geography
+CARL JUNG|carl_jung.txt|0|Carl Gustav Jung was a Swiss
+CARROT|plants/carrot.txt|0|Category: Wikipedia › Plants
+CATALYSIS|chemistry/catalysis.txt|0|Category: Wikipedia › Chemistry
+CATTLE|animals/cattle.txt|0|Category: Wikipedia › Animals
+CAT|animals/cat.txt|0|Category: Wikipedia › Animals
+CEDAR|plants/cedar.txt|0|Category: Wikipedia › Plants
+CELL BIOLOGY|cell_biology.txt|0|**COMPREHENSIVE OVERVIEW**
+CELL BIOLOGY|science/cell_biology.txt|0|Category: Wikipedia › Science
+CENTIPEDE|animals/centipede.txt|0|Category: Wikipedia › Animals
+CENTRAL AFRICAN REPUBLIC|geography/central_african_republic.txt|0|**CENTRAL AFRICAN REPUBLIC**
+CENTRAL PROCESSING UNIT|central_processing_unit.txt|0|**CENTRAL PROCESSING UNIT**
+CHAD|geography/chad.txt|0|Category: Wikipedia › Geography
+CHARLES DARWIN|charles_darwin.txt|0|Charles Robert Darwin was an English
+CHARLES DARWIN|people/charles_darwin.txt|0|Category: Wikipedia › People
+CHARLES DICKENS|charles_dickens.txt|0|Charles John Huffam Dickens was an
+CHEETAH|animals/cheetah.txt|0|Category: Wikipedia › Animals
+CHEMICAL BOND|chemistry/chemical_bond.txt|0|Category: Wikipedia › Chemistry
+CHEMICAL COMPOUND|chemistry/chemical_compound.txt|0|**CHEMICAL COMPOUND**
+CHEMICAL ELEMENT|chemical_element.txt|0|A chemical element is a species of atom
+CHEMICAL ELEMENT|chemistry/chemical_element.txt|0|Category: Wikipedia › Chemistry
+CHEMICAL ENGINEERING|engineering/chemical_engineering.txt|0|**CHEMICAL ENGINEERING**
+CHEMICAL REACTION|chemical_reaction.txt|0|**CHEMICAL REACTION**
+CHEMICAL REACTION|chemistry/chemical_reaction.txt|0|**CHEMICAL REACTION**
+CHEMISTRY|chemistry.txt|0|Chemistry is the scientific study of
+CHEMISTRY|science/chemistry.txt|0|Category: Wikipedia › Science
+CHEMOTHERAPY|chemotherapy.txt|0|Chemotherapy is the type of cancer
+CHICAGO|geography/chicago.txt|0|Category: Wikipedia › Geography
+CHICKENPOX|chickenpox.txt|0|Chickenpox, also known as varicella, is
+CHICKEN|animals/chicken.txt|0|Category: Wikipedia › Animals
+CHILDBIRTH|childbirth.txt|0|Childbirth, also known as labour,
+CHILE|geography/chile.txt|0|Category: Wikipedia › Geography
+CHIMPANZEE|animals/chimpanzee.txt|0|Category: Wikipedia › Animals
+CHINA|china.txt|0|China, officially the People's Republic
+CHINA|geography/china.txt|0|Category: Wikipedia › Geography
+CHLORINE|chemistry/chlorine.txt|0|Category: Wikipedia › Chemistry
+CHOLERA|cholera.txt|0|Cholera is an infection of the small
+CHRONIC OBSTRUCTIVE PULMONARY|chronic_obstructive_pulmonary_disease.txt|0|**CHRONIC OBSTRUCTIVE PULMONARY
+CIRCLE|circle.txt|0|A circle is a shape consisting of all
+CIRCLE|mathematics/circle.txt|0|Category: Wikipedia › Mathematics
+CIRCUIT|circuit.txt|0|Circuit may refer to:
+CIRCUIT|engineering/circuit.txt|0|Category: Wikipedia › Engineering
+CIVIL ENGINEERING|engineering/civil_engineering.txt|0|**CIVIL ENGINEERING**
+CIVIL RIGHTS MOVEMENT|civil_rights_movement.txt|0|**CIVIL RIGHTS MOVEMENT**
+CLASSICAL MECHANICS|physics/classical_mechanics.txt|0|**CLASSICAL MECHANICS**
+CLEOPATRA|cleopatra.txt|0|Cleopatra VII Thea Philopator was Queen
+CLIMATE CHANGE|climate_change.txt|0|Present-day climate change includes
+CLIMATE CHANGE|science/climate_change.txt|0|Category: Wikipedia › Science
+CLIMATE SCIENCE|Climate_Science.txt|0|**COMPREHENSIVE OVERVIEW**
+CLOJURE|clojure.txt|0|Clojure is a dynamic and functional
+CLONING|cloning.txt|0|Cloning is the process of producing
+CLOUD COMPUTING|cloud_computing.txt|0|Cloud computing is "a paradigm for
+CLOUD COMPUTING|programming/cloud_computing.txt|0|Category: Wikipedia › Programming
+COBOL|cobol.txt|0|COBOL is a compiled English-like
+COBRA|animals/cobra.txt|0|Category: Wikipedia › Animals
+COCCINELLIDAE|animals/coccinellidae.txt|0|Category: Wikipedia › Animals
+COCONUT|plants/coconut.txt|0|Category: Wikipedia › Plants
+COLD WAR|cold_war.txt|0|**COMPREHENSIVE OVERVIEW**
+COLD WAR|history/cold_war.txt|0|Category: Wikipedia › History
+COLOMBIA|geography/colombia.txt|0|Category: Wikipedia › Geography
+COMBINATION|combination.txt|0|In mathematics, a combination is a
+COMMON SUNFLOWER|plants/common_sunflower.txt|0|Category: Wikipedia › Plants
+COMOROS|geography/comoros.txt|0|Category: Wikipedia › Geography
+COMPILER|compiler.txt|0|In computing, a compiler is software
+COMPLEX NUMBER|complex_number.txt|0|In mathematics, a complex number is an
+COMPLEX NUMBER|mathematics/complex_number.txt|0|Category: Wikipedia › Mathematics
+COMPUTER ENGINEERING|engineering/computer_engineering.txt|0|**COMPUTER ENGINEERING**
+COMPUTER HISTORY|Computer_History.txt|0|**COMPREHENSIVE OVERVIEW**
+COMPUTER NETWORK|programming/computer_network.txt|0|Category: Wikipedia › Programming
+COMPUTER SECURITY|computer_security.txt|0|**COMPUTER SECURITY**
+COMPUTER SECURITY|programming/computer_security.txt|0|**COMPUTER SECURITY**
+COMPUTER VISION|computer_vision.txt|0|Computer vision tasks include methods
+COMPUTER|computer.txt|0|A computer is a machine that can be
+COMPUTER|technology/computer.txt|0|Category: Wikipedia › Technology
+CONE|cone.txt|0|In geometry, a cone is a
+CONE|mathematics/cone.txt|0|Category: Wikipedia › Mathematics
+CONFUCIUS|confucius.txt|0|Confucius, born Kong Qiu (), was a
+CONFUCIUS|philosophy/confucius.txt|0|Category: Wikipedia › Philosophy
+CONGO BASIN|geography/congo_basin.txt|0|Category: Wikipedia › Geography
+CONGO RIVER|geography/congo_river.txt|0|Category: Wikipedia › Geography
+CONSERVATION BIOLOGY|Conservation_Biology.txt|0|**CONSERVATION BIOLOGY**
+CONSERVATION OF ENERGY|physics/conservation_of_energy.txt|0|**CONSERVATION OF ENERGY**
+CONSTANT MATHEMATICS|constant_mathematics.txt|0|**CONSTANT MATHEMATICS**
+CONTACT LENS|contact_lens.txt|0|Contact lenses, or simply contacts, are
+CONTEMPORARY PHILOSOPHY|philosophy/contemporary_philosophy.txt|0|**CONTEMPORARY PHILOSOPHY**
+CONTINENT|continent.txt|0|A continent is any of several large
+CONTINUOUS INTEGRATION|continuous_integration.txt|0|**CONTINUOUS INTEGRATION**
+COPPER|chemistry/copper.txt|0|Category: Wikipedia › Chemistry
+CORAL REEF|coral_reef.txt|0|A coral reef is an underwater ecosystem
+COSMOLOGY|Cosmology.txt|0|**COMPREHENSIVE OVERVIEW**
+COSMOLOGY|physics/cosmology.txt|0|Category: Wikipedia › Physics
+COSTA RICA|geography/costa_rica.txt|0|Category: Wikipedia › Geography
+COVALENT BOND|chemistry/covalent_bond.txt|0|Category: Wikipedia › Chemistry
+COVID 19|covid_19.txt|0|Coronavirus disease 2019 (COVID-19) is
+COYOTE|animals/coyote.txt|0|Category: Wikipedia › Animals
+CRICKET|animals/cricket.txt|0|Category: Wikipedia › Animals
+CRISPR|crispr.txt|0|CRISPR is a family of DNA sequences
+CROATIA|geography/croatia.txt|0|Category: Wikipedia › Geography
+CROCODILE|animals/crocodile.txt|0|Category: Wikipedia › Animals
+CROW|animals/crow.txt|0|Category: Wikipedia › Animals
+CRUSADES|crusades.txt|0|The Crusades were a series of military
+CRYPTOCURRENCY|cryptocurrency.txt|0|A cryptocurrency is a digital currency
+CRYPTOCURRENCY|programming/cryptocurrency.txt|0|Category: Wikipedia › Programming
+CRYPTOGRAPHY|cryptography.txt|0|Cryptography, or cryptology, is the
+CRYPTOGRAPHY|mathematics/cryptography.txt|0|Category: Wikipedia › Mathematics
+CSS|css.txt|0|Cascading Style Sheets (CSS) is a style
+CT SCAN|ct_scan.txt|0|A computed tomography scan, formerly
+CUBAN MISSILE CRISIS|cuban_missile_crisis.txt|0|**CUBAN MISSILE CRISIS**
+CUBA|geography/cuba.txt|0|Category: Wikipedia › Geography
+CUBE|cube.txt|0|A cube is a three-dimensional solid
+CUBE|mathematics/cube.txt|0|Category: Wikipedia › Mathematics
+CYLINDER|cylinder.txt|0|A cylinder has traditionally been a
+CYLINDER|mathematics/cylinder.txt|0|Category: Wikipedia › Mathematics
+CYPRUS|geography/cyprus.txt|0|Category: Wikipedia › Geography
+CZECH REPUBLIC|geography/czech_republic.txt|0|Category: Wikipedia › Geography
+C|c.txt|0|C++ is a high-level, general-purpose
+C|programming/c.txt|0|Category: Wikipedia › Programming
+DAISY|plants/daisy.txt|0|Category: Wikipedia › Plants
+DALAI LAMA|dalai_lama.txt|0|The Dalai Lama is the head of the Gelug
+DALLAS|geography/dallas.txt|0|Category: Wikipedia › Geography
+DAM|engineering/dam.txt|0|Category: Wikipedia › Engineering
+DARK ENERGY|physics/dark_energy.txt|0|Category: Wikipedia › Physics
+DARK MATTER|physics/dark_matter.txt|0|Category: Wikipedia › Physics
+DART PROGRAMMING LANGUAGE|dart_programming_language.txt|0|**DART PROGRAMMING LANGUAGE**
+DATA STRUCTURE|data_structure.txt|0|In computer science, a data structure
+DATA STRUCTURE|programming/data_structure.txt|0|Category: Wikipedia › Programming
+DATABASE|database.txt|0|In computing, a database is an
+DATABASE|programming/database.txt|0|Category: Wikipedia › Programming
+DAVID HUME|philosophy/david_hume.txt|0|Category: Wikipedia › Philosophy
+DECIMAL|decimal.txt|0|The decimal numeral system is the
+DEEP LEARNING|deep_learning.txt|0|In machine learning, deep learning
+DEER|animals/deer.txt|0|Category: Wikipedia › Animals
+DEHYDRATION|health/dehydration.txt|0|Category: Wikipedia › Health
+DELHI|geography/delhi.txt|0|Category: Wikipedia › Geography
+DEMOCRATIC REPUBLIC OF THE CONGO|geography/democratic_republic_of_the_congo.txt|0|**DEMOCRATIC REPUBLIC OF THE CONGO**
+DENALI|geography/denali.txt|0|Category: Wikipedia › Geography
+DENMARK|geography/denmark.txt|0|Category: Wikipedia › Geography
+DENNIS RITCHIE|dennis_ritchie.txt|0|Dennis MacAlistair Ritchie was an
+DEPRESSION MOOD|depression_mood.txt|0|Depression is a mental state of low
+DERIVATIVE|derivative.txt|0|In mathematics, the derivative is a
+DESERT|desert.txt|0|A desert is a landscape where little
+DEVOPS|devops.txt|0|DevOps is the integration and
+DIABETES|diabetes.txt|0|Diabetes mellitus, commonly known as
+DIABETES|health/diabetes.txt|0|Category: Wikipedia › Health
+DIALYSIS|dialysis.txt|0|Dialysis may refer to:Dialysis
+DIET NUTRITION|diet_nutrition.txt|0|In nutrition, diet is the sum of food
+DIFFERENTIAL EQUATION|differential_equation.txt|0|**DIFFERENTIAL EQUATION**
+DIFFERENTIAL EQUATION|mathematics/differential_equation.txt|0|**DIFFERENTIAL EQUATION**
+DIODE|diode.txt|0|A diode is a two-terminal electronic
+DISEASE|disease.txt|0|A disease is a particular abnormal
+DISSOLUTION OF THE SOVIET UNION|dissolution_of_the_soviet_union.txt|0|**DISSOLUTION OF THE SOVIET UNION**
+DIVISION|division.txt|0|Division may refer to:
+DJIBOUTI|geography/djibouti.txt|0|Category: Wikipedia › Geography
+DNA|dna.txt|0|Deoxyribonucleic acid is a polymer
+DNA|science/dna.txt|0|Category: Wikipedia › Science
+DOCKER SOFTWARE|docker_software.txt|0|Docker is a set of platform as a
+DOCKER SOFTWARE|programming/docker_software.txt|0|Category: Wikipedia › Programming
+DOG|animals/dog.txt|0|Category: Wikipedia › Animals
+DOLPHIN|animals/dolphin.txt|0|Category: Wikipedia › Animals
+DOMINICAN REPUBLIC|geography/dominican_republic.txt|0|**DOMINICAN REPUBLIC**
+DOMINICA|geography/dominica.txt|0|Category: Wikipedia › Geography
+DRAGONFLY|animals/dragonfly.txt|0|Category: Wikipedia › Animals
+DROUGHT|drought.txt|0|A drought is a period of
+DUBLIN|geography/dublin.txt|0|Category: Wikipedia › Geography
+DUCK|animals/duck.txt|0|Category: Wikipedia › Animals
+E MATHEMATICAL CONSTANT|e_mathematical_constant.txt|0|**E MATHEMATICAL CONSTANT**
+E MATHEMATICAL CONSTANT|mathematics/e_mathematical_constant.txt|0|**E MATHEMATICAL CONSTANT**
+EAGLE|animals/eagle.txt|0|Category: Wikipedia › Animals
+EARTHQUAKES|Earthquakes.txt|0|**COMPREHENSIVE OVERVIEW**
+EARTHQUAKE|earthquake.txt|0|An earthquake, also called a quake,
+EARTH|earth.txt|0|Earth is the third planet from the Sun
+EAR|ear.txt|0|In vertebrates, an ear is the organ
+EASTERN PHILOSOPHY|philosophy/eastern_philosophy.txt|0|**EASTERN PHILOSOPHY**
+EATING DISORDER|eating_disorder.txt|0|An eating disorder is a mental disorder
+EBOLA|ebola.txt|0|Ebola, also known as Ebola virus
+ECOLOGY|Ecology.txt|0|**COMPREHENSIVE OVERVIEW**
+ECOSYSTEM|ecosystem.txt|0|An ecosystem is a system formed by
+ECUADOR|geography/ecuador.txt|0|Category: Wikipedia › Geography
+EEL|animals/eel.txt|0|Category: Wikipedia › Animals
+EGYPT|egypt.txt|0|Egypt, officially the Arab Republic of
+EGYPT|geography/egypt.txt|0|Category: Wikipedia › Geography
+EL SALVADOR|geography/el_salvador.txt|0|Category: Wikipedia › Geography
+ELECTRIC MOTOR|electric_motor.txt|0|An electric motor is a machine that
+ELECTRICAL ENGINEERING|engineering/electrical_engineering.txt|0|**ELECTRICAL ENGINEERING**
+ELECTRICITY|electricity.txt|0|Electricity is the set of physical
+ELECTRICITY|physics/electricity.txt|0|Category: Wikipedia › Physics
+ELECTRICITY|technology/electricity.txt|0|Category: Wikipedia › Technology
+ELECTROMAGNETISM|electromagnetism.txt|0|In physics, electromagnetism is an
+ELECTROMAGNETISM|physics/electromagnetism.txt|0|Category: Wikipedia › Physics
+ELECTROMAGNETISM|science/electromagnetism.txt|0|Category: Wikipedia › Science
+ELECTRONICS|electronics.txt|0|Electronics is a scientific and
+ELECTRON|electron.txt|0|The electron is a subatomic particle
+ELECTRON|physics/electron.txt|0|Category: Wikipedia › Physics
+ELEPHANT|animals/elephant.txt|0|Category: Wikipedia › Animals
+ELIXIR PROGRAMMING LANGUAGE|elixir_programming_language.txt|0|**ELIXIR PROGRAMMING LANGUAGE**
+ELK|animals/elk.txt|0|Category: Wikipedia › Animals
+ELM|plants/elm.txt|0|Category: Wikipedia › Plants
+ELON MUSK|elon_musk.txt|0|Elon Reeve Musk is a businessman and
+EMAIL|email.txt|0|Electronic mail is a method of
+EMERGENCY MEDICINE|emergency_medicine.txt|0|**EMERGENCY MEDICINE**
+EMU|animals/emu.txt|0|Category: Wikipedia › Animals
+ENCRYPTION|encryption.txt|0|In cryptography, encryption is the
+ENERGY|energy.txt|0|Energy is the quantitative property
+ENERGY|physics/energy.txt|0|Category: Wikipedia › Physics
+ENGINEERING|engineering.txt|0|Engineering is the practice of using
+ENGINE|engine.txt|0|An engine or motor is a machine
+ENGINE|engineering/engine.txt|0|Category: Wikipedia › Engineering
+ENTROPY|physics/entropy.txt|0|Category: Wikipedia › Physics
+ENVIRONMENTAL ENGINEERING|engineering/environmental_engineering.txt|0|**ENVIRONMENTAL ENGINEERING**
+ENZYME|chemistry/enzyme.txt|0|Category: Wikipedia › Chemistry
+EPISTEMOLOGY|philosophy/epistemology.txt|0|Category: Wikipedia › Philosophy
+EQUATION|equation.txt|0|In mathematics, an equation is a
+EQUATORIAL GUINEA|geography/equatorial_guinea.txt|0|**EQUATORIAL GUINEA**
+ERITREA|geography/eritrea.txt|0|Category: Wikipedia › Geography
+ERLANG PROGRAMMING LANGUAGE|erlang_programming_language.txt|0|**ERLANG PROGRAMMING LANGUAGE**
+ERNEST HEMINGWAY|ernest_hemingway.txt|0|Ernest Miller Hemingway ; July 21, 1899
+ESTONIA|geography/estonia.txt|0|Category: Wikipedia › Geography
+ETHANOL|chemistry/ethanol.txt|0|Category: Wikipedia › Chemistry
+ETHEREUM|ethereum.txt|0|Ethereum is a decentralized blockchain
+ETHICS|philosophy/ethics.txt|0|Category: Wikipedia › Philosophy
+ETHIOPIA|geography/ethiopia.txt|0|Category: Wikipedia › Geography
+EUCLIDEAN GEOMETRY|mathematics/euclidean_geometry.txt|0|**EUCLIDEAN GEOMETRY**
+EUROPE|europe.txt|0|Europe is a continent located entirely
+EVOLUTION THEORY|Evolution_Theory.txt|0|**COMPREHENSIVE OVERVIEW**
+EVOLUTION|evolution.txt|0|Evolution is the change in the
+EVOLUTION|science/evolution.txt|0|Category: Wikipedia › Science
+EXERCISE|exercise.txt|0|Exercise or working out is physical
+EXISTENTIALISM|philosophy/existentialism.txt|0|Category: Wikipedia › Philosophy
+EXPONENTIATION|exponentiation.txt|0|In mathematics, exponentiation, denoted
+EYE|eye.txt|0|An eye is a sensory organ that allows
+F SHARP PROGRAMMING LANGUAGE|f_sharp_programming_language.txt|0|**F SHARP PROGRAMMING LANGUAGE**
+FACTORIAL|factorial.txt|0|In mathematics, the factorial of a
+FALCON|animals/falcon.txt|0|Category: Wikipedia › Animals
+FALL OF THE BERLIN WALL|fall_of_the_berlin_wall.txt|0|**FALL OF THE BERLIN WALL**
+FAT|fat.txt|0|In nutrition, biology, and chemistry,
+FERN|plants/fern.txt|0|Category: Wikipedia › Plants
+FIBER|fiber.txt|0|Fiber is a natural or artificial
+FIBONACCI SEQUENCE|fibonacci_sequence.txt|0|**FIBONACCI SEQUENCE**
+FIBONACCI SEQUENCE|mathematics/fibonacci_sequence.txt|0|**FIBONACCI SEQUENCE**
+FIJI|geography/fiji.txt|0|Category: Wikipedia › Geography
+FINLAND|geography/finland.txt|0|Category: Wikipedia › Geography
+FIREWALL COMPUTING|firewall_computing.txt|0|**FIREWALL COMPUTING**
+FIRST AID|first_aid.txt|0|First aid is the first and immediate
+FIRST AID|health/first_aid.txt|0|Category: Wikipedia › Health
+FLOOD|flood.txt|0|A flood is an overflow of water that
+FLUORINE|chemistry/fluorine.txt|0|Category: Wikipedia › Chemistry
+FLY|animals/fly.txt|0|Category: Wikipedia › Animals
+FORCE|force.txt|0|In physics, a force is an action that
+FORCE|physics/force.txt|0|Category: Wikipedia › Physics
+FOREST|forest.txt|0|A forest is an ecosystem characterized
+FORTRAN|fortran.txt|0|Fortran is a third-generation,
+FOSSIL FUEL|fossil_fuel.txt|0|A fossil fuel is a flammable carbon
+FOX|animals/fox.txt|0|Category: Wikipedia › Animals
+FRACTAL|mathematics/fractal.txt|0|Category: Wikipedia › Mathematics
+FRACTION|fraction.txt|0|A fraction represents a part of a whole
+FRANCE|france.txt|0|France, officially the French Republic,
+FRANCE|geography/france.txt|0|Category: Wikipedia › Geography
+FRENCH REVOLUTION|french_revolution.txt|0|**FRENCH REVOLUTION**
+FRENCH REVOLUTION|history/french_revolution.txt|0|**FRENCH REVOLUTION**
+FRIEDRICH NIETZSCHE|philosophy/friedrich_nietzsche.txt|0|**FRIEDRICH NIETZSCHE**
+FROG|animals/frog.txt|0|Category: Wikipedia › Animals
+FUNCTION MATHEMATICS|function_mathematics.txt|0|**FUNCTION MATHEMATICS**
+FUNCTIONAL PROGRAMMING|functional_programming.txt|0|**FUNCTIONAL PROGRAMMING**
+FYODOR DOSTOEVSKY|fyodor_dostoevsky.txt|0|**FYODOR DOSTOEVSKY**
+GABON|geography/gabon.txt|0|Category: Wikipedia › Geography
+GALAXIES|Galaxies.txt|0|**COMPREHENSIVE OVERVIEW**
+GALAXY|galaxy.txt|0|A galaxy is a system of stars, stellar
+GALILEO GALILEI|galileo_galilei.txt|0|Galileo di Vincenzo Bonaiuti de'
+GALILEO GALILEI|people/galileo_galilei.txt|0|Category: Wikipedia › People
+GAME THEORY|mathematics/game_theory.txt|0|Category: Wikipedia › Mathematics
+GARLIC|plants/garlic.txt|0|Category: Wikipedia › Plants
+GASTROINTESTINAL TRACT|gastrointestinal_tract.txt|0|**GASTROINTESTINAL TRACT**
+GEAR|engineering/gear.txt|0|Category: Wikipedia › Engineering
+GECKO|animals/gecko.txt|0|Category: Wikipedia › Animals
+GENERAL RELATIVITY|physics/general_relativity.txt|0|**GENERAL RELATIVITY**
+GENERATOR|engineering/generator.txt|0|Category: Wikipedia › Engineering
+GENETIC ENGINEERING|genetic_engineering.txt|0|**GENETIC ENGINEERING**
+GENETICS BASICS|Genetics_Basics.txt|0|**COMPREHENSIVE OVERVIEW**
+GENETICS|genetics.txt|0|Genetics is the study of genes, genetic
+GENETICS|science/genetics.txt|0|Category: Wikipedia › Science
+GENGHIS KHAN|genghis_khan.txt|0|Genghis Khan, also known as Chinggis
+GEOLOGY BASICS|Geology_Basics.txt|0|**COMPREHENSIVE OVERVIEW**
+GEOLOGY|geology.txt|0|Geology is a branch of natural science
+GEOLOGY|science/geology.txt|0|Category: Wikipedia › Science
+GEOMETRY|geometry.txt|0|Geometry is a branch of mathematics
+GEOMETRY|mathematics/geometry.txt|0|Category: Wikipedia › Mathematics
+GEORG WILHELM FRIEDRICH HEGEL|philosophy/georg_wilhelm_friedrich_hegel.txt|0|**GEORG WILHELM FRIEDRICH HEGEL**
+GEORGE WASHINGTON|george_washington.txt|0|**GEORGE WASHINGTON**
+GEORGE WASHINGTON|people/george_washington.txt|0|**GEORGE WASHINGTON**
+GEORGIA COUNTRY|geography/georgia_country.txt|0|Category: Wikipedia › Geography
+GEOTHERMAL ENERGY|geothermal_energy.txt|0|**GEOTHERMAL ENERGY**
+GERIATRICS|geriatrics.txt|0|Geriatrics, or geriatric medicine, is a
+GERMANY|geography/germany.txt|0|Category: Wikipedia › Geography
+GERMANY|germany.txt|0|Germany, officially the Federal
+GHANA|geography/ghana.txt|0|Category: Wikipedia › Geography
+GIANT PANDA|animals/giant_panda.txt|0|Category: Wikipedia › Animals
+GIRAFFE|animals/giraffe.txt|0|Category: Wikipedia › Animals
+GITHUB|github.txt|0|GitHub is a proprietary developer
+GIT|git.txt|0|Git is a distributed version control
+GIT|programming/git.txt|0|Category: Wikipedia › Programming
+GLACIOLOGY|Glaciology.txt|0|**COMPREHENSIVE OVERVIEW**
+GLASSES|glasses.txt|0|Glasses, also known as eyeglasses,
+GO PROGRAMMING LANGUAGE|go_programming_language.txt|0|**GO PROGRAMMING LANGUAGE**
+GO PROGRAMMING LANGUAGE|programming/go_programming_language.txt|0|**GO PROGRAMMING LANGUAGE**
+GOAT|animals/goat.txt|0|Category: Wikipedia › Animals
+GOBI DESERT|geography/gobi_desert.txt|0|Category: Wikipedia › Geography
+GOLDEN RATIO|golden_ratio.txt|0|In mathematics, two quantities are in
+GOLDEN RATIO|mathematics/golden_ratio.txt|0|Category: Wikipedia › Mathematics
+GOLDFISH|animals/goldfish.txt|0|Category: Wikipedia › Animals
+GOLD|chemistry/gold.txt|0|Category: Wikipedia › Chemistry
+GOOSE|animals/goose.txt|0|Category: Wikipedia › Animals
+GORILLA|animals/gorilla.txt|0|Category: Wikipedia › Animals
+GRACE HOPPER|grace_hopper.txt|0|Grace Brewster Hopper was an American
+GRAND CANYON|geography/grand_canyon.txt|0|Category: Wikipedia › Geography
+GRAND CANYON|grand_canyon.txt|0|The Grand Canyon is a steep-sided
+GRAPE|plants/grape.txt|0|Category: Wikipedia › Plants
+GRAPH THEORY|graph_theory.txt|0|In mathematics and computer science,
+GRAPH THEORY|mathematics/graph_theory.txt|0|Category: Wikipedia › Mathematics
+GRAPHICS PROCESSING UNIT|graphics_processing_unit.txt|0|**GRAPHICS PROCESSING UNIT**
+GRAPHQL|graphql.txt|0|GraphQL is a data query and
+GRASSHOPPER|animals/grasshopper.txt|0|Category: Wikipedia › Animals
+GRASSLAND|grassland.txt|0|A grassland is an area where the
+GRAVITY|gravity.txt|0|In physics, gravity, also known as
+GRAVITY|physics/gravity.txt|0|Category: Wikipedia › Physics
+GRAVITY|science/gravity.txt|0|Category: Wikipedia › Science
+GREAT BARRIER REEF|geography/great_barrier_reef.txt|0|**GREAT BARRIER REEF**
+GREAT BARRIER REEF|great_barrier_reef.txt|0|**GREAT BARRIER REEF**
+GREAT DEPRESSION|great_depression.txt|0|The Great Depression was a severe
+GREAT WHITE SHARK|animals/great_white_shark.txt|0|**GREAT WHITE SHARK**
+GREECE|geography/greece.txt|0|Category: Wikipedia › Geography
+GREECE|greece.txt|0|Greece, officially the Hellenic
+GREENHOUSE EFFECT|greenhouse_effect.txt|0|**GREENHOUSE EFFECT**
+GRENADA|geography/grenada.txt|0|Category: Wikipedia › Geography
+GRIZZLY BEAR|animals/grizzly_bear.txt|0|Category: Wikipedia › Animals
+GUATEMALA|geography/guatemala.txt|0|Category: Wikipedia › Geography
+GUIDO VAN ROSSUM|guido_van_rossum.txt|0|Guido van Rossum is a Dutch programmer.
+GUINEA BISSAU|geography/guinea_bissau.txt|0|Category: Wikipedia › Geography
+GUINEA|geography/guinea.txt|0|Category: Wikipedia › Geography
+GULF WAR|gulf_war.txt|0|The Gulf War was an armed conflict
+GULL|animals/gull.txt|0|Category: Wikipedia › Animals
+GUYANA|geography/guyana.txt|0|Category: Wikipedia › Geography
+HAITI|geography/haiti.txt|0|Category: Wikipedia › Geography
+HARD DISK DRIVE|hard_disk_drive.txt|0|A hard disk drive (HDD), hard disk,
+HARE|animals/hare.txt|0|Category: Wikipedia › Animals
+HASKELL|haskell.txt|0|Haskell is a general-purpose,
+HASKELL|programming/haskell.txt|0|Category: Wikipedia › Programming
+HAWK|animals/hawk.txt|0|Category: Wikipedia › Animals
+HDMI|hdmi.txt|0|HDMI is a brand of proprietary digital
+HEALTH|health.txt|0|Health has a variety of definitions,
+HEARING AID|hearing_aid.txt|0|A hearing aid is a device designed to
+HEART|heart.txt|0|The heart is a muscular organ found in
+HEAT STROKE|health/heat_stroke.txt|0|Category: Wikipedia › Health
+HELIUM|chemistry/helium.txt|0|Category: Wikipedia › Chemistry
+HEPATITIS|hepatitis.txt|0|Hepatitis is inflammation of the liver
+HEXAGON|hexagon.txt|0|In geometry, a hexagon is a six-sided
+HEXAGON|mathematics/hexagon.txt|0|Category: Wikipedia › Mathematics
+HIGGS BOSON|higgs_boson.txt|0|The Higgs boson, sometimes called the
+HIGGS BOSON|physics/higgs_boson.txt|0|Category: Wikipedia › Physics
+HIPPOPOTAMUS|animals/hippopotamus.txt|0|Category: Wikipedia › Animals
+HIVAIDS|hivaids.txt|0|The human immunodeficiency virus (HIV)
+HOMER|homer.txt|0|Homer was an ancient Greek poet who is
+HONDURAS|geography/honduras.txt|0|Category: Wikipedia › Geography
+HONG KONG|geography/hong_kong.txt|0|Category: Wikipedia › Geography
+HORSE|animals/horse.txt|0|Category: Wikipedia › Animals
+HOUSTON|geography/houston.txt|0|Category: Wikipedia › Geography
+HTML|html.txt|0|Hypertext Markup Language (HTML) is the
+HTTP|http.txt|0|HTTP is an application layer protocol
+HUMAN BODY|human_body.txt|0|The human body is the entire structure
+HUMMINGBIRD|animals/hummingbird.txt|0|Category: Wikipedia › Animals
+HUMPBACK WHALE|animals/humpback_whale.txt|0|Category: Wikipedia › Animals
+HUNGARY|geography/hungary.txt|0|Category: Wikipedia › Geography
+HYDROELECTRIC POWER|Hydroelectric_Power.txt|0|**HYDROELECTRIC POWER**
+HYDROELECTRICITY|hydroelectricity.txt|0|Hydroelectricity, or hydroelectric
+HYDROGEN BOND|chemistry/hydrogen_bond.txt|0|Category: Wikipedia › Chemistry
+HYDROGEN|chemistry/hydrogen.txt|0|Category: Wikipedia › Chemistry
+HYDROLOGY|Hydrology.txt|0|**COMPREHENSIVE OVERVIEW**
+HYPERTENSION|hypertension.txt|0|Hypertension, also known as high blood
+HYPOTHERMIA|health/hypothermia.txt|0|Category: Wikipedia › Health
+ICELAND|geography/iceland.txt|0|Category: Wikipedia › Geography
+IGUANA|animals/iguana.txt|0|Category: Wikipedia › Animals
+IMMANUEL KANT|philosophy/immanuel_kant.txt|0|Category: Wikipedia › Philosophy
+IMMUNE SYSTEM|health/immune_system.txt|0|Category: Wikipedia › Health
+IMMUNE SYSTEM|immune_system.txt|0|The immune system is a network of
+IMMUNOTHERAPY|immunotherapy.txt|0|Immunotherapy, also known as biological
+INCA EMPIRE|inca_empire.txt|0|The Inca Empire, officially known as
+INDIAN OCEAN|geography/indian_ocean.txt|0|Category: Wikipedia › Geography
+INDIAN OCEAN|indian_ocean.txt|0|The Indian Ocean is the third-largest
+INDIA|geography/india.txt|0|Category: Wikipedia › Geography
+INDIA|india.txt|0|India, officially the Republic of
+INDONESIA|geography/indonesia.txt|0|Category: Wikipedia › Geography
+INDUCTOR|inductor.txt|0|An inductor, also called a coil, choke,
+INDUSTRIAL ENGINEERING|engineering/industrial_engineering.txt|0|**INDUSTRIAL ENGINEERING**
+INDUSTRIAL REVOLUTION|history/industrial_revolution.txt|0|**INDUSTRIAL REVOLUTION**
+INDUSTRIAL REVOLUTION|industrial_revolution.txt|0|**INDUSTRIAL REVOLUTION**
+INFECTION|infection.txt|0|An infection is the invasion of tissues
+INFINITY|mathematics/infinity.txt|0|Category: Wikipedia › Mathematics
+INFLUENZA|influenza.txt|0|Influenza, commonly known as the flu,
+INNOVATION|innovation.txt|0|Innovation is the practical
+INORGANIC CHEMISTRY|chemistry/inorganic_chemistry.txt|0|**INORGANIC CHEMISTRY**
+INORGANIC CHEMISTRY|inorganic_chemistry.txt|0|**INORGANIC CHEMISTRY**
+INORGANIC CHEMISTRY|science/inorganic_chemistry.txt|0|**INORGANIC CHEMISTRY**
+INTEGER|integer.txt|0|An integer is the number zero (0), a
+INTEGRAL|integral.txt|0|In mathematics, an integral is the
+INTEGRATED CIRCUIT|engineering/integrated_circuit.txt|0|**INTEGRATED CIRCUIT**
+INTEGRATED CIRCUIT|integrated_circuit.txt|0|**INTEGRATED CIRCUIT**
+INTERNAL COMBUSTION ENGINE|internal_combustion_engine.txt|0|**INTERNAL COMBUSTION ENGINE**
+INTERNET HISTORY|Internet_History.txt|0|**COMPREHENSIVE OVERVIEW**
+INTERNET OF THINGS|internet_of_things.txt|0|**INTERNET OF THINGS**
+INTERNET PROTOCOL SUITE|internet_protocol_suite.txt|0|**INTERNET PROTOCOL SUITE**
+INTERNET|internet.txt|0|The Internet is the global system of
+INTERNET|programming/internet.txt|0|Category: Wikipedia › Programming
+INTERNET|technology/internet.txt|0|Category: Wikipedia › Technology
+INTERPRETER COMPUTING|interpreter_computing.txt|0|**INTERPRETER COMPUTING**
+INVENTION|invention.txt|0|An invention is a unique or novel
+IONIC BONDING|chemistry/ionic_bonding.txt|0|Category: Wikipedia › Chemistry
+IOS|ios.txt|0|iOS is a mobile operating system
+IRAN|geography/iran.txt|0|Category: Wikipedia › Geography
+IRAQ WAR|iraq_war.txt|0|The Iraq War, also referred to as the
+IRAQ|geography/iraq.txt|0|Category: Wikipedia › Geography
+IRELAND|geography/ireland.txt|0|Category: Wikipedia › Geography
+IRON|chemistry/iron.txt|0|Category: Wikipedia › Chemistry
+IRRATIONAL NUMBER|irrational_number.txt|0|**IRRATIONAL NUMBER**
+ISAAC NEWTON|isaac_newton.txt|0|Sir Isaac Newton was an English
+ISAAC NEWTON|people/isaac_newton.txt|0|Category: Wikipedia › People
+ISLAND|island.txt|0|An island or isle is a piece of land,
+ISRAEL|geography/israel.txt|0|Category: Wikipedia › Geography
+ISRAEL|israel.txt|0|Israel, officially the State of Israel,
+ITALY|geography/italy.txt|0|Category: Wikipedia › Geography
+ITALY|italy.txt|0|Italy, officially the Italian Republic,
+IVAN PAVLOV|ivan_pavlov.txt|0|Ivan Petrovich Pavlov was a Russian and
+JAGUAR|animals/jaguar.txt|0|Category: Wikipedia › Animals
+JAMAICA|geography/jamaica.txt|0|Category: Wikipedia › Geography
+JANE AUSTEN|jane_austen.txt|0|Jane Austen was an English novelist
+JAPAN|geography/japan.txt|0|Category: Wikipedia › Geography
+JAPAN|japan.txt|0|Japan is an island country in East
+JAVA PROGRAMMING LANGUAGE|java_programming_language.txt|0|**JAVA PROGRAMMING LANGUAGE**
+JAVA PROGRAMMING LANGUAGE|programming/java_programming_language.txt|0|**JAVA PROGRAMMING LANGUAGE**
+JAVASCRIPT|javascript.txt|0|JavaScript (JS) is a programming
+JAVASCRIPT|programming/javascript.txt|0|Category: Wikipedia › Programming
+JEAN PAUL SARTRE|philosophy/jean_paul_sartre.txt|0|Category: Wikipedia › Philosophy
+JEFF BEZOS|jeff_bezos.txt|0|Jeffrey Preston Bezos is an American
+JERUSALEM|jerusalem.txt|0|Jerusalem is a city in the Southern
+JESUS|jesus.txt|0|Jesus, also referred to as Jesus
+JET ENGINE|engineering/jet_engine.txt|0|Category: Wikipedia › Engineering
+JET ENGINE|jet_engine.txt|0|A jet engine is a type of reaction
+JOHANN SEBASTIAN BACH|johann_sebastian_bach.txt|0|**JOHANN SEBASTIAN BACH**
+JOHANNESBURG|geography/johannesburg.txt|0|Category: Wikipedia › Geography
+JOHN CALVIN|john_calvin.txt|0|John Calvin was a French theologian,
+JOHN LOCKE|philosophy/john_locke.txt|0|Category: Wikipedia › Philosophy
+JORDAN|geography/jordan.txt|0|Category: Wikipedia › Geography
+JOSEPH STALIN|joseph_stalin.txt|0|Joseph Vissarionovich Stalin was a
+JULIA PROGRAMMING LANGUAGE|julia_programming_language.txt|0|**JULIA PROGRAMMING LANGUAGE**
+JULIUS CAESAR|julius_caesar.txt|0|Gaius Julius Caesar was a Roman general
+JULIUS CAESAR|people/julius_caesar.txt|0|Category: Wikipedia › People
+JUNGLE|jungle.txt|0|A jungle is land covered with dense
+K2|geography/k2.txt|0|Category: Wikipedia › Geography
+KALAHARI DESERT|geography/kalahari_desert.txt|0|Category: Wikipedia › Geography
+KANGAROO|animals/kangaroo.txt|0|Category: Wikipedia › Animals
+KARL MARX|karl_marx.txt|0|Karl Marx was a German philosopher,
+KARL MARX|philosophy/karl_marx.txt|0|Category: Wikipedia › Philosophy
+KAZAKHSTAN|geography/kazakhstan.txt|0|Category: Wikipedia › Geography
+KELP|plants/kelp.txt|0|Category: Wikipedia › Plants
+KENYA|geography/kenya.txt|0|Category: Wikipedia › Geography
+KENYA|kenya.txt|0|Kenya, officially the Republic of
+KIDNEY|kidney.txt|0|In humans, the kidneys are two
+KIRIBATI|geography/kiribati.txt|0|Category: Wikipedia › Geography
+KOALA|animals/koala.txt|0|Category: Wikipedia › Animals
+KOMODO DRAGON|animals/komodo_dragon.txt|0|Category: Wikipedia › Animals
+KOREAN WAR|korean_war.txt|0|The Korean War was an armed conflict on
+KOTLIN PROGRAMMING LANGUAGE|kotlin_programming_language.txt|0|**KOTLIN PROGRAMMING LANGUAGE**
+KOTLIN PROGRAMMING LANGUAGE|programming/kotlin_programming_language.txt|0|**KOTLIN PROGRAMMING LANGUAGE**
+KUBERNETES|kubernetes.txt|0|Kubernetes, also known as K8s is an
+KUBERNETES|programming/kubernetes.txt|0|Category: Wikipedia › Programming
+KUWAIT|geography/kuwait.txt|0|Category: Wikipedia › Geography
+KYRGYZSTAN|geography/kyrgyzstan.txt|0|Category: Wikipedia › Geography
+LAGOS|geography/lagos.txt|0|Category: Wikipedia › Geography
+LAKE|lake.txt|0|A lake is often a naturally occurring,
+LANDSLIDE|landslide.txt|0|Landslides, also known as landslips,
+LAOS|geography/laos.txt|0|Category: Wikipedia › Geography
+LAOZI|philosophy/laozi.txt|0|Category: Wikipedia › Philosophy
+LAPTOP|laptop.txt|0|A laptop computer or notebook computer,
+LARRY PAGE|larry_page.txt|0|Lawrence Edward Page is an American
+LASER|laser.txt|0|A laser is a device that emits light
+LATVIA|geography/latvia.txt|0|Category: Wikipedia › Geography
+LEAD|chemistry/lead.txt|0|Category: Wikipedia › Chemistry
+LEBANON|geography/lebanon.txt|0|Category: Wikipedia › Geography
+LEMON|plants/lemon.txt|0|Category: Wikipedia › Plants
+LENS|lens.txt|0|A lens is a transmissive optical device
+LEO TOLSTOY|leo_tolstoy.txt|0|Count Lev Nikolayevich Tolstoy, usually
+LEONARDO DA VINCI|leonardo_da_vinci.txt|0|**LEONARDO DA VINCI**
+LEONARDO DA VINCI|people/leonardo_da_vinci.txt|0|**LEONARDO DA VINCI**
+LEOPARD|animals/leopard.txt|0|Category: Wikipedia › Animals
+LEPTON|physics/lepton.txt|0|Category: Wikipedia › Physics
+LESOTHO|geography/lesotho.txt|0|Category: Wikipedia › Geography
+LETTUCE|plants/lettuce.txt|0|Category: Wikipedia › Plants
+LEVER|engineering/lever.txt|0|Category: Wikipedia › Engineering
+LIBERIA|geography/liberia.txt|0|Category: Wikipedia › Geography
+LIBYA|geography/libya.txt|0|Category: Wikipedia › Geography
+LIECHTENSTEIN|geography/liechtenstein.txt|0|Category: Wikipedia › Geography
+LIGHT EMITTING DIODE|light_emitting_diode.txt|0|**LIGHT EMITTING DIODE**
+LIGHT|light.txt|0|Light, visible light, or visible
+LIGHT|physics/light.txt|0|Category: Wikipedia › Physics
+LILIUM|plants/lilium.txt|0|Category: Wikipedia › Plants
+LIMIT MATHEMATICS|limit_mathematics.txt|0|**LIMIT MATHEMATICS**
+LINEAR ALGEBRA|Linear_Algebra.txt|0|**COMPREHENSIVE OVERVIEW**
+LINEAR ALGEBRA|mathematics/linear_algebra.txt|0|Category: Wikipedia › Mathematics
+LINEAR EQUATION|linear_equation.txt|0|In mathematics, a linear equation is an
+LINUS TORVALDS|linus_torvalds.txt|0|Linus Benedict Torvalds is a Finnish
+LINUX|linux.txt|0|Linux is a family of open source
+LINUX|programming/linux.txt|0|Category: Wikipedia › Programming
+LION|animals/lion.txt|0|Category: Wikipedia › Animals
+LIPID|chemistry/lipid.txt|0|Category: Wikipedia › Chemistry
+LISBON|geography/lisbon.txt|0|Category: Wikipedia › Geography
+LISP PROGRAMMING LANGUAGE|lisp_programming_language.txt|0|**LISP PROGRAMMING LANGUAGE**
+LISP PROGRAMMING LANGUAGE|programming/lisp_programming_language.txt|0|**LISP PROGRAMMING LANGUAGE**
+LITHUANIA|geography/lithuania.txt|0|Category: Wikipedia › Geography
+LIVER|liver.txt|0|The liver is a major metabolic organ
+LIZARD|animals/lizard.txt|0|Category: Wikipedia › Animals
+LLAMA|animals/llama.txt|0|Category: Wikipedia › Animals
+LOGARITHM|logarithm.txt|0|In mathematics, the logarithm of a
+LOGIC BASICS|Logic_Basics.txt|0|**COMPREHENSIVE OVERVIEW**
+LOGIC|logic.txt|0|Logic is the study of correct
+LOGIC|mathematics/logic.txt|0|Category: Wikipedia › Mathematics
+LOGIC|philosophy/logic.txt|0|Category: Wikipedia › Philosophy
+LONDON|geography/london.txt|0|Category: Wikipedia › Geography
+LONDON|london.txt|0|London is the capital and largest city
+LOS ANGELES|geography/los_angeles.txt|0|Category: Wikipedia › Geography
+LUA|lua.txt|0|Lua is a lightweight, high-level,
+LUDWIG VAN BEETHOVEN|ludwig_van_beethoven.txt|0|**LUDWIG VAN BEETHOVEN**
+LUNG|lung.txt|0|The lungs are the primary organs of the
+LUXEMBOURG|geography/luxembourg.txt|0|Category: Wikipedia › Geography
+MACHINE LEARNING|machine_learning.txt|0|Machine learning (ML) is a field of
+MACHINE LEARNING|programming/machine_learning.txt|0|Category: Wikipedia › Programming
+MACOS|macos.txt|0|macOS is a proprietary Unix-like
+MACOS|programming/macos.txt|0|Category: Wikipedia › Programming
+MADAGASCAR|geography/madagascar.txt|0|Category: Wikipedia › Geography
+MADRID|geography/madrid.txt|0|Category: Wikipedia › Geography
+MAGNESIUM|chemistry/magnesium.txt|0|Category: Wikipedia › Chemistry
+MAGNETIC RESONANCE IMAGING|magnetic_resonance_imaging.txt|0|**MAGNETIC RESONANCE IMAGING**
+MAGNETISM|magnetism.txt|0|Magnetism is the class of physical
+MAGNETISM|physics/magnetism.txt|0|Category: Wikipedia › Physics
+MAHATMA GANDHI|mahatma_gandhi.txt|0|Mohandas Karamchand Gandhi was an
+MAHATMA GANDHI|people/mahatma_gandhi.txt|0|Category: Wikipedia › People
+MAIZE|plants/maize.txt|0|Category: Wikipedia › Plants
+MALARIA|malaria.txt|0|Malaria is a mosquito-borne infectious
+MALAWI|geography/malawi.txt|0|Category: Wikipedia › Geography
+MALAYSIA|geography/malaysia.txt|0|Category: Wikipedia › Geography
+MALCOLM X|malcolm_x.txt|0|MalcolmX was an African American
+MALDIVES|geography/maldives.txt|0|Category: Wikipedia › Geography
+MALI|geography/mali.txt|0|Category: Wikipedia › Geography
+MALTA|geography/malta.txt|0|Category: Wikipedia › Geography
+MANHATTAN PROJECT|manhattan_project.txt|0|**MANHATTAN PROJECT**
+MAO ZEDONG|mao_zedong.txt|0|Mao Zedong was a Chinese politician,
+MAPLE|plants/maple.txt|0|Category: Wikipedia › Plants
+MARIE CURIE|marie_curie.txt|0|Maria Salomea Skodowska-Curie, known as
+MARIE CURIE|people/marie_curie.txt|0|Category: Wikipedia › People
+MARK TWAIN|mark_twain.txt|0|Samuel Langhorne Clemens, known by the
+MARK ZUCKERBERG|mark_zuckerberg.txt|0|Mark Elliot Zuckerberg is an American
+MARSHALL ISLANDS|geography/marshall_islands.txt|0|Category: Wikipedia › Geography
+MARTIN LUTHER KING JR|martin_luther_king_jr.txt|0|**MARTIN LUTHER KING JR**
+MARTIN LUTHER KING JR|people/martin_luther_king_jr.txt|0|**MARTIN LUTHER KING JR**
+MARTIN LUTHER|martin_luther.txt|0|Martin Luther was a German priest,
+MASS|physics/mass.txt|0|Category: Wikipedia › Physics
+MATHEMATICS HISTORY|Mathematics_History.txt|0|**MATHEMATICS HISTORY**
+MATHEMATICS|mathematics.txt|0|Mathematics is a field of study that
+MATLAB|matlab.txt|0|MATLAB is a proprietary multi-paradigm
+MATLAB|programming/matlab.txt|0|Category: Wikipedia › Programming
+MATRIX MATHEMATICS|matrix_mathematics.txt|0|**MATRIX MATHEMATICS**
+MAURITANIA|geography/mauritania.txt|0|Category: Wikipedia › Geography
+MAURITIUS|geography/mauritius.txt|0|Category: Wikipedia › Geography
+MAXWELLS EQUATIONS|physics/maxwells_equations.txt|0|**MAXWELLS EQUATIONS**
+MAYA CIVILIZATION|history/maya_civilization.txt|0|**MAYA CIVILIZATION**
+MAYA CIVILIZATION|maya_civilization.txt|0|**MAYA CIVILIZATION**
+MEASLES|measles.txt|0|Measles is a highly contagious,
+MECHANICAL ENGINEERING|engineering/mechanical_engineering.txt|0|**MECHANICAL ENGINEERING**
+MEDICINE|health/medicine.txt|0|Category: Wikipedia › Health
+MEDICINE|medicine.txt|0|Medicine is the science and practice of
+MEDIEVAL EUROPE|Medieval_Europe.txt|0|**COMPREHENSIVE OVERVIEW**
+MEDIEVAL PHILOSOPHY|philosophy/medieval_philosophy.txt|0|**MEDIEVAL PHILOSOPHY**
+MEDITATION|meditation.txt|0|Meditation is a practice in which an
+MEDITERRANEAN SEA|geography/mediterranean_sea.txt|0|**MEDITERRANEAN SEA**
+MELBOURNE|geography/melbourne.txt|0|Category: Wikipedia › Geography
+MENINGITIS|meningitis.txt|0|Meningitis is acute or chronic
+MENTAL HEALTH|mental_health.txt|0|Mental health encompasses emotional,
+MERCURY ELEMENT|chemistry/mercury_element.txt|0|Category: Wikipedia › Chemistry
+MESOPOTAMIA|history/mesopotamia.txt|0|Category: Wikipedia › History
+MESOPOTAMIA|mesopotamia.txt|0|Mesopotamia is a historical region of
+METALLIC BONDING|chemistry/metallic_bonding.txt|0|Category: Wikipedia › Chemistry
+METAPHYSICS|philosophy/metaphysics.txt|0|Category: Wikipedia › Philosophy
+METEOROLOGY|Meteorology.txt|0|**COMPREHENSIVE OVERVIEW**
+METHANE|chemistry/methane.txt|0|Category: Wikipedia › Chemistry
+MEXICO CITY|geography/mexico_city.txt|0|Category: Wikipedia › Geography
+MEXICO|geography/mexico.txt|0|Category: Wikipedia › Geography
+MEXICO|mexico.txt|0|Mexico, officially the United Mexican
+MICHELANGELO|michelangelo.txt|0|Michelangelo di Lodovico Buonarroti
+MICRONESIA|geography/micronesia.txt|0|Category: Wikipedia › Geography
+MICROPROCESSOR|engineering/microprocessor.txt|0|Category: Wikipedia › Engineering
+MICROSCOPE|microscope.txt|0|A microscope is a laboratory instrument
+MICROSERVICES|microservices.txt|0|In software engineering, a microservice
+MICROSOFT WINDOWS|microsoft_windows.txt|0|**MICROSOFT WINDOWS**
+MICROSOFT WINDOWS|programming/microsoft_windows.txt|0|**MICROSOFT WINDOWS**
+MIDDLE AGES|history/middle_ages.txt|0|Category: Wikipedia › History
+MIDDLE AGES|middle_ages.txt|0|In the history of Europe, the Middle
+MILLIPEDE|animals/millipede.txt|0|Category: Wikipedia › Animals
+MINERAL FORMATION|Mineral_Formation.txt|0|**MINERAL FORMATION**
+MINERAL NUTRIENT|mineral_nutrient.txt|0|In the context of nutrition, a mineral
+MISSISSIPPI RIVER|geography/mississippi_river.txt|0|**MISSISSIPPI RIVER**
+MISSISSIPPI RIVER|mississippi_river.txt|0|**MISSISSIPPI RIVER**
+MODEM|modem.txt|0|A modulator-demodulator, commonly
+MODERN PHILOSOPHY|philosophy/modern_philosophy.txt|0|**MODERN PHILOSOPHY**
+MOLDOVA|geography/moldova.txt|0|Category: Wikipedia › Geography
+MOLECULAR BIOLOGY|Molecular_Biology.txt|0|**MOLECULAR BIOLOGY**
+MOLECULE|molecule.txt|0|A molecule is a group of two or more
+MOLECULE|physics/molecule.txt|0|Category: Wikipedia › Physics
+MOLECULE|science/molecule.txt|0|Category: Wikipedia › Science
+MOMENTUM|momentum.txt|0|In Newtonian mechanics, momentum is the
+MOMENTUM|physics/momentum.txt|0|Category: Wikipedia › Physics
+MONACO|geography/monaco.txt|0|Category: Wikipedia › Geography
+MONGODB|mongodb.txt|0|MongoDB is a source-available,
+MONGOL EMPIRE|mongol_empire.txt|0|The Mongol Empire was the largest
+MONGOLIA|geography/mongolia.txt|0|Category: Wikipedia › Geography
+MONKEY|animals/monkey.txt|0|Category: Wikipedia › Animals
+MONT BLANC|geography/mont_blanc.txt|0|Category: Wikipedia › Geography
+MONTENEGRO|geography/montenegro.txt|0|Category: Wikipedia › Geography
+MOON LANDING|moon_landing.txt|0|A Moon landing or lunar landing is the
+MOOSE|animals/moose.txt|0|Category: Wikipedia › Animals
+MOROCCO|geography/morocco.txt|0|Category: Wikipedia › Geography
+MOSCOW|geography/moscow.txt|0|Category: Wikipedia › Geography
+MOSCOW|moscow.txt|0|Moscow is the capital and largest city
+MOSES|moses.txt|0|In Abrahamic religions, Moses was the
+MOSQUITO|animals/mosquito.txt|0|Category: Wikipedia › Animals
+MOSS|plants/moss.txt|0|Category: Wikipedia › Plants
+MOTHER TERESA|mother_teresa.txt|0|Mary Teresa Bojaxhiu, better known as
+MOTHERBOARD|motherboard.txt|0|A motherboard, also called a mainboard,
+MOTH|animals/moth.txt|0|Category: Wikipedia › Animals
+MOTION|motion.txt|0|In physics, motion is when an object
+MOUNT EVEREST|geography/mount_everest.txt|0|Category: Wikipedia › Geography
+MOUNT EVEREST|mount_everest.txt|0|Mount Everest is Earth's highest
+MOUNT FUJI|geography/mount_fuji.txt|0|Category: Wikipedia › Geography
+MOUNT KILIMANJARO|geography/mount_kilimanjaro.txt|0|**MOUNT KILIMANJARO**
+MOUNT VESUVIUS|geography/mount_vesuvius.txt|0|Category: Wikipedia › Geography
+MOUNTAIN|mountain.txt|0|A mountain is an elevated portion of
+MOUSE|animals/mouse.txt|0|Category: Wikipedia › Animals
+MOZAMBIQUE|geography/mozambique.txt|0|Category: Wikipedia › Geography
+MUHAMMAD|muhammad.txt|0|Muhammad was an Arab religious,
+MULTIPLE SCLEROSIS|multiple_sclerosis.txt|0|**MULTIPLE SCLEROSIS**
+MULTIPLICATION|multiplication.txt|0|Multiplication is one of the four
+MUMBAI|geography/mumbai.txt|0|Category: Wikipedia › Geography
+MUMPS|mumps.txt|0|Mumps is a highly contagious viral
+MUSCLE|muscle.txt|0|Muscle is a soft tissue, one of the
+MUSHROOM|plants/mushroom.txt|0|Category: Wikipedia › Plants
+MYANMAR|geography/myanmar.txt|0|Category: Wikipedia › Geography
+MYSQL|mysql.txt|0|MySQL is an open-source relational
+NAIROBI|geography/nairobi.txt|0|Category: Wikipedia › Geography
+NAMIBIA|geography/namibia.txt|0|Category: Wikipedia › Geography
+NANOTECHNOLOGY|nanotechnology.txt|0|Nanotechnology is the manipulation of
+NANOTECHNOLOGY|technology/nanotechnology.txt|0|Category: Wikipedia › Technology
+NAPOLEON|napoleon.txt|0|Napoleon Bonaparte, later known by his
+NAPOLEON|people/napoleon.txt|0|Category: Wikipedia › People
+NATURAL LANGUAGE PROCESSING|natural_language_processing.txt|0|**NATURAL LANGUAGE PROCESSING**
+NATURAL NUMBER|natural_number.txt|0|In mathematics, the natural numbers are
+NATURAL SELECTION|natural_selection.txt|0|**NATURAL SELECTION**
+NAURU|geography/nauru.txt|0|Category: Wikipedia › Geography
+NELSON MANDELA|nelson_mandela.txt|0|Nelson Rolihlahla Mandela was a South
+NELSON MANDELA|people/nelson_mandela.txt|0|Category: Wikipedia › People
+NEPAL|geography/nepal.txt|0|Category: Wikipedia › Geography
+NERVOUS SYSTEM|nervous_system.txt|0|In biology, the nervous system is the
+NETHERLANDS|geography/netherlands.txt|0|Category: Wikipedia › Geography
+NEURAL NETWORK|neural_network.txt|0|A neural network is a group of
+NEUTRON STAR|neutron_star.txt|0|A neutron star is the gravitationally
+NEUTRON|neutron.txt|0|The neutron is a subatomic particle,
+NEUTRON|physics/neutron.txt|0|Category: Wikipedia › Physics
+NEW DEAL|new_deal.txt|0|The New Deal was a series of
+NEW YORK CITY|geography/new_york_city.txt|0|Category: Wikipedia › Geography
+NEW YORK CITY|new_york_city.txt|0|New York, often called New York City
+NEW ZEALAND|geography/new_zealand.txt|0|Category: Wikipedia › Geography
+NEWTONS LAWS OF MOTION|physics/newtons_laws_of_motion.txt|0|**NEWTONS LAWS OF MOTION**
+NEWT|animals/newt.txt|0|Category: Wikipedia › Animals
+NIAGARA FALLS|geography/niagara_falls.txt|0|Category: Wikipedia › Geography
+NIAGARA FALLS|niagara_falls.txt|0|Niagara Falls is a group of three
+NICARAGUA|geography/nicaragua.txt|0|Category: Wikipedia › Geography
+NIGERIA|geography/nigeria.txt|0|Category: Wikipedia › Geography
+NIGERIA|nigeria.txt|0|Nigeria, officially the Federal
+NIGER|geography/niger.txt|0|Category: Wikipedia › Geography
+NIHILISM|philosophy/nihilism.txt|0|Category: Wikipedia › Philosophy
+NIKOLA TESLA|nikola_tesla.txt|0|Nikola Tesla was a Serbian-American
+NIKOLA TESLA|people/nikola_tesla.txt|0|Category: Wikipedia › People
+NILE|geography/nile.txt|0|Category: Wikipedia › Geography
+NILE|nile.txt|0|The Nile is an important river in
+NITROGEN|chemistry/nitrogen.txt|0|Category: Wikipedia › Chemistry
+NORMANDY LANDINGS|normandy_landings.txt|0|**NORMANDY LANDINGS**
+NORTH AMERICA|north_america.txt|0|North America is a continent in the
+NORTH KOREA|geography/north_korea.txt|0|Category: Wikipedia › Geography
+NORTH MACEDONIA|geography/north_macedonia.txt|0|Category: Wikipedia › Geography
+NORWAY|geography/norway.txt|0|Category: Wikipedia › Geography
+NOSE|nose.txt|0|A nose is a sensory organ and
+NUCLEAR ENERGY|Nuclear_Energy.txt|0|**COMPREHENSIVE OVERVIEW**
+NUCLEAR FISSION|nuclear_fission.txt|0|Nuclear fission is a reaction in which
+NUCLEAR FUSION|nuclear_fusion.txt|0|Nuclear fusion is a reaction in which
+NUCLEAR PHYSICS|nuclear_physics.txt|0|Nuclear physics is the field of physics
+NUCLEAR PHYSICS|physics/nuclear_physics.txt|0|Category: Wikipedia › Physics
+NUCLEAR PHYSICS|science/nuclear_physics.txt|0|Category: Wikipedia › Science
+NUCLEAR POWER|nuclear_power.txt|0|Nuclear power is the use of nuclear
+NUCLEIC ACID|chemistry/nucleic_acid.txt|0|Category: Wikipedia › Chemistry
+NUMBER THEORY|mathematics/number_theory.txt|0|Category: Wikipedia › Mathematics
+NUMBER THEORY|number_theory.txt|0|**COMPREHENSIVE OVERVIEW**
+NUTRITION|health/nutrition.txt|0|Category: Wikipedia › Health
+NUTRITION|nutrition.txt|0|Nutrition is the biochemical and
+OAK|plants/oak.txt|0|Category: Wikipedia › Plants
+OAT|plants/oat.txt|0|Category: Wikipedia › Plants
+OBESITY|obesity.txt|0|Obesity is a medical condition,
+OBJECT ORIENTED PROGRAMMING|object_oriented_programming.txt|0|**OBJECT ORIENTED PROGRAMMING**
+OBJECTIVE C|objective_c.txt|0|Objective-C is a high-level
+OCEANOGRAPHY|Oceanography.txt|0|**COMPREHENSIVE OVERVIEW**
+OCEAN|ocean.txt|0|The ocean is the body of salt water
+OMAN|geography/oman.txt|0|Category: Wikipedia › Geography
+ONION|plants/onion.txt|0|Category: Wikipedia › Plants
+OPERATING SYSTEM|operating_system.txt|0|An operating system (OS) is system
+OPERATING SYSTEM|programming/operating_system.txt|0|Category: Wikipedia › Programming
+OPOSSUM|animals/opossum.txt|0|Category: Wikipedia › Animals
+OPTICS|optics.txt|0|Optics is the branch of physics that
+OPTICS|physics/optics.txt|0|Category: Wikipedia › Physics
+ORANGE|plants/orange.txt|0|Category: Wikipedia › Plants
+ORANGUTAN|animals/orangutan.txt|0|Category: Wikipedia › Animals
+ORCHID|plants/orchid.txt|0|Category: Wikipedia › Plants
+ORGAN TRANSPLANTATION|organ_transplantation.txt|0|**ORGAN TRANSPLANTATION**
+ORGANIC CHEMISTRY|chemistry/organic_chemistry.txt|0|**ORGANIC CHEMISTRY**
+ORGANIC CHEMISTRY|organic_chemistry.txt|0|**ORGANIC CHEMISTRY**
+ORGANIC CHEMISTRY|science/organic_chemistry.txt|0|**ORGANIC CHEMISTRY**
+OSTRICH|animals/ostrich.txt|0|Category: Wikipedia › Animals
+OTTER|animals/otter.txt|0|Category: Wikipedia › Animals
+OTTOMAN EMPIRE|ottoman_empire.txt|0|The Ottoman Empire, also called the
+OWL|animals/owl.txt|0|Category: Wikipedia › Animals
+OXYGEN|chemistry/oxygen.txt|0|Category: Wikipedia › Chemistry
+OZONE LAYER|ozone_layer.txt|0|The ozone layer or ozone shield is a
+PABLO PICASSO|pablo_picasso.txt|0|Pablo Diego Jos Francisco de Paula Juan
+PACEMAKER|pacemaker.txt|0|A pacemaker, also known as an
+PACIFIC OCEAN|geography/pacific_ocean.txt|0|Category: Wikipedia › Geography
+PACIFIC OCEAN|pacific_ocean.txt|0|The Pacific Ocean is the largest and
+PAKISTAN|geography/pakistan.txt|0|Category: Wikipedia › Geography
+PALAU|geography/palau.txt|0|Category: Wikipedia › Geography
+PALESTINE|geography/palestine.txt|0|Category: Wikipedia › Geography
+PANAMA|geography/panama.txt|0|Category: Wikipedia › Geography
+PAPUA NEW GUINEA|geography/papua_new_guinea.txt|0|Category: Wikipedia › Geography
+PARAGUAY|geography/paraguay.txt|0|Category: Wikipedia › Geography
+PARALLEL GEOMETRY|parallel_geometry.txt|0|**PARALLEL GEOMETRY**
+PARIS|geography/paris.txt|0|Category: Wikipedia › Geography
+PARIS|paris.txt|0|Paris is the capital and largest city
+PARKINSONS DISEASE|parkinsons_disease.txt|0|**PARKINSONS DISEASE**
+PARROT|animals/parrot.txt|0|Category: Wikipedia › Animals
+PARTIAL DIFFERENTIAL EQUATION|mathematics/partial_differential_equation.txt|0|**PARTIAL DIFFERENTIAL EQUATION**
+PARTICLE PHYSICS|particle_physics.txt|0|Particle physics or high-energy physics
+PARTICLE PHYSICS|physics/particle_physics.txt|0|Category: Wikipedia › Physics
+PASCAL PROGRAMMING LANGUAGE|pascal_programming_language.txt|0|**PASCAL PROGRAMMING LANGUAGE**
+PASCALS TRIANGLE|pascals_triangle.txt|0|In mathematics, Pascal's triangle is an
+PEARL HARBOR|pearl_harbor.txt|0|Pearl Harbor is an American lagoon
+PEDIATRICS|pediatrics.txt|0|Pediatrics, also spelled paediatrics,
+PELICAN|animals/pelican.txt|0|Category: Wikipedia › Animals
+PENGUIN|animals/penguin.txt|0|Category: Wikipedia › Animals
+PENTAGON|mathematics/pentagon.txt|0|Category: Wikipedia › Mathematics
+PENTAGON|pentagon.txt|0|In geometry, a pentagon is any
+PERCENTAGE|percentage.txt|0|In mathematics, a percentage, percent,
+PERIMETER|perimeter.txt|0|A perimeter is the length of a closed
+PERIODIC TABLE|chemistry/periodic_table.txt|0|Category: Wikipedia › Chemistry
+PERIODIC TABLE|periodic_table.txt|0|The periodic table, also known as the
+PERIODIC TABLE|science/periodic_table.txt|0|Category: Wikipedia › Science
+PERL|perl.txt|0|Perl is a high-level, general-purpose,
+PERL|programming/perl.txt|0|Category: Wikipedia › Programming
+PERMUTATION|permutation.txt|0|In mathematics, a permutation of a set
+PERPENDICULAR|perpendicular.txt|0|In geometry, two geometric objects are
+PERU|geography/peru.txt|0|Category: Wikipedia › Geography
+PHENOMENOLOGY|philosophy/phenomenology.txt|0|Category: Wikipedia › Philosophy
+PHILADELPHIA|geography/philadelphia.txt|0|Category: Wikipedia › Geography
+PHILIPPINES|geography/philippines.txt|0|Category: Wikipedia › Geography
+PHILOSOPHY OF LANGUAGE|philosophy/philosophy_of_language.txt|0|**PHILOSOPHY OF LANGUAGE**
+PHILOSOPHY OF MIND|philosophy/philosophy_of_mind.txt|0|**PHILOSOPHY OF MIND**
+PHILOSOPHY OF SCIENCE|philosophy/philosophy_of_science.txt|0|**PHILOSOPHY OF SCIENCE**
+PHILOSOPHY|philosophy.txt|0|Philosophy is a systematic study of
+PHILOSOPHY|philosophy/philosophy.txt|0|Category: Wikipedia › Philosophy
+PHOENIX ARIZONA|geography/phoenix_arizona.txt|0|Category: Wikipedia › Geography
+PHOSPHORUS|chemistry/phosphorus.txt|0|Category: Wikipedia › Chemistry
+PHOTON|photon.txt|0|A photon is an elementary particle that
+PHOTON|physics/photon.txt|0|Category: Wikipedia › Physics
+PHOTOSYNTHESIS|photosynthesis.txt|0|**COMPREHENSIVE OVERVIEW**
+PHOTOSYNTHESIS|science/photosynthesis.txt|0|Category: Wikipedia › Science
+PHP|php.txt|0|PHP is a general-purpose scripting
+PHP|programming/php.txt|0|Category: Wikipedia › Programming
+PHYSICAL CHEMISTRY|chemistry/physical_chemistry.txt|0|**PHYSICAL CHEMISTRY**
+PHYSICAL FITNESS|physical_fitness.txt|0|Physical fitness is a state of health
+PHYSICS|physics.txt|0|Physics is the scientific study of
+PHYSICS|science/physics.txt|0|Category: Wikipedia › Science
+PH|chemistry/ph.txt|0|Category: Wikipedia › Chemistry
+PH|ph.txt|0|In chemistry, pH (/ is a logarithmic
+PIG|animals/pig.txt|0|Category: Wikipedia › Animals
+PINE|plants/pine.txt|0|Category: Wikipedia › Plants
+PIPELINE|engineering/pipeline.txt|0|Category: Wikipedia › Engineering
+PIRANHA|animals/piranha.txt|0|Category: Wikipedia › Animals
+PI|mathematics/pi.txt|0|Category: Wikipedia › Mathematics
+PI|pi.txt|0|The number is a mathematical constant,
+PLANET|planet.txt|0|A planet is a large, rounded
+PLASMA PHYSICS|plasma_physics.txt|0|Plasma is a state of matter that
+PLATE TECTONICS|Plate_Tectonics.txt|0|**COMPREHENSIVE OVERVIEW**
+PLATO|philosophy/plato.txt|0|Category: Wikipedia › Philosophy
+PLATO|plato.txt|0|Plato was an ancient Greek philosopher
+PLATYPUS|animals/platypus.txt|0|Category: Wikipedia › Animals
+PNEUMONIA|pneumonia.txt|0|Pneumonia is an inflammatory condition
+POLAND|geography/poland.txt|0|Category: Wikipedia › Geography
+POLAR BEAR|animals/polar_bear.txt|0|Category: Wikipedia › Animals
+POLITICAL PHILOSOPHY|philosophy/political_philosophy.txt|0|**POLITICAL PHILOSOPHY**
+POLYMER|chemistry/polymer.txt|0|Category: Wikipedia › Chemistry
+POLYNOMIAL|polynomial.txt|0|In mathematics, a polynomial is a
+PORPOISE|animals/porpoise.txt|0|Category: Wikipedia › Animals
+PORTUGAL|geography/portugal.txt|0|Category: Wikipedia › Geography
+PORT|engineering/port.txt|0|Category: Wikipedia › Engineering
+POST TRAUMATIC STRESS DISORDER|post_traumatic_stress_disorder.txt|0|**POST TRAUMATIC STRESS DISORDER**
+POSTGRESQL|postgresql.txt|0|PostgreSQL also known as Postgres, is a
+POSTMODERNISM|philosophy/postmodernism.txt|0|Category: Wikipedia › Philosophy
+POTASSIUM|chemistry/potassium.txt|0|Category: Wikipedia › Chemistry
+POTATO|plants/potato.txt|0|Category: Wikipedia › Plants
+PRAGMATISM|philosophy/pragmatism.txt|0|Category: Wikipedia › Philosophy
+PREGNANCY|pregnancy.txt|0|Pregnancy is the time during which one
+PRIME NUMBER|mathematics/prime_number.txt|0|Category: Wikipedia › Mathematics
+PRIME NUMBER|prime_number.txt|0|A prime number is a natural number
+PRINTING PRESS|printing_press.txt|0|A printing press is a mechanical device
+PROBABILITY THEORY|Probability_Theory.txt|0|**PROBABILITY THEORY**
+PROBABILITY|mathematics/probability.txt|0|Category: Wikipedia › Mathematics
+PROBABILITY|probability.txt|0|Probability is a branch of mathematics
+PROHIBITION|prohibition.txt|0|Prohibition is the act or practice of
+PROLOG|prolog.txt|0|Prolog is a logic programming language
+PROPELLER|engineering/propeller.txt|0|Category: Wikipedia › Engineering
+PROPORTIONALITY|proportionality.txt|0|Proportionality, proportion or
+PROSTHESIS|prosthesis.txt|0|In medicine, a prosthesis, or a
+PROTEIN|chemistry/protein.txt|0|Category: Wikipedia › Chemistry
+PROTEIN|protein.txt|0|Proteins are large biomolecules and
+PROTON|physics/proton.txt|0|Category: Wikipedia › Physics
+PROTON|proton.txt|0|A proton is a stable subatomic
+PSYCHIATRY|psychiatry.txt|0|Psychiatry is the medical specialty
+PSYCHOLOGY|psychology.txt|0|Psychology is the scientific study of
+PULLEY|engineering/pulley.txt|0|Category: Wikipedia › Engineering
+PUMP|engineering/pump.txt|0|Category: Wikipedia › Engineering
+PYRAMID GEOMETRY|mathematics/pyramid_geometry.txt|0|Category: Wikipedia › Mathematics
+PYRAMID GEOMETRY|pyramid_geometry.txt|0|A pyramid is a polyhedron formed by
+PYTHAGOREAN THEOREM|mathematics/pythagorean_theorem.txt|0|**PYTHAGOREAN THEOREM**
+PYTHAGOREAN THEOREM|pythagorean_theorem.txt|0|**PYTHAGOREAN THEOREM**
+PYTHON PROGRAMMING LANGUAGE|programming/python_programming_language.txt|0|**PYTHON PROGRAMMING LANGUAGE**
+PYTHON PROGRAMMING LANGUAGE|python_programming_language.txt|0|**PYTHON PROGRAMMING LANGUAGE**
+PYTHON|animals/python.txt|0|Category: Wikipedia › Animals
+QATAR|geography/qatar.txt|0|Category: Wikipedia › Geography
+QUADRATIC EQUATION|quadratic_equation.txt|0|**QUADRATIC EQUATION**
+QUANTUM COMPUTING|quantum_computing.txt|0|**QUANTUM COMPUTING**
+QUANTUM MECHANICS|physics/quantum_mechanics.txt|0|**QUANTUM MECHANICS**
+QUANTUM MECHANICS|quantum_mechanics.txt|0|**QUANTUM MECHANICS**
+QUANTUM MECHANICS|science/quantum_mechanics.txt|0|**QUANTUM MECHANICS**
+QUARK|physics/quark.txt|0|Category: Wikipedia › Physics
+QUARK|quark.txt|0|A quark is a type of elementary
+QUEEN VICTORIA|queen_victoria.txt|0|Victoria was Queen of the United
+R PROGRAMMING LANGUAGE|programming/r_programming_language.txt|0|**R PROGRAMMING LANGUAGE**
+R PROGRAMMING LANGUAGE|r_programming_language.txt|0|**R PROGRAMMING LANGUAGE**
+RABBIT|animals/rabbit.txt|0|Category: Wikipedia › Animals
+RACCOON|animals/raccoon.txt|0|Category: Wikipedia › Animals
+RADIATION THERAPY|radiation_therapy.txt|0|**RADIATION THERAPY**
+RADIOACTIVE DECAY|radioactive_decay.txt|0|**RADIOACTIVE DECAY**
+RADIO|radio.txt|0|Radio is the technology of
+RAIL TRANSPORT|engineering/rail_transport.txt|0|Category: Wikipedia › Engineering
+RANDOM ACCESS MEMORY|random_access_memory.txt|0|**RANDOM ACCESS MEMORY**
+RATIONAL NUMBER|rational_number.txt|0|In mathematics, a rational number is a
+RATIO|ratio.txt|0|In mathematics, a ratio shows how many
+RATTLESNAKE|animals/rattlesnake.txt|0|Category: Wikipedia › Animals
+RAT|animals/rat.txt|0|Category: Wikipedia › Animals
+RAVEN|animals/raven.txt|0|Category: Wikipedia › Animals
+REAL NUMBER|real_number.txt|0|In mathematics, a real number is a
+RECTANGLE|mathematics/rectangle.txt|0|Category: Wikipedia › Mathematics
+RECTANGLE|rectangle.txt|0|In Euclidean plane geometry, a
+RED SEA|geography/red_sea.txt|0|Category: Wikipedia › Geography
+REDIS|redis.txt|0|Redis is an in-memory keyvalue
+REDOX|chemistry/redox.txt|0|Category: Wikipedia › Chemistry
+REDUCTION|chemistry/reduction.txt|0|Category: Wikipedia › Chemistry
+REINDEER|animals/reindeer.txt|0|Category: Wikipedia › Animals
+RELATIVITY|physics/relativity.txt|0|Category: Wikipedia › Physics
+RELATIVITY|relativity.txt|0|Relativity may refer to:
+RELATIVITY|science/relativity.txt|0|Category: Wikipedia › Science
+RENAISSANCE PERIOD|Renaissance_Period.txt|0|**RENAISSANCE PERIOD**
+RENAISSANCE|history/renaissance.txt|0|Category: Wikipedia › History
+RENAISSANCE|renaissance.txt|0|The Renaissance is a period of history
+RENEWABLE ENERGY|renewable_energy.txt|0|Renewable energy is energy made from
+RENÉ DESCARTES|philosophy/rené_descartes.txt|0|Category: Wikipedia › Philosophy
+REPUBLIC OF THE CONGO|geography/republic_of_the_congo.txt|0|**REPUBLIC OF THE CONGO**
+RESISTOR|resistor.txt|0|A resistor is a passive two-terminal
+RESPIRATION PHYSIOLOGY|respiration_physiology.txt|0|**RESPIRATION PHYSIOLOGY**
+REST|rest.txt|0|REST is a software architectural style
+RHINOCEROS|animals/rhinoceros.txt|0|Category: Wikipedia › Animals
+RICE|plants/rice.txt|0|Category: Wikipedia › Plants
+RICHARD STALLMAN|richard_stallman.txt|0|Richard Matthew Stallman, also known by
+RIO DE JANEIRO|geography/rio_de_janeiro.txt|0|Category: Wikipedia › Geography
+RIO DE JANEIRO|rio_de_janeiro.txt|0|Rio de Janeiro, or simply Rio, is the
+RIVER|river.txt|0|A river is a natural stream of fresh
+RNA|rna.txt|0|Ribonucleic acid (RNA) is a polymeric
+ROAD|engineering/road.txt|0|Category: Wikipedia › Engineering
+ROARING TWENTIES|roaring_twenties.txt|0|The Roaring Twenties, sometimes
+ROBIN|animals/robin.txt|0|Category: Wikipedia › Animals
+ROBOT|robot.txt|0|A robot is a machineespecially one
+ROCK CYCLE|Rock_Cycle.txt|0|**COMPREHENSIVE OVERVIEW**
+ROCKET|rocket.txt|0|A rocket is a vehicle that uses jet
+ROCKET|technology/rocket.txt|0|Category: Wikipedia › Technology
+ROMAN EMPIRE|roman_empire.txt|0|The Roman Empire ruled the
+ROMANIA|geography/romania.txt|0|Category: Wikipedia › Geography
+ROME|geography/rome.txt|0|Category: Wikipedia › Geography
+ROME|rome.txt|0|Rome is the capital city and most
+ROOT DISAMBIGUATION|root_disambiguation.txt|0|**ROOT DISAMBIGUATION**
+ROSE|plants/rose.txt|0|Category: Wikipedia › Plants
+ROUTER COMPUTING|router_computing.txt|0|A router is a computer and networking
+RUBY PROGRAMMING LANGUAGE|programming/ruby_programming_language.txt|0|**RUBY PROGRAMMING LANGUAGE**
+RUBY PROGRAMMING LANGUAGE|ruby_programming_language.txt|0|**RUBY PROGRAMMING LANGUAGE**
+RUSSIA|geography/russia.txt|0|Category: Wikipedia › Geography
+RUSSIA|russia.txt|0|Russia, or the Russian Federation, is a
+RUST PROGRAMMING LANGUAGE|programming/rust_programming_language.txt|0|**RUST PROGRAMMING LANGUAGE**
+RUST PROGRAMMING LANGUAGE|rust_programming_language.txt|0|**RUST PROGRAMMING LANGUAGE**
+RWANDA|geography/rwanda.txt|0|Category: Wikipedia › Geography
+SAHARA|geography/sahara.txt|0|Category: Wikipedia › Geography
+SAHARA|sahara.txt|0|The Sahara is a desert spanning across
+SAINT KITTS AND NEVIS|geography/saint_kitts_and_nevis.txt|0|**SAINT KITTS AND NEVIS**
+SAINT LUCIA|geography/saint_lucia.txt|0|Category: Wikipedia › Geography
+SAINT PETERSBURG|geography/saint_petersburg.txt|0|Category: Wikipedia › Geography
+SAINT VINCENT AND THE GRENADINES|geography/saint_vincent_and_the_grenadines.txt|0|**SAINT VINCENT AND THE GRENADINES**
+SALAMANDER|animals/salamander.txt|0|Category: Wikipedia › Animals
+SALMON|animals/salmon.txt|0|Category: Wikipedia › Animals
+SALT CHEMISTRY|chemistry/salt_chemistry.txt|0|Category: Wikipedia › Chemistry
+SAMOA|geography/samoa.txt|0|Category: Wikipedia › Geography
+SAN ANTONIO|geography/san_antonio.txt|0|Category: Wikipedia › Geography
+SAN DIEGO|geography/san_diego.txt|0|Category: Wikipedia › Geography
+SAN JOSE CALIFORNIA|geography/san_jose_california.txt|0|**SAN JOSE CALIFORNIA**
+SAN MARINO|geography/san_marino.txt|0|Category: Wikipedia › Geography
+SATELLITE|satellite.txt|0|A satellite or an artificial satellite
+SATELLITE|technology/satellite.txt|0|Category: Wikipedia › Technology
+SAUDI ARABIA|geography/saudi_arabia.txt|0|Category: Wikipedia › Geography
+SAUDI ARABIA|saudi_arabia.txt|0|Saudi Arabia, officially the Kingdom of
+SAVANNA|savanna.txt|0|A savanna or savannah is a mixed
+SCALA PROGRAMMING LANGUAGE|programming/scala_programming_language.txt|0|**SCALA PROGRAMMING LANGUAGE**
+SCALA PROGRAMMING LANGUAGE|scala_programming_language.txt|0|**SCALA PROGRAMMING LANGUAGE**
+SCHIZOPHRENIA|schizophrenia.txt|0|Schizophrenia is a mental disorder
+SCHRÖDINGER EQUATION|physics/schrödinger_equation.txt|0|**SCHRÖDINGER EQUATION**
+SCORPION|animals/scorpion.txt|0|Category: Wikipedia › Animals
+SCRUM SOFTWARE DEVELOPMENT|scrum_software_development.txt|0|**SCRUM SOFTWARE DEVELOPMENT**
+SEA LION|animals/sea_lion.txt|0|Category: Wikipedia › Animals
+SEAL|animals/seal.txt|0|Category: Wikipedia › Animals
+SEARCH ENGINE|search_engine.txt|0|A search engine is a software system
+SEAWEED|plants/seaweed.txt|0|Category: Wikipedia › Plants
+SEMICONDUCTOR|engineering/semiconductor.txt|0|Category: Wikipedia › Engineering
+SEMICONDUCTOR|semiconductor.txt|0|A semiconductor is a material with
+SENEGAL|geography/senegal.txt|0|Category: Wikipedia › Geography
+SEOUL|geography/seoul.txt|0|Category: Wikipedia › Geography
+SEPSIS|sepsis.txt|0|Sepsis is a potentially
+SEPTEMBER 11 ATTACKS|september_11_attacks.txt|0|**SEPTEMBER 11 ATTACKS**
+SEQUENCE|sequence.txt|0|In mathematics, a sequence is an
+SEQUOIA|plants/sequoia.txt|0|Category: Wikipedia › Plants
+SEQUOIOIDEAE|plants/sequoioideae.txt|0|Category: Wikipedia › Plants
+SERBIA|geography/serbia.txt|0|Category: Wikipedia › Geography
+SERGEY BRIN|sergey_brin.txt|0|Sergey Mikhailovich Brin is an American
+SERIES MATHEMATICS|series_mathematics.txt|0|**SERIES MATHEMATICS**
+SERVER COMPUTING|server_computing.txt|0|A server is a computer that provides
+SET THEORY|mathematics/set_theory.txt|0|Category: Wikipedia › Mathematics
+SET THEORY|set_theory.txt|0|**COMPREHENSIVE OVERVIEW**
+SEXUALLY TRANSMITTED INFECTION|sexually_transmitted_infection.txt|0|**SEXUALLY TRANSMITTED INFECTION**
+SEYCHELLES|geography/seychelles.txt|0|Category: Wikipedia › Geography
+SHANGHAI|geography/shanghai.txt|0|Category: Wikipedia › Geography
+SHARK|animals/shark.txt|0|Category: Wikipedia › Animals
+SHEEP|animals/sheep.txt|0|Category: Wikipedia › Animals
+SIERRA LEONE|geography/sierra_leone.txt|0|Category: Wikipedia › Geography
+SIGMUND FREUD|sigmund_freud.txt|0|Sigmund Freud was an Austrian
+SILICON|chemistry/silicon.txt|0|Category: Wikipedia › Chemistry
+SILVER|chemistry/silver.txt|0|Category: Wikipedia › Chemistry
+SINGAPORE|geography/singapore.txt|0|Category: Wikipedia › Geography
+SKIN|skin.txt|0|Skin is the layer of usually soft,
+SKYSCRAPER|engineering/skyscraper.txt|0|Category: Wikipedia › Engineering
+SLAVERY|slavery.txt|0|Slavery is the ownership of a person as
+SLEEP|sleep.txt|0|Sleep is a state of reduced mental and
+SLOVAKIA|geography/slovakia.txt|0|Category: Wikipedia › Geography
+SLOVENIA|geography/slovenia.txt|0|Category: Wikipedia › Geography
+SMARTPHONE|smartphone.txt|0|A smartphone is a mobile device that
+SMARTPHONE|technology/smartphone.txt|0|Category: Wikipedia › Technology
+SNAKE|animals/snake.txt|0|Category: Wikipedia › Animals
+SOCIAL MEDIA|social_media.txt|0|Social media are new media technologies
+SOCRATES|philosophy/socrates.txt|0|Category: Wikipedia › Philosophy
+SOCRATES|socrates.txt|0|Socrates was an ancient Greek
+SODIUM|chemistry/sodium.txt|0|Category: Wikipedia › Chemistry
+SOFTWARE ENGINEERING|engineering/software_engineering.txt|0|**SOFTWARE ENGINEERING**
+SOFTWARE|software.txt|0|Software consists of computer programs
+SOIL SCIENCE|Soil_Science.txt|0|**COMPREHENSIVE OVERVIEW**
+SOLAR ENERGY|Solar_Energy.txt|0|**COMPREHENSIVE OVERVIEW**
+SOLAR PANEL|solar_panel.txt|0|A solar panel is a device that converts
+SOLAR SYSTEM|science/solar_system.txt|0|Category: Wikipedia › Science
+SOLAR SYSTEM|solar_system.txt|0|**COMPREHENSIVE OVERVIEW**
+SOLID STATE DRIVE|solid_state_drive.txt|0|**SOLID STATE DRIVE**
+SOLOMON ISLANDS|geography/solomon_islands.txt|0|Category: Wikipedia › Geography
+SOMALIA|geography/somalia.txt|0|Category: Wikipedia › Geography
+SOUND|physics/sound.txt|0|Category: Wikipedia › Physics
+SOUND|sound.txt|0|In physics, sound is a vibration that
+SOUTH AFRICA|geography/south_africa.txt|0|Category: Wikipedia › Geography
+SOUTH AFRICA|south_africa.txt|0|South Africa, officially the Republic
+SOUTH AMERICA|south_america.txt|0|South America is a continent entirely
+SOUTH KOREA|geography/south_korea.txt|0|Category: Wikipedia › Geography
+SOUTH SUDAN|geography/south_sudan.txt|0|Category: Wikipedia › Geography
+SOUTHERN OCEAN|geography/southern_ocean.txt|0|Category: Wikipedia › Geography
+SOYBEAN|plants/soybean.txt|0|Category: Wikipedia › Plants
+SPACE EXPLORATION|Space_Exploration.txt|0|**SPACE EXPLORATION**
+SPACE RACE|space_race.txt|0|**COMPREHENSIVE OVERVIEW**
+SPAIN|geography/spain.txt|0|Category: Wikipedia › Geography
+SPAIN|spain.txt|0|Spain, officially the Kingdom of Spain,
+SPANISH EMPIRE|spanish_empire.txt|0|The Spanish Empire, sometimes referred
+SPARROW|animals/sparrow.txt|0|Category: Wikipedia › Animals
+SPECIAL RELATIVITY|physics/special_relativity.txt|0|**SPECIAL RELATIVITY**
+SPEED OF LIGHT|physics/speed_of_light.txt|0|Category: Wikipedia › Physics
+SPHERE|mathematics/sphere.txt|0|Category: Wikipedia › Mathematics
+SPHERE|sphere.txt|0|A sphere is a surface analogous to the
+SPIDER|animals/spider.txt|0|Category: Wikipedia › Animals
+SPRING DEVICE|engineering/spring_device.txt|0|Category: Wikipedia › Engineering
+SQL|programming/sql.txt|0|Category: Wikipedia › Programming
+SQL|sql.txt|0|Structured Query Language (SQL) is a
+SQUARE|mathematics/square.txt|0|Category: Wikipedia › Mathematics
+SQUARE|square.txt|0|In geometry, a square is a regular
+SQUIRREL|animals/squirrel.txt|0|Category: Wikipedia › Animals
+SRI LANKA|geography/sri_lanka.txt|0|Category: Wikipedia › Geography
+STANDARD MODEL|physics/standard_model.txt|0|Category: Wikipedia › Physics
+STANDARD MODEL|standard_model.txt|0|The Standard Model of particle physics
+STARS FORMATION|Stars_Formation.txt|0|**COMPREHENSIVE OVERVIEW**
+STAR|star.txt|0|A star is a luminous spheroid of plasma
+STATISTICS BASICS|Statistics_Basics.txt|0|**STATISTICS BASICS**
+STATISTICS|mathematics/statistics.txt|0|Category: Wikipedia › Mathematics
+STATISTICS|statistics.txt|0|Statistics is the discipline that
+STEAM ENGINE|steam_engine.txt|0|A steam engine is a heat engine that
+STEM CELL|stem_cell.txt|0|In multicellular organisms, stem cells
+STEPHEN HAWKING|people/stephen_hawking.txt|0|Category: Wikipedia › People
+STEPHEN HAWKING|stephen_hawking.txt|0|Stephen William Hawking was an English
+STEVE JOBS|steve_jobs.txt|0|Steven Paul Jobs was an American
+STOICISM|philosophy/stoicism.txt|0|Category: Wikipedia › Philosophy
+STOMACH|stomach.txt|0|The stomach is a muscular, hollow organ
+STRAWBERRY|plants/strawberry.txt|0|Category: Wikipedia › Plants
+STRESS BIOLOGY|stress_biology.txt|0|Stress, whether physiological,
+STRING THEORY|physics/string_theory.txt|0|Category: Wikipedia › Physics
+STROKE|stroke.txt|0|Stroke is a medical condition in which
+STRONG INTERACTION|physics/strong_interaction.txt|0|**STRONG INTERACTION**
+STRUCTURAL ENGINEERING|engineering/structural_engineering.txt|0|**STRUCTURAL ENGINEERING**
+STRUCTURALISM|philosophy/structuralism.txt|0|Category: Wikipedia › Philosophy
+SUBTRACTION|subtraction.txt|0|Subtraction is one of the four
+SUCCULENT PLANT|plants/succulent_plant.txt|0|Category: Wikipedia › Plants
+SUDAN|geography/sudan.txt|0|Category: Wikipedia › Geography
+SULFUR|chemistry/sulfur.txt|0|Category: Wikipedia › Chemistry
+SUPERCONDUCTIVITY|superconductivity.txt|0|**SUPERCONDUCTIVITY**
+SUPERNOVA|supernova.txt|0|A supernova is a powerful and luminous
+SURFACE AREA|surface_area.txt|0|The surface area of a solid object is a
+SURGERY|surgery.txt|0|Surgery is a medical specialty that
+SURINAME|geography/suriname.txt|0|Category: Wikipedia › Geography
+SWAN|animals/swan.txt|0|Category: Wikipedia › Animals
+SWEDEN|geography/sweden.txt|0|Category: Wikipedia › Geography
+SWIFT PROGRAMMING LANGUAGE|programming/swift_programming_language.txt|0|**SWIFT PROGRAMMING LANGUAGE**
+SWIFT PROGRAMMING LANGUAGE|swift_programming_language.txt|0|**SWIFT PROGRAMMING LANGUAGE**
+SWITZERLAND|geography/switzerland.txt|0|Category: Wikipedia › Geography
+SWORDFISH|animals/swordfish.txt|0|Category: Wikipedia › Animals
+SYDNEY|geography/sydney.txt|0|Category: Wikipedia › Geography
+SYDNEY|sydney.txt|0|Sydney is the capital city of the state
+SYRIA|geography/syria.txt|0|Category: Wikipedia › Geography
+SÃO TOMÉ AND PRÍNCIPE|geography/são_tomé_and_príncipe.txt|0|**SÃO TOMÉ AND PRÍNCIPE**
+TABLET COMPUTER|tablet_computer.txt|0|A tablet computer, commonly shortened
+TAIGA|geography/taiga.txt|0|Category: Wikipedia › Geography
+TAIWAN|geography/taiwan.txt|0|Category: Wikipedia › Geography
+TAJIKISTAN|geography/tajikistan.txt|0|Category: Wikipedia › Geography
+TANZANIA|geography/tanzania.txt|0|Category: Wikipedia › Geography
+TECHNOLOGY|technology.txt|0|Technology is the application of
+TELEPHONE HISTORY|Telephone_History.txt|0|**TELEPHONE HISTORY**
+TELEPHONE|telephone.txt|0|A telephone, commonly shortened to
+TELESCOPE|telescope.txt|0|A telescope is a device used to observe
+TELEVISION HISTORY|Television_History.txt|0|**TELEVISION HISTORY**
+TELEVISION|television.txt|0|Television (TV) is a telecommunication
+THAILAND|geography/thailand.txt|0|Category: Wikipedia › Geography
+THE BAHAMAS|geography/the_bahamas.txt|0|Category: Wikipedia › Geography
+THE BUDDHA|philosophy/the_buddha.txt|0|Category: Wikipedia › Philosophy
+THE BUDDHA|the_buddha.txt|0|Siddhartha Gautama, most commonly
+THE GAMBIA|geography/the_gambia.txt|0|Category: Wikipedia › Geography
+THE HOLOCAUST|history/the_holocaust.txt|0|Category: Wikipedia › History
+THE HOLOCAUST|the_holocaust.txt|0|The Holocaust, known in Hebrew as the
+THERMODYNAMICS|physics/thermodynamics.txt|0|Category: Wikipedia › Physics
+THERMODYNAMICS|science/thermodynamics.txt|0|Category: Wikipedia › Science
+THERMODYNAMICS|thermodynamics.txt|0|Thermodynamics is a branch of physics
+THOMAS AQUINAS|philosophy/thomas_aquinas.txt|0|Category: Wikipedia › Philosophy
+THOMAS EDISON|people/thomas_edison.txt|0|Category: Wikipedia › People
+THOMAS EDISON|thomas_edison.txt|0|Thomas Alva Edison was an American
+THOMAS JEFFERSON|thomas_jefferson.txt|0|Thomas Jefferson was an American
+TIDAL ENERGY|Tidal_Energy.txt|0|**COMPREHENSIVE OVERVIEW**
+TIGER|animals/tiger.txt|0|Category: Wikipedia › Animals
+TIM BERNERS LEE|tim_berners_lee.txt|0|Sir Timothy John Berners-Lee, also
+TIMOR LESTE|geography/timor_leste.txt|0|Category: Wikipedia › Geography
+TOAD|animals/toad.txt|0|Category: Wikipedia › Animals
+TOGO|geography/togo.txt|0|Category: Wikipedia › Geography
+TOKYO|geography/tokyo.txt|0|Category: Wikipedia › Geography
+TOKYO|tokyo.txt|0|Tokyo, officially the Tokyo Metropolis,
+TOMATO|plants/tomato.txt|0|Category: Wikipedia › Plants
+TONGA|geography/tonga.txt|0|Category: Wikipedia › Geography
+TOPOLOGY|mathematics/topology.txt|0|Category: Wikipedia › Mathematics
+TOPOLOGY|topology.txt|0|Topology is the branch of mathematics
+TORNADO|tornado.txt|0|A tornado is a rotating column of air
+TORONTO|geography/toronto.txt|0|Category: Wikipedia › Geography
+TORTOISE|animals/tortoise.txt|0|Category: Wikipedia › Animals
+TRANSFORMER|engineering/transformer.txt|0|Category: Wikipedia › Engineering
+TRANSISTOR|transistor.txt|0|A transistor is a semiconductor device
+TRIANGLE|mathematics/triangle.txt|0|Category: Wikipedia › Mathematics
+TRIANGLE|triangle.txt|0|A triangle is a polygon with three
+TRIGONOMETRY|mathematics/trigonometry.txt|0|Category: Wikipedia › Mathematics
+TRIGONOMETRY|trigonometry.txt|0|Trigonometry is a branch of mathematics
+TRINIDAD AND TOBAGO|geography/trinidad_and_tobago.txt|0|**TRINIDAD AND TOBAGO**
+TROPICAL CYCLONE|tropical_cyclone.txt|0|A tropical cyclone is a rapidly
+TROUT|animals/trout.txt|0|Category: Wikipedia › Animals
+TSUNAMI|tsunami.txt|0|A tsunami is a series of waves in a
+TUBERCULOSIS|tuberculosis.txt|0|Tuberculosis (TB), also known
+TULIP|plants/tulip.txt|0|Category: Wikipedia › Plants
+TUNA|animals/tuna.txt|0|Category: Wikipedia › Animals
+TUNDRA|tundra.txt|0|In physical geography, a tundra is a
+TUNISIA|geography/tunisia.txt|0|Category: Wikipedia › Geography
+TUNNEL|engineering/tunnel.txt|0|Category: Wikipedia › Engineering
+TURBINE|engineering/turbine.txt|0|Category: Wikipedia › Engineering
+TURKEY|geography/turkey.txt|0|Category: Wikipedia › Geography
+TURKEY|turkey.txt|0|Turkey, officially the Republic of
+TURKMENISTAN|geography/turkmenistan.txt|0|Category: Wikipedia › Geography
+TURTLE|animals/turtle.txt|0|Category: Wikipedia › Animals
+TUVALU|geography/tuvalu.txt|0|Category: Wikipedia › Geography
+TYPESCRIPT|programming/typescript.txt|0|Category: Wikipedia › Programming
+TYPESCRIPT|typescript.txt|0|TypeScript (TS) is a high-level
+UGANDA|geography/uganda.txt|0|Category: Wikipedia › Geography
+UKRAINE|geography/ukraine.txt|0|Category: Wikipedia › Geography
+ULTRASOUND|ultrasound.txt|0|Ultrasound is sound with frequencies
+UNITED ARAB EMIRATES|geography/united_arab_emirates.txt|0|**UNITED ARAB EMIRATES**
+UNITED KINGDOM|geography/united_kingdom.txt|0|Category: Wikipedia › Geography
+UNITED KINGDOM|united_kingdom.txt|0|The United Kingdom of Great Britain and
+UNITED STATES|geography/united_states.txt|0|Category: Wikipedia › Geography
+UNITED STATES|united_states.txt|0|The United States of America (USA),
+UNIVERSE|universe.txt|0|The universe is all of space and time
+UNIX|programming/unix.txt|0|Category: Wikipedia › Programming
+UNIX|unix.txt|0|Unix is a family of multitasking,
+URANIUM|chemistry/uranium.txt|0|Category: Wikipedia › Chemistry
+URUGUAY|geography/uruguay.txt|0|Category: Wikipedia › Geography
+USB|usb.txt|0|Universal Serial Bus (USB) is an
+UTILITARIANISM|philosophy/utilitarianism.txt|0|Category: Wikipedia › Philosophy
+UZBEKISTAN|geography/uzbekistan.txt|0|Category: Wikipedia › Geography
+VACCINE|health/vaccine.txt|0|Category: Wikipedia › Health
+VACCINE|vaccine.txt|0|A vaccine is a biological preparation
+VANCOUVER|geography/vancouver.txt|0|Category: Wikipedia › Geography
+VANUATU|geography/vanuatu.txt|0|Category: Wikipedia › Geography
+VARIABLE MATHEMATICS|variable_mathematics.txt|0|**VARIABLE MATHEMATICS**
+VATICAN CITY|geography/vatican_city.txt|0|Category: Wikipedia › Geography
+VECTOR MATHEMATICS AND PHYSICS|vector_mathematics_and_physics.txt|0|**VECTOR MATHEMATICS AND PHYSICS**
+VELOCITY|physics/velocity.txt|0|Category: Wikipedia › Physics
+VELOCITY|velocity.txt|0|Velocity is a measurement of speed in a
+VENEZUELA|geography/venezuela.txt|0|Category: Wikipedia › Geography
+VENUS FLYTRAP|plants/venus_flytrap.txt|0|Category: Wikipedia › Plants
+VERSION CONTROL|version_control.txt|0|Version control is the software
+VICTORIA FALLS|geography/victoria_falls.txt|0|Category: Wikipedia › Geography
+VICTORIA FALLS|victoria_falls.txt|0|Victoria Falls is a waterfall on the
+VIENNA|geography/vienna.txt|0|Category: Wikipedia › Geography
+VIETNAM WAR|vietnam_war.txt|0|The Vietnam War was an armed conflict
+VIETNAM|geography/vietnam.txt|0|Category: Wikipedia › Geography
+VIKING AGE|history/viking_age.txt|0|Category: Wikipedia › History
+VIKING AGE|viking_age.txt|0|The Viking Age was the period during
+VINCENT VAN GOGH|vincent_van_gogh.txt|0|Vincent Willem van Gogh was a Dutch
+VIRTUAL MACHINE|virtual_machine.txt|0|In computing, a virtual machine (VM) is
+VIRUS|virus.txt|0|A virus is a submicroscopic infectious
+VITAMIN|chemistry/vitamin.txt|0|Category: Wikipedia › Chemistry
+VITAMIN|vitamin.txt|0|Vitamins are organic molecules that are
+VLADIMIR LENIN|vladimir_lenin.txt|0|Vladimir Ilyich Ulyanov, better known
+VOLCANISM|Volcanism.txt|0|**COMPREHENSIVE OVERVIEW**
+VOLCANO|volcano.txt|0|A volcano is commonly defined as a vent
+VOLUME|volume.txt|0|Volume is a measure of regions in
+WALRUS|animals/walrus.txt|0|Category: Wikipedia › Animals
+WAR IN AFGHANISTAN|war_in_afghanistan.txt|0|**WAR IN AFGHANISTAN**
+WASP|animals/wasp.txt|0|Category: Wikipedia › Animals
+WATER|chemistry/water.txt|0|Category: Wikipedia › Chemistry
+WATER|water.txt|0|Water is an inorganic compound with the
+WAVE ENERGY|Wave_Energy.txt|0|**COMPREHENSIVE OVERVIEW**
+WAVE|physics/wave.txt|0|Category: Wikipedia › Physics
+WAVE|wave.txt|0|In physics, mathematics, engineering,
+WEAK INTERACTION|physics/weak_interaction.txt|0|Category: Wikipedia › Physics
+WEB BROWSER|web_browser.txt|0|A web browser, often shortened to
+WEBSOCKET|websocket.txt|0|WebSocket is a computer communications
+WESTERN PHILOSOPHY|philosophy/western_philosophy.txt|0|**WESTERN PHILOSOPHY**
+WETLAND|wetland.txt|0|A wetland is a distinct semi-aquatic
+WHALE|animals/whale.txt|0|Category: Wikipedia › Animals
+WHEAT|plants/wheat.txt|0|Category: Wikipedia › Plants
+WHEELCHAIR|wheelchair.txt|0|A wheelchair is a mobilized form of
+WHEEL|engineering/wheel.txt|0|Category: Wikipedia › Engineering
+WI FI|wi_fi.txt|0|Wi-Fi is a family of wireless network
+WILDFIRE|wildfire.txt|0|A wildfire, forest fire, or a bushfire
+WILLIAM SHAKESPEARE|people/william_shakespeare.txt|0|**WILLIAM SHAKESPEARE**
+WILLIAM SHAKESPEARE|william_shakespeare.txt|0|**WILLIAM SHAKESPEARE**
+WILLOW|plants/willow.txt|0|Category: Wikipedia › Plants
+WIND POWER|Wind_Power.txt|0|**COMPREHENSIVE OVERVIEW**
+WIND TURBINE|wind_turbine.txt|0|A wind turbine is a device that
+WINSTON CHURCHILL|people/winston_churchill.txt|0|**WINSTON CHURCHILL**
+WINSTON CHURCHILL|winston_churchill.txt|0|**WINSTON CHURCHILL**
+WOLFGANG AMADEUS MOZART|wolfgang_amadeus_mozart.txt|0|**WOLFGANG AMADEUS MOZART**
+WOLF|animals/wolf.txt|0|Category: Wikipedia › Animals
+WOMENS SUFFRAGE|womens_suffrage.txt|0|Women's suffrage is the right of women
+WOODPECKER|animals/woodpecker.txt|0|Category: Wikipedia › Animals
+WORLD WAR II|history/world_war_ii.txt|0|Category: Wikipedia › History
+WORLD WAR II|world_war_ii.txt|0|**COMPREHENSIVE OVERVIEW**
+WORLD WAR I|history/world_war_i.txt|0|Category: Wikipedia › History
+WORLD WAR I|world_war_i.txt|0|**COMPREHENSIVE OVERVIEW**
+WORLD WIDE WEB|world_wide_web.txt|0|The World Wide Web is an information
+WORMHOLE|physics/wormhole.txt|0|Category: Wikipedia › Physics
+X RAY|x_ray.txt|0|An X-ray (also known in many languages
+YANGTZE|geography/yangtze.txt|0|Category: Wikipedia › Geography
+YELLOWSTONE NATIONAL PARK|geography/yellowstone_national_park.txt|0|**YELLOWSTONE NATIONAL PARK**
+YEMEN|geography/yemen.txt|0|Category: Wikipedia › Geography
+YOGA|yoga.txt|0|Yoga is a group of physical, mental,
+ZAMBIA|geography/zambia.txt|0|Category: Wikipedia › Geography
+ZEBRA|animals/zebra.txt|0|Category: Wikipedia › Animals
+ZIMBABWE|geography/zimbabwe.txt|0|Category: Wikipedia › Geography
+ZINC|chemistry/zinc.txt|0|Category: Wikipedia › Chemistry
 
 =======================================
-**RELATED ARTICLES:**
-
-• Womens Suffrage
-• Tornado
-• Carl Jung
-• Arithmetic
-• Brain
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~7,428
-Category: Wikipedia
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 1447

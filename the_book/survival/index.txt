@@ -3,245 +3,89 @@
 Category: Survival
 ---------------------------------------
 
-**INDEX**
-
-Category: Survival
----------------------------------------
-
-HUNTING
-BASICS|Hunting_Basics.txt|0|COMPREHENSIVE
-HUNTING GUIDE
-KNOT TYING
-ESSENTIAL|Knot_Tying_Essential.txt|0|ESSENTIAL
-SURVIVAL KNOTS
-NAVIGATION
-COMPASS|Navigation_Compass.txt|0|NAVIGATION
-WITH COMPASS
-TRAPPING
-SNARES|Trapping_Snares.txt|0|COMPLETE
-TRAPPING GUIDE
-01 FIRE
-FUNDAMENTALS|fire/01_fire_fundamentals.txt|0|Category:
-Survival › Fire
-02 FIRE
-STRUCTURES|fire/02_fire_structures.txt|0|Category:
-Survival › Fire
-03 IGNITION
-METHODS|fire/03_ignition_methods.txt|0|Category:
-Survival › Fire
-BAMBOO FIRE
-SAW|fire/Bamboo_Fire_Saw.txt|0|Category:
-Survival › Fire
-BATTERY
-METHOD|fire/Battery_Method.txt|0|Category:
-Survival › Fire
-BOW
-DRILL|fire/Bow_Drill.txt|0|Category:
-Survival › Fire
-FIRE LAYOUT
-LOGCABIN|fire/Fire_Layout_LogCabin.txt|0|Category:
-Survival › Fire
-FIRE LAYOUT
-PLATFORM|fire/Fire_Layout_Platform.txt|0|Category:
-Survival › Fire
-FIRE LAYOUT
-TEEPEE|fire/Fire_Layout_Teepee.txt|0|Category:
-Survival › Fire
-FIRE
-PLOW|fire/Fire_Plow.txt|0|Category:
-Survival › Fire
-FIRE IN
-RAIN|fire/Fire_in_Rain.txt|0|Category:
-Survival › Fire
-FLINT AND
-STEEL|fire/Flint_and_Steel.txt|0|Category:
-Survival › Fire
-HAND
-DRILL|fire/Hand_Drill.txt|0|Category:
-Survival › Fire
-ICE LENS|fire/Ice_Lens.txt|0|Category:
-Survival › Fire
-MAGNIFYING
-GLASS|fire/Magnifying_Glass.txt|0|Category:
-Survival › Fire
-FIRE STARTING|fire_starting.txt|0|Fire
-Starting & Maintenance
-FIRST AID|first_aid.txt|0|First Aid &
-Medical Emergencies
-ACORNS|food/Acorns.txt|0|Category:
-Survival › Food
-BLACKBERRY|food/Blackberry.txt|0|Category:
-Survival › Food
-CATTAIL|food/Cattail.txt|0|Category:
-Survival › Food
-CHICKWEED|food/Chickweed.txt|0|Category:
-Survival › Food
-CLOVER|food/Clover.txt|0|Category:
-Survival › Food
-DANDELION|food/Dandelion.txt|0|Category:
-Survival › Food
-DOCK|food/Dock.txt|0|Category: Survival
-› Food
-ELDERBERRY|food/Elderberry.txt|0|Category:
-Survival › Food
-LAMBS
-QUARTER|food/Lambs_Quarter.txt|0|Category:
-Survival › Food
-NETTLE|food/Nettle.txt|0|Category:
-Survival › Food
-PINE
-NEEDLES|food/Pine_Needles.txt|0|Category:
-Survival › Food
-PLANTAIN|food/Plantain.txt|0|Category:
-Survival › Food
-PURSLANE|food/Purslane.txt|0|Category:
-Survival › Food
-RASPBERRY|food/Raspberry.txt|0|Category:
-Survival › Food
-ROSE
-HIPS|food/Rose_Hips.txt|0|Category:
-Survival › Food
-SORREL|food/Sorrel.txt|0|Category:
-Survival › Food
-WILD
-ASPARAGUS|food/Wild_Asparagus.txt|0|Category:
-Survival › Food
-WILD
-GARLIC|food/Wild_Garlic.txt|0|Category:
-Survival › Food
-WILD
-ONION|food/Wild_Onion.txt|0|Category:
-Survival › Food
-WILD
-STRAWBERRY|food/Wild_Strawberry.txt|0|Category:
-Survival › Food
-01 SHELTER
-PRIORITIES|shelter/01_shelter_priorities.txt|0|01
-SHELTER PRIORITIES
-02 DEBRIS
-HUT|shelter/02_debris_hut.txt|0|Category:
-Survival › Shelter
-03 LEAN TO
-SHELTER|shelter/03_lean_to_shelter.txt|0|Category:
-Survival › Shelter
-04 SNOW
-SHELTER|shelter/04_snow_shelter.txt|0|Category:
-Survival › Shelter
-A FRAME|shelter/A-Frame.txt|0|Category:
-Survival › Shelter
-BEACH
-SHELTER|shelter/Beach_Shelter.txt|0|Category:
-Survival › Shelter
-DEBRIS
-HUT|shelter/Debris_Hut.txt|0|Category:
-Survival › Shelter
-DESERT
-SHELTER|shelter/Desert_Shelter.txt|0|Category:
-Survival › Shelter
-EMERGENCY
-BIVOUAC|shelter/Emergency_Bivouac.txt|0|Category:
-Survival › Shelter
-LEAN TO|shelter/Lean-To.txt|0|Category:
-Survival › Shelter
-PLATFORM
-SHELTER|shelter/Platform_Shelter.txt|0|Category:
-Survival › Shelter
-QUINZHEE|shelter/Quinzhee.txt|0|Category:
-Survival › Shelter
-ROCK
-OVERHANG|shelter/Rock_Overhang.txt|0|Category:
-Survival › Shelter
-SNOW
-CAVE|shelter/Snow_Cave.txt|0|Category:
-Survival › Shelter
-TARP
-SHELTER|shelter/Tarp_Shelter.txt|0|Category:
-Survival › Shelter
-TEEPEE|shelter/Teepee.txt|0|Category:
-Survival › Shelter
-TREE
-SHELTER|shelter/Tree_Shelter.txt|0|Category:
-Survival › Shelter
-UNDERGROUND
-SHELTER|shelter/Underground_Shelter.txt|0|Category:
-Survival › Shelter
-WICKIUP|shelter/Wickiup.txt|0|Category:
-Survival › Shelter
-SHELTER
-BUILDING|shelter_building.txt|0|Exposure
-kills faster than hunger.
-01 RULE OF
-THREES|water/01_rule_of_threes.txt|0|Category:
-Survival › Water
-02 FINDING WATER
-TERRAIN|water/02_finding_water_terrain.txt|0|02
-FINDING WATER TERRAIN
-03 ANIMAL
-INDICATORS|water/03_animal_indicators.txt|0|Category:
-Survival › Water
-04 WATER PURIFICATION
-CRITICAL|water/04_water_purification_critical.txt|0|04
-WATER PURIFICATION CRITICAL
-05 WATER FROM
-PLANTS|water/05_water_from_plants.txt|0|Category:
-Survival › Water
-06 ICE SNOW
-WATER|water/06_ice_snow_water.txt|0|Category:
-Survival › Water
-BOILING
-WATER|water/Boiling_Water.txt|0|Category:
-Survival › Water
-DEW
-COLLECTION|water/Dew_Collection.txt|0|Category:
-Survival › Water
-FINDING
-WATER|water/Finding_Water.txt|0|Category:
-Survival › Water
-GROUNDWATER
-LOCATION|water/Groundwater_Location.txt|0|Category:
-Survival › Water
-RAIN
-COLLECTION|water/Rain_Collection.txt|0|Category:
-Survival › Water
-SNOW
-MELTING|water/Snow_Melting.txt|0|Category:
-Survival › Water
-SOLAR
-STILL|water/Solar_Still.txt|0|Category:
-Survival › Water
-TRANSPIRATION
-BAG|water/Transpiration_Bag.txt|0|Category:
-Survival › Water
-WATER FILTRATION
-DIY|water/Water_Filtration_DIY.txt|0|Category:
-Survival › Water
-WATER
-INDICATORS|water/Water_Indicators.txt|0|Category:
-Survival › Water
-WATER
-PROCUREMENT|water_procurement.txt|0|Water
-Procurement & Purification
-WATER
-PURIFICATION|water_purification.txt|0|Methods
-to make water safe for
+01 FIRE FUNDAMENTALS|fire/01_fire_fundamentals.txt|0|**01 FIRE FUNDAMENTALS**
+01 RULE OF THREES|water/01_rule_of_threes.txt|0|**01 RULE OF THREES**
+01 SHELTER PRIORITIES|shelter/01_shelter_priorities.txt|0|**01 SHELTER PRIORITIES**
+02 DEBRIS HUT|shelter/02_debris_hut.txt|0|Category: Survival › Shelter
+02 FINDING WATER TERRAIN|water/02_finding_water_terrain.txt|0|**02 FINDING WATER TERRAIN**
+02 FIRE STRUCTURES|fire/02_fire_structures.txt|0|**02 FIRE STRUCTURES**
+03 ANIMAL INDICATORS|water/03_animal_indicators.txt|0|**03 ANIMAL INDICATORS**
+03 IGNITION METHODS|fire/03_ignition_methods.txt|0|**03 IGNITION METHODS**
+03 LEAN TO SHELTER|shelter/03_lean_to_shelter.txt|0|**03 LEAN TO SHELTER**
+04 SNOW SHELTER|shelter/04_snow_shelter.txt|0|Category: Survival › Shelter
+04 WATER PURIFICATION CRITICAL|water/04_water_purification_critical.txt|0|**04 WATER PURIFICATION CRITICAL**
+05 WATER FROM PLANTS|water/05_water_from_plants.txt|0|**05 WATER FROM PLANTS**
+06 ICE SNOW WATER|water/06_ice_snow_water.txt|0|**06 ICE SNOW WATER**
+A FRAME|shelter/A-Frame.txt|0|Category: Survival › Shelter
+ACORNS|food/Acorns.txt|0|Category: Survival › Food
+BAMBOO FIRE SAW|fire/Bamboo_Fire_Saw.txt|0|Category: Survival › Fire
+BATTERY METHOD|fire/Battery_Method.txt|0|Category: Survival › Fire
+BEACH SHELTER|shelter/Beach_Shelter.txt|0|Category: Survival › Shelter
+BLACKBERRY|food/Blackberry.txt|0|Category: Survival › Food
+BOILING WATER|water/Boiling_Water.txt|0|Category: Survival › Water
+BOW DRILL|fire/Bow_Drill.txt|0|Category: Survival › Fire
+CATTAIL|food/Cattail.txt|0|Category: Survival › Food
+CHICKWEED|food/Chickweed.txt|0|Category: Survival › Food
+CLOVER|food/Clover.txt|0|Category: Survival › Food
+DANDELION|food/Dandelion.txt|0|Category: Survival › Food
+DEBRIS HUT|shelter/Debris_Hut.txt|0|Category: Survival › Shelter
+DESERT SHELTER|shelter/Desert_Shelter.txt|0|Category: Survival › Shelter
+DEW COLLECTION|water/Dew_Collection.txt|0|Category: Survival › Water
+DOCK|food/Dock.txt|0|Category: Survival › Food
+ELDERBERRY|food/Elderberry.txt|0|Category: Survival › Food
+EMERGENCY BIVOUAC|shelter/Emergency_Bivouac.txt|0|**EMERGENCY BIVOUAC**
+END OF WORLD SURVIVAL GUIDE|End_Of_World_Survival.txt|0|**END OF WORLD SURVIVAL GUIDE**
+FINDING WATER|water/Finding_Water.txt|0|Category: Survival › Water
+FIRE IN RAIN|fire/Fire_in_Rain.txt|0|Category: Survival › Fire
+FIRE LAYOUT LOGCABIN|fire/Fire_Layout_LogCabin.txt|0|**FIRE LAYOUT LOGCABIN**
+FIRE LAYOUT PLATFORM|fire/Fire_Layout_Platform.txt|0|**FIRE LAYOUT PLATFORM**
+FIRE LAYOUT TEEPEE|fire/Fire_Layout_Teepee.txt|0|**FIRE LAYOUT TEEPEE**
+FIRE PLOW|fire/Fire_Plow.txt|0|Category: Survival › Fire
+FIRE STARTING|fire_starting.txt|0|Fire Starting & Maintenance
+FIRST AID|first_aid.txt|0|First Aid & Medical Emergencies
+FLINT AND STEEL|fire/Flint_and_Steel.txt|0|Category: Survival › Fire
+GROUNDWATER LOCATION|water/Groundwater_Location.txt|0|**GROUNDWATER LOCATION**
+HAND DRILL|fire/Hand_Drill.txt|0|Category: Survival › Fire
+HUNTING BASICS|Hunting_Basics.txt|0|**HUNTING FOR SURVIVAL**
+ICE LENS|fire/Ice_Lens.txt|0|Category: Survival › Fire
+KNOT TYING ESSENTIAL|Knot_Tying_Essential.txt|0|**KNOT TYING ESSENTIAL**
+LAMBS QUARTER|food/Lambs_Quarter.txt|0|Category: Survival › Food
+LEAN TO|shelter/Lean-To.txt|0|Category: Survival › Shelter
+LOST AT SEA SURVIVAL GUIDE|Lost_At_Sea.txt|0|**LOST AT SEA SURVIVAL GUIDE**
+MAGNIFYING GLASS|fire/Magnifying_Glass.txt|0|Category: Survival › Fire
+NAVIGATION COMPASS|Navigation_Compass.txt|0|**NAVIGATION COMPASS**
+NETTLE|food/Nettle.txt|0|Category: Survival › Food
+PINE NEEDLES|food/Pine_Needles.txt|0|Category: Survival › Food
+PLANTAIN|food/Plantain.txt|0|Category: Survival › Food
+PLATFORM SHELTER|shelter/Platform_Shelter.txt|0|Category: Survival › Shelter
+PRISON SURVIVAL GUIDE|Prison_Survival.txt|0|**PRISON SURVIVAL GUIDE**
+PURSLANE|food/Purslane.txt|0|Category: Survival › Food
+QUINZHEE|shelter/Quinzhee.txt|0|Category: Survival › Shelter
+RAIN COLLECTION|water/Rain_Collection.txt|0|Category: Survival › Water
+RASPBERRY|food/Raspberry.txt|0|Category: Survival › Food
+RESTARTING CIVILIZATION - COMPLETE GUIDE|Restart_Civilization.txt|0|**RESTARTING CIVILIZATION - COMPLETE GUIDE**
+ROCK OVERHANG|shelter/Rock_Overhang.txt|0|Category: Survival › Shelter
+ROSE HIPS|food/Rose_Hips.txt|0|Category: Survival › Food
+SHELTER BUILDING|shelter_building.txt|0|Exposure kills faster than hunger.
+SNOW CAVE|shelter/Snow_Cave.txt|0|Category: Survival › Shelter
+SNOW MELTING|water/Snow_Melting.txt|0|Category: Survival › Water
+SOLAR STILL|water/Solar_Still.txt|0|Category: Survival › Water
+SORREL|food/Sorrel.txt|0|Category: Survival › Food
+TARP SHELTER|shelter/Tarp_Shelter.txt|0|Category: Survival › Shelter
+TEEPEE|shelter/Teepee.txt|0|Category: Survival › Shelter
+TRANSPIRATION BAG|water/Transpiration_Bag.txt|0|**TRANSPIRATION BAG**
+TRAPPING SNARES|Trapping_Snares.txt|0|**TRAPPING AND SNARING**
+TREE SHELTER|shelter/Tree_Shelter.txt|0|Category: Survival › Shelter
+UNDERGROUND SHELTER|shelter/Underground_Shelter.txt|0|**UNDERGROUND SHELTER**
+WATER FILTRATION DIY|water/Water_Filtration_DIY.txt|0|**WATER FILTRATION DIY**
+WATER INDICATORS|water/Water_Indicators.txt|0|Category: Survival › Water
+WATER PROCUREMENT|water_procurement.txt|0|**WATER PROCUREMENT**
+WATER PURIFICATION|water_purification.txt|0|**WATER PURIFICATION**
+WICKIUP|shelter/Wickiup.txt|0|Category: Survival › Shelter
+WILD ASPARAGUS|food/Wild_Asparagus.txt|0|Category: Survival › Food
+WILD GARLIC|food/Wild_Garlic.txt|0|Category: Survival › Food
+WILD ONION|food/Wild_Onion.txt|0|Category: Survival › Food
+WILD STRAWBERRY|food/Wild_Strawberry.txt|0|Category: Survival › Food
 
 =======================================
-**RELATED ARTICLES:**
-
-• Navigation Compass
-• Water Purification
-• Hunting Basics
-• Water Procurement
-• First Aid
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~409
-Category: Survival
-
-<!-- FORMATTED: 767d13a4 -->
-END OF WORLD|End_Of_World_Survival.txt|0|Complete guide to apocalypse survival and rebuilding
-PRISON SURVIVAL|Prison_Survival.txt|0|Comprehensive guide to surviving incarceration
-LOST AT SEA|Lost_At_Sea.txt|0|Maritime survival - water procurement, fishing, rescue
-RESTART CIVILIZATION|Restart_Civilization.txt|0|Rebuilding society from scratch - complete blueprint
+Total entries: 83

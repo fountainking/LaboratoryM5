@@ -1,43 +1,16 @@
 **INDEX**
 
-Category: Edible_Plants
----------------------------------------
-
-**INDEX**
-
 Category: Edible Plants
 ---------------------------------------
 
-ACORNS|acorns.txt|0|Category:
-Edible_Plants
-CATTAIL|cattail.txt|0|Category:
-Edible_Plants
-CHICKWEED|chickweed.txt|0|Category:
-Edible_Plants
-CLOVER|clover.txt|0|Category:
-Edible_Plants
-DANDELION|dandelion.txt|0|Category:
-Edible_Plants
-PLANTAIN|plantain.txt|0|Category:
-Edible_Plants
-PURSLANE|purslane.txt|0|Category:
-Edible_Plants
-WOOD SORREL|wood_sorrel.txt|0|Category:
-Edible_Plants
+ACORNS|acorns.txt|0|Category: Edible_Plants
+CATTAIL|cattail.txt|0|Category: Edible_Plants
+CHICKWEED|chickweed.txt|0|Category: Edible_Plants
+CLOVER|clover.txt|0|Category: Edible_Plants
+DANDELION|dandelion.txt|0|Category: Edible_Plants
+PLANTAIN|plantain.txt|0|Category: Edible_Plants
+PURSLANE|purslane.txt|0|Category: Edible_Plants
+WOOD SORREL|wood_sorrel.txt|0|Category: Edible_Plants
 
 =======================================
-**RELATED ARTICLES:**
-
-• Acorns
-• Wood Sorrel
-• Chickweed
-• Purslane
-• Clover
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~22
-Category: Edible_Plants
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 8

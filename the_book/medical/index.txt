@@ -3,90 +3,31 @@
 Category: Medical
 ---------------------------------------
 
-**INDEX**
-
-Category: Medical
----------------------------------------
-
-BURNS
-TREATMENT|Burns_Treatment.txt|0|BURNS -
-FIRST AID & CARE
-CONSTIPATION
-RELIEF|Constipation_Relief.txt|0|CONSTIPATION
-- CAUSES & TREATMENT
-DEHYDRATION|Dehydration.txt|0|**DEHYDRATION
-- RECOGNITION &
-DIARRHEA
-TREATMENT|Diarrhea_Treatment.txt|0|DIARRHEA
-- TREATMENT & PREVENTION
-FEVER
-MANAGEMENT|Fever_Management.txt|0|FEVER
-- WHEN TO WORRY & TREATMENT
-FOOD
-POISONING|Food_Poisoning.txt|0|FOOD
-POISONING - RECOGNITION & CARE
-HYPOTHERMIA
-TREATMENT|Hypothermia_Treatment.txt|0|HYPOTHERMIA
-TREATMENT
-WOUND CARE
-INFECTION|Wound_Care_Infection.txt|0|WOUND
-CARE & INFECTION PREVENTION
-ALTITUDE
-SICKNESS|emergency/altitude_sickness.txt|0|Category:
-Medical › Emergency
-ANAPHYLAXIS|emergency/anaphylaxis.txt|0|Category:
-Medical › Emergency
-BONE
-FRACTURE|emergency/bone_fracture.txt|0|Category:
-Medical › Emergency
-BURNS|emergency/burns.txt|0|Category:
-Medical › Emergency
-CARDIOPULMONARY
-RESUSCITATION|emergency/cardiopulmonary_resuscitation.txt|0|CARDIOPULMONARY
-RESUSCITATION
-DEHYDRATION|emergency/dehydration.txt|0|Category:
-Medical › Emergency
-FIRST
-AID|emergency/first_aid.txt|0|Category:
-Medical › Emergency
-FROSTBITE|emergency/frostbite.txt|0|Category:
-Medical › Emergency
-HEAT
-EXHAUSTION|emergency/heat_exhaustion.txt|0|Category:
-Medical › Emergency
-HEIMLICH
-MANEUVER|emergency/heimlich_maneuver.txt|0|Category:
-Medical › Emergency
-HEMORRHAGE|emergency/hemorrhage.txt|0|Category:
-Medical › Emergency
-HYPERTHERMIA|emergency/hyperthermia.txt|0|Category:
-Medical › Emergency
-HYPOTHERMIA|emergency/hypothermia.txt|0|Category:
-Medical › Emergency
-INFECTION|emergency/infection.txt|0|Category:
-Medical › Emergency
-SHOCK
-(CIRCULATORY)|emergency/shock_(circulatory).txt|0|Category:
-Medical › Emergency
-SNAKE
-BITE|emergency/snake_bite.txt|0|Category:
-Medical › Emergency
-WOUND|emergency/wound.txt|0|Category:
-Medical › Emergency
+ALTITUDE SICKNESS|emergency/altitude_sickness.txt|0|**ALTITUDE SICKNESS**
+ANAPHYLAXIS|emergency/anaphylaxis.txt|0|Category: Medical › Emergency
+BONE FRACTURE|emergency/bone_fracture.txt|0|Category: Medical › Emergency
+BURNS TREATMENT|Burns_Treatment.txt|0|**BURNS - FIRST AID & CARE**
+BURNS|emergency/burns.txt|0|Category: Medical › Emergency
+CARDIOPULMONARY RESUSCITATION|emergency/cardiopulmonary_resuscitation.txt|0|**CARDIOPULMONARY RESUSCITATION**
+CONSTIPATION RELIEF|Constipation_Relief.txt|0|**CONSTIPATION RELIEF**
+DEHYDRATION|Dehydration.txt|0|**DEHYDRATION - RECOGNITION &
+DEHYDRATION|emergency/dehydration.txt|0|Category: Medical › Emergency
+DIARRHEA TREATMENT|Diarrhea_Treatment.txt|0|**DIARRHEA TREATMENT**
+FEVER MANAGEMENT|Fever_Management.txt|0|**FEVER - WHEN TO WORRY & TREATMENT**
+FIRST AID|emergency/first_aid.txt|0|Category: Medical › Emergency
+FOOD POISONING|Food_Poisoning.txt|0|**FOOD POISONING - RECOGNITION & CARE**
+FROSTBITE|emergency/frostbite.txt|0|Category: Medical › Emergency
+HEAT EXHAUSTION|emergency/heat_exhaustion.txt|0|Category: Medical › Emergency
+HEIMLICH MANEUVER|emergency/heimlich_maneuver.txt|0|**HEIMLICH MANEUVER**
+HEMORRHAGE|emergency/hemorrhage.txt|0|Category: Medical › Emergency
+HYPERTHERMIA|emergency/hyperthermia.txt|0|Category: Medical › Emergency
+HYPOTHERMIA TREATMENT|Hypothermia_Treatment.txt|0|**HYPOTHERMIA TREATMENT**
+HYPOTHERMIA|emergency/hypothermia.txt|0|Category: Medical › Emergency
+INFECTION|emergency/infection.txt|0|Category: Medical › Emergency
+SHOCK (CIRCULATORY)|emergency/shock_(circulatory).txt|0|**SHOCK (CIRCULATORY)**
+SNAKE BITE|emergency/snake_bite.txt|0|Category: Medical › Emergency
+WOUND CARE INFECTION|Wound_Care_Infection.txt|0|**WOUND CARE INFECTION**
+WOUND|emergency/wound.txt|0|Category: Medical › Emergency
 
 =======================================
-**RELATED ARTICLES:**
-
-• Dehydration
-• Wound Care Infection
-• Diarrhea Treatment
-• Constipation Relief
-• Fever Management
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~126
-Category: Medical
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 25

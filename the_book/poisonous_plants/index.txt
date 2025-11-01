@@ -1,58 +1,21 @@
 **INDEX**
 
-Category: Poisonous_Plants
----------------------------------------
-
-**INDEX**
-
 Category: Poisonous Plants
 ---------------------------------------
 
-CASTOR BEAN|Castor_Bean.txt|0|Category:
-Poisonous_Plants
-DEADLY
-NIGHTSHADE|Deadly_Nightshade.txt|0|Category:
-Poisonous_Plants
-DEATH CAMAS|Death_Camas.txt|0|Category:
-Poisonous_Plants
-FOXGLOVE|Foxglove.txt|0|Category:
-Poisonous_Plants
-JIMSONWEED|Jimsonweed.txt|0|Category:
-Poisonous_Plants
-MONKSHOOD|Monkshood.txt|0|Category:
-Poisonous_Plants
-OLEANDER|Oleander.txt|0|Category:
-Poisonous_Plants
-POISON
-HEMLOCK|Poison_Hemlock.txt|0|Category:
-Poisonous_Plants
-POISON IVY|Poison_Ivy.txt|0|Category:
-Poisonous_Plants
-POISON OAK|Poison_Oak.txt|0|Category:
-Poisonous_Plants
-POISON
-SUMAC|Poison_Sumac.txt|0|Category:
-Poisonous_Plants
-WATER
-HEMLOCK|Water_Hemlock.txt|0|Category:
-Poisonous_Plants
-WHITE
-SNAKEROOT|White_Snakeroot.txt|0|Category:
-Poisonous_Plants
+CASTOR BEAN|Castor_Bean.txt|0|Category: Poisonous_Plants
+DEADLY NIGHTSHADE|Deadly_Nightshade.txt|0|**DEADLY NIGHTSHADE**
+DEATH CAMAS|Death_Camas.txt|0|Category: Poisonous_Plants
+FOXGLOVE|Foxglove.txt|0|Category: Poisonous_Plants
+JIMSONWEED|Jimsonweed.txt|0|Category: Poisonous_Plants
+MONKSHOOD|Monkshood.txt|0|Category: Poisonous_Plants
+OLEANDER|Oleander.txt|0|Category: Poisonous_Plants
+POISON HEMLOCK|Poison_Hemlock.txt|0|Category: Poisonous_Plants
+POISON IVY|Poison_Ivy.txt|0|Category: Poisonous_Plants
+POISON OAK|Poison_Oak.txt|0|Category: Poisonous_Plants
+POISON SUMAC|Poison_Sumac.txt|0|Category: Poisonous_Plants
+WATER HEMLOCK|Water_Hemlock.txt|0|Category: Poisonous_Plants
+WHITE SNAKEROOT|White_Snakeroot.txt|0|Category: Poisonous_Plants
 
 =======================================
-**RELATED ARTICLES:**
-
-• Poison Oak
-• Foxglove
-• Poison Hemlock
-• Monkshood
-• Jimsonweed
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~40
-Category: Poisonous_Plants
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 13

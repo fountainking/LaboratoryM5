@@ -3,319 +3,115 @@
 Category: History
 ---------------------------------------
 
-**INDEX**
-
-Category: History
----------------------------------------
-
-ABRAHAM
-LINCOLN|expanded/abraham_lincoln.txt|0|Category:
-History › Expanded
-ACHAEMENID
-EMPIRE|expanded/achaemenid_empire.txt|0|Category:
-History › Expanded
-ADOLF
-HITLER|expanded/adolf_hitler.txt|0|Category:
-History › Expanded
-AGE OF
-DISCOVERY|expanded/age_of_discovery.txt|0|Category:
-History › Expanded
-AGE OF
-ENLIGHTENMENT|expanded/age_of_enlightenment.txt|0|Category:
-History › Expanded
-AKKADIAN
-EMPIRE|expanded/akkadian_empire.txt|0|Category:
-History › Expanded
-AMERICAN
-REVOLUTION|expanded/american_revolution.txt|0|Category:
-History › Expanded
-ANCIENT
-EGYPT|expanded/ancient_egypt.txt|0|Category:
-History › Expanded
-ANCIENT
-GREECE|expanded/ancient_greece.txt|0|Category:
-History › Expanded
-ANCIENT
-ROME|expanded/ancient_rome.txt|0|Category:
-History › Expanded
-ASSYRIA|expanded/assyria.txt|0|Category:
-History › Expanded
-ATHENS|expanded/athens.txt|0|Category:
-History › Expanded
-AUGUSTUS|expanded/augustus.txt|0|Category:
-History › Expanded
-BABYLONIA|expanded/babylonia.txt|0|Category:
-History › Expanded
-BENJAMIN
-FRANKLIN|expanded/benjamin_franklin.txt|0|Category:
-History › Expanded
-BLACK
-DEATH|expanded/black_death.txt|0|Category:
-History › Expanded
-BYZANTINE
-EMPIRE|expanded/byzantine_empire.txt|0|Category:
-History › Expanded
-CARTHAGE|expanded/carthage.txt|0|Category:
-History › Expanded
-CHARLEMAGNE|expanded/charlemagne.txt|0|Category:
-History › Expanded
-COLD
-WAR|expanded/cold_war.txt|0|Category:
-History › Expanded
-COLONIALISM|expanded/colonialism.txt|0|Category:
-History › Expanded
-CONSTANTINE THE
-GREAT|expanded/constantine_the_great.txt|0|CONSTANTINE
-THE GREAT
-CRUSADES|expanded/crusades.txt|0|Category:
-History › Expanded
-DISSOLUTION OF THE SOVIET
-UNION|expanded/dissolution_of_the_soviet_union.txt|0|DISSOLUTION
-OF THE SOVIET UNION
-EARLY MIDDLE
-AGES|expanded/early_middle_ages.txt|0|Category:
-History › Expanded
-ELIZABETH
-I|expanded/elizabeth_i.txt|0|Category:
-History › Expanded
-FALL OF THE BERLIN
-WALL|expanded/fall_of_the_berlin_wall.txt|0|FALL
-OF THE BERLIN WALL
-FEUDALISM|expanded/feudalism.txt|0|Category:
-History › Expanded
-FRANKLIN D
-ROOSEVELT|expanded/franklin_d_roosevelt.txt|0|Category:
-History › Expanded
-FRENCH
-REVOLUTION|expanded/french_revolution.txt|0|Category:
-History › Expanded
-GALILEO
-GALILEI|expanded/galileo_galilei.txt|0|Category:
-History › Expanded
-GENGHIS
-KHAN|expanded/genghis_khan.txt|0|Category:
-History › Expanded
-GEORGE
-WASHINGTON|expanded/george_washington.txt|0|Category:
-History › Expanded
-GREAT
-DEPRESSION|expanded/great_depression.txt|0|Category:
-History › Expanded
-GUPTA
-EMPIRE|expanded/gupta_empire.txt|0|Category:
-History › Expanded
-HAN
-DYNASTY|expanded/han_dynasty.txt|0|Category:
-History › Expanded
-HARRY S
-TRUMAN|expanded/harry_s_truman.txt|0|Category:
-History › Expanded
-HELLENISTIC
-PERIOD|expanded/hellenistic_period.txt|0|Category:
-History › Expanded
-HENRY
-VIII|expanded/henry_viii.txt|0|Category:
-History › Expanded
-HIGH MIDDLE
-AGES|expanded/high_middle_ages.txt|0|Category:
-History › Expanded
-HISTORY OF
-CHINA|expanded/history_of_china.txt|0|Category:
-History › Expanded
-HISTORY OF
-IRAN|expanded/history_of_iran.txt|0|Category:
-History › Expanded
-HITTITES|expanded/hittites.txt|0|Category:
-History › Expanded
-HOLY ROMAN
-EMPIRE|expanded/holy_roman_empire.txt|0|Category:
-History › Expanded
-HUNDRED YEARS
-WAR|expanded/hundred_years_war.txt|0|Category:
-History › Expanded
-IMPERIALISM|expanded/imperialism.txt|0|Category:
-History › Expanded
-INDUSTRIAL
-REVOLUTION|expanded/industrial_revolution.txt|0|INDUSTRIAL
-REVOLUTION
-ISAAC
-NEWTON|expanded/isaac_newton.txt|0|Category:
-History › Expanded
-JOAN OF
-ARC|expanded/joan_of_arc.txt|0|Category:
-History › Expanded
-JOHN F
-KENNEDY|expanded/john_f_kennedy.txt|0|Category:
-History › Expanded
-JOSEPH
-STALIN|expanded/joseph_stalin.txt|0|Category:
-History › Expanded
-JULIUS
-CAESAR|expanded/julius_caesar.txt|0|Category:
-History › Expanded
-KINGDOM OF
-KUSH|expanded/kingdom_of_kush.txt|0|Category:
-History › Expanded
-LATE MIDDLE
-AGES|expanded/late_middle_ages.txt|0|Category:
-History › Expanded
-LEONARDO DA
-VINCI|expanded/leonardo_da_vinci.txt|0|Category:
-History › Expanded
-MACEDONIA|expanded/macedonia.txt|0|Category:
-History › Expanded
-MAHATMA
-GANDHI|expanded/mahatma_gandhi.txt|0|Category:
-History › Expanded
-MAO
-ZEDONG|expanded/mao_zedong.txt|0|Category:
-History › Expanded
-MARCO
-POLO|expanded/marco_polo.txt|0|Category:
-History › Expanded
-MARTIN
-LUTHER|expanded/martin_luther.txt|0|Category:
-History › Expanded
-MARTIN LUTHER KING
-JR|expanded/martin_luther_king_jr.txt|0|MARTIN
-LUTHER KING JR
-MAURYA
-EMPIRE|expanded/maurya_empire.txt|0|Category:
-History › Expanded
-MEIJI
-RESTORATION|expanded/meiji_restoration.txt|0|Category:
-History › Expanded
-MICHELANGELO|expanded/michelangelo.txt|0|Category:
-History › Expanded
-MIDDLE
-AGES|expanded/middle_ages.txt|0|Category:
-History › Expanded
-MING
-DYNASTY|expanded/ming_dynasty.txt|0|Category:
-History › Expanded
-MONGOL
-EMPIRE|expanded/mongol_empire.txt|0|Category:
-History › Expanded
-NAPOLEON|expanded/napoleon.txt|0|Category:
-History › Expanded
-NAPOLEONIC
-WARS|expanded/napoleonic_wars.txt|0|Category:
-History › Expanded
-NELSON
-MANDELA|expanded/nelson_mandela.txt|0|Category:
-History › Expanded
-NORMAN
-CONQUEST|expanded/norman_conquest.txt|0|Category:
-History › Expanded
-NUBIA|expanded/nubia.txt|0|Category:
-History › Expanded
-OTTO VON
-BISMARCK|expanded/otto_von_bismarck.txt|0|Category:
-History › Expanded
-OTTOMAN
-EMPIRE|expanded/ottoman_empire.txt|0|Category:
-History › Expanded
-OUTLINE OF ANCIENT
-INDIA|expanded/outline_of_ancient_india.txt|0|OUTLINE
-OF ANCIENT INDIA
-PARTHIAN
-EMPIRE|expanded/parthian_empire.txt|0|Category:
-History › Expanded
-PHOENICIA|expanded/phoenicia.txt|0|Category:
-History › Expanded
-PTOLEMAIC
-KINGDOM|expanded/ptolemaic_kingdom.txt|0|Category:
-History › Expanded
-QIN
-DYNASTY|expanded/qin_dynasty.txt|0|Category:
-History › Expanded
-QING
-DYNASTY|expanded/qing_dynasty.txt|0|Category:
-History › Expanded
-QUEEN
-VICTORIA|expanded/queen_victoria.txt|0|Category:
-History › Expanded
-RECONQUISTA|expanded/reconquista.txt|0|Category:
-History › Expanded
-REFORMATION|expanded/reformation.txt|0|Category:
-History › Expanded
-RENAISSANCE|expanded/renaissance.txt|0|Category:
-History › Expanded
-RICHARD I OF
-ENGLAND|expanded/richard_i_of_england.txt|0|Category:
-History › Expanded
-ROMAN
-EMPIRE|expanded/roman_empire.txt|0|Category:
-History › Expanded
-ROMAN
-REPUBLIC|expanded/roman_republic.txt|0|Category:
-History › Expanded
-RUSSIAN
-REVOLUTION|expanded/russian_revolution.txt|0|Category:
-History › Expanded
-SALADIN|expanded/saladin.txt|0|Category:
-History › Expanded
-SASANIAN
-EMPIRE|expanded/sasanian_empire.txt|0|Category:
-History › Expanded
-SCIENTIFIC
-REVOLUTION|expanded/scientific_revolution.txt|0|SCIENTIFIC
-REVOLUTION
-SCRAMBLE FOR
-AFRICA|expanded/scramble_for_africa.txt|0|Category:
-History › Expanded
-SELEUCID
-EMPIRE|expanded/seleucid_empire.txt|0|Category:
-History › Expanded
-SONG
-DYNASTY|expanded/song_dynasty.txt|0|Category:
-History › Expanded
-SPACE
-RACE|expanded/space_race.txt|0|Category:
-History › Expanded
-SPARTA|expanded/sparta.txt|0|Category:
-History › Expanded
-SUMER|expanded/sumer.txt|0|Category:
-History › Expanded
-TANG
-DYNASTY|expanded/tang_dynasty.txt|0|Category:
-History › Expanded
-THOMAS
-JEFFERSON|expanded/thomas_jefferson.txt|0|Category:
-History › Expanded
-VICTORIAN
-ERA|expanded/victorian_era.txt|0|Category:
-History › Expanded
-VIETNAM
-WAR|expanded/vietnam_war.txt|0|Category:
-History › Expanded
-VIKING
-AGE|expanded/viking_age.txt|0|Category:
-History › Expanded
-VLADIMIR
-LENIN|expanded/vladimir_lenin.txt|0|Category:
-History › Expanded
-VOLTAIRE|expanded/voltaire.txt|0|Category:
-History › Expanded
-WILLIAM
-SHAKESPEARE|expanded/william_shakespeare.txt|0|Category:
-History › Expanded
-WILLIAM THE
-CONQUEROR|expanded/william_the_conqueror.txt|0|WILLIAM
-THE CONQUEROR
-WINSTON
-CHURCHILL|expanded/winston_churchill.txt|0|Category:
-History › Expanded
-WORLD WAR
-I|expanded/world_war_i.txt|0|Category:
-History › Expanded
-WORLD WAR
-II|expanded/world_war_ii.txt|0|Category:
-History › Expanded
+ABRAHAM LINCOLN|expanded/abraham_lincoln.txt|0|Category: History › Expanded
+ACHAEMENID EMPIRE|expanded/achaemenid_empire.txt|0|**ACHAEMENID EMPIRE**
+ADOLF HITLER|expanded/adolf_hitler.txt|0|Category: History › Expanded
+AGE OF DISCOVERY|expanded/age_of_discovery.txt|0|Category: History › Expanded
+AGE OF ENLIGHTENMENT|expanded/age_of_enlightenment.txt|0|**AGE OF ENLIGHTENMENT**
+AKKADIAN EMPIRE|expanded/akkadian_empire.txt|0|Category: History › Expanded
+AMERICAN REVOLUTION|expanded/american_revolution.txt|0|**AMERICAN REVOLUTION**
+ANCIENT EGYPT|expanded/ancient_egypt.txt|0|Category: History › Expanded
+ANCIENT GREECE|expanded/ancient_greece.txt|0|Category: History › Expanded
+ANCIENT ROME|expanded/ancient_rome.txt|0|Category: History › Expanded
+ASSYRIA|expanded/assyria.txt|0|Category: History › Expanded
+ATHENS|expanded/athens.txt|0|Category: History › Expanded
+AUGUSTUS|expanded/augustus.txt|0|Category: History › Expanded
+BABYLONIA|expanded/babylonia.txt|0|Category: History › Expanded
+BENJAMIN FRANKLIN|expanded/benjamin_franklin.txt|0|**BENJAMIN FRANKLIN**
+BLACK DEATH|expanded/black_death.txt|0|Category: History › Expanded
+BYZANTINE EMPIRE|expanded/byzantine_empire.txt|0|Category: History › Expanded
+CARTHAGE|expanded/carthage.txt|0|Category: History › Expanded
+CHARLEMAGNE|expanded/charlemagne.txt|0|Category: History › Expanded
+COLD WAR|expanded/cold_war.txt|0|Category: History › Expanded
+COLONIALISM|expanded/colonialism.txt|0|Category: History › Expanded
+CONSTANTINE THE GREAT|expanded/constantine_the_great.txt|0|**CONSTANTINE THE GREAT**
+CRUSADES|expanded/crusades.txt|0|Category: History › Expanded
+DISSOLUTION OF THE SOVIET UNION|expanded/dissolution_of_the_soviet_union.txt|0|**DISSOLUTION OF THE SOVIET UNION**
+EARLY MIDDLE AGES|expanded/early_middle_ages.txt|0|**EARLY MIDDLE AGES**
+ELIZABETH I|expanded/elizabeth_i.txt|0|Category: History › Expanded
+FALL OF THE BERLIN WALL|expanded/fall_of_the_berlin_wall.txt|0|**FALL OF THE BERLIN WALL**
+FEUDALISM|expanded/feudalism.txt|0|Category: History › Expanded
+FRANKLIN D ROOSEVELT|expanded/franklin_d_roosevelt.txt|0|**FRANKLIN D ROOSEVELT**
+FRENCH REVOLUTION|expanded/french_revolution.txt|0|**FRENCH REVOLUTION**
+GALILEO GALILEI|expanded/galileo_galilei.txt|0|Category: History › Expanded
+GENGHIS KHAN|expanded/genghis_khan.txt|0|Category: History › Expanded
+GEORGE WASHINGTON|expanded/george_washington.txt|0|**GEORGE WASHINGTON**
+GREAT DEPRESSION|expanded/great_depression.txt|0|Category: History › Expanded
+GUPTA EMPIRE|expanded/gupta_empire.txt|0|Category: History › Expanded
+HAN DYNASTY|expanded/han_dynasty.txt|0|Category: History › Expanded
+HARRY S TRUMAN|expanded/harry_s_truman.txt|0|Category: History › Expanded
+HELLENISTIC PERIOD|expanded/hellenistic_period.txt|0|**HELLENISTIC PERIOD**
+HENRY VIII|expanded/henry_viii.txt|0|Category: History › Expanded
+HIGH MIDDLE AGES|expanded/high_middle_ages.txt|0|Category: History › Expanded
+HISTORY OF CHINA|expanded/history_of_china.txt|0|Category: History › Expanded
+HISTORY OF IRAN|expanded/history_of_iran.txt|0|Category: History › Expanded
+HITTITES|expanded/hittites.txt|0|Category: History › Expanded
+HOLY ROMAN EMPIRE|expanded/holy_roman_empire.txt|0|**HOLY ROMAN EMPIRE**
+HUNDRED YEARS WAR|expanded/hundred_years_war.txt|0|**HUNDRED YEARS WAR**
+IMPERIALISM|expanded/imperialism.txt|0|Category: History › Expanded
+INDUSTRIAL REVOLUTION|expanded/industrial_revolution.txt|0|**INDUSTRIAL REVOLUTION**
+ISAAC NEWTON|expanded/isaac_newton.txt|0|Category: History › Expanded
+JOAN OF ARC|expanded/joan_of_arc.txt|0|Category: History › Expanded
+JOHN F KENNEDY|expanded/john_f_kennedy.txt|0|Category: History › Expanded
+JOSEPH STALIN|expanded/joseph_stalin.txt|0|Category: History › Expanded
+JULIUS CAESAR|expanded/julius_caesar.txt|0|Category: History › Expanded
+KINGDOM OF KUSH|expanded/kingdom_of_kush.txt|0|Category: History › Expanded
+LATE MIDDLE AGES|expanded/late_middle_ages.txt|0|Category: History › Expanded
+LEONARDO DA VINCI|expanded/leonardo_da_vinci.txt|0|**LEONARDO DA VINCI**
+MACEDONIA|expanded/macedonia.txt|0|Category: History › Expanded
+MAHATMA GANDHI|expanded/mahatma_gandhi.txt|0|Category: History › Expanded
+MAO ZEDONG|expanded/mao_zedong.txt|0|Category: History › Expanded
+MARCO POLO|expanded/marco_polo.txt|0|Category: History › Expanded
+MARTIN LUTHER KING JR|expanded/martin_luther_king_jr.txt|0|**MARTIN LUTHER KING JR**
+MARTIN LUTHER|expanded/martin_luther.txt|0|Category: History › Expanded
+MAURYA EMPIRE|expanded/maurya_empire.txt|0|Category: History › Expanded
+MEIJI RESTORATION|expanded/meiji_restoration.txt|0|**MEIJI RESTORATION**
+MICHELANGELO|expanded/michelangelo.txt|0|Category: History › Expanded
+MIDDLE AGES|expanded/middle_ages.txt|0|Category: History › Expanded
+MING DYNASTY|expanded/ming_dynasty.txt|0|Category: History › Expanded
+MONGOL EMPIRE|expanded/mongol_empire.txt|0|Category: History › Expanded
+NAPOLEONIC WARS|expanded/napoleonic_wars.txt|0|Category: History › Expanded
+NAPOLEON|expanded/napoleon.txt|0|Category: History › Expanded
+NELSON MANDELA|expanded/nelson_mandela.txt|0|Category: History › Expanded
+NORMAN CONQUEST|expanded/norman_conquest.txt|0|Category: History › Expanded
+NUBIA|expanded/nubia.txt|0|Category: History › Expanded
+OTTO VON BISMARCK|expanded/otto_von_bismarck.txt|0|**OTTO VON BISMARCK**
+OTTOMAN EMPIRE|expanded/ottoman_empire.txt|0|Category: History › Expanded
+OUTLINE OF ANCIENT INDIA|expanded/outline_of_ancient_india.txt|0|**OUTLINE OF ANCIENT INDIA**
+PARTHIAN EMPIRE|expanded/parthian_empire.txt|0|Category: History › Expanded
+PHOENICIA|expanded/phoenicia.txt|0|Category: History › Expanded
+PTOLEMAIC KINGDOM|expanded/ptolemaic_kingdom.txt|0|**PTOLEMAIC KINGDOM**
+QIN DYNASTY|expanded/qin_dynasty.txt|0|Category: History › Expanded
+QING DYNASTY|expanded/qing_dynasty.txt|0|Category: History › Expanded
+QUEEN VICTORIA|expanded/queen_victoria.txt|0|Category: History › Expanded
+RECONQUISTA|expanded/reconquista.txt|0|Category: History › Expanded
+REFORMATION|expanded/reformation.txt|0|Category: History › Expanded
+RENAISSANCE|expanded/renaissance.txt|0|Category: History › Expanded
+RICHARD I OF ENGLAND|expanded/richard_i_of_england.txt|0|**RICHARD I OF ENGLAND**
+ROMAN EMPIRE|expanded/roman_empire.txt|0|Category: History › Expanded
+ROMAN REPUBLIC|expanded/roman_republic.txt|0|Category: History › Expanded
+RUSSIAN REVOLUTION|expanded/russian_revolution.txt|0|**RUSSIAN REVOLUTION**
+SALADIN|expanded/saladin.txt|0|Category: History › Expanded
+SASANIAN EMPIRE|expanded/sasanian_empire.txt|0|Category: History › Expanded
+SCIENTIFIC REVOLUTION|expanded/scientific_revolution.txt|0|**SCIENTIFIC REVOLUTION**
+SCRAMBLE FOR AFRICA|expanded/scramble_for_africa.txt|0|**SCRAMBLE FOR AFRICA**
+SELEUCID EMPIRE|expanded/seleucid_empire.txt|0|Category: History › Expanded
+SONG DYNASTY|expanded/song_dynasty.txt|0|Category: History › Expanded
+SPACE RACE|expanded/space_race.txt|0|Category: History › Expanded
+SPARTA|expanded/sparta.txt|0|Category: History › Expanded
+SUMER|expanded/sumer.txt|0|Category: History › Expanded
+TANG DYNASTY|expanded/tang_dynasty.txt|0|Category: History › Expanded
+THOMAS JEFFERSON|expanded/thomas_jefferson.txt|0|Category: History › Expanded
+VICTORIAN ERA|expanded/victorian_era.txt|0|Category: History › Expanded
+VIETNAM WAR|expanded/vietnam_war.txt|0|Category: History › Expanded
+VIKING AGE|expanded/viking_age.txt|0|Category: History › Expanded
+VLADIMIR LENIN|expanded/vladimir_lenin.txt|0|Category: History › Expanded
+VOLTAIRE|expanded/voltaire.txt|0|Category: History › Expanded
+WILLIAM SHAKESPEARE|expanded/william_shakespeare.txt|0|**WILLIAM SHAKESPEARE**
+WILLIAM THE CONQUEROR|expanded/william_the_conqueror.txt|0|**WILLIAM THE CONQUEROR**
+WINSTON CHURCHILL|expanded/winston_churchill.txt|0|**WINSTON CHURCHILL**
+WORLD WAR II|expanded/world_war_ii.txt|0|Category: History › Expanded
+WORLD WAR I|expanded/world_war_i.txt|0|Category: History › Expanded
 
 =======================================
-Processed: 2025-10-20 10:57
-Words: ~555
-Category: History
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 109

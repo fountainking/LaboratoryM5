@@ -3,368 +3,160 @@
 Category: Reference
 ---------------------------------------
 
-**INDEX**
-
-Category: Reference
----------------------------------------
-
-00 HOW TO INTERPRET
-DREAMS|dreams/00_how_to_interpret_dreams.txt|0|00
-HOW TO INTERPRET DREAMS
-Dream Dictionary
-Index|dreams/00_index.txt|0|DREAM
-DICTIONARY INDEX
-00 QUICK
-REFERENCE|dreams/00_quick_reference.txt|0|Category:
-Reference › Dreams
-BEING
-CHASED|dreams/actions/being_chased.txt|0|Category:
-Reference › Dreams › Actions
-CRYING|dreams/actions/crying.txt|0|Category:
-Reference › Dreams › Actions
-DANCING|dreams/actions/dancing.txt|0|Category:
-Reference › Dreams › Actions
-DROWNING|dreams/actions/drowning.txt|0|Category:
-Reference › Dreams › Actions
-DYING|dreams/actions/dying.txt|0|Category:
-Reference › Dreams › Actions
-EATING|dreams/actions/eating.txt|0|Category:
-Reference › Dreams › Actions
-FIGHTING|dreams/actions/fighting.txt|0|Category:
-Reference › Dreams › Actions
-FINDING
-ROOMS|dreams/actions/finding_rooms.txt|0|Category:
-Reference › Dreams › Actions
-HIDING|dreams/actions/hiding.txt|0|Category:
-Reference › Dreams › Actions
-KISSING|dreams/actions/kissing.txt|0|Category:
-Reference › Dreams › Actions
-LAUGHING|dreams/actions/laughing.txt|0|Category:
-Reference › Dreams › Actions
-MISSING
-TRANSPORTATION|dreams/actions/missing_transportation.txt|0|MISSING
-TRANSPORTATION
-NAKED IN
-PUBLIC|dreams/actions/naked_in_public.txt|0|Category:
-Reference › Dreams › Actions
-RUNNING|dreams/actions/running.txt|0|Category:
-Reference › Dreams › Actions
-SEARCHING|dreams/actions/searching.txt|0|Category:
-Reference › Dreams › Actions
-SINGING|dreams/actions/singing.txt|0|Category:
-Reference › Dreams › Actions
-SWIMMING|dreams/actions/swimming.txt|0|Category:
-Reference › Dreams › Actions
-TAKING
-TEST|dreams/actions/taking_test.txt|0|Category:
-Reference › Dreams › Actions
-TEETH FALLING
-OUT|dreams/actions/teeth_falling_out.txt|0|Category:
-Reference › Dreams › Actions
-UNABLE TO
-SCREAM|dreams/actions/unable_to_scream.txt|0|Category:
-Reference › Dreams › Actions
-BEAR|dreams/animals/bear.txt|0|Category:
-Reference › Dreams › Animals
-BIRD|dreams/animals/bird.txt|0|Category:
-Reference › Dreams › Animals
-BUTTERFLY|dreams/animals/butterfly.txt|0|Category:
-Reference › Dreams › Animals
-CAT|dreams/animals/cat.txt|0|Category:
-Reference › Dreams › Animals
-CROW|dreams/animals/crow.txt|0|Category:
-Reference › Dreams › Animals
-DOG|dreams/animals/dog.txt|0|Category:
-Reference › Dreams › Animals
-ELEPHANT|dreams/animals/elephant.txt|0|Category:
-Reference › Dreams › Animals
-FISH|dreams/animals/fish.txt|0|Category:
-Reference › Dreams › Animals
-HORSE|dreams/animals/horse.txt|0|Category:
-Reference › Dreams › Animals
-LION|dreams/animals/lion.txt|0|Category:
-Reference › Dreams › Animals
-OWL|dreams/animals/owl.txt|0|Category:
-Reference › Dreams › Animals
-RABBIT|dreams/animals/rabbit.txt|0|Category:
-Reference › Dreams › Animals
-SNAKE|dreams/animals/snake.txt|0|Category:
-Reference › Dreams › Animals
-SPIDER|dreams/animals/spider.txt|0|Category:
-Reference › Dreams › Animals
-WOLF|dreams/animals/wolf.txt|0|Category:
-Reference › Dreams › Animals
-BLACK|dreams/colors/black.txt|0|Category:
-Reference › Dreams › Colors
-BLUE|dreams/colors/blue.txt|0|Category:
-Reference › Dreams › Colors
-BROWN|dreams/colors/brown.txt|0|Category:
-Reference › Dreams › Colors
-GOLD|dreams/colors/gold.txt|0|Category:
-Reference › Dreams › Colors
-GRAY|dreams/colors/gray.txt|0|Category:
-Reference › Dreams › Colors
-GREEN|dreams/colors/green.txt|0|Category:
-Reference › Dreams › Colors
-ORANGE|dreams/colors/orange.txt|0|Category:
-Reference › Dreams › Colors
-PINK|dreams/colors/pink.txt|0|Category:
-Reference › Dreams › Colors
-PURPLE|dreams/colors/purple.txt|0|Category:
-Reference › Dreams › Colors
-RED|dreams/colors/red.txt|0|Category:
-Reference › Dreams › Colors
-SILVER|dreams/colors/silver.txt|0|Category:
-Reference › Dreams › Colors
-TURQUOISE|dreams/colors/turquoise.txt|0|Category:
-Reference › Dreams › Colors
-WHITE|dreams/colors/white.txt|0|Category:
-Reference › Dreams › Colors
-YELLOW|dreams/colors/yellow.txt|0|Category:
-Reference › Dreams › Colors
-CLOUDS|dreams/elements/clouds.txt|0|Category:
-Reference › Dreams › Elements
-DROUGHT|dreams/elements/drought.txt|0|Category:
-Reference › Dreams › Elements
-EARTHQUAKE|dreams/elements/earthquake.txt|0|Category:
-Reference › Dreams › Elements
-FIRE|dreams/elements/fire.txt|0|Category:
-Reference › Dreams › Elements
-FLOOD|dreams/elements/flood.txt|0|Category:
-Reference › Dreams › Elements
-FOG|dreams/elements/fog.txt|0|Category:
-Reference › Dreams › Elements
-ICE|dreams/elements/ice.txt|0|Category:
-Reference › Dreams › Elements
-MOON|dreams/elements/moon.txt|0|Category:
-Reference › Dreams › Elements
-RAIN|dreams/elements/rain.txt|0|Category:
-Reference › Dreams › Elements
-SNOW|dreams/elements/snow.txt|0|Category:
-Reference › Dreams › Elements
-STARS|dreams/elements/stars.txt|0|Category:
-Reference › Dreams › Elements
-SUN|dreams/elements/sun.txt|0|Category:
-Reference › Dreams › Elements
-THUNDER|dreams/elements/thunder.txt|0|Category:
-Reference › Dreams › Elements
-TORNADO|dreams/elements/tornado.txt|0|Category:
-Reference › Dreams › Elements
-WIND|dreams/elements/wind.txt|0|Category:
-Reference › Dreams › Elements
-BAG|dreams/objects/bag.txt|0|Category:
-Reference › Dreams › Objects
-BED|dreams/objects/bed.txt|0|Category:
-Reference › Dreams › Objects
-BOOK|dreams/objects/book.txt|0|Category:
-Reference › Dreams › Objects
-CAMERA|dreams/objects/camera.txt|0|Category:
-Reference › Dreams › Objects
-CAR|dreams/objects/car.txt|0|Category:
-Reference › Dreams › Objects
-CHAIR|dreams/objects/chair.txt|0|Category:
-Reference › Dreams › Objects
-CLOCK|dreams/objects/clock.txt|0|Category:
-Reference › Dreams › Objects
-CLOTHING|dreams/objects/clothing.txt|0|Category:
-Reference › Dreams › Objects
-COMPUTER|dreams/objects/computer.txt|0|Category:
-Reference › Dreams › Objects
-DOOR|dreams/objects/door.txt|0|Category:
-Reference › Dreams › Objects
-FOOD|dreams/objects/food.txt|0|Category:
-Reference › Dreams › Objects
-JEWELRY|dreams/objects/jewelry.txt|0|Category:
-Reference › Dreams › Objects
-KEYS|dreams/objects/keys.txt|0|Category:
-Reference › Dreams › Objects
-KNIFE|dreams/objects/knife.txt|0|Category:
-Reference › Dreams › Objects
-MIRROR|dreams/objects/mirror.txt|0|Category:
-Reference › Dreams › Objects
-MONEY|dreams/objects/money.txt|0|Category:
-Reference › Dreams › Objects
-PHONE|dreams/objects/phone.txt|0|Category:
-Reference › Dreams › Objects
-STAIRS|dreams/objects/stairs.txt|0|Category:
-Reference › Dreams › Objects
-WEAPON|dreams/objects/weapon.txt|0|Category:
-Reference › Dreams › Objects
-WINDOW|dreams/objects/window.txt|0|Category:
-Reference › Dreams › Objects
-BABY|dreams/people/baby.txt|0|Category:
-Reference › Dreams › People
-CELEBRITY|dreams/people/celebrity.txt|0|Category:
-Reference › Dreams › People
-CHILD|dreams/people/child.txt|0|Category:
-Reference › Dreams › People
-CROWD|dreams/people/crowd.txt|0|Category:
-Reference › Dreams › People
-DEAD
-PERSON|dreams/people/dead_person.txt|0|Category:
-Reference › Dreams › People
-DOCTOR|dreams/people/doctor.txt|0|Category:
-Reference › Dreams › People
-ENEMY|dreams/people/enemy.txt|0|Category:
-Reference › Dreams › People
-EX
-PARTNER|dreams/people/ex_partner.txt|0|Category:
-Reference › Dreams › People
-FATHER|dreams/people/father.txt|0|Category:
-Reference › Dreams › People
-FRIEND|dreams/people/friend.txt|0|Category:
-Reference › Dreams › People
-MOTHER|dreams/people/mother.txt|0|Category:
-Reference › Dreams › People
-POLICE|dreams/people/police.txt|0|Category:
-Reference › Dreams › People
-PREGNANT
-WOMAN|dreams/people/pregnant_woman.txt|0|Category:
-Reference › Dreams › People
-STRANGER|dreams/people/stranger.txt|0|Category:
-Reference › Dreams › People
-TEACHER|dreams/people/teacher.txt|0|Category:
-Reference › Dreams › People
-BEACH|dreams/places/beach.txt|0|Category:
-Reference › Dreams › Places
-BRIDGE|dreams/places/bridge.txt|0|Category:
-Reference › Dreams › Places
-CAVE|dreams/places/cave.txt|0|Category:
-Reference › Dreams › Places
-CEMETERY|dreams/places/cemetery.txt|0|Category:
-Reference › Dreams › Places
-CHURCH|dreams/places/church.txt|0|Category:
-Reference › Dreams › Places
-CITY|dreams/places/city.txt|0|Category:
-Reference › Dreams › Places
-DESERT|dreams/places/desert.txt|0|Category:
-Reference › Dreams › Places
-FALLING|dreams/places/falling.txt|0|Category:
-Reference › Dreams › Places
-FLYING|dreams/places/flying.txt|0|Category:
-Reference › Dreams › Places
-FOREST|dreams/places/forest.txt|0|Category:
-Reference › Dreams › Places
-GARDEN|dreams/places/garden.txt|0|Category:
-Reference › Dreams › Places
-HOSPITAL|dreams/places/hospital.txt|0|Category:
-Reference › Dreams › Places
-HOUSE|dreams/places/house.txt|0|Category:
-Reference › Dreams › Places
-MOUNTAIN|dreams/places/mountain.txt|0|Category:
-Reference › Dreams › Places
-PRISON|dreams/places/prison.txt|0|Category:
-Reference › Dreams › Places
-RESTAURANT|dreams/places/restaurant.txt|0|Category:
-Reference › Dreams › Places
-ROAD|dreams/places/road.txt|0|Category:
-Reference › Dreams › Places
-SCHOOL|dreams/places/school.txt|0|Category:
-Reference › Dreams › Places
-STORE|dreams/places/store.txt|0|Category:
-Reference › Dreams › Places
-WATER|dreams/places/water.txt|0|Category:
-Reference › Dreams › Places
-00 I CHING
-GUIDE|i_ching/00_i_ching_guide.txt|0|Category:
-Reference › I_Ching
-00 QUICK
-REFERENCE|i_ching/00_quick_reference.txt|0|Category:
-Reference › I_Ching
-01 THE
-CREATIVE|i_ching/01_the_creative.txt|0|Category:
-Reference › I_Ching
-02 THE
-RECEPTIVE|i_ching/02_the_receptive.txt|0|Category:
-Reference › I_Ching
-03 DIFFICULTY AT THE
-BEGINNING|i_ching/03_difficulty_at_the_beginning.txt|0|03
-DIFFICULTY AT THE BEGINNING
-04 YOUTHFUL
-FOLLY|i_ching/04_youthful_folly.txt|0|Category:
-Reference › I_Ching
-05
-WAITING|i_ching/05_waiting.txt|0|Category:
-Reference › I_Ching
-06
-CONFLICT|i_ching/06_conflict.txt|0|Category:
-Reference › I_Ching
-07 THE
-ARMY|i_ching/07_the_army.txt|0|Category:
-Reference › I_Ching
-08 HOLDING
-TOGETHER|i_ching/08_holding_together.txt|0|Category:
-Reference › I_Ching
-09 SMALL
-TAMING|i_ching/09_small_taming.txt|0|Category:
-Reference › I_Ching
-10
-TREADING|i_ching/10_treading.txt|0|Category:
-Reference › I_Ching
-11
-PEACE|i_ching/11_peace.txt|0|Category:
-Reference › I_Ching
-12
-STANDSTILL|i_ching/12_standstill.txt|0|Category:
-Reference › I_Ching
-13
-FELLOWSHIP|i_ching/13_fellowship.txt|0|Category:
-Reference › I_Ching
-14 POSSESSION IN GREAT
-MEASURE|i_ching/14_possession_in_great_measure.txt|0|14
-POSSESSION IN GREAT MEASURE
-15
-MODESTY|i_ching/15_modesty.txt|0|Category:
-Reference › I_Ching
-16
-ENTHUSIASM|i_ching/16_enthusiasm.txt|0|Category:
-Reference › I_Ching
-17
-FOLLOWING|i_ching/17_following.txt|0|Category:
-Reference › I_Ching
-18 WORK ON THE
-DECAYED|i_ching/18_work_on_the_decayed.txt|0|18
-WORK ON THE DECAYED
-19
-APPROACH|i_ching/19_approach.txt|0|Category:
-Reference › I_Ching
-20
-CONTEMPLATION|i_ching/20_contemplation.txt|0|Category:
-Reference › I_Ching
-21 BITING
-THROUGH|i_ching/21_biting_through.txt|0|Category:
-Reference › I_Ching
-22
-GRACE|i_ching/22_grace.txt|0|Category:
-Reference › I_Ching
-23 SPLITTING
-APART|i_ching/23_splitting_apart.txt|0|Category:
-Reference › I_Ching
-24
-RETURN|i_ching/24_return.txt|0|Category:
-Reference › I_Ching
-25
-INNOCENCE|i_ching/25_innocence.txt|0|Category:
-Reference › I_Ching
-26 GREAT
-TAMING|i_ching/26_great_taming.txt|0|Category:
-Reference › I_Ching
-29 THE
-ABYSMAL|i_ching/29_the_abysmal.txt|0|Category:
-Reference › I_Ching
-30 THE
-CLINGING|i_ching/30_the_clinging.txt|0|Category:
-Reference › I_Ching
-63 AFTER
-COMPLETION|i_ching/63_after_completion.txt|0|Category:
-Reference › I_Ching
-64 BEFORE
-COMPLETION|i_ching/64_before_completion.txt|0|Category:
-Reference › I_Ching
+00 HOW TO INTERPRET DREAMS|dreams/00_how_to_interpret_dreams.txt|0|**00 HOW TO INTERPRET DREAMS**
+00 I CHING GUIDE|i_ching/00_i_ching_guide.txt|0|Category: Reference › I_Ching
+00 Index|dreams/00_index.txt|0|DREAM DICTIONARY INDEX
+00 QUICK REFERENCE|dreams/00_quick_reference.txt|0|**00 QUICK REFERENCE**
+00 QUICK REFERENCE|i_ching/00_quick_reference.txt|0|**00 QUICK REFERENCE**
+01 THE CREATIVE|i_ching/01_the_creative.txt|0|Category: Reference › I_Ching
+02 THE RECEPTIVE|i_ching/02_the_receptive.txt|0|Category: Reference › I_Ching
+03 DIFFICULTY AT THE BEGINNING|i_ching/03_difficulty_at_the_beginning.txt|0|**03 DIFFICULTY AT THE BEGINNING**
+04 YOUTHFUL FOLLY|i_ching/04_youthful_folly.txt|0|**04 YOUTHFUL FOLLY**
+05 WAITING|i_ching/05_waiting.txt|0|Category: Reference › I_Ching
+06 CONFLICT|i_ching/06_conflict.txt|0|Category: Reference › I_Ching
+07 THE ARMY|i_ching/07_the_army.txt|0|Category: Reference › I_Ching
+08 HOLDING TOGETHER|i_ching/08_holding_together.txt|0|**08 HOLDING TOGETHER**
+09 SMALL TAMING|i_ching/09_small_taming.txt|0|Category: Reference › I_Ching
+10 TREADING|i_ching/10_treading.txt|0|Category: Reference › I_Ching
+11 PEACE|i_ching/11_peace.txt|0|Category: Reference › I_Ching
+12 STANDSTILL|i_ching/12_standstill.txt|0|Category: Reference › I_Ching
+13 FELLOWSHIP|i_ching/13_fellowship.txt|0|Category: Reference › I_Ching
+14 POSSESSION IN GREAT MEASURE|i_ching/14_possession_in_great_measure.txt|0|**14 POSSESSION IN GREAT MEASURE**
+15 MODESTY|i_ching/15_modesty.txt|0|Category: Reference › I_Ching
+16 ENTHUSIASM|i_ching/16_enthusiasm.txt|0|Category: Reference › I_Ching
+17 FOLLOWING|i_ching/17_following.txt|0|Category: Reference › I_Ching
+18 WORK ON THE DECAYED|i_ching/18_work_on_the_decayed.txt|0|**18 WORK ON THE DECAYED**
+19 APPROACH|i_ching/19_approach.txt|0|Category: Reference › I_Ching
+20 CONTEMPLATION|i_ching/20_contemplation.txt|0|Category: Reference › I_Ching
+21 BITING THROUGH|i_ching/21_biting_through.txt|0|**21 BITING THROUGH**
+22 GRACE|i_ching/22_grace.txt|0|Category: Reference › I_Ching
+23 SPLITTING APART|i_ching/23_splitting_apart.txt|0|**23 SPLITTING APART**
+24 RETURN|i_ching/24_return.txt|0|Category: Reference › I_Ching
+25 INNOCENCE|i_ching/25_innocence.txt|0|Category: Reference › I_Ching
+26 GREAT TAMING|i_ching/26_great_taming.txt|0|Category: Reference › I_Ching
+29 THE ABYSMAL|i_ching/29_the_abysmal.txt|0|Category: Reference › I_Ching
+30 THE CLINGING|i_ching/30_the_clinging.txt|0|Category: Reference › I_Ching
+63 AFTER COMPLETION|i_ching/63_after_completion.txt|0|**63 AFTER COMPLETION**
+64 BEFORE COMPLETION|i_ching/64_before_completion.txt|0|**64 BEFORE COMPLETION**
+BABY|dreams/people/baby.txt|0|Category: Reference › Dreams › People
+BAG|dreams/objects/bag.txt|0|Category: Reference › Dreams › Objects
+BEACH|dreams/places/beach.txt|0|Category: Reference › Dreams › Places
+BEAR|dreams/animals/bear.txt|0|Category: Reference › Dreams › Animals
+BED|dreams/objects/bed.txt|0|Category: Reference › Dreams › Objects
+BEING CHASED|dreams/actions/being_chased.txt|0|Category: Reference › Dreams › Actions
+BIRD|dreams/animals/bird.txt|0|Category: Reference › Dreams › Animals
+BLACK|dreams/colors/black.txt|0|Category: Reference › Dreams › Colors
+BLUE|dreams/colors/blue.txt|0|Category: Reference › Dreams › Colors
+BOOK|dreams/objects/book.txt|0|Category: Reference › Dreams › Objects
+BRIDGE|dreams/places/bridge.txt|0|Category: Reference › Dreams › Places
+BROWN|dreams/colors/brown.txt|0|Category: Reference › Dreams › Colors
+BUTTERFLY|dreams/animals/butterfly.txt|0|Category: Reference › Dreams › Animals
+CAMERA|dreams/objects/camera.txt|0|Category: Reference › Dreams › Objects
+CAR|dreams/objects/car.txt|0|Category: Reference › Dreams › Objects
+CAT|dreams/animals/cat.txt|0|Category: Reference › Dreams › Animals
+CAVE|dreams/places/cave.txt|0|Category: Reference › Dreams › Places
+CELEBRITY|dreams/people/celebrity.txt|0|Category: Reference › Dreams › People
+CEMETERY|dreams/places/cemetery.txt|0|Category: Reference › Dreams › Places
+CHAIR|dreams/objects/chair.txt|0|Category: Reference › Dreams › Objects
+CHILD|dreams/people/child.txt|0|Category: Reference › Dreams › People
+CHURCH|dreams/places/church.txt|0|Category: Reference › Dreams › Places
+CITY|dreams/places/city.txt|0|Category: Reference › Dreams › Places
+CLOCK|dreams/objects/clock.txt|0|Category: Reference › Dreams › Objects
+CLOTHING|dreams/objects/clothing.txt|0|Category: Reference › Dreams › Objects
+CLOUDS|dreams/elements/clouds.txt|0|Category: Reference › Dreams › Elements
+COMPUTER|dreams/objects/computer.txt|0|Category: Reference › Dreams › Objects
+CROWD|dreams/people/crowd.txt|0|Category: Reference › Dreams › People
+CROW|dreams/animals/crow.txt|0|Category: Reference › Dreams › Animals
+CRYING|dreams/actions/crying.txt|0|Category: Reference › Dreams › Actions
+DANCING|dreams/actions/dancing.txt|0|Category: Reference › Dreams › Actions
+DEAD PERSON|dreams/people/dead_person.txt|0|Category: Reference › Dreams › People
+DESERT|dreams/places/desert.txt|0|Category: Reference › Dreams › Places
+DOCTOR|dreams/people/doctor.txt|0|Category: Reference › Dreams › People
+DOG|dreams/animals/dog.txt|0|Category: Reference › Dreams › Animals
+DOOR|dreams/objects/door.txt|0|Category: Reference › Dreams › Objects
+DROUGHT|dreams/elements/drought.txt|0|Category: Reference › Dreams › Elements
+DROWNING|dreams/actions/drowning.txt|0|Category: Reference › Dreams › Actions
+DYING|dreams/actions/dying.txt|0|Category: Reference › Dreams › Actions
+EARTHQUAKE|dreams/elements/earthquake.txt|0|Category: Reference › Dreams › Elements
+EATING|dreams/actions/eating.txt|0|Category: Reference › Dreams › Actions
+ELEPHANT|dreams/animals/elephant.txt|0|Category: Reference › Dreams › Animals
+ENEMY|dreams/people/enemy.txt|0|Category: Reference › Dreams › People
+EX PARTNER|dreams/people/ex_partner.txt|0|Category: Reference › Dreams › People
+FALLING|dreams/places/falling.txt|0|Category: Reference › Dreams › Places
+FATHER|dreams/people/father.txt|0|Category: Reference › Dreams › People
+FIGHTING|dreams/actions/fighting.txt|0|Category: Reference › Dreams › Actions
+FINDING ROOMS|dreams/actions/finding_rooms.txt|0|Category: Reference › Dreams › Actions
+FIRE|dreams/elements/fire.txt|0|Category: Reference › Dreams › Elements
+FISH|dreams/animals/fish.txt|0|Category: Reference › Dreams › Animals
+FLOOD|dreams/elements/flood.txt|0|Category: Reference › Dreams › Elements
+FLYING|dreams/places/flying.txt|0|Category: Reference › Dreams › Places
+FOG|dreams/elements/fog.txt|0|Category: Reference › Dreams › Elements
+FOOD|dreams/objects/food.txt|0|Category: Reference › Dreams › Objects
+FOREST|dreams/places/forest.txt|0|Category: Reference › Dreams › Places
+FRIEND|dreams/people/friend.txt|0|Category: Reference › Dreams › People
+GARDEN|dreams/places/garden.txt|0|Category: Reference › Dreams › Places
+GOLD|dreams/colors/gold.txt|0|Category: Reference › Dreams › Colors
+GRAY|dreams/colors/gray.txt|0|Category: Reference › Dreams › Colors
+GREEN|dreams/colors/green.txt|0|Category: Reference › Dreams › Colors
+HIDING|dreams/actions/hiding.txt|0|Category: Reference › Dreams › Actions
+HORSE|dreams/animals/horse.txt|0|Category: Reference › Dreams › Animals
+HOSPITAL|dreams/places/hospital.txt|0|Category: Reference › Dreams › Places
+HOUSE|dreams/places/house.txt|0|Category: Reference › Dreams › Places
+ICE|dreams/elements/ice.txt|0|Category: Reference › Dreams › Elements
+JEWELRY|dreams/objects/jewelry.txt|0|Category: Reference › Dreams › Objects
+KEYS|dreams/objects/keys.txt|0|Category: Reference › Dreams › Objects
+KISSING|dreams/actions/kissing.txt|0|Category: Reference › Dreams › Actions
+KNIFE|dreams/objects/knife.txt|0|Category: Reference › Dreams › Objects
+LAUGHING|dreams/actions/laughing.txt|0|Category: Reference › Dreams › Actions
+LION|dreams/animals/lion.txt|0|Category: Reference › Dreams › Animals
+MIRROR|dreams/objects/mirror.txt|0|Category: Reference › Dreams › Objects
+MISSING TRANSPORTATION|dreams/actions/missing_transportation.txt|0|**MISSING TRANSPORTATION**
+MONEY|dreams/objects/money.txt|0|Category: Reference › Dreams › Objects
+MOON|dreams/elements/moon.txt|0|Category: Reference › Dreams › Elements
+MOTHER|dreams/people/mother.txt|0|Category: Reference › Dreams › People
+MOUNTAIN|dreams/places/mountain.txt|0|Category: Reference › Dreams › Places
+NAKED IN PUBLIC|dreams/actions/naked_in_public.txt|0|Category: Reference › Dreams › Actions
+ORANGE|dreams/colors/orange.txt|0|Category: Reference › Dreams › Colors
+OWL|dreams/animals/owl.txt|0|Category: Reference › Dreams › Animals
+PHONE|dreams/objects/phone.txt|0|Category: Reference › Dreams › Objects
+PINK|dreams/colors/pink.txt|0|Category: Reference › Dreams › Colors
+POLICE|dreams/people/police.txt|0|Category: Reference › Dreams › People
+PREGNANT WOMAN|dreams/people/pregnant_woman.txt|0|Category: Reference › Dreams › People
+PRISON|dreams/places/prison.txt|0|Category: Reference › Dreams › Places
+PURPLE|dreams/colors/purple.txt|0|Category: Reference › Dreams › Colors
+RABBIT|dreams/animals/rabbit.txt|0|Category: Reference › Dreams › Animals
+RAIN|dreams/elements/rain.txt|0|Category: Reference › Dreams › Elements
+RED|dreams/colors/red.txt|0|Category: Reference › Dreams › Colors
+RESTAURANT|dreams/places/restaurant.txt|0|Category: Reference › Dreams › Places
+ROAD|dreams/places/road.txt|0|Category: Reference › Dreams › Places
+RUNNING|dreams/actions/running.txt|0|Category: Reference › Dreams › Actions
+SCHOOL|dreams/places/school.txt|0|Category: Reference › Dreams › Places
+SEARCHING|dreams/actions/searching.txt|0|Category: Reference › Dreams › Actions
+SILVER|dreams/colors/silver.txt|0|Category: Reference › Dreams › Colors
+SINGING|dreams/actions/singing.txt|0|Category: Reference › Dreams › Actions
+SNAKE|dreams/animals/snake.txt|0|Category: Reference › Dreams › Animals
+SNOW|dreams/elements/snow.txt|0|Category: Reference › Dreams › Elements
+SPIDER|dreams/animals/spider.txt|0|Category: Reference › Dreams › Animals
+STAIRS|dreams/objects/stairs.txt|0|Category: Reference › Dreams › Objects
+STARS|dreams/elements/stars.txt|0|Category: Reference › Dreams › Elements
+STORE|dreams/places/store.txt|0|Category: Reference › Dreams › Places
+STRANGER|dreams/people/stranger.txt|0|Category: Reference › Dreams › People
+SUN|dreams/elements/sun.txt|0|Category: Reference › Dreams › Elements
+SWIMMING|dreams/actions/swimming.txt|0|Category: Reference › Dreams › Actions
+TAKING TEST|dreams/actions/taking_test.txt|0|Category: Reference › Dreams › Actions
+TEACHER|dreams/people/teacher.txt|0|Category: Reference › Dreams › People
+TEETH FALLING OUT|dreams/actions/teeth_falling_out.txt|0|**TEETH FALLING OUT**
+THUNDER|dreams/elements/thunder.txt|0|Category: Reference › Dreams › Elements
+TORNADO|dreams/elements/tornado.txt|0|Category: Reference › Dreams › Elements
+TURQUOISE|dreams/colors/turquoise.txt|0|Category: Reference › Dreams › Colors
+UNABLE TO SCREAM|dreams/actions/unable_to_scream.txt|0|Category: Reference › Dreams › Actions
+WATER|dreams/places/water.txt|0|Category: Reference › Dreams › Places
+WEAPON|dreams/objects/weapon.txt|0|Category: Reference › Dreams › Objects
+WHITE|dreams/colors/white.txt|0|Category: Reference › Dreams › Colors
+WINDOW|dreams/objects/window.txt|0|Category: Reference › Dreams › Objects
+WIND|dreams/elements/wind.txt|0|Category: Reference › Dreams › Elements
+WOLF|dreams/animals/wolf.txt|0|Category: Reference › Dreams › Animals
+YELLOW|dreams/colors/yellow.txt|0|Category: Reference › Dreams › Colors
 
 =======================================
-Processed: 2025-10-20 10:57
-Words: ~935
-Category: Reference
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 154

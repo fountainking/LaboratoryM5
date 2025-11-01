@@ -1,62 +1,23 @@
 **INDEX**
 
-Category: Programming_Languages
----------------------------------------
-
-**INDEX**
-
 Category: Programming Languages
 ---------------------------------------
 
-CPLUSPLUS|CPlusPlus.txt|0|Category:
-Programming_Languages
-CSHARP|CSharp.txt|0|Category:
-Programming_Languages
-GO|Go.txt|0|Category:
-Programming_Languages
-KOTLIN|Kotlin.txt|0|Category:
-Programming_Languages
-PHP|PHP.txt|0|Category:
-Programming_Languages
-R
-PROGRAMMING|R_Programming.txt|0|Category:
-Programming_Languages
-RUBY|Ruby.txt|0|Category:
-Programming_Languages
-RUST|Rust.txt|0|Category:
-Programming_Languages
-SQL
-DATABASE|SQL_Database.txt|0|Category:
-Programming_Languages
-SWIFT|Swift.txt|0|Category:
-Programming_Languages
-TYPESCRIPT|TypeScript.txt|0|Category:
-Programming_Languages
-C REFERENCE|c_reference.txt|0|Category:
-Programming_Languages
-JAVA
-REFERENCE|java_reference.txt|0|Category:
-Programming_Languages
-JAVASCRIPT
-REFERENCE|javascript_reference.txt|0|Category:
-Programming_Languages
-PYTHON
-REFERENCE|python_reference.txt|0|Category:
-Programming_Languages
+C REFERENCE|c_reference.txt|0|Category: Programming_Languages
+CPLUSPLUS|CPlusPlus.txt|0|Category: Programming_Languages
+CSHARP|CSharp.txt|0|Category: Programming_Languages
+GO|Go.txt|0|Category: Programming_Languages
+JAVA REFERENCE|java_reference.txt|0|Category: Programming_Languages
+JAVASCRIPT REFERENCE|javascript_reference.txt|0|**JAVASCRIPT REFERENCE**
+KOTLIN|Kotlin.txt|0|Category: Programming_Languages
+PHP|PHP.txt|0|Category: Programming_Languages
+PYTHON REFERENCE|python_reference.txt|0|Category: Programming_Languages
+R PROGRAMMING|R_Programming.txt|0|Category: Programming_Languages
+RUBY|Ruby.txt|0|Category: Programming_Languages
+RUST|Rust.txt|0|Category: Programming_Languages
+SQL DATABASE|SQL_Database.txt|0|Category: Programming_Languages
+SWIFT|Swift.txt|0|Category: Programming_Languages
+TYPESCRIPT|TypeScript.txt|0|Category: Programming_Languages
 
 =======================================
-**RELATED ARTICLES:**
-
-• Rust
-• Java Reference
-• Javascript Reference
-• R Programming
-• Ruby
-
-
-=======================================
-Processed: 2025-10-20 10:57
-Words: ~41
-Category: Programming_Languages
-
-<!-- FORMATTED: 767d13a4 -->
+Total entries: 15
