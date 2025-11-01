@@ -26,10 +26,45 @@ uint16_t trackColors[LBM_TRACKS] = {
   0x87F0   // Track 8: Light green (melody 4)
 };
 
+// Sample variations for each track
+const char* kickSamples[] = {"kick", "kick2", "kick3"};
+const char* snareSamples[] = {"snare", "snare2", "snare3"};
+const char* hatSamples[] = {"hat", "hat2", "hat3"};
+const char* tomSamples[] = {"tom", "tom2", "tom3"};
+const int numKickSamples = 3;
+const int numSnareSamples = 3;
+const int numHatSamples = 3;
+const int numTomSamples = 3;
+
+// Current sample selection index for each track
+uint8_t sampleIndex[LBM_TRACKS] = {0, 0, 0, 0, 0, 0, 0, 0};
+
 const char* trackNames[LBM_TRACKS] = {
   "kick", "snare", "hat", "tom",
   "notes", "notes", "notes", "notes"
 };
+
+// Helper: Get current sample name for a track
+const char* getCurrentSampleName(int track) {
+  switch (track) {
+    case TRACK_KICK:  return kickSamples[sampleIndex[track] % numKickSamples];
+    case TRACK_SNARE: return snareSamples[sampleIndex[track] % numSnareSamples];
+    case TRACK_HAT:   return hatSamples[sampleIndex[track] % numHatSamples];
+    case TRACK_TOM:   return tomSamples[sampleIndex[track] % numTomSamples];
+    default:          return trackNames[track];
+  }
+}
+
+// Helper: Get max sample count for a track
+int getMaxSampleCount(int track) {
+  switch (track) {
+    case TRACK_KICK:  return numKickSamples;
+    case TRACK_SNARE: return numSnareSamples;
+    case TRACK_HAT:   return numHatSamples;
+    case TRACK_TOM:   return numTomSamples;
+    default:          return 1;
+  }
+}
 
 // Global state
 Pattern currentPattern;
@@ -152,8 +187,8 @@ void drawTrackHeader() {
   int row2Y = 38;
   int boxY = row2Y - 3;
 
-  // Sound pill
-  String sampleLabel = "< " + String(trackNames[currentTrack]) + " >";
+  // Sound pill - show current sample variant
+  String sampleLabel = "< " + String(getCurrentSampleName(currentTrack)) + " >";
   int labelWidth = sampleLabel.length() * 6 + 10;
   M5Cardputer.Display.fillRoundRect(startX, boxY, labelWidth, 18, 9, trackColors[currentTrack]);
   if (selectedItem == NAV_SOUND) {
@@ -695,8 +730,12 @@ void handleLBMNavigation(char key) {
         currentTrack = (currentTrack - 1 + LBM_TRACKS) % LBM_TRACKS;
         drawLBM();
       } else if (selectedItem == NAV_SOUND) {
-        // TODO: Cycle through available sounds
-        drawTrackHeader();
+        // Cycle to previous sample
+        int maxSamples = getMaxSampleCount(currentTrack);
+        if (maxSamples > 1) {
+          sampleIndex[currentTrack] = (sampleIndex[currentTrack] - 1 + maxSamples) % maxSamples;
+          drawTrackHeader();
+        }
       } else if (selectedItem == NAV_NUDGE) {
         if (currentPattern.nudge[currentTrack] > 0) {
           currentPattern.nudge[currentTrack]--;
@@ -732,8 +771,12 @@ void handleLBMNavigation(char key) {
         currentTrack = (currentTrack + 1) % LBM_TRACKS;
         drawLBM();
       } else if (selectedItem == NAV_SOUND) {
-        // TODO: Cycle through available sounds
-        drawTrackHeader();
+        // Cycle to next sample
+        int maxSamples = getMaxSampleCount(currentTrack);
+        if (maxSamples > 1) {
+          sampleIndex[currentTrack] = (sampleIndex[currentTrack] + 1) % maxSamples;
+          drawTrackHeader();
+        }
       } else if (selectedItem == NAV_NUDGE) {
         if (currentPattern.nudge[currentTrack] < 4) {
           currentPattern.nudge[currentTrack]++;
