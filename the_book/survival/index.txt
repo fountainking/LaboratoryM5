@@ -241,3 +241,7 @@ Words: ~409
 Category: Survival
 
 <!-- FORMATTED: 767d13a4 -->
+END OF WORLD|End_Of_World_Survival.txt|0|Complete guide to apocalypse survival and rebuilding
+PRISON SURVIVAL|Prison_Survival.txt|0|Comprehensive guide to surviving incarceration
+LOST AT SEA|Lost_At_Sea.txt|0|Maritime survival - water procurement, fishing, rescue
+RESTART CIVILIZATION|Restart_Civilization.txt|0|Rebuilding society from scratch - complete blueprint
