@@ -310,7 +310,7 @@ void drawControls() {
   M5Cardputer.Display.fillRect(0, 115, 240, 15, TFT_WHITE);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
   M5Cardputer.Display.setTextSize(1);
-  String helpText = "space=play, esc=back, s=save";
+  String helpText = "SPACE=play s=save l=load `=back";
   int textWidth = helpText.length() * 6;
   int centerX = (240 - textWidth) / 2;
   M5Cardputer.Display.drawString(helpText.c_str(), centerX, 117);
@@ -856,6 +856,16 @@ void handleLBMNavigation(char key) {
     bpmInput = "";
     drawLBM();
   }
+  else if (key == 's' && !bpmEditMode && !editMode) {
+    // Save pattern (quick save to slot 1)
+    String filename = String(currentPattern.name) + ".lbm";
+    savePattern(filename.c_str());
+  }
+  else if (key == 'l' && !bpmEditMode && !editMode) {
+    // Load pattern (load from slot 1)
+    String filename = String(currentPattern.name) + ".lbm";
+    loadPattern(filename.c_str());
+  }
   else if (key == '+' || key == '=') {
     // Increase volume
     if (currentPattern.volume < 10) {
@@ -890,9 +900,69 @@ void handleLBMNavigation(char key) {
 // ============================================================================
 
 void savePattern(const char* filename) {
-  // TODO: Implement pattern save to SD
+  // Save pattern to SD card in binary format
+  String fullPath = "/lbm_patterns/" + String(filename);
+
+  // Create directory if it doesn't exist
+  if (!SD.exists("/lbm_patterns")) {
+    SD.mkdir("/lbm_patterns");
+  }
+
+  File file = SD.open(fullPath, FILE_WRITE);
+  if (!file) {
+    Serial.println("Failed to save pattern: " + fullPath);
+    return;
+  }
+
+  // Write pattern struct directly (binary format for speed/size)
+  file.write((uint8_t*)&currentPattern, sizeof(Pattern));
+  file.close();
+
+  Serial.println("Pattern saved: " + fullPath);
+
+  // Show confirmation on screen
+  M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_GREEN);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.drawString("SAVED: " + String(filename), 10, 5);
+  delay(1000);
+  drawLBM();
 }
 
 void loadPattern(const char* filename) {
-  // TODO: Implement pattern load from SD
+  // Load pattern from SD card
+  String fullPath = "/lbm_patterns/" + String(filename);
+
+  if (!SD.exists(fullPath)) {
+    Serial.println("Pattern not found: " + fullPath);
+
+    // Show error
+    M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_RED);
+    M5Cardputer.Display.setTextColor(TFT_WHITE);
+    M5Cardputer.Display.setTextSize(1);
+    M5Cardputer.Display.drawString("NOT FOUND: " + String(filename), 10, 5);
+    delay(1000);
+    drawLBM();
+    return;
+  }
+
+  File file = SD.open(fullPath, FILE_READ);
+  if (!file) {
+    Serial.println("Failed to load pattern: " + fullPath);
+    return;
+  }
+
+  // Read pattern struct directly
+  file.read((uint8_t*)&currentPattern, sizeof(Pattern));
+  file.close();
+
+  Serial.println("Pattern loaded: " + fullPath);
+
+  // Show confirmation
+  M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_CYAN);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.drawString("LOADED: " + String(filename), 10, 5);
+  delay(1000);
+  drawLBM();
 }
