@@ -1,6 +1,47 @@
 # Laboratory M5 - Changelog
 
-## 2025-10-31 - Major Feature Update
+## 2025-10-31 - Session 2: HARD Tier Complete
+
+### ✅ HARD Tier - COMPLETED
+- **LBM Pattern Save/Load** - Persist patterns to SD card:
+  - Press 's' to save current pattern
+  - Press 'l' to load saved pattern
+  - Saved to `/lbm_patterns/` directory
+  - Binary format for speed (full Pattern struct)
+  - Visual feedback (green=saved, cyan=loaded, red=error)
+
+- **LBM Pattern Chaining** - Sequence multiple patterns:
+  - Press 'c' to toggle chain mode
+  - Automatic Pattern1 → Pattern2 advancement
+  - Seamless transitions after each loop
+  - Supports up to 8 patterns (MAX_CHAIN_LENGTH)
+  - Visual feedback (magenta=chain on)
+
+- **CHIP-8 Credits ROM** - Custom hand-coded program:
+  - 120-byte ROM displays "LAB M5"
+  - Shows "BY" and "2025"
+  - Custom sprite data for each character
+  - Runs on existing CHIP-8 emulator
+  - Located at `/data/chip8/credits.ch8`
+
+### 📊 Session 2 Statistics
+- **Features Added:** 3 HARD tier tasks
+- **Lines of Code:** ~200 new code
+- **Commits:** 4 feature commits
+- **Build Status:** ✅ Passing (52.6% flash, 50.7% RAM)
+
+### 🎯 Total Roadmap Progress
+**TRIVIAL:** ✅ 3/3 complete (100%)
+**EASY:** ✅ 4/4 complete (100%)
+**MEDIUM:** ✅ 4/6 complete (67%)
+**HARD:** ✅ 3/4 complete (75%) - Deferred audio/MIDI export
+**VERY HARD:** ⏸️ 0/2 complete (GB/NES emulators are multi-week projects)
+
+**Overall:** ✅ 14/19 roadmap items complete (74%)
+
+---
+
+## 2025-10-31 - Session 1: Major Feature Update
 
 ### ✅ EASY Tier - COMPLETED
 - **Book Navigation Speed** - Interrupt search on keypress for instant typing response
