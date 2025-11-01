@@ -421,7 +421,23 @@ void searchTheBook(String query) {
 
   const int MAX_TOTAL_RESULTS = 15;  // Hard limit to prevent memory bloat (was unlimited!)
 
-  // Search all category indexes
+  // SCRIPTURE VERSE DETECTION: Check if query looks like Bible verse (e.g., "John 3:16", "Gen 1:1")
+  bool isVerseQuery = (query.indexOf(':') > 0 && query.indexOf(' ') > 0);
+
+  if (isVerseQuery) {
+    // Search Bible verse index for direct verse lookup
+    String verseIndexPath = "/the_book/religious/bible_verse_index.txt";
+    std::vector<SearchResult> verseResults = searchIndex(verseIndexPath, query);
+
+    for (size_t j = 0; j < verseResults.size() && searchResults.size() < MAX_TOTAL_RESULTS; j++) {
+      verseResults[j].category = "Bible";  // Tag as Bible verse
+      searchResults.push_back(verseResults[j]);
+    }
+
+    Serial.printf("Scripture search found %d verses\n", searchResults.size());
+  }
+
+  // Standard search across all categories (if not enough results from verse search)
   for (int i = 0; i < totalCategories && searchResults.size() < MAX_TOTAL_RESULTS; i++) {
     String indexPath = categories[i].path + "/index.txt";
     std::vector<SearchResult> catResults = searchIndex(indexPath, query);
