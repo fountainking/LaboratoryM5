@@ -68,6 +68,7 @@ int getMaxSampleCount(int track) {
 
 // Global state
 Pattern currentPattern;
+PatternChain patternChain = {{}, 0, 0, false, -1};  // Initialize chain
 int currentTrack = 0;
 int cursorX = 0;
 int cursorY = 0;
@@ -310,7 +311,7 @@ void drawControls() {
   M5Cardputer.Display.fillRect(0, 115, 240, 15, TFT_WHITE);
   M5Cardputer.Display.setTextColor(TFT_DARKGREY);
   M5Cardputer.Display.setTextSize(1);
-  String helpText = "SPACE=play s=save l=load `=back";
+  String helpText = "SPACE=play s=save l=load c=chain";
   int textWidth = helpText.length() * 6;
   int centerX = (240 - textWidth) / 2;
   M5Cardputer.Display.drawString(helpText.c_str(), centerX, 117);
@@ -618,6 +619,21 @@ void updateLBM() {
       // Advance playback
       playbackStep = (playbackStep + 1) % LBM_STEPS;
 
+      // Check if pattern completed (looped back to start)
+      if (playbackStep == 0 && patternChain.enabled && patternChain.length > 1) {
+        // Pattern chaining logic
+        patternChain.currentIndex = (patternChain.currentIndex + 1) % patternChain.length;
+
+        // Load next pattern in chain
+        String filename = String(patternChain.patterns[patternChain.currentIndex]) + ".lbm";
+        loadPattern(filename.c_str());
+
+        Serial.printf("Chain: Loaded pattern %d/%d: %s\n",
+                      patternChain.currentIndex + 1,
+                      patternChain.length,
+                      filename.c_str());
+      }
+
       // Redraw only the step grid (selective update)
       drawStepGrid();
     }
@@ -865,6 +881,33 @@ void handleLBMNavigation(char key) {
     // Load pattern (load from slot 1)
     String filename = String(currentPattern.name) + ".lbm";
     loadPattern(filename.c_str());
+  }
+  else if (key == 'c' && !bpmEditMode && !editMode) {
+    // Toggle chain mode (simple 2-pattern chain for now)
+    patternChain.enabled = !patternChain.enabled;
+
+    if (patternChain.enabled) {
+      // Setup simple chain: Pattern1 -> Pattern2
+      strcpy(patternChain.patterns[0], "Pattern1");
+      strcpy(patternChain.patterns[1], "Pattern2");
+      patternChain.length = 2;
+      patternChain.currentIndex = 0;
+
+      // Visual feedback
+      M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_MAGENTA);
+      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.drawString("CHAIN ON: Pattern1->Pattern2", 10, 5);
+    } else {
+      // Visual feedback
+      M5Cardputer.Display.fillRect(0, 0, 240, 20, TFT_DARKGREY);
+      M5Cardputer.Display.setTextColor(TFT_WHITE);
+      M5Cardputer.Display.setTextSize(1);
+      M5Cardputer.Display.drawString("CHAIN OFF", 10, 5);
+    }
+
+    delay(1000);
+    drawLBM();
   }
   else if (key == '+' || key == '=') {
     // Increase volume

@@ -48,8 +48,19 @@ struct Pattern {
   char name[32];                      // Pattern name
 };
 
+// Pattern chain
+#define MAX_CHAIN_LENGTH 8
+struct PatternChain {
+  char patterns[MAX_CHAIN_LENGTH][32];  // Pattern filenames
+  int length;                           // Number of patterns in chain
+  int currentIndex;                     // Currently playing pattern
+  bool enabled;                         // Chain mode enabled
+  int loopsRemaining;                   // Loops before advancing (-1 = infinite)
+};
+
 // LBM state
 extern Pattern currentPattern;
+extern PatternChain patternChain;
 extern int currentTrack;              // 0-7
 extern int cursorX;                   // 0-7 (step column)
 extern int cursorY;                   // 0-1 (step row)
