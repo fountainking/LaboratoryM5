@@ -416,10 +416,12 @@ void handleBack() {
       drawScreen(uiInverted);
     }
   } else if (currentState == APPS_MENU) {
+    // ESC from page 2 (APPS) - go back to page 1 (MAIN)
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = MAIN_MENU;
     drawScreen(uiInverted);
   } else if (currentState == MAIN_MENU) {
+    // ESC from page 1 (MAIN with APPS option) - go to APPS window (page 2)
     if (settings.soundEnabled) M5Cardputer.Speaker.tone(600, 100);
     currentState = APPS_MENU;
     drawScreen(uiInverted);

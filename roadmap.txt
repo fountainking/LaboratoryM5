@@ -1,0 +1,30 @@
+TRIVIAL:
+1. Radio stations (just URL strings) ✅
+2. Boost kick (amplitude tweak) ✅
+3. Book font/formatting (text size/layout) ✅
+
+EASY:
+4. Scrolling credits (text animation)
+5. Fix LBM tempo (bug hunt) ✅
+6. Book navigation speed (scroll rate)
+7. Tap tempo (time tracking + BPM calc) ✅
+
+MEDIUM:
+8. Sound swapping (alt sample sets + UI)
+9. 2x pattern length (array extension)
+10. Add Book articles (content + formatting)
+11. Pattern save (persist to storage)
+12. Pattern chaining (sequencing logic)
+13. Book search (search UI + matching)
+
+HARD:
+14. CHIP-8 credits (ROM integration)
+15. Pattern export (audio/MIDI file gen)
+16. Captive portal (WiFi AP + DNS + web server)
+17. System manual (docs + HTML)
+
+VERY HARD:
+18. GB emulator (full core integration)
+19. NES emulator (full core integration)
+20. Custom emulator (unknown game, TBD)
+21. System optimization (broad scope)

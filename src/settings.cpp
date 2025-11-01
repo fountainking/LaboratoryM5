@@ -11,6 +11,7 @@ extern Preferences preferences;
 SystemSettings settings = {
   .soundEnabled = false,
   .dimMode = false,
+  .deviceName = "Change this in Settings",
   .timezoneString = "PST8PDT,M3.2.0,M11.1.0",  // PST with DST
   .timezoneAuto = true,  // Auto-detect by default
   .theme = 0,
@@ -111,6 +112,7 @@ void loadSettings() {
   preferences.begin("settings", true); // Read-only
   settings.soundEnabled = preferences.getBool("sound", false);
   settings.dimMode = preferences.getBool("dim", false);
+  settings.deviceName = preferences.getString("deviceName", "Change this in Settings");
   settings.timezoneString = preferences.getString("tzString", "PST8PDT,M3.2.0,M11.1.0");
   settings.timezoneAuto = preferences.getBool("tzAuto", true);
   settings.theme = preferences.getInt("theme", 0);
@@ -149,6 +151,7 @@ void saveSettings() {
   preferences.begin("settings", false); // Read-write
   preferences.putBool("sound", settings.soundEnabled);
   preferences.putBool("dim", settings.dimMode);
+  preferences.putString("deviceName", settings.deviceName);
   preferences.putString("tzString", settings.timezoneString);
   preferences.putBool("tzAuto", settings.timezoneAuto);
   preferences.putInt("theme", settings.theme);
@@ -205,12 +208,13 @@ void drawSettingsMenu() {
   const char* menuItems[] = {
     "Sound: ",
     "Brightness: ",
+    "Device Name: ",
     "Timezone: ",
     "Theme: "
   };
 
   // Draw menu items
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     int yPos = 50 + (i * 15);
 
     if (i == settingsMenuIndex) {
@@ -233,12 +237,17 @@ void drawSettingsMenu() {
       case 1: // Brightness
         value = settings.dimMode ? "DIM" : "BRIGHT";
         break;
-      case 2: // Timezone
+      case 2: // Device Name
+        value = settings.deviceName;
+        if (value.length() > 15) value = value.substring(0, 15);
+        valueX = 90;
+        break;
+      case 3: // Timezone
         value = String(timezones[timezoneSelectIndex].name);
         if (value.length() > 20) value = value.substring(0, 20);
         valueX = 90;
         break;
-      case 3: // Theme
+      case 4: // Theme
         value = "Coming Soon";
         valueX = 80;
         break;
@@ -316,7 +325,7 @@ void handleSettingsNavigation(char key) {
         drawSettingsMenu();
       }
     } else if (key == '/' || key == '.') {
-      if (settingsMenuIndex < 3) {
+      if (settingsMenuIndex < 4) {
         settingsMenuIndex++;
         if (settings.soundEnabled) M5Cardputer.Speaker.tone(800, 30);
         drawSettingsMenu();
@@ -337,4 +346,33 @@ void handleSettingsNavigation(char key) {
       }
     }
   }
+}
+
+void drawDeviceNameInput() {
+  M5Cardputer.Display.fillScreen(TFT_WHITE);
+  drawStatusBar(false);
+
+  M5Cardputer.Display.setTextSize(2);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.drawString("Device Name", 60, 30);
+
+  // Draw rounded rectangle input box
+  M5Cardputer.Display.drawRoundRect(20, 55, 200, 20, 5, TFT_BLUE);
+
+  // Show current name centered in box
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  String displayName = settings.deviceName;
+  if (displayName.length() > 30) {
+    displayName = displayName.substring(displayName.length() - 30);
+  }
+
+  // Center text in the box
+  int textWidth = displayName.length() * 6;
+  int textX = 120 - (textWidth / 2);  // Center horizontally
+  M5Cardputer.Display.drawString(displayName.c_str(), textX, 60);
+
+  M5Cardputer.Display.setTextSize(1);
+  M5Cardputer.Display.setTextColor(TFT_DARKGREY);
+  M5Cardputer.Display.drawString("Type name, Enter=Save `=Cancel", 15, 110);
 }

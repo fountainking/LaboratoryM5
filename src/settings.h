@@ -7,6 +7,7 @@
 // Settings state
 enum SettingsMenuState {
   SETTINGS_MAIN,
+  SETTINGS_DEVICE_NAME,
   SETTINGS_TIMEZONE,
   SETTINGS_THEME
 };
@@ -15,6 +16,7 @@ enum SettingsMenuState {
 struct SystemSettings {
   bool soundEnabled;
   bool dimMode;
+  String deviceName;      // User-defined device name
   String timezoneString;  // POSIX timezone string (e.g., "PST8PDT,M3.2.0,M11.1.0")
   bool timezoneAuto;      // Auto-detect timezone from IP
   int theme;              // 0 = default, 1-n = future themes
@@ -41,6 +43,7 @@ void enterSettingsApp();
 void loadSettings();
 void saveSettings();
 void drawSettingsMenu();
+void drawDeviceNameInput();
 void drawTimezoneSelector();
 void drawThemePlaceholder();
 void handleSettingsNavigation(char key);

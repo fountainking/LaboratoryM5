@@ -24,10 +24,25 @@ const RadioStation stations[] = {
   {"SomaFM Indie Pop", "http://ice1.somafm.com/indiepop-128-mp3", "Indie", 128},
   {"SomaFM Space Station", "http://ice1.somafm.com/spacestation-128-mp3", "Ambient", 128},
   {"SomaFM Suburbs", "http://ice1.somafm.com/suburbsofgoa-128-mp3", "Psychedelic", 128},
-  {"SomaFM Seven Inch Soul", "http://ice1.somafm.com/7soul-128-mp3", "Soul/Funk", 128}
+  {"SomaFM Seven Inch Soul", "http://ice1.somafm.com/7soul-128-mp3", "Soul/Funk", 128},
+  {"SomaFM Illinois Street", "http://ice1.somafm.com/illstreet-128-mp3", "Hip-Hop", 128},
+  {"SomaFM Cliq Hop", "http://ice1.somafm.com/cliqhop-128-mp3", "IDM", 128},
+  {"SomaFM Sonic Universe", "http://ice1.somafm.com/sonicuniverse-128-mp3", "Jazz/Soul", 128},
+  {"SomaFM Dub Step", "http://ice1.somafm.com/dubstep-128-mp3", "Dubstep", 128},
+  {"SomaFM Underground 80s", "http://ice1.somafm.com/u80s-128-mp3", "80s", 128},
+  {"SomaFM Fluid", "http://ice1.somafm.com/fluid-128-mp3", "Downtempo", 128},
+  {"SomaFM Deep Space One", "http://ice1.somafm.com/deepspaceone-128-mp3", "Deep Ambient", 128},
+  {"SomaFM Mission Control", "http://ice1.somafm.com/missioncontrol-128-mp3", "Space Music", 128},
+  {"SomaFM Digitalis", "http://ice1.somafm.com/digitalis-128-mp3", "Downtempo", 128},
+  {"SomaFM Left Coast 70s", "http://ice1.somafm.com/leftcoast70s-128-mp3", "70s Rock", 128},
+  {"SomaFM Boot Liquor", "http://ice1.somafm.com/bootliquor-128-mp3", "Americana", 128},
+  {"SomaFM ThistleRadio", "http://ice1.somafm.com/thistle-128-mp3", "Celtic", 128},
+  {"SomaFM Doomed", "http://ice1.somafm.com/doomed-128-mp3", "Dark Ambient", 128},
+  {"SomaFM BAGeL Radio", "http://ice1.somafm.com/bagel-128-mp3", "Jewish", 128},
+  {"SomaFM PopTron", "http://ice1.somafm.com/poptron-128-mp3", "Electropop", 128}
 };
 
-const int stationCount = 15;
+const int stationCount = 30;
 
 void enterRadioApp() {
   initAudioManager();

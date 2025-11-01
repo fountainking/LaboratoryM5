@@ -41,7 +41,7 @@ const int totalCategories = 15;
 
 // Display constants
 const int RESULTS_PER_PAGE = 8;
-const int LINES_PER_PAGE = 13;  // Lines of text that fit on screen
+const int LINES_PER_PAGE = 7;  // Lines of text that fit on screen (size 2 font)
 
 void enterTheBook() {
   bookState = BOOK_SEARCH;
@@ -230,12 +230,12 @@ void drawBookArticle() {
   }
   M5Cardputer.Display.drawString(truncTitle, 5, 5);
 
-  // Article content
+  // Article content - SIZE 2 for readability!
   int y = 22;
   int startLine = articleScrollOffset;
   int endLine = min((int)articleLines.size(), startLine + LINES_PER_PAGE);
 
-  M5Cardputer.Display.setTextColor(TFT_BLACK);
+  M5Cardputer.Display.setTextSize(2);  // BIGGER FONT
   for (int i = startLine; i < endLine; i++) {
     String line = articleLines[i];
 
@@ -246,16 +246,17 @@ void drawBookArticle() {
       M5Cardputer.Display.setTextColor(TFT_BLACK);
     }
 
-    // Word wrap for long lines
-    if (line.length() > 39) {
-      line = line.substring(0, 39);
+    // Word wrap for long lines (size 2 = ~19 chars fit)
+    if (line.length() > 19) {
+      line = line.substring(0, 19);
     }
 
     M5Cardputer.Display.drawString(line, 5, y);
-    y += 9;
+    y += 14;  // Better spacing for size 2
   }
 
-  // Scroll indicator
+  // Scroll indicator (size 1 for compactness)
+  M5Cardputer.Display.setTextSize(1);
   if (articleLines.size() > LINES_PER_PAGE) {
     M5Cardputer.Display.setTextColor(TFT_BLACK);
     String scrollInfo = String(startLine + 1) + "-" + String(endLine) + "/" + String(articleLines.size());
@@ -264,7 +265,7 @@ void drawBookArticle() {
 
   // Instructions
   M5Cardputer.Display.setTextColor(TFT_BLACK);
-  M5Cardputer.Display.drawString("UP/DOWN: Scroll | ` Back", 5, 128);
+  M5Cardputer.Display.drawString("UP/DOWN: Scroll | ` Back", 5, 118);
 }
 
 void handleBookNavigation(char key) {
@@ -496,6 +497,7 @@ void loadArticle(SearchResult result) {
   // Read article content (limit total display lines to avoid memory issues)
   // For very large files like Quran (1MB+), limit to 300 lines max
   const int MAX_DISPLAY_LINES = 300;
+  const int CHARS_PER_LINE = 19;  // Size 2 font fits ~19 chars
   int linesRead = 0;
 
   while (articleFile.available() && articleLines.size() < MAX_DISPLAY_LINES) {
@@ -503,9 +505,9 @@ void loadArticle(SearchResult result) {
     line.trim();
 
     // Handle long lines - split into multiple display lines
-    while (line.length() > 39 && articleLines.size() < MAX_DISPLAY_LINES) {
-      articleLines.push_back(line.substring(0, 39));
-      line = line.substring(39);
+    while (line.length() > CHARS_PER_LINE && articleLines.size() < MAX_DISPLAY_LINES) {
+      articleLines.push_back(line.substring(0, CHARS_PER_LINE));
+      line = line.substring(CHARS_PER_LINE);
     }
 
     if ((line.length() > 0 || articleLines.size() > 0) && articleLines.size() < MAX_DISPLAY_LINES) {

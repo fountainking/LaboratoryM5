@@ -1737,6 +1737,13 @@ void loop() {
               const int MAX_TOTAL_RESULTS = 30;  // Hard cap to prevent crashes
 
               for (int i = 0; i < totalCategories; i++) {
+                // INTERRUPT if user keeps typing (check for new keypress)
+                M5Cardputer.update();
+                if (M5Cardputer.Keyboard.isChange() && M5Cardputer.Keyboard.isPressed()) {
+                  // User is still typing - abort this search, next loop will handle it
+                  break;
+                }
+
                 // Stop if we already have enough results
                 if (searchResults.size() >= MAX_TOTAL_RESULTS) {
                   break;
