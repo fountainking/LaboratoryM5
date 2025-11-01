@@ -29,6 +29,12 @@ enum SoundMode {
   MODE_USER = 1     // User samples from SD
 };
 
+// Note resolution (subdivision)
+enum NoteResolution {
+  RES_16TH = 0,   // 16th notes (default, 1 bar = 16 steps)
+  RES_32ND = 1    // 32nd notes (2 bars = 16 steps, plays twice per loop)
+};
+
 // Pattern data structure
 struct Pattern {
   bool steps[LBM_TRACKS][LBM_STEPS];  // Step grid (on/off)
@@ -38,6 +44,7 @@ struct Pattern {
   int bpm;                            // Tempo
   uint8_t volume;                     // Volume (0-10)
   SoundMode mode;                     // Sound mode
+  NoteResolution resolution;          // Note subdivision (16th/32nd)
   char name[32];                      // Pattern name
 };
 

@@ -110,6 +110,7 @@ void enterLBM() {
   currentPattern.bpm = 120;
   currentPattern.volume = 8;  // Default volume (0-10)
   currentPattern.mode = MODE_808;
+  currentPattern.resolution = RES_32ND;  // Default to 32nd notes (2x length)
   strcpy(currentPattern.name, "Pattern1");
 
   // Initialize speeds to 1x
@@ -226,7 +227,7 @@ void drawTrackHeader() {
 }
 
 void drawStepGrid() {
-  // Clear step area (start after sound row boxes, end before POLY button)
+  // Clear step area (start after sound row boxes, end before MODE button)
   M5Cardputer.Display.fillRect(0, 54, 240, 33, TFT_WHITE);
 
   // Draw 8x2 grid of steps (16 total)
@@ -600,7 +601,11 @@ void updateLBM() {
     // Prevent screensaver during playback
     lastActivityTime = millis();
 
-    unsigned long stepDuration = (60000 / currentPattern.bpm) / 4; // Quarter note in ms
+    // Calculate step duration based on resolution
+    // 16th notes: 4 steps per quarter note
+    // 32nd notes: 8 steps per quarter note (half the duration)
+    int stepsPerQuarterNote = (currentPattern.resolution == RES_32ND) ? 8 : 4;
+    unsigned long stepDuration = (60000 / currentPattern.bpm) / stepsPerQuarterNote;
 
     if (millis() - lastStepTime >= stepDuration) {
       lastStepTime = millis();
