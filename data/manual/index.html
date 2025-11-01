@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory M5 - System Manual</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #ff0000;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ff0000;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #ff0000;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        h2 {
+            color: #ffff00;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 10px;
+            margin: 30px 0 15px 0;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #00ff00;
+            margin: 20px 0 10px 0;
+            font-size: 1.3em;
+        }
+
+        p { margin: 10px 0; color: #fff; }
+
+        ul, ol {
+            margin: 10px 0 10px 30px;
+            color: #fff;
+        }
+
+        li { margin: 5px 0; }
+
+        code {
+            background: #1a1a1a;
+            padding: 2px 6px;
+            border: 1px solid #ff0000;
+            color: #00ff00;
+        }
+
+        .feature-box {
+            background: #1a0000;
+            border-left: 4px solid #ff0000;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning {
+            background: #1a1a00;
+            border-left: 4px solid #ffff00;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .key {
+            display: inline-block;
+            background: #ff0000;
+            color: #000;
+            padding: 3px 8px;
+            margin: 2px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #ff0000;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #1a0000;
+            color: #ffff00;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚗️ LABORATORY M5 ⚗️</h1>
+        <p class="subtitle">Portable Hacking & Creative Tool - Complete System Manual</p>
+
+        <h2>📋 TABLE OF CONTENTS</h2>
+        <ul>
+            <li><a href="#overview">System Overview</a></li>
+            <li><a href="#navigation">Navigation & Controls</a></li>
+            <li><a href="#apps">Applications</a></li>
+            <li><a href="#music">Music Tools</a></li>
+            <li><a href="#wifi">WiFi Features</a></li>
+            <li><a href="#book">The Book - Offline Knowledge</a></li>
+            <li><a href="#games">Games & Emulation</a></li>
+            <li><a href="#settings">Settings & Configuration</a></li>
+            <li><a href="#tips">Pro Tips & Tricks</a></li>
+        </ul>
+
+        <h2 id="overview">🔬 SYSTEM OVERVIEW</h2>
+        <div class="feature-box">
+            <p><strong>Device:</strong> M5Stack Cardputer (ESP32-S3)</p>
+            <p><strong>Display:</strong> 240x135 TFT LCD</p>
+            <p><strong>Input:</strong> Full QWERTY keyboard</p>
+            <p><strong>Storage:</strong> MicroSD card support</p>
+            <p><strong>Connectivity:</strong> WiFi, BLE, IR</p>
+        </div>
+
+        <h3>Core Features</h3>
+        <ul>
+            <li><strong>Offline Knowledge Base</strong> - 6,000+ articles including survival guides, programming docs, religious texts, and Wikipedia</li>
+            <li><strong>Music Production</strong> - Lab Beat Machine (8-track step sequencer), tap tempo, guitar tuner, visualizer</li>
+            <li><strong>WiFi Tools</strong> - Network scanning, fake APs, beacon spam, probe sniffing, captive portals</li>
+            <li><strong>File Manager</strong> - Browse SD card, view images/text, play audio, batch operations</li>
+            <li><strong>Emulation</strong> - CHIP-8, Game Boy, NES (coming soon)</li>
+            <li><strong>Radio</strong> - Internet radio streaming with presets</li>
+            <li><strong>Terminal</strong> - Shell commands, scripts, WiFi control</li>
+        </ul>
+
+        <h2 id="navigation">🕹️ NAVIGATION & CONTROLS</h2>
+
+        <h3>Main Menu Navigation</h3>
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><span class="key">;</span> <span class="key">,</span></td>
+                <td>Navigate up</td>
+            </tr>
+            <tr>
+                <td><span class="key">.</span> <span class="key">/</span></td>
+                <td>Navigate down</td>
+            </tr>
+            <tr>
+                <td><span class="key">ENTER</span></td>
+                <td>Select / Confirm</td>
+            </tr>
+            <tr>
+                <td><span class="key">`</span></td>
+                <td>Back / Exit to main menu</td>
+            </tr>
+            <tr>
+                <td><span class="key">Fn</span></td>
+                <td>Function key modifier</td>
+            </tr>
+        </table>
+
+        <div class="warning">
+            <strong>⚠️ Important:</strong> The <span class="key">`</span> (backtick) key is your universal "back" button. Use it to exit apps and return to the main menu.
+        </div>
+
+        <h2 id="apps">📱 APPLICATIONS</h2>
+
+        <h3>File Manager</h3>
+        <p>Browse and manage files on your SD card.</p>
+        <ul>
+            <li><strong>Navigate:</strong> <span class="key">↑</span> <span class="key">↓</span> to move through files</li>
+            <li><strong>Open:</strong> <span class="key">ENTER</span> to view file/enter folder</li>
+            <li><strong>Actions:</strong> Press <span class="key">a</span> for action menu (delete, rename, copy, move)</li>
+            <li><strong>Search:</strong> Press <span class="key">s</span> to search files</li>
+            <li><strong>Batch Ops:</strong> Select multiple files with <span class="key">SPACE</span></li>
+        </ul>
+
+        <div class="feature-box">
+            <strong>Supported Formats:</strong>
+            <ul>
+                <li><strong>Images:</strong> GIF (animated), JPEG, PNG</li>
+                <li><strong>Audio:</strong> MP3, WAV</li>
+                <li><strong>Text:</strong> TXT, LOG, MD</li>
+            </ul>
+        </div>
+
+        <h3>Terminal</h3>
+        <p>Command-line interface for advanced operations.</p>
+        <ul>
+            <li><code>ls</code> - List files</li>
+            <li><code>cd [dir]</code> - Change directory</li>
+            <li><code>cat [file]</code> - View file contents</li>
+            <li><code>rm [file]</code> - Remove file</li>
+            <li><code>wifi scan</code> - Scan networks</li>
+            <li><code>wifi connect [ssid]</code> - Connect to WiFi</li>
+            <li><code>starrain</code> - Launch star rain effect</li>
+        </ul>
+
+        <h2 id="music">🎵 MUSIC TOOLS</h2>
+
+        <h3>Lab Beat Machine (LBM)</h3>
+        <p>Professional 8-track step sequencer with embedded 808 samples.</p>
+
+        <div class="feature-box">
+            <strong>Features:</strong>
+            <ul>
+                <li>8 tracks: Kick, Snare, Hat, Tom, 4x Melody</li>
+                <li>32nd note resolution (32 steps)</li>
+                <li>3 sample variations per drum (kick/kick2/kick3)</li>
+                <li>Per-track nudge, speed, and volume</li>
+                <li>808 samples embedded or load user samples</li>
+                <li>Real-time playback with visual indicator</li>
+            </ul>
+        </div>
+
+        <h4>LBM Controls</h4>
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><span class="key">SPACE</span></td>
+                <td>Play / Pause</td>
+            </tr>
+            <tr>
+                <td><span class="key">ENTER</span></td>
+                <td>Toggle step / Enter edit mode</td>
+            </tr>
+            <tr>
+                <td><span class="key">←</span> <span class="key">→</span></td>
+                <td>Navigate / Edit values in edit mode</td>
+            </tr>
+            <tr>
+                <td><span class="key">↑</span> <span class="key">↓</span></td>
+                <td>Navigate tracks/controls</td>
+            </tr>
+            <tr>
+                <td><span class="key">b</span></td>
+                <td>Quick BPM edit</td>
+            </tr>
+            <tr>
+                <td><span class="key">+</span> <span class="key">-</span></td>
+                <td>Volume up/down</td>
+            </tr>
+        </table>
+
+        <h3>Tap Tempo</h3>
+        <p>Visual metronome with beat detection.</p>
+        <ul>
+            <li>Press <span class="key">SPACE</span> repeatedly to tap tempo</li>
+            <li>Locks after 3 taps</li>
+            <li>Visual ctenophore-inspired light flash</li>
+            <li>Press <span class="key">s</span> to toggle metronome sound</li>
+            <li>Press <span class="key">r</span> to reset</li>
+        </ul>
+
+        <h3>Guitar Tuner</h3>
+        <p>Reference tones for standard guitar tuning (E A D G B E).</p>
+
+        <h3>Audio Visualizer</h3>
+        <p>Real-time waveform visualization for microphone input.</p>
+
+        <h2 id="wifi">📡 WIFI FEATURES</h2>
+
+        <h3>Network Scanner</h3>
+        <p>Scan for nearby WiFi networks with detailed information.</p>
+        <ul>
+            <li>SSID, signal strength (RSSI)</li>
+            <li>Channel and encryption type</li>
+            <li>MAC address (BSSID)</li>
+            <li>Auto-refresh every 10 seconds</li>
+        </ul>
+
+        <h3>Fake Access Point</h3>
+        <p>Create fake WiFi networks with custom SSIDs.</p>
+        <ul>
+            <li>Rick Roll beacon spam (floods area with fake networks)</li>
+            <li>Custom SSID broadcast</li>
+            <li>No actual internet connectivity (phantom AP)</li>
+        </ul>
+
+        <h3>Probe Sniffer</h3>
+        <p>Capture WiFi probe requests from nearby devices.</p>
+        <ul>
+            <li>See what networks devices are searching for</li>
+            <li>MAC address identification</li>
+            <li>Real-time display</li>
+        </ul>
+
+        <h3>Captive Portal</h3>
+        <p>Host web pages on a fake WiFi network. Launch from About > Credits screen.</p>
+        <ul>
+            <li>Custom HTML pages served to connected devices</li>
+            <li>No internet pass-through</li>
+            <li>Perfect for pranks or information sharing</li>
+        </ul>
+
+        <div class="warning">
+            <strong>⚠️ Legal Notice:</strong> WiFi tools are for educational purposes and authorized testing only. Unauthorized network interference is illegal in most jurisdictions.
+        </div>
+
+        <h2 id="book">📖 THE BOOK - OFFLINE KNOWLEDGE BASE</h2>
+
+        <p>Access 6,000+ articles covering survival, science, programming, religion, and more - all offline.</p>
+
+        <h3>Search Features</h3>
+        <ul>
+            <li><strong>Instant Search:</strong> Type to search across all categories</li>
+            <li><strong>Scripture Lookup:</strong> Type Bible verses directly (e.g., "John 3:16", "Genesis 1:1")</li>
+            <li><strong>Abbreviations:</strong> Use short book names ("Gen", "Jn", "Ps")</li>
+            <li><strong>Category Filtering:</strong> Results show category tags</li>
+        </ul>
+
+        <h3>Categories</h3>
+        <div class="feature-box">
+            <ul>
+                <li><strong>Survival</strong> (83 articles) - Wilderness survival, prison survival, lost at sea, end-of-world scenarios, civilization restart</li>
+                <li><strong>Wikipedia</strong> (1,447 articles) - Curated Wikipedia content</li>
+                <li><strong>Science</strong> (50 articles) - Physics, chemistry, biology, astronomy</li>
+                <li><strong>Programming</strong> (51 articles) - Algorithms, data structures, best practices</li>
+                <li><strong>Medical</strong> (25 articles) - First aid, emergency medicine, field surgery</li>
+                <li><strong>Religious</strong> (9 articles + 80,000 Bible verses) - Complete KJV Bible, Quran, Dhammapada, Torah</li>
+                <li><strong>Agriculture</strong> (20 articles) - Farming, crop rotation, animal husbandry</li>
+                <li><strong>And more...</strong> - Edible plants, poisonous plants, DIY/technical, history, literature</li>
+            </ul>
+        </div>
+
+        <h3>New Survival Articles</h3>
+        <ul>
+            <li><strong>End of World Survival</strong> - Complete apocalypse survival guide from 72-hour priorities to multi-generational civilization rebuilding</li>
+            <li><strong>Prison Survival</strong> - First 24 hours, physical/mental survival, conflict resolution, legal strategy</li>
+            <li><strong>Lost At Sea</strong> - Water procurement, fishing without gear, navigation, rescue signals</li>
+            <li><strong>Restart Civilization</strong> - 100-year plan to rebuild society from scratch with complete technology tree</li>
+        </ul>
+
+        <h2 id="games">🎮 GAMES & EMULATION</h2>
+
+        <h3>CHIP-8 Emulator</h3>
+        <p>Play classic CHIP-8 games.</p>
+        <ul>
+            <li>Browse ROMs from SD card (<code>/chip8/</code> directory)</li>
+            <li>60Hz emulation</li>
+            <li>Keyboard mapped to CHIP-8 hex keypad</li>
+        </ul>
+
+        <h3>Game Boy (Coming Soon)</h3>
+        <p>Full Game Boy emulation with save state support.</p>
+
+        <h3>NES Emulator (Coming Soon)</h3>
+        <p>Classic Nintendo Entertainment System games.</p>
+
+        <h3>LabCHAT</h3>
+        <p>ESP-NOW based local chat system.</p>
+        <ul>
+            <li>Chat with nearby Laboratory M5 devices</li>
+            <li>18 Laboratory-themed emoji symbols</li>
+            <li>Automatic join announcements</li>
+            <li>No WiFi infrastructure needed</li>
+        </ul>
+
+        <h2 id="settings">⚙️ SETTINGS & CONFIGURATION</h2>
+
+        <h3>Sound Settings</h3>
+        <ul>
+            <li>Toggle system sounds on/off</li>
+            <li>Volume control for music/radio</li>
+            <li>Individual app sound preferences</li>
+        </ul>
+
+        <h3>Display Settings</h3>
+        <ul>
+            <li>Brightness adjustment (5 levels)</li>
+            <li>Screen timeout / screensaver</li>
+            <li>Star rain screensaver after inactivity</li>
+        </ul>
+
+        <h3>WiFi Settings</h3>
+        <ul>
+            <li>Saved networks management</li>
+            <li>Auto-connect on boot</li>
+            <li>Manual connect/disconnect</li>
+        </ul>
+
+        <h3>Time Zone</h3>
+        <ul>
+            <li>Set your local timezone for accurate clock</li>
+            <li>UTC offset configuration</li>
+            <li>Displayed in status bar</li>
+        </ul>
+
+        <h2 id="tips">💡 PRO TIPS & TRICKS</h2>
+
+        <div class="feature-box">
+            <h3>Productivity</h3>
+            <ul>
+                <li>Use <span class="key">Tab</span> in search to see Table of Contents (Book app)</li>
+                <li>Press <span class="key">b</span> in LBM for quick BPM editing</li>
+                <li>Batch select files in File Manager with <span class="key">SPACE</span></li>
+                <li>Terminal supports command history with <span class="key">↑</span></li>
+            </ul>
+        </div>
+
+        <div class="feature-box">
+            <h3>Performance</h3>
+            <ul>
+                <li>SD card speed matters - use Class 10 or UHS cards</li>
+                <li>Close unused apps to free memory (use <span class="key">`</span> to exit)</li>
+                <li>Reduce brightness to extend battery life</li>
+                <li>Disable screensaver during long operations</li>
+            </ul>
+        </div>
+
+        <div class="feature-box">
+            <h3>Hidden Features</h3>
+            <ul>
+                <li>Press <span class="key">/</span> in Book search with empty query to show Table of Contents</li>
+                <li>Star rain can be triggered from Terminal with <code>starrain</code></li>
+                <li>About screen has a Launch Portal button (ENTER key)</li>
+                <li>Long-press <span class="key">Fn</span> for alternate key functions</li>
+            </ul>
+        </div>
+
+        <h2>🔧 TROUBLESHOOTING</h2>
+
+        <h3>SD Card Not Detected</h3>
+        <ul>
+            <li>Ensure card is formatted as FAT32</li>
+            <li>Try reinserting the card</li>
+            <li>Check card capacity (max 32GB for FAT32)</li>
+            <li>Verify card is not corrupted</li>
+        </ul>
+
+        <h3>WiFi Connection Issues</h3>
+        <ul>
+            <li>Check if network requires captive portal login</li>
+            <li>Verify password is correct</li>
+            <li>Some enterprise networks are not supported</li>
+            <li>Try disconnecting and reconnecting</li>
+        </ul>
+
+        <h3>Audio Playback Problems</h3>
+        <ul>
+            <li>Check if sound is enabled in settings</li>
+            <li>Verify MP3 bitrate is compatible (128-320 kbps)</li>
+            <li>Ensure file is not corrupted</li>
+            <li>Reduce radio buffer if streaming stutters</li>
+        </ul>
+
+        <h2>📚 ADDITIONAL RESOURCES</h2>
+
+        <ul>
+            <li><strong>GitHub:</strong> <a href="https://github.com/fountainking/LaboratoryM5">github.com/fountainking/LaboratoryM5</a></li>
+            <li><strong>Issues:</strong> Report bugs on GitHub Issues</li>
+            <li><strong>Updates:</strong> Check for firmware updates regularly</li>
+        </ul>
+
+        <hr style="border-color: #ff0000; margin: 30px 0;">
+
+        <p style="text-align: center; color: #888; margin-top: 30px;">
+            <strong>LABORATORY M5</strong><br>
+            Created by James<br>
+            Built with ESP32-S3<br>
+            2025
+        </p>
+    </div>
+</body>
+</html>
